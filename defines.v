@@ -22,3 +22,4 @@
 `define RstEnable 1'b1
 `define RstDsiable 1'b0
 `define Rst
+`define control
