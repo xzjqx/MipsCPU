@@ -3,9 +3,9 @@
 // Company: 
 // Engineer: 
 // 
-// Create Date:    15:05:45 07/01/2016 
+// Create Date:    15:34:07 07/01/2016 
 // Design Name: 
-// Module Name:    defines 
+// Module Name:    pc 
 // Project Name: 
 // Target Devices: 
 // Tool versions: 
@@ -18,18 +18,29 @@
 // Additional Comments: 
 //
 //////////////////////////////////////////////////////////////////////////////////
+`include "defines.v"
 
-`define Downto31_0 31:0
-`define Downto15_0 15:0
-`define WordSize 32
-`define HalfSize 16
-`define ByteSize 8
+module PC(
+	input wire clk,
+	input wire rst,
+	output reg [31:0] pc,
+	output reg ce
+    );
 
-`define Arithmetic 3'b000
-`define Branch_Jump 3'b001
-`define Mem 3'b010
-`define Logic 3'b011
-`define Shift 3'b100
-`define Move 3'b101
-`define Trap 3'b110
-`define Privilege 3'b111
+	always @(posedge clk) begin
+		if (rst == 1'b1)
+			ce <= 1'b0;
+		else
+			cd <= 1'b1;
+	end
+	
+	always @(posedge clk) begin
+		if (rst == 1'b0)
+			pc <= 32'b0;
+		else begin
+			pc <= pc + 4'h4;
+		end
+	end
+
+
+endmodule
