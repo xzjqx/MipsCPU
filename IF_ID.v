@@ -30,7 +30,7 @@ module IF_ID(
     );
 
 	always @(posedge clk) begin
-		if (Rst == 1'b1) begin
+		if (rst == 1'b1) begin
 			id_pc <= 32'b0;
 			id_inst <= 32;
 		end

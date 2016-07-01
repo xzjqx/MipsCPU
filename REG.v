@@ -27,11 +27,11 @@ module REG(
 	input wire we,
 	
 	input wire [4:0] raddr1,
-	output wire [31:0] rdata1,
+	output reg [31:0] rdata1,
 	input wire re1,
 	
 	input wire [4:0] raddr2,
-	output wire [31:0] rdata2,
+	output reg [31:0] rdata2,
 	input wire re2
     );
 	
@@ -61,7 +61,7 @@ module REG(
 		else if (re2 == 1'b1 && we == 1'b1 && waddr == raddr2)
 			rdata2 <= wdata;
 		else if (re2 == 1'b1)
-			rdata2 <= regs[raddr1];
+			rdata2 <= regs[raddr2];
 		else
 			rdata2 <= 32'b0;
 	end

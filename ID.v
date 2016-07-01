@@ -22,8 +22,8 @@
 
 module ID(
 	input wire rst,
-	input wire pc_i,
-	input wire inst_i,
+	input wire [31:0] pc_i,
+	input wire [31:0] inst_i,
 	input wire reg1_data_i,
 	input wire reg2_data_i,
 	

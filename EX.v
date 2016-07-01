@@ -23,7 +23,7 @@
 module EX(
 	input wire rst,
 	input wire alusel_i,
-	input wire aleop_i,
+	input wire aluop_i,
 	input wire [31:0] reg1_i,
 	input wire [31:0] reg2_i,
 	input wire [4:0] wd_i,

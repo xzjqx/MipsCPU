@@ -31,7 +31,7 @@ module PC(
 		if (rst == 1'b1)
 			ce <= 1'b0;
 		else
-			cd <= 1'b1;
+			ce <= 1'b1;
 	end
 	
 	always @(posedge clk) begin
