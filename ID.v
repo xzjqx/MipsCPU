@@ -72,6 +72,17 @@ module ID(
 			
 			case(op)
 				//TODO: 根据操作码判断是什么指令，并完成指令的译码
+				6'b000000：begin		//special code
+					case(op2)
+						6'b100100: begin		//AND rd rs rt
+							alusel_o <= `Logic;
+							aluop_o <= 
+							wreg_o <= 1'b1;
+							
+						end
+					endcase
+					end
+				end
 			endcase
 		end
 	end
