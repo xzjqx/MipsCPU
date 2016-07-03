@@ -59,8 +59,6 @@ module ID(
 		if (rst == 1'b1) begin
 			alusel_o <= 3'b0;
 			aluop_o <= 8'b0;
-			reg1_o <= 32'b0;
-			reg2_o <= 32'b0;
 			reg1_addr_o <= 5'b0;
 			reg2_addr_o <= 5'b0;
 			reg1_read_o <= 1'b0;
@@ -86,21 +84,21 @@ module ID(
 						6'b100100: begin	//AND
 							alusel_o <= `Logic;
 							aluop_o <= `AND;
-							wreg <= 1'b1;
+							wreg_o <= 1'b1;
 							reg1_read_o <= 1'b1;
 							reg2_read_o <= 1'b1;
 						end
 						6'b100101: begin	//NOR
 							alusel_o <= `Logic;
 							aluop_o <= `NOR;
-							wreg <= 1'b1;
+							wreg_o <= 1'b1;
 							reg1_read_o <= 1'b1;
 							reg2_read_o <= 1'b1;
 						end
 						6'b100110: begin	//XOR
 							alusel_o <= `Logic;
 							aluop_o <= `XOR;
-							wreg <= 1'b1;
+							wreg_o <= 1'b1;
 							reg1_read_o <= 1'b1;
 							reg2_read_o <= 1'b1;
 						end
@@ -112,7 +110,7 @@ module ID(
 				6'b001100: begin	//ANDI
 					alusel_o <= `Logic;
 					aluop_o <= `ANDI;
-					wreg <= 1'b1;
+					wreg_o <= 1'b1;
 					reg1_read_o <= 1'b1;
 					reg2_read_o <= 1'b0;
 					wd_o <= inst_i[20:16];
@@ -121,7 +119,7 @@ module ID(
 				6'b001100: begin	//ANDI
 					alusel_o <= `Logic;
 					aluop_o <= `ANDI;
-					wreg <= 1'b1;
+					wreg_o <= 1'b1;
 					reg1_read_o <= 1'b1;
 					reg2_read_o <= 1'b0;
 					wd_o <= inst_i[20:16];
@@ -130,7 +128,7 @@ module ID(
 				6'b001111: begin	//LUI
 					alusel_o <= `Logic;
 					aluop_o <= `LUI;
-					wreg <= 1'b1;
+					wreg_o <= 1'b1;
 					reg1_read_o <= 1'b1;
 					reg2_read_o <= 1'b0;
 					wd_o <= inst_i[20:16];
@@ -139,7 +137,7 @@ module ID(
 				6'b001101: begin	//ORI
 					alusel_o <= `Logic;
 					aluop_o <= `ORI;
-					wreg <= 1'b1;
+					wreg_o <= 1'b1;
 					reg1_read_o <= 1'b1;
 					reg2_read_o <= 1'b0;
 					wd_o <= inst_i[20:16];
@@ -148,7 +146,7 @@ module ID(
 				6'b001110: begin	//XORI
 					alusel_o <= `Logic;
 					aluop_o <= `XORI;
-					wreg <= 1'b1;
+					wreg_o <= 1'b1;
 					reg1_read_o <= 1'b1;
 					reg2_read_o <= 1'b0;
 					wd_o <= inst_i[20:16];
