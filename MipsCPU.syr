@@ -126,15 +126,379 @@ Parsing module <ID_EX>.
 Analyzing Verilog file \"C:\MipsCPU\ID.v\" into library work
 Parsing verilog file "defines.v" included at line 21.
 Parsing module <ID>.
-ERROR:HDLCompiler:806 - "C:\MipsCPU\ID.v" Line 75: Syntax error near "£".
-ERROR:HDLCompiler:806 - "C:\MipsCPU\ID.v" Line 86: Syntax error near "endcase".
-ERROR:HDLCompiler:598 - "C:\MipsCPU\ID.v" Line 23: Module <ID> ignored due to previous errors.
-Verilog file C:\MipsCPU\ID.v ignored due to errors
+Analyzing Verilog file \"C:\MipsCPU\EX_MEM.v\" into library work
+Parsing verilog file "defines.v" included at line 21.
+Parsing module <EX_MEM>.
+Analyzing Verilog file \"C:\MipsCPU\EX.v\" into library work
+Parsing verilog file "defines.v" included at line 21.
+Parsing module <EX>.
+Analyzing Verilog file \"C:\MipsCPU\MipsCPU.v\" into library work
+Parsing verilog file "defines.v" included at line 21.
+Parsing module <MipsCPU>.
+
+=========================================================================
+*                            HDL Elaboration                            *
+=========================================================================
+WARNING:HDLCompiler:1016 - "C:\MipsCPU\MipsCPU.v" Line 80: Port reg1_data_i is not connected to this instance
+
+Elaborating module <MipsCPU>.
+
+Elaborating module <PC>.
+
+Elaborating module <IF_ID>.
+
+Elaborating module <ID>.
+WARNING:HDLCompiler:1127 - "C:\MipsCPU\ID.v" Line 49: Assignment to imm ignored, since the identifier is never used
+
+Elaborating module <REG>.
+WARNING:HDLCompiler:1127 - "C:\MipsCPU\MipsCPU.v" Line 83: Assignment to reg1_data ignored, since the identifier is never used
+WARNING:HDLCompiler:1127 - "C:\MipsCPU\MipsCPU.v" Line 84: Assignment to reg2_data ignored, since the identifier is never used
+
+Elaborating module <ID_EX>.
+WARNING:HDLCompiler:189 - "C:\MipsCPU\MipsCPU.v" Line 86: Size mismatch in connection of port <id_alusel>. Formal port size is 3-bit while actual signal size is 8-bit.
+
+Elaborating module <EX>.
+WARNING:HDLCompiler:295 - "C:\MipsCPU\EX.v" Line 62: case condition never applies
+WARNING:HDLCompiler:189 - "C:\MipsCPU\MipsCPU.v" Line 91: Size mismatch in connection of port <alusel_i>. Formal port size is 1-bit while actual signal size is 3-bit.
+
+Elaborating module <EX_MEM>.
+
+Elaborating module <MEM>.
+
+Elaborating module <MEM_WB>.
+WARNING:HDLCompiler:634 - "C:\MipsCPU\MipsCPU.v" Line 40: Net <reg1_read> does not have a driver.
+WARNING:HDLCompiler:634 - "C:\MipsCPU\MipsCPU.v" Line 41: Net <reg1_addr[4]> does not have a driver.
+WARNING:HDLCompiler:634 - "C:\MipsCPU\MipsCPU.v" Line 43: Net <reg2_read> does not have a driver.
+WARNING:HDLCompiler:634 - "C:\MipsCPU\MipsCPU.v" Line 44: Net <reg2_addr[4]> does not have a driver.
+WARNING:HDLCompiler:634 - "C:\MipsCPU\MipsCPU.v" Line 47: Net <id_aluop_o[7]> does not have a driver.
+WARNING:HDLCompiler:634 - "C:\MipsCPU\MipsCPU.v" Line 49: Net <id_reg1_o[31]> does not have a driver.
+WARNING:HDLCompiler:634 - "C:\MipsCPU\MipsCPU.v" Line 50: Net <id_reg2_o[31]> does not have a driver.
+WARNING:HDLCompiler:634 - "C:\MipsCPU\MipsCPU.v" Line 51: Net <id_wreg_o> does not have a driver.
+WARNING:HDLCompiler:634 - "C:\MipsCPU\MipsCPU.v" Line 52: Net <id_wd_o[4]> does not have a driver.
+WARNING:HDLCompiler:552 - "C:\MipsCPU\MipsCPU.v" Line 80: Input port reg1_data_i is not connected on this instance
+WARNING:Xst:2972 - "c:/mipscpu/mipscpu.v" line 77. All outputs of instance <if_id0> of block <IF_ID> are unconnected in block <MipsCPU>. Underlying logic will be removed.
+WARNING:Xst:2972 - "c:/mipscpu/mipscpu.v" line 80. All outputs of instance <id0> of block <ID> are unconnected in block <MipsCPU>. Underlying logic will be removed.
+WARNING:Xst:2972 - "c:/mipscpu/mipscpu.v" line 82. All outputs of instance <reg0> of block <REG> are unconnected in block <MipsCPU>. Underlying logic will be removed.
+WARNING:Xst:2972 - "c:/mipscpu/mipscpu.v" line 86. All outputs of instance <id_ex0> of block <ID_EX> are unconnected in block <MipsCPU>. Underlying logic will be removed.
+WARNING:Xst:2972 - "c:/mipscpu/mipscpu.v" line 91. All outputs of instance <ex0> of block <EX> are unconnected in block <MipsCPU>. Underlying logic will be removed.
+WARNING:Xst:2972 - "c:/mipscpu/mipscpu.v" line 96. All outputs of instance <ex_mem0> of block <EX_MEM> are unconnected in block <MipsCPU>. Underlying logic will be removed.
+WARNING:Xst:2972 - "c:/mipscpu/mipscpu.v" line 99. All outputs of instance <mem0> of block <MEM> are unconnected in block <MipsCPU>. Underlying logic will be removed.
+WARNING:Xst:2972 - "c:/mipscpu/mipscpu.v" line 102. All outputs of instance <mem_wb0> of block <MEM_WB> are unconnected in block <MipsCPU>. Underlying logic will be removed.
+
+=========================================================================
+*                           HDL Synthesis                               *
+=========================================================================
+
+Synthesizing Unit <MipsCPU>.
+    Related source file is "c:/mipscpu/mipscpu.v".
+WARNING:Xst:2898 - Port 'reg1_data_i', unconnected in block instance 'id0', is tied to GND.
+WARNING:Xst:2898 - Port 'reg2_data_i', unconnected in block instance 'id0', is tied to GND.
+INFO:Xst:3210 - "c:/mipscpu/mipscpu.v" line 80: Output port <alusel_o> of the instance <id0> is unconnected or connected to loadless signal.
+INFO:Xst:3210 - "c:/mipscpu/mipscpu.v" line 80: Output port <aluop_o> of the instance <id0> is unconnected or connected to loadless signal.
+INFO:Xst:3210 - "c:/mipscpu/mipscpu.v" line 80: Output port <reg1_o> of the instance <id0> is unconnected or connected to loadless signal.
+INFO:Xst:3210 - "c:/mipscpu/mipscpu.v" line 80: Output port <reg2_o> of the instance <id0> is unconnected or connected to loadless signal.
+INFO:Xst:3210 - "c:/mipscpu/mipscpu.v" line 80: Output port <reg1_addr_o> of the instance <id0> is unconnected or connected to loadless signal.
+INFO:Xst:3210 - "c:/mipscpu/mipscpu.v" line 80: Output port <reg2_addr_o> of the instance <id0> is unconnected or connected to loadless signal.
+INFO:Xst:3210 - "c:/mipscpu/mipscpu.v" line 80: Output port <wd_o> of the instance <id0> is unconnected or connected to loadless signal.
+INFO:Xst:3210 - "c:/mipscpu/mipscpu.v" line 80: Output port <reg1_read_o> of the instance <id0> is unconnected or connected to loadless signal.
+INFO:Xst:3210 - "c:/mipscpu/mipscpu.v" line 80: Output port <reg2_read_o> of the instance <id0> is unconnected or connected to loadless signal.
+INFO:Xst:3210 - "c:/mipscpu/mipscpu.v" line 80: Output port <wreg_o> of the instance <id0> is unconnected or connected to loadless signal.
+INFO:Xst:3210 - "c:/mipscpu/mipscpu.v" line 82: Output port <rdata1> of the instance <reg0> is unconnected or connected to loadless signal.
+INFO:Xst:3210 - "c:/mipscpu/mipscpu.v" line 82: Output port <rdata2> of the instance <reg0> is unconnected or connected to loadless signal.
+WARNING:Xst:653 - Signal <reg1_addr> is used but never assigned. This sourceless signal will be automatically connected to value GND.
+WARNING:Xst:653 - Signal <reg2_addr> is used but never assigned. This sourceless signal will be automatically connected to value GND.
+WARNING:Xst:653 - Signal <id_aluop_o> is used but never assigned. This sourceless signal will be automatically connected to value GND.
+WARNING:Xst:653 - Signal <id_reg1_o> is used but never assigned. This sourceless signal will be automatically connected to value GND.
+WARNING:Xst:653 - Signal <id_reg2_o> is used but never assigned. This sourceless signal will be automatically connected to value GND.
+WARNING:Xst:653 - Signal <id_wd_o> is used but never assigned. This sourceless signal will be automatically connected to value GND.
+WARNING:Xst:653 - Signal <reg1_read> is used but never assigned. This sourceless signal will be automatically connected to value GND.
+WARNING:Xst:653 - Signal <reg2_read> is used but never assigned. This sourceless signal will be automatically connected to value GND.
+WARNING:Xst:653 - Signal <id_wreg_o> is used but never assigned. This sourceless signal will be automatically connected to value GND.
+    Summary:
+	no macro.
+Unit <MipsCPU> synthesized.
+
+Synthesizing Unit <PC>.
+    Related source file is "c:/mipscpu/pc.v".
+    Found 32-bit register for signal <pc>.
+    Found 1-bit register for signal <ce>.
+    Found 32-bit adder for signal <pc[31]_GND_2_o_add_4_OUT> created at line 41.
+    Summary:
+	inferred   1 Adder/Subtractor(s).
+	inferred  33 D-type flip-flop(s).
+Unit <PC> synthesized.
+
+=========================================================================
+HDL Synthesis Report
+
+Macro Statistics
+# Adders/Subtractors                                   : 1
+ 32-bit adder                                          : 1
+# Registers                                            : 2
+ 1-bit register                                        : 1
+ 32-bit register                                       : 1
+
+=========================================================================
+
+=========================================================================
+*                       Advanced HDL Synthesis                          *
+=========================================================================
+
+
+Synthesizing (advanced) Unit <PC>.
+The following registers are absorbed into accumulator <pc>: 1 register on signal <pc>.
+Unit <PC> synthesized (advanced).
+
+=========================================================================
+Advanced HDL Synthesis Report
+
+Macro Statistics
+# Accumulators                                         : 1
+ 32-bit up accumulator                                 : 1
+# Registers                                            : 1
+ Flip-Flops                                            : 1
+
+=========================================================================
+
+=========================================================================
+*                         Low Level Synthesis                           *
+=========================================================================
+WARNING:Xst:1710 - FF/Latch <pc0/pc_0> (without init value) has a constant value of 0 in block <MipsCPU>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <pc0/pc_1> (without init value) has a constant value of 0 in block <MipsCPU>. This FF/Latch will be trimmed during the optimization process.
+
+Optimizing unit <MipsCPU> ...
+
+Mapping all equations...
+Building and optimizing final netlist ...
+Found area constraint ratio of 100 (+ 5) on block MipsCPU, actual ratio is 0.
+
+Final Macro Processing ...
+
+=========================================================================
+Final Register Report
+
+Macro Statistics
+# Registers                                            : 31
+ Flip-Flops                                            : 31
+
+=========================================================================
+
+=========================================================================
+*                           Partition Report                            *
+=========================================================================
+
+Partition Implementation Status
+-------------------------------
+
+  No Partitions were found in this design.
+
+-------------------------------
+
+=========================================================================
+*                            Design Summary                             *
+=========================================================================
+
+Top Level Output File Name         : MipsCPU.ngc
+
+Primitive and Black Box Usage:
+------------------------------
+# BELS                             : 92
+#      GND                         : 1
+#      INV                         : 2
+#      LUT1                        : 29
+#      MUXCY                       : 29
+#      VCC                         : 1
+#      XORCY                       : 30
+# FlipFlops/Latches                : 31
+#      FDR                         : 31
+# Clock Buffers                    : 1
+#      BUFGP                       : 1
+# IO Buffers                       : 34
+#      IBUF                        : 1
+#      OBUF                        : 33
+
+Device utilization summary:
+---------------------------
+
+Selected Device : 6slx16csg324-3 
+
+
+Slice Logic Utilization: 
+ Number of Slice Registers:              30  out of  18224     0%  
+ Number of Slice LUTs:                   31  out of   9112     0%  
+    Number used as Logic:                31  out of   9112     0%  
+
+Slice Logic Distribution: 
+ Number of LUT Flip Flop pairs used:     31
+   Number with an unused Flip Flop:       1  out of     31     3%  
+   Number with an unused LUT:             0  out of     31     0%  
+   Number of fully used LUT-FF pairs:    30  out of     31    96%  
+   Number of unique control sets:         2
+
+IO Utilization: 
+ Number of IOs:                          67
+ Number of bonded IOBs:                  35  out of    232    15%  
+    IOB Flip Flops/Latches:               1
+
+Specific Feature Utilization:
+ Number of BUFG/BUFGCTRLs:                1  out of     16     6%  
+
+---------------------------
+Partition Resource Summary:
+---------------------------
+
+  No Partitions were found in this design.
+
+---------------------------
+
+
+=========================================================================
+Timing Report
+
+NOTE: THESE TIMING NUMBERS ARE ONLY A SYNTHESIS ESTIMATE.
+      FOR ACCURATE TIMING INFORMATION PLEASE REFER TO THE TRACE REPORT
+      GENERATED AFTER PLACE-and-ROUTE.
+
+Clock Information:
+------------------
+-----------------------------------+------------------------+-------+
+Clock Signal                       | Clock buffer(FF name)  | Load  |
+-----------------------------------+------------------------+-------+
+clk                                | BUFGP                  | 31    |
+-----------------------------------+------------------------+-------+
+
+Asynchronous Control Signals Information:
+----------------------------------------
+No asynchronous control signals found in this design
+
+Timing Summary:
+---------------
+Speed Grade: -3
+
+   Minimum period: 2.255ns (Maximum Frequency: 443.409MHz)
+   Minimum input arrival time before clock: 3.737ns
+   Maximum output required time after clock: 3.634ns
+   Maximum combinational path delay: No path found
+
+Timing Details:
+---------------
+All values displayed in nanoseconds (ns)
+
+=========================================================================
+Timing constraint: Default period analysis for Clock 'clk'
+  Clock period: 2.255ns (frequency: 443.409MHz)
+  Total number of paths / destination ports: 465 / 30
+-------------------------------------------------------------------------
+Delay:               2.255ns (Levels of Logic = 31)
+  Source:            pc0/pc_2 (FF)
+  Destination:       pc0/pc_31 (FF)
+  Source Clock:      clk rising
+  Destination Clock: clk rising
+
+  Data Path: pc0/pc_2 to pc0/pc_31
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     FDR:C->Q              2   0.447   0.616  pc0/pc_2 (pc0/pc_2)
+     INV:I->O              1   0.206   0.000  pc0/Maccum_pc_lut<2>_INV_0 (pc0/Maccum_pc_lut<2>)
+     MUXCY:S->O            1   0.172   0.000  pc0/Maccum_pc_cy<2> (pc0/Maccum_pc_cy<2>)
+     MUXCY:CI->O           1   0.019   0.000  pc0/Maccum_pc_cy<3> (pc0/Maccum_pc_cy<3>)
+     MUXCY:CI->O           1   0.019   0.000  pc0/Maccum_pc_cy<4> (pc0/Maccum_pc_cy<4>)
+     MUXCY:CI->O           1   0.019   0.000  pc0/Maccum_pc_cy<5> (pc0/Maccum_pc_cy<5>)
+     MUXCY:CI->O           1   0.019   0.000  pc0/Maccum_pc_cy<6> (pc0/Maccum_pc_cy<6>)
+     MUXCY:CI->O           1   0.019   0.000  pc0/Maccum_pc_cy<7> (pc0/Maccum_pc_cy<7>)
+     MUXCY:CI->O           1   0.019   0.000  pc0/Maccum_pc_cy<8> (pc0/Maccum_pc_cy<8>)
+     MUXCY:CI->O           1   0.019   0.000  pc0/Maccum_pc_cy<9> (pc0/Maccum_pc_cy<9>)
+     MUXCY:CI->O           1   0.019   0.000  pc0/Maccum_pc_cy<10> (pc0/Maccum_pc_cy<10>)
+     MUXCY:CI->O           1   0.019   0.000  pc0/Maccum_pc_cy<11> (pc0/Maccum_pc_cy<11>)
+     MUXCY:CI->O           1   0.019   0.000  pc0/Maccum_pc_cy<12> (pc0/Maccum_pc_cy<12>)
+     MUXCY:CI->O           1   0.019   0.000  pc0/Maccum_pc_cy<13> (pc0/Maccum_pc_cy<13>)
+     MUXCY:CI->O           1   0.019   0.000  pc0/Maccum_pc_cy<14> (pc0/Maccum_pc_cy<14>)
+     MUXCY:CI->O           1   0.019   0.000  pc0/Maccum_pc_cy<15> (pc0/Maccum_pc_cy<15>)
+     MUXCY:CI->O           1   0.019   0.000  pc0/Maccum_pc_cy<16> (pc0/Maccum_pc_cy<16>)
+     MUXCY:CI->O           1   0.019   0.000  pc0/Maccum_pc_cy<17> (pc0/Maccum_pc_cy<17>)
+     MUXCY:CI->O           1   0.019   0.000  pc0/Maccum_pc_cy<18> (pc0/Maccum_pc_cy<18>)
+     MUXCY:CI->O           1   0.019   0.000  pc0/Maccum_pc_cy<19> (pc0/Maccum_pc_cy<19>)
+     MUXCY:CI->O           1   0.019   0.000  pc0/Maccum_pc_cy<20> (pc0/Maccum_pc_cy<20>)
+     MUXCY:CI->O           1   0.019   0.000  pc0/Maccum_pc_cy<21> (pc0/Maccum_pc_cy<21>)
+     MUXCY:CI->O           1   0.019   0.000  pc0/Maccum_pc_cy<22> (pc0/Maccum_pc_cy<22>)
+     MUXCY:CI->O           1   0.019   0.000  pc0/Maccum_pc_cy<23> (pc0/Maccum_pc_cy<23>)
+     MUXCY:CI->O           1   0.019   0.000  pc0/Maccum_pc_cy<24> (pc0/Maccum_pc_cy<24>)
+     MUXCY:CI->O           1   0.019   0.000  pc0/Maccum_pc_cy<25> (pc0/Maccum_pc_cy<25>)
+     MUXCY:CI->O           1   0.019   0.000  pc0/Maccum_pc_cy<26> (pc0/Maccum_pc_cy<26>)
+     MUXCY:CI->O           1   0.019   0.000  pc0/Maccum_pc_cy<27> (pc0/Maccum_pc_cy<27>)
+     MUXCY:CI->O           1   0.019   0.000  pc0/Maccum_pc_cy<28> (pc0/Maccum_pc_cy<28>)
+     MUXCY:CI->O           1   0.019   0.000  pc0/Maccum_pc_cy<29> (pc0/Maccum_pc_cy<29>)
+     MUXCY:CI->O           0   0.019   0.000  pc0/Maccum_pc_cy<30> (pc0/Maccum_pc_cy<30>)
+     XORCY:CI->O           1   0.180   0.000  pc0/Maccum_pc_xor<31> (Result<31>)
+     FDR:D                     0.102          pc0/pc_31
+    ----------------------------------------
+    Total                      2.255ns (1.639ns logic, 0.616ns route)
+                                       (72.7% logic, 27.3% route)
+
+=========================================================================
+Timing constraint: Default OFFSET IN BEFORE for Clock 'clk'
+  Total number of paths / destination ports: 31 / 31
+-------------------------------------------------------------------------
+Offset:              3.737ns (Levels of Logic = 2)
+  Source:            rst (PAD)
+  Destination:       pc0/pc_2 (FF)
+  Destination Clock: clk rising
+
+  Data Path: rst to pc0/pc_2
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     IBUF:I->O             2   1.222   0.616  rst_IBUF (rst_IBUF)
+     INV:I->O             30   0.206   1.263  rst_inv1_INV_0 (rst_inv)
+     FDR:R                     0.430          pc0/pc_2
+    ----------------------------------------
+    Total                      3.737ns (1.858ns logic, 1.879ns route)
+                                       (49.7% logic, 50.3% route)
+
+=========================================================================
+Timing constraint: Default OFFSET OUT AFTER for Clock 'clk'
+  Total number of paths / destination ports: 31 / 31
+-------------------------------------------------------------------------
+Offset:              3.634ns (Levels of Logic = 1)
+  Source:            pc0/pc_31 (FF)
+  Destination:       rom_addr_o<31> (PAD)
+  Source Clock:      clk rising
+
+  Data Path: pc0/pc_31 to rom_addr_o<31>
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     FDR:C->Q              2   0.447   0.616  pc0/pc_31 (pc0/pc_31)
+     OBUF:I->O                 2.571          rom_addr_o_31_OBUF (rom_addr_o<31>)
+    ----------------------------------------
+    Total                      3.634ns (3.018ns logic, 0.616ns route)
+                                       (83.0% logic, 17.0% route)
+
+=========================================================================
+
+Cross Clock Domains Report:
+--------------------------
+
+Clock to Setup on destination clock clk
+---------------+---------+---------+---------+---------+
+               | Src:Rise| Src:Fall| Src:Rise| Src:Fall|
+Source Clock   |Dest:Rise|Dest:Rise|Dest:Fall|Dest:Fall|
+---------------+---------+---------+---------+---------+
+clk            |    2.255|         |         |         |
+---------------+---------+---------+---------+---------+
+
+=========================================================================
+
+
+Total REAL time to Xst completion: 4.00 secs
+Total CPU time to Xst completion: 3.61 secs
+ 
 --> 
 
-Total memory usage is 202640 kilobytes
+Total memory usage is 238792 kilobytes
 
-Number of errors   :    3 (   0 filtered)
-Number of warnings :    0 (   0 filtered)
-Number of infos    :    0 (   0 filtered)
+Number of errors   :    0 (   0 filtered)
+Number of warnings :   38 (   0 filtered)
+Number of infos    :   12 (   0 filtered)
 

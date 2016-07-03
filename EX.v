@@ -36,22 +36,28 @@ module EX(
 
 	reg [31:0] logicout;
 
-	always @(*) begin
+	always @(*) begin				//Logic
 		if (rst == 1'b1) begin
 			logicout <= 32'b0;
 		end
 		else begin
 			case(aluop_i)
 				//TODO: 相关指令的执行部分
+				`AND: logicout <= reg1_i & reg2_i;
+				`ANDI: logicout <= reg1_i & reg2_i;
+				`LUI: logicout <= reg1_i & reg2_i;
+				`NOR: logicout <= ~(reg1_i | reg2_i);
+				`ORI: logicout <= reg1_i | reg2_i;
+				`XOR: logicout <= reg1_i ^ reg2_i;
+				`XORI: logicout <= reg1_i ^ reg2_i;
 				default: begin
 					logicout <= 32'b0;
-					//其他类型暂时结果的赋值
 				end
 			endcase
 		end
 	end
 	
-	always @(*) begin
+	always @(*) begin			
 		wd_o <= wd_i;
 		wreg_o <= wreg_i;
 		if (rst == 1'b1) begin

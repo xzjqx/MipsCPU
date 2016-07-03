@@ -24,8 +24,17 @@ module ID(
 	input wire rst,
 	input wire [31:0] pc_i,
 	input wire [31:0] inst_i,
-	input wire reg1_data_i,
-	input wire reg2_data_i,
+	input wire [31:0] reg1_data_i,
+	input wire [31:0] reg2_data_i,
+	
+	//处理Logic操作的数据相关
+	input wire ex_wreg_i,
+	input wire [31:0] ex_wdata_i,
+	input wire [4:0] ex_wd_i,
+	
+	input wire mem_wreg_i,
+	input wire [31:0] mem_wdata_i,
+	input wire [4:0] mem_wd_i,
 	
 	output reg [2:0] alusel_o,		//8 types of inst
 	output reg [7:0] aluop_o,		//47 insts
@@ -62,7 +71,7 @@ module ID(
 		else begin
 			alusel_o <= 3'b0;
 			aluop_o <= 8'b0;
-			wd_o <= inst_i[25:21];
+			wd_o <= inst_i[15:11];
 			wreg_o <= 1'b0;
 			reg1_addr_o <= inst_i[25:21];
 			reg2_addr_o <= inst_i[20:16];
@@ -72,27 +81,107 @@ module ID(
 			
 			case(op)
 				//TODO: 根据操作码判断是什么指令，并完成指令的译码
-				6'b000000：begin		//special code
+				6'b000000: begin		//special code
 					case(op2)
-						6'b100100: begin		//AND rd rs rt
+						6'b100100: begin	//AND
 							alusel_o <= `Logic;
-							aluop_o <= 
-							wreg_o <= 1'b1;
-							
+							aluop_o <= `AND;
+							wreg <= 1'b1;
+							reg1_read_o <= 1'b1;
+							reg2_read_o <= 1'b1;
+						end
+						6'b100101: begin	//NOR
+							alusel_o <= `Logic;
+							aluop_o <= `NOR;
+							wreg <= 1'b1;
+							reg1_read_o <= 1'b1;
+							reg2_read_o <= 1'b1;
+						end
+						6'b100110: begin	//XOR
+							alusel_o <= `Logic;
+							aluop_o <= `XOR;
+							wreg <= 1'b1;
+							reg1_read_o <= 1'b1;
+							reg2_read_o <= 1'b1;
+						end
+						default: begin
+							//TODO: 其他special code指令
 						end
 					endcase
-					end
+				end
+				6'b001100: begin	//ANDI
+					alusel_o <= `Logic;
+					aluop_o <= `ANDI;
+					wreg <= 1'b1;
+					reg1_read_o <= 1'b1;
+					reg2_read_o <= 1'b0;
+					wd_o <= inst_i[20:16];
+					imm <= {16'b0, inst_i[15:0]};
+				end
+				6'b001100: begin	//ANDI
+					alusel_o <= `Logic;
+					aluop_o <= `ANDI;
+					wreg <= 1'b1;
+					reg1_read_o <= 1'b1;
+					reg2_read_o <= 1'b0;
+					wd_o <= inst_i[20:16];
+					imm <= {16'b0, inst_i[15:0]};
+				end
+				6'b001111: begin	//LUI
+					alusel_o <= `Logic;
+					aluop_o <= `LUI;
+					wreg <= 1'b1;
+					reg1_read_o <= 1'b1;
+					reg2_read_o <= 1'b0;
+					wd_o <= inst_i[20:16];
+					imm <= {inst_i[15:0], 16'b0};
+				end
+				6'b001101: begin	//ORI
+					alusel_o <= `Logic;
+					aluop_o <= `ORI;
+					wreg <= 1'b1;
+					reg1_read_o <= 1'b1;
+					reg2_read_o <= 1'b0;
+					wd_o <= inst_i[20:16];
+					imm <= {16'b0, inst_i[15:0]};
+				end
+				6'b001110: begin	//XORI
+					alusel_o <= `Logic;
+					aluop_o <= `XORI;
+					wreg <= 1'b1;
+					reg1_read_o <= 1'b1;
+					reg2_read_o <= 1'b0;
+					wd_o <= inst_i[20:16];
+					imm <= {16'b0, inst_i[15:0]};
 				end
 			endcase
 		end
 	end
 	
 	always @(*) begin
-		//TODO: 确定源操作数1
+		if (rst == 1'b1)
+			reg1_o <= 32'b0;
+		else if (reg1_read_o == 1'b1 && ex_wreg_i == 1'b1 && reg1_addr_o == ex_wd_i)
+			reg1_o <= ex_wdata_i;
+		else if (reg1_read_o == 1'b1 && mem_wreg_i == 1'b1 && reg1_addr_o == mem_wd_i)
+			reg1_o <= mem_wdata_i;
+		else if (reg1_read_o == 1'b1)
+			reg1_o <= reg1_data_i;
+		else if (reg1_read_o == 1'b0)
+			reg1_o <= imm;
 	end
 	
 	always @(*) begin
-		//TODO: 确定源操作数2
+		if (rst == 1'b1)
+			reg2_o <= 32'b0;
+		else if (reg2_read_o == 1'b1 && ex_wreg_i == 1'b1 && reg2_addr_o == ex_wd_i)
+			reg2_o <= ex_wdata_i;
+		else if (reg2_read_o == 1'b1 && mem_wreg_i == 1'b1 && reg2_addr_o == mem_wd_i)
+			reg2_o <= mem_wdata_i;
+		else if (reg2_read_o == 1'b1)
+			reg2_o <= reg2_data_i;
+		else if (reg2_read_o == 1'b0)
+			reg2_o <= imm;
 	end
 
 endmodule
