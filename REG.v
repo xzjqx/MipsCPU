@@ -36,10 +36,11 @@ module REG(
     );
 	
 	reg [31:0] regs[0:31];
-
+	
 	always @(posedge clk) begin
+		regs[0] <= 32'b0;
 		if (rst == 1'b0) begin
-			if (we == 1'b1 && waddr != 32'b0)	//0号寄存器要一直保持为全0
+			if (we == 1'b1 && waddr != 5'b0)	//0号寄存器要一直保持为全0
 				regs[waddr] <= wdata;
 		end
 	end

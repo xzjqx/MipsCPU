@@ -77,13 +77,21 @@ module MipsCPU(
 	IF_ID if_id0(.clk(clk), .rst(rst), .if_pc(pc), .if_inst(rom_data_i),
 					 .id_pc(id_pc_i), .id_inst(id_inst_i));
 					 
-	ID id0(.rst(rst), .pc_i(id_pc_i), .inst_i(id_inst_i));
+	ID id0(.rst(rst), .pc_i(id_pc_i), .inst_i(id_inst_i),
+			 .reg1_data_i(reg1_data), .reg2_data_i(reg2_data),
+			 .ex_wreg_i(ex_wreg_o), .ex_wdata_i(ex_wdata_o), .ex_wd_i(ex_wd_o),
+			 .mem_wreg_i(mem_wreg_o), .mem_wdata_i(mem_wdata_o), .mem_wd_i(mem_wd_o),
+			 .reg1_read_o(reg1_read), .reg2_read_o(reg2_read), 	  
+			 .reg1_addr_o(reg1_addr), .reg2_addr_o(reg2_addr), 
+			 .aluop_o(id_aluop_o), .alusel_o(id_alusel_o),
+			 .reg1_o(id_reg1_o), .reg2_o(id_reg2_o),
+			 .wd_o(id_wd_o), .wreg_o(id_wreg_o));
 	
 	REG reg0(.clk(clk), .rst(rst), .we(wb_wreg_i), .waddr(wb_wd_i), .wdata(wb_wdata_i),
 				.re1(reg1_read), .raddr1(reg1_addr), .rdata1(reg1_data),
 				.re2(reg2_read), .raddr2(reg2_addr), .rdata2(reg2_data));
 	
-	ID_EX id_ex0(.clk(clk), .rst(rst), .id_alusel(id_aluop_o), .id_aluop(id_aluop_o),
+	ID_EX id_ex0(.clk(clk), .rst(rst), .id_alusel(id_alusel_o), .id_aluop(id_aluop_o),
 					 .id_reg1(id_reg1_o), .id_reg2(id_reg2_o), .id_wd(id_wd_o), .id_wreg(id_wreg_o),
 					 .ex_alusel(ex_alusel_i), .ex_aluop(ex_aluop_i),
 					 .ex_reg1(ex_reg1_i), .ex_reg2(ex_reg2_i), .ex_wd(ex_wd_i), .ex_wreg(ex_wreg_i));

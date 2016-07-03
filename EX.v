@@ -22,8 +22,8 @@
 
 module EX(
 	input wire rst,
-	input wire alusel_i,
-	input wire aluop_i,
+	input wire [2:0] alusel_i,
+	input wire [7:0] aluop_i,
 	input wire [31:0] reg1_i,
 	input wire [31:0] reg2_i,
 	input wire [4:0] wd_i,
@@ -45,8 +45,9 @@ module EX(
 				//TODO: 相关指令的执行部分
 				`AND: logicout <= reg1_i & reg2_i;
 				`ANDI: logicout <= reg1_i & reg2_i;
-				`LUI: logicout <= reg1_i & reg2_i;
+				`LUI: logicout <= reg2_i;
 				`NOR: logicout <= ~(reg1_i | reg2_i);
+				`OR: logicout <= reg1_i | reg2_i;
 				`ORI: logicout <= reg1_i | reg2_i;
 				`XOR: logicout <= reg1_i ^ reg2_i;
 				`XORI: logicout <= reg1_i ^ reg2_i;

@@ -28,18 +28,17 @@ module PC(
     );
 
 	always @(posedge clk) begin
+		if (ce == 1'b0)
+			pc <= 32'b0;
+		else
+			pc <= pc + 4'h4;
+	end
+	
+	always @(posedge clk) begin
 		if (rst == 1'b1)
 			ce <= 1'b0;
 		else
 			ce <= 1'b1;
-	end
-	
-	always @(posedge clk) begin
-		if (rst == 1'b0)
-			pc <= 32'b0;
-		else begin
-			pc <= pc + 4'h4;
-		end
 	end
 
 

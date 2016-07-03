@@ -1,0 +1,43 @@
+Running: F:\Xilinx\13.1\ISE_DS\ISE\bin\nt\unwrapped\fuse.exe -intstyle ise -incremental -lib unisims_ver -lib unimacro_ver -lib xilinxcorelib_ver -lib secureip -o C:/MipsCPU/MipsCPU_SOPC_tb_isim_beh.exe -prj C:/MipsCPU/MipsCPU_SOPC_tb_beh.prj work.MipsCPU_SOPC_tb work.glbl 
+ISim O.40d (signature 0x79f3f3a8)
+Number of CPUs detected in this system: 4
+Turning on mult-threading, number of parallel sub-compilation jobs: 8 
+Determining compilation order of HDL files
+Analyzing Verilog file \"C:/MipsCPU/REG.v\" into library work
+Analyzing Verilog file \"C:/MipsCPU/PC.v\" into library work
+Analyzing Verilog file \"C:/MipsCPU/MEM_WB.v\" into library work
+Analyzing Verilog file \"C:/MipsCPU/MEM.v\" into library work
+Analyzing Verilog file \"C:/MipsCPU/IF_ID.v\" into library work
+Analyzing Verilog file \"C:/MipsCPU/ID_EX.v\" into library work
+Analyzing Verilog file \"C:/MipsCPU/ID.v\" into library work
+Analyzing Verilog file \"C:/MipsCPU/EX_MEM.v\" into library work
+Analyzing Verilog file \"C:/MipsCPU/EX.v\" into library work
+Analyzing Verilog file \"C:/MipsCPU/MipsCPU.v\" into library work
+Analyzing Verilog file \"C:/MipsCPU/Inst_ROM.v\" into library work
+Analyzing Verilog file \"C:/MipsCPU/MipsCPU_SOPC.v\" into library work
+Analyzing Verilog file \"C:/MipsCPU/MipsCPU_SOPC_tb.v\" into library work
+Analyzing Verilog file \"F:/Xilinx/13.1/ISE_DS/ISE//verilog/src/glbl.v\" into library work
+Starting static elaboration
+Completed static elaboration
+Fuse Memory Usage: 153996 KB
+Fuse CPU Usage: 124 ms
+Compiling module PC
+Compiling module IF_ID
+Compiling module ID
+Compiling module REG
+Compiling module ID_EX
+Compiling module EX
+Compiling module EX_MEM
+Compiling module MEM
+Compiling module MEM_WB
+Compiling module MipsCPU
+Compiling module Inst_ROM
+Compiling module MipsCPU_SOPC
+Compiling module MipsCPU_SOPC_tb
+Compiling module glbl
+Time Resolution for simulation is 1ps.
+Waiting for 5 sub-compilation(s) to finish...
+Compiled 14 Verilog Units
+Built simulation executable C:/MipsCPU/MipsCPU_SOPC_tb_isim_beh.exe
+Fuse Memory Usage: 161564 KB
+Fuse CPU Usage: 233 ms

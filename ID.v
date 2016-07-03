@@ -88,9 +88,16 @@ module ID(
 							reg1_read_o <= 1'b1;
 							reg2_read_o <= 1'b1;
 						end
-						6'b100101: begin	//NOR
+						6'b100111: begin	//NOR
 							alusel_o <= `Logic;
 							aluop_o <= `NOR;
+							wreg_o <= 1'b1;
+							reg1_read_o <= 1'b1;
+							reg2_read_o <= 1'b1;
+						end
+						6'b100101: begin	//OR
+							alusel_o <= `Logic;
+							aluop_o <= `OR;
 							wreg_o <= 1'b1;
 							reg1_read_o <= 1'b1;
 							reg2_read_o <= 1'b1;
@@ -106,15 +113,6 @@ module ID(
 							//TODO: ÆäËûspecial codeÖ¸Áî
 						end
 					endcase
-				end
-				6'b001100: begin	//ANDI
-					alusel_o <= `Logic;
-					aluop_o <= `ANDI;
-					wreg_o <= 1'b1;
-					reg1_read_o <= 1'b1;
-					reg2_read_o <= 1'b0;
-					wd_o <= inst_i[20:16];
-					imm <= {16'b0, inst_i[15:0]};
 				end
 				6'b001100: begin	//ANDI
 					alusel_o <= `Logic;

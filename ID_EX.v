@@ -39,7 +39,7 @@ module ID_EX(
     );
 
 	always @(posedge clk) begin
-		if (rst == 1'b0) begin
+		if (rst == 1'b1) begin
 			ex_alusel <= 3'b0;
 			ex_aluop <= 8'b0;
 			ex_reg1 <= 32'b0;
