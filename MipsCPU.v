@@ -130,15 +130,14 @@ module MipsCPU(
 			 .wd_o(ex_wd_o), .wreg_o(ex_wreg_o), .wdata_o(ex_wdata_o),
 			 .whilo_o(ex_whilo_o), .hi_o(ex_hi_o), .lo_o(ex_lo_o));
 	
-	//TODO: 更新EX_MEM模块接口 error
 	EX_MEM ex_mem0(.clk(clk), .rst(rst), .ex_wd(ex_wd_o), .ex_wreg(ex_wreg_o), .ex_wdata(ex_wdata_o),
 						.ex_whilo(ex_whilo_o), .ex_hi(ex_hi_o), .ex_lo(ex_lo_o),
 						.mem_wd(mem_wd_i), .mem_wreg(mem_wreg_i),	.mem_wdata(mem_wdata_i),
-						.mem_whilo(mem_whilo_i), .mem_hi(mem_hi_i), mem_lo(mem_lo_i));
+						.mem_whilo(mem_whilo_i), .mem_hi(mem_hi_i), .mem_lo(mem_lo_i));
 
 	//TODO: 更新MEM模块接口 error
 	MEM mem0(.rst(rst), .wd_i(mem_wd_i), .wreg_i(mem_wreg_i), .wdata_i(mem_wdata_i), 
-				.whilo_i(mem_whilo_i), .hi_i(mem_hi_i), lo_i(mem_lo_i),
+				.whilo_i(mem_whilo_i), .hi_i(mem_hi_i), .lo_i(mem_lo_i),
 				.wd_o(mem_wd_o), .wreg_o(mem_wreg_o), .wdata_o(mem_wdata_o),
 				.whilo_o(mem_whilo_o), .hi_o(mem_hi_o), .lo_o(mem_lo_o));
 				

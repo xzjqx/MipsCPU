@@ -52,7 +52,7 @@ module MEM(
 			wd_o <= wd_i;
 			wreg_o <= wreg_i;
 			wdata_o <= wdata_i;
-			whilo_o <= 1'b0;
+			whilo_o <= whilo_i;
 			hi_o <= hi_i;
 			lo_o <= lo_i;
 		end

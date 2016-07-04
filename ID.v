@@ -120,7 +120,7 @@ module ID(
 							alusel_o <= `Move;
 							aluop_o <= `MFLO;
 							wreg_o <= 1'b1;
-							reg1_read_o <= 1'b1;
+							reg1_read_o <= 1'b0;
 							reg2_read_o <= 1'b0;
 						end
 						6'b010001: begin	//MTHI
@@ -132,7 +132,7 @@ module ID(
 						end
 						6'b010011: begin	//MTLO
 							alusel_o <= `Move;
-							aluop_o <= `MTHI;
+							aluop_o <= `MTLO;
 							wreg_o <= 1'b0;
 							reg1_read_o <= 1'b1;
 							reg2_read_o <= 1'b0;

@@ -34,7 +34,7 @@ module HILO(
 			hi_o <= 32'b0;
 			lo_o <= 32'b0;
 		end
-		else begin
+		else if (we == 1'b1)begin
 			hi_o <= hi_i;
 			lo_o <= lo_i;
 		end

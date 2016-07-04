@@ -36,8 +36,8 @@ module MEM_WB(
 	output reg [31:0] wb_wdata,
 	
 	output reg wb_whilo,
-	output reg wb_hi,
-	output reg wb_lo
+	output reg [31:0] wb_hi,
+	output reg [31:0] wb_lo
     );
 
 	always @(posedge clk) begin

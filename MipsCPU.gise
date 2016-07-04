@@ -58,20 +58,16 @@
   </files>
 
   <transforms xmlns="http://www.xilinx.com/XMLSchema">
-    <transform xil_pn:end_ts="1467532954" xil_pn:name="TRAN_copyInitialToAbstractSimulation" xil_pn:start_ts="1467532954">
+    <transform xil_pn:end_ts="1467639650" xil_pn:name="TRAN_copyInitialToAbstractSimulation" xil_pn:start_ts="1467639650">
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
     </transform>
-    <transform xil_pn:end_ts="1467536687" xil_pn:in_ck="6533173758070425905" xil_pn:name="TRAN_copyAbstractToPostAbstractSimulation" xil_pn:start_ts="1467536687">
+    <transform xil_pn:end_ts="1467639650" xil_pn:in_ck="-3845240236356856703" xil_pn:name="TRAN_copyAbstractToPostAbstractSimulation" xil_pn:start_ts="1467639650">
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
-      <status xil_pn:value="OutOfDateForInputs"/>
-      <status xil_pn:value="OutOfDateForOutputs"/>
-      <status xil_pn:value="InputAdded"/>
-      <status xil_pn:value="InputChanged"/>
-      <status xil_pn:value="OutputChanged"/>
       <outfile xil_pn:name="EX.v"/>
       <outfile xil_pn:name="EX_MEM.v"/>
+      <outfile xil_pn:name="HILO.v"/>
       <outfile xil_pn:name="ID.v"/>
       <outfile xil_pn:name="ID_EX.v"/>
       <outfile xil_pn:name="IF_ID.v"/>
@@ -85,28 +81,24 @@
       <outfile xil_pn:name="REG.v"/>
       <outfile xil_pn:name="defines.v"/>
     </transform>
-    <transform xil_pn:end_ts="1467532954" xil_pn:name="TRAN_xawsToSimhdl" xil_pn:prop_ck="6822392281619436481" xil_pn:start_ts="1467532954">
+    <transform xil_pn:end_ts="1467639650" xil_pn:name="TRAN_xawsToSimhdl" xil_pn:prop_ck="6822392281619436481" xil_pn:start_ts="1467639650">
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
     </transform>
-    <transform xil_pn:end_ts="1467532954" xil_pn:name="TRAN_schematicsToHdlSim" xil_pn:prop_ck="8499711684150988159" xil_pn:start_ts="1467532954">
+    <transform xil_pn:end_ts="1467639650" xil_pn:name="TRAN_schematicsToHdlSim" xil_pn:prop_ck="8499711684150988159" xil_pn:start_ts="1467639650">
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
     </transform>
-    <transform xil_pn:end_ts="1467532954" xil_pn:name="TRAN_regenerateCoresSim" xil_pn:prop_ck="3349094298005987289" xil_pn:start_ts="1467532954">
+    <transform xil_pn:end_ts="1467639650" xil_pn:name="TRAN_regenerateCoresSim" xil_pn:prop_ck="3349094298005987289" xil_pn:start_ts="1467639650">
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
     </transform>
-    <transform xil_pn:end_ts="1467536687" xil_pn:in_ck="6533173758070425905" xil_pn:name="TRAN_copyPostAbstractToPreSimulation" xil_pn:start_ts="1467536687">
+    <transform xil_pn:end_ts="1467639650" xil_pn:in_ck="-3845240236356856703" xil_pn:name="TRAN_copyPostAbstractToPreSimulation" xil_pn:start_ts="1467639650">
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
-      <status xil_pn:value="OutOfDateForInputs"/>
-      <status xil_pn:value="OutOfDateForPredecessor"/>
-      <status xil_pn:value="OutOfDateForOutputs"/>
-      <status xil_pn:value="InputChanged"/>
-      <status xil_pn:value="OutputChanged"/>
       <outfile xil_pn:name="EX.v"/>
       <outfile xil_pn:name="EX_MEM.v"/>
+      <outfile xil_pn:name="HILO.v"/>
       <outfile xil_pn:name="ID.v"/>
       <outfile xil_pn:name="ID_EX.v"/>
       <outfile xil_pn:name="IF_ID.v"/>
@@ -120,14 +112,9 @@
       <outfile xil_pn:name="REG.v"/>
       <outfile xil_pn:name="defines.v"/>
     </transform>
-    <transform xil_pn:end_ts="1467536689" xil_pn:in_ck="6533173758070425905" xil_pn:name="TRAN_ISimulateBehavioralModelRunFuse" xil_pn:prop_ck="4745626436347396865" xil_pn:start_ts="1467536687">
+    <transform xil_pn:end_ts="1467639653" xil_pn:in_ck="-3845240236356856703" xil_pn:name="TRAN_ISimulateBehavioralModelRunFuse" xil_pn:prop_ck="4745626436347396865" xil_pn:start_ts="1467639650">
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
-      <status xil_pn:value="OutOfDateForInputs"/>
-      <status xil_pn:value="OutOfDateForPredecessor"/>
-      <status xil_pn:value="OutOfDateForOutputs"/>
-      <status xil_pn:value="InputChanged"/>
-      <status xil_pn:value="OutputChanged"/>
       <outfile xil_pn:name="MipsCPU_SOPC_tb_beh.prj"/>
       <outfile xil_pn:name="MipsCPU_SOPC_tb_isim_beh.exe"/>
       <outfile xil_pn:name="fuse.log"/>
@@ -135,10 +122,9 @@
       <outfile xil_pn:name="isim.log"/>
       <outfile xil_pn:name="xilinxsim.ini"/>
     </transform>
-    <transform xil_pn:end_ts="1467537822" xil_pn:in_ck="6499763462873207289" xil_pn:name="TRAN_ISimulateBehavioralModel" xil_pn:prop_ck="3350687398381704292" xil_pn:start_ts="1467537821">
+    <transform xil_pn:end_ts="1467639653" xil_pn:in_ck="6499763462873207289" xil_pn:name="TRAN_ISimulateBehavioralModel" xil_pn:prop_ck="3350687398381704292" xil_pn:start_ts="1467639653">
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
-      <status xil_pn:value="OutOfDateForPredecessor"/>
       <outfile xil_pn:name="MipsCPU_SOPC_tb_isim_beh.wdb"/>
       <outfile xil_pn:name="isim.cmd"/>
       <outfile xil_pn:name="isim.log"/>
@@ -171,15 +157,18 @@
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
     </transform>
-    <transform xil_pn:end_ts="1467617329" xil_pn:in_ck="6003335320336187251" xil_pn:name="TRANEXT_xstsynthesize_spartan6" xil_pn:prop_ck="214054119688805256" xil_pn:start_ts="1467617325">
-      <status xil_pn:value="FailedRun"/>
+    <transform xil_pn:end_ts="1467639631" xil_pn:in_ck="6003335320336187251" xil_pn:name="TRANEXT_xstsynthesize_spartan6" xil_pn:prop_ck="214054119688805256" xil_pn:start_ts="1467639621">
+      <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="WarningsGenerated"/>
       <status xil_pn:value="ReadyToRun"/>
+      <status xil_pn:value="OutOfDateForOutputs"/>
+      <status xil_pn:value="OutputChanged"/>
       <outfile xil_pn:name="MipsCPU.ngr"/>
       <outfile xil_pn:name="MipsCPU_SOPC.lso"/>
       <outfile xil_pn:name="MipsCPU_SOPC.ngc"/>
       <outfile xil_pn:name="MipsCPU_SOPC.ngr"/>
       <outfile xil_pn:name="MipsCPU_SOPC.prj"/>
+      <outfile xil_pn:name="MipsCPU_SOPC.stx"/>
       <outfile xil_pn:name="MipsCPU_SOPC.syr"/>
       <outfile xil_pn:name="MipsCPU_SOPC.xst"/>
       <outfile xil_pn:name="MipsCPU_SOPC_tb_beh.prj"/>
