@@ -5,37 +5,19 @@
      behavior or data corruption.  It is strongly advised that
      users do not edit the contents of this file. -->
 <messages>
-<msg type="warning" file="HDLCompiler" num="1670" delta="old" >"C:\MipsCPU\Inst_ROM.v" Line 29: Signal &lt;<arg fmt="%s" index="1">inst_mem</arg>&gt; in initial block is partially initialized.
+<msg type="error" file="HDLCompiler" num="718" delta="old" >"C:\MipsCPU\MipsCPU.v" Line 135: Port connections cannot be mixed ordered and named
 </msg>
 
-<msg type="warning" file="Xst" num="2972" delta="old" >&quot;<arg fmt="%s" index="1">c:/mipscpu/mipscpu.v</arg>&quot; line <arg fmt="%d" index="2">77</arg>. All outputs of instance &lt;<arg fmt="%s" index="3">if_id0</arg>&gt; of block &lt;<arg fmt="%s" index="4">IF_ID</arg>&gt; are unconnected in block &lt;<arg fmt="%s" index="5">MipsCPU</arg>&gt;. Underlying logic will be removed.
+<msg type="error" file="HDLCompiler" num="718" delta="old" >"C:\MipsCPU\MipsCPU.v" Line 141: Port connections cannot be mixed ordered and named
 </msg>
 
-<msg type="warning" file="Xst" num="2972" delta="old" >&quot;<arg fmt="%s" index="1">c:/mipscpu/mipscpu.v</arg>&quot; line <arg fmt="%d" index="2">80</arg>. All outputs of instance &lt;<arg fmt="%s" index="3">id0</arg>&gt; of block &lt;<arg fmt="%s" index="4">ID</arg>&gt; are unconnected in block &lt;<arg fmt="%s" index="5">MipsCPU</arg>&gt;. Underlying logic will be removed.
+<msg type="warning" file="HDLCompiler" num="1694" delta="old" >"C:\MipsCPU\MipsCPU.v" Line 138: Positional port connection in entity/module instantiation &lt;<arg fmt="%s" index="1">ex_mem0</arg>&gt; increases the risk of design errors, affects readability, and makes your code less adaptable. Use of explicit formal/effective port connection is highly recommended instead.
 </msg>
 
-<msg type="warning" file="Xst" num="2972" delta="old" >&quot;<arg fmt="%s" index="1">c:/mipscpu/mipscpu.v</arg>&quot; line <arg fmt="%d" index="2">90</arg>. All outputs of instance &lt;<arg fmt="%s" index="3">reg0</arg>&gt; of block &lt;<arg fmt="%s" index="4">REG</arg>&gt; are unconnected in block &lt;<arg fmt="%s" index="5">MipsCPU</arg>&gt;. Underlying logic will be removed.
+<msg type="warning" file="HDLCompiler" num="1694" delta="old" >"C:\MipsCPU\MipsCPU.v" Line 142: Positional port connection in entity/module instantiation &lt;<arg fmt="%s" index="1">mem0</arg>&gt; increases the risk of design errors, affects readability, and makes your code less adaptable. Use of explicit formal/effective port connection is highly recommended instead.
 </msg>
 
-<msg type="warning" file="Xst" num="2972" delta="old" >&quot;<arg fmt="%s" index="1">c:/mipscpu/mipscpu.v</arg>&quot; line <arg fmt="%d" index="2">94</arg>. All outputs of instance &lt;<arg fmt="%s" index="3">id_ex0</arg>&gt; of block &lt;<arg fmt="%s" index="4">ID_EX</arg>&gt; are unconnected in block &lt;<arg fmt="%s" index="5">MipsCPU</arg>&gt;. Underlying logic will be removed.
-</msg>
-
-<msg type="warning" file="Xst" num="2972" delta="old" >&quot;<arg fmt="%s" index="1">c:/mipscpu/mipscpu.v</arg>&quot; line <arg fmt="%d" index="2">99</arg>. All outputs of instance &lt;<arg fmt="%s" index="3">ex0</arg>&gt; of block &lt;<arg fmt="%s" index="4">EX</arg>&gt; are unconnected in block &lt;<arg fmt="%s" index="5">MipsCPU</arg>&gt;. Underlying logic will be removed.
-</msg>
-
-<msg type="warning" file="Xst" num="2972" delta="old" >&quot;<arg fmt="%s" index="1">c:/mipscpu/mipscpu.v</arg>&quot; line <arg fmt="%d" index="2">104</arg>. All outputs of instance &lt;<arg fmt="%s" index="3">ex_mem0</arg>&gt; of block &lt;<arg fmt="%s" index="4">EX_MEM</arg>&gt; are unconnected in block &lt;<arg fmt="%s" index="5">MipsCPU</arg>&gt;. Underlying logic will be removed.
-</msg>
-
-<msg type="warning" file="Xst" num="2972" delta="old" >&quot;<arg fmt="%s" index="1">c:/mipscpu/mipscpu.v</arg>&quot; line <arg fmt="%d" index="2">107</arg>. All outputs of instance &lt;<arg fmt="%s" index="3">mem0</arg>&gt; of block &lt;<arg fmt="%s" index="4">MEM</arg>&gt; are unconnected in block &lt;<arg fmt="%s" index="5">MipsCPU</arg>&gt;. Underlying logic will be removed.
-</msg>
-
-<msg type="warning" file="Xst" num="2972" delta="old" >&quot;<arg fmt="%s" index="1">c:/mipscpu/mipscpu.v</arg>&quot; line <arg fmt="%d" index="2">110</arg>. All outputs of instance &lt;<arg fmt="%s" index="3">mem_wb0</arg>&gt; of block &lt;<arg fmt="%s" index="4">MEM_WB</arg>&gt; are unconnected in block &lt;<arg fmt="%s" index="5">MipsCPU</arg>&gt;. Underlying logic will be removed.
-</msg>
-
-<msg type="warning" file="Xst" num="2972" delta="old" >&quot;<arg fmt="%s" index="1">c:/mipscpu/mipscpu_sopc.v</arg>&quot; line <arg fmt="%d" index="2">30</arg>. All outputs of instance &lt;<arg fmt="%s" index="3">MipsCPU0</arg>&gt; of block &lt;<arg fmt="%s" index="4">MipsCPU</arg>&gt; are unconnected in block &lt;<arg fmt="%s" index="5">MipsCPU_SOPC</arg>&gt;. Underlying logic will be removed.
-</msg>
-
-<msg type="warning" file="Xst" num="2972" delta="old" >&quot;<arg fmt="%s" index="1">c:/mipscpu/mipscpu_sopc.v</arg>&quot; line <arg fmt="%d" index="2">38</arg>. All outputs of instance &lt;<arg fmt="%s" index="3">Inst_ROM0</arg>&gt; of block &lt;<arg fmt="%s" index="4">Inst_ROM</arg>&gt; are unconnected in block &lt;<arg fmt="%s" index="5">MipsCPU_SOPC</arg>&gt;. Underlying logic will be removed.
+<msg type="error" file="HDLCompiler" num="598" delta="old" >"C:\MipsCPU\MipsCPU.v" Line 23: Module &lt;<arg fmt="%s" index="1">MipsCPU</arg>&gt; ignored due to previous errors.
 </msg>
 
 </messages>

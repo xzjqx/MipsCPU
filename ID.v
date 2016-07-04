@@ -109,6 +109,34 @@ module ID(
 							reg1_read_o <= 1'b1;
 							reg2_read_o <= 1'b1;
 						end
+						6'b010000: begin	//MFHI
+							alusel_o <= `Move;
+							aluop_o <= `MFHI;
+							wreg_o <= 1'b1;
+							reg1_read_o <= 1'b0;
+							reg2_read_o <= 1'b0;
+						end
+						6'b010010: begin	//MFLO
+							alusel_o <= `Move;
+							aluop_o <= `MFLO;
+							wreg_o <= 1'b1;
+							reg1_read_o <= 1'b1;
+							reg2_read_o <= 1'b0;
+						end
+						6'b010001: begin	//MTHI
+							alusel_o <= `Move;
+							aluop_o <= `MTHI;
+							wreg_o <= 1'b0;
+							reg1_read_o <= 1'b1;
+							reg2_read_o <= 1'b0;
+						end
+						6'b010011: begin	//MTLO
+							alusel_o <= `Move;
+							aluop_o <= `MTHI;
+							wreg_o <= 1'b0;
+							reg1_read_o <= 1'b1;
+							reg2_read_o <= 1'b0;
+						end
 						default: begin
 							//TODO: ÆäËûspecial codeÖ¸Áî
 						end

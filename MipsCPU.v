@@ -29,14 +29,12 @@ module MipsCPU(
 	output wire rom_ce_o
     );
 
+	//PC模块接口
 	wire [31:0] pc;
 	wire [31:0] id_pc_i;
 	wire [31:0] id_inst_i;
 	
-	wire wb_wreg_i;
-	wire [4:0] wb_wd_i;
-	wire [31:0] wb_wdata_i;
-	
+	//REG模块接口
 	wire reg1_read;
 	wire [4:0] reg1_addr;
 	wire [31:0] reg1_data;
@@ -44,6 +42,11 @@ module MipsCPU(
 	wire [4:0] reg2_addr;
 	wire [31:0] reg2_data;
 	
+	wire wb_wreg_i;
+	wire [4:0] wb_wd_i;
+	wire [31:0] wb_wdata_i;
+	
+	//ID模块接口
 	wire[7:0] id_aluop_o;
 	wire[2:0] id_alusel_o;
 	wire[31:0] id_reg1_o;
@@ -51,6 +54,7 @@ module MipsCPU(
 	wire id_wreg_o;
 	wire[4:0] id_wd_o;
 	
+	//EX模块接口
 	wire[7:0] ex_aluop_i;
 	wire[2:0] ex_alusel_i;
 	wire[31:0] ex_reg1_i;
@@ -62,13 +66,34 @@ module MipsCPU(
 	wire[4:0] ex_wd_o;
 	wire[31:0] ex_wdata_o;
 	
+	wire [31:0] ex_hi_i;
+	wire [31:0] ex_lo_i;
+	
+	wire ex_whilo_o;
+	wire [31:0] ex_hi_o;
+	wire [31:0] ex_lo_o;
+	
+	//MEM模块接口
 	wire mem_wreg_i;
 	wire[4:0] mem_wd_i;
 	wire[31:0] mem_wdata_i;
+	
+	wire mem_whilo_i;
+	wire [31:0] mem_hi_i;
+	wire [31:0] mem_lo_i;
 
 	wire mem_wreg_o;
 	wire[4:0] mem_wd_o;
 	wire[31:0] mem_wdata_o;
+	
+	wire mem_whilo_o;
+	wire [31:0] mem_hi_o;
+	wire [31:0] mem_lo_o;
+	
+	//HILO模块接口
+	wire wb_whilo_i;
+	wire [31:0] wb_hi_i;
+	wire [31:0] wb_lo_i;
 	
 	PC pc0(.clk(clk), .rst(rst), .pc(pc), .ce(rom_ce_o));
 	
@@ -99,16 +124,31 @@ module MipsCPU(
 	EX ex0(.rst(rst), .alusel_i(ex_alusel_i), .aluop_i(ex_aluop_i),
 			 .reg1_i(ex_reg1_i), .reg2_i(ex_reg2_i),
 			 .wd_i(ex_wd_i), .wreg_i(ex_wreg_i),
-			 .wd_o(ex_wd_o), .wreg_o(ex_wreg_o), .wdata_o(ex_wdata_o));
+			 .hi_i(ex_hi_i), .lo_i(ex_lo_i), 
+			 .mem_whilo_i(mem_whilo_o), .mem_hi_i(mem_hi_o), .mem_lo_i(mem_lo_o),
+			 .wb_whilo_i(wb_whilo_i), .wb_hi_i(wb_hi_i), .wb_lo_i(wb_lo_i),
+			 .wd_o(ex_wd_o), .wreg_o(ex_wreg_o), .wdata_o(ex_wdata_o),
+			 .whilo_o(ex_whilo_o), .hi_o(ex_hi_o), .lo_o(ex_lo_o));
 	
+	//TODO: 更新EX_MEM模块接口 error
 	EX_MEM ex_mem0(.clk(clk), .rst(rst), .ex_wd(ex_wd_o), .ex_wreg(ex_wreg_o), .ex_wdata(ex_wdata_o),
-						.mem_wd(mem_wd_i), .mem_wreg(mem_wreg_i),	.mem_wdata(mem_wdata_i));
+						.ex_whilo(ex_whilo_o), .ex_hi(ex_hi_o), .ex_lo(ex_lo_o),
+						.mem_wd(mem_wd_i), .mem_wreg(mem_wreg_i),	.mem_wdata(mem_wdata_i),
+						.mem_whilo(mem_whilo_i), .mem_hi(mem_hi_i), mem_lo(mem_lo_i));
 
+	//TODO: 更新MEM模块接口 error
 	MEM mem0(.rst(rst), .wd_i(mem_wd_i), .wreg_i(mem_wreg_i), .wdata_i(mem_wdata_i), 
-				.wd_o(mem_wd_o), .wreg_o(mem_wreg_o), .wdata_o(mem_wdata_o));
+				.whilo_i(mem_whilo_i), .hi_i(mem_hi_i), lo_i(mem_lo_i),
+				.wd_o(mem_wd_o), .wreg_o(mem_wreg_o), .wdata_o(mem_wdata_o),
+				.whilo_o(mem_whilo_o), .hi_o(mem_hi_o), .lo_o(mem_lo_o));
 				
 	MEM_WB mem_wb0(.clk(clk), .rst(rst),
 						.mem_wd(mem_wd_o), .mem_wreg(mem_wreg_o),	.mem_wdata(mem_wdata_o),
-						.wb_wd(wb_wd_i), .wb_wreg(wb_wreg_i), .wb_wdata(wb_wdata_i));
+						.mem_whilo(mem_whilo_o), .mem_hi(mem_hi_o), .mem_lo(mem_lo_o),
+						.wb_wd(wb_wd_i), .wb_wreg(wb_wreg_i), .wb_wdata(wb_wdata_i),
+						.wb_whilo(wb_whilo_i), .wb_hi(wb_hi_i), .wb_lo(wb_lo_i));
+						
+	HILO hilo0(.clk(clk), .rst(rst), .we(wb_whilo_i),
+				  .hi_i(wb_hi_i), .lo_i(wb_lo_i), .hi_o(ex_hi_i), .lo_o(ex_lo_i));
 	
 endmodule
