@@ -34,6 +34,9 @@ module MipsCPU(
 	wire [31:0] id_pc_i;
 	wire [31:0] id_inst_i;
 	
+	wire pc_branch_flag_i;
+	wire [31:0] pc_branch_target_address_i;
+	
 	//REG模块接口
 	wire reg1_read;
 	wire [4:0] reg1_addr;
@@ -47,24 +50,29 @@ module MipsCPU(
 	wire [31:0] wb_wdata_i;
 	
 	//ID模块接口
-	wire[7:0] id_aluop_o;
-	wire[2:0] id_alusel_o;
-	wire[31:0] id_reg1_o;
-	wire[31:0] id_reg2_o;
+	wire [7:0] id_aluop_o;
+	wire [2:0] id_alusel_o;
+	wire [31:0] id_reg1_o;
+	wire [31:0] id_reg2_o;
 	wire id_wreg_o;
-	wire[4:0] id_wd_o;
+	wire [4:0] id_wd_o;
+	
+	wire id_is_in_delayslot_i;
+	wire id_is_in_delayslot_o;
+	wire [31:0] id_link_addr_o;
+	wire id_next_inst_in_delayslot_o;
 	
 	//EX模块接口
-	wire[7:0] ex_aluop_i;
-	wire[2:0] ex_alusel_i;
-	wire[31:0] ex_reg1_i;
-	wire[31:0] ex_reg2_i;
+	wire [7:0] ex_aluop_i;
+	wire [2:0] ex_alusel_i;
+	wire [31:0] ex_reg1_i;
+	wire [31:0] ex_reg2_i;
 	wire ex_wreg_i;
-	wire[4:0] ex_wd_i;
+	wire [4:0] ex_wd_i;
 	
 	wire ex_wreg_o;
-	wire[4:0] ex_wd_o;
-	wire[31:0] ex_wdata_o;
+	wire [4:0] ex_wd_o;
+	wire [31:0] ex_wdata_o;
 	
 	wire [31:0] ex_hi_i;
 	wire [31:0] ex_lo_i;
@@ -73,18 +81,21 @@ module MipsCPU(
 	wire [31:0] ex_hi_o;
 	wire [31:0] ex_lo_o;
 	
+	wire ex_is_in_delayslot_i;
+	wire [31:0] ex_link_address_i;
+	
 	//MEM模块接口
 	wire mem_wreg_i;
-	wire[4:0] mem_wd_i;
-	wire[31:0] mem_wdata_i;
+	wire [4:0] mem_wd_i;
+	wire [31:0] mem_wdata_i;
 	
 	wire mem_whilo_i;
 	wire [31:0] mem_hi_i;
 	wire [31:0] mem_lo_i;
 
 	wire mem_wreg_o;
-	wire[4:0] mem_wd_o;
-	wire[31:0] mem_wdata_o;
+	wire [4:0] mem_wd_o;
+	wire [31:0] mem_wdata_o;
 	
 	wire mem_whilo_o;
 	wire [31:0] mem_hi_o;
@@ -95,7 +106,8 @@ module MipsCPU(
 	wire [31:0] wb_hi_i;
 	wire [31:0] wb_lo_i;
 	
-	PC pc0(.clk(clk), .rst(rst), .pc(pc), .ce(rom_ce_o));
+	PC pc0(.clk(clk), .rst(rst), .pc(pc), .ce(rom_ce_o),
+			 .branch_flag_i(pc_branch_flag_i), .branch_target_address_i(pc_branch_target_address_i));
 	
 	assign rom_addr_o = pc;
 	
@@ -106,11 +118,14 @@ module MipsCPU(
 			 .reg1_data_i(reg1_data), .reg2_data_i(reg2_data),
 			 .ex_wreg_i(ex_wreg_o), .ex_wdata_i(ex_wdata_o), .ex_wd_i(ex_wd_o),
 			 .mem_wreg_i(mem_wreg_o), .mem_wdata_i(mem_wdata_o), .mem_wd_i(mem_wd_o),
+			 .is_in_delayslot_i(id_is_in_delayslot_i),
 			 .reg1_read_o(reg1_read), .reg2_read_o(reg2_read), 	  
 			 .reg1_addr_o(reg1_addr), .reg2_addr_o(reg2_addr), 
 			 .aluop_o(id_aluop_o), .alusel_o(id_alusel_o),
 			 .reg1_o(id_reg1_o), .reg2_o(id_reg2_o),
-			 .wd_o(id_wd_o), .wreg_o(id_wreg_o));
+			 .wd_o(id_wd_o), .wreg_o(id_wreg_o),
+			 .is_in_delayslot_o(id_is_in_delayslot_o), .link_addr_o(id_link_addr_o), .next_inst_in_delayslot_o(id_next_inst_in_delayslot_o),
+			 .branch_target_address_o(pc_branch_target_address_i), .branch_flag_o(pc_branch_flag_i));
 	
 	REG reg0(.clk(clk), .rst(rst), .we(wb_wreg_i), .waddr(wb_wd_i), .wdata(wb_wdata_i),
 				.re1(reg1_read), .raddr1(reg1_addr), .rdata1(reg1_data),
@@ -118,8 +133,10 @@ module MipsCPU(
 	
 	ID_EX id_ex0(.clk(clk), .rst(rst), .id_alusel(id_alusel_o), .id_aluop(id_aluop_o),
 					 .id_reg1(id_reg1_o), .id_reg2(id_reg2_o), .id_wd(id_wd_o), .id_wreg(id_wreg_o),
+					 .id_is_in_delayslot(id_is_in_delayslot_o), .id_link_address(id_link_addr_o), .next_inst_in_delayslot_i(id_next_inst_in_delayslot_o),
 					 .ex_alusel(ex_alusel_i), .ex_aluop(ex_aluop_i),
-					 .ex_reg1(ex_reg1_i), .ex_reg2(ex_reg2_i), .ex_wd(ex_wd_i), .ex_wreg(ex_wreg_i));
+					 .ex_reg1(ex_reg1_i), .ex_reg2(ex_reg2_i), .ex_wd(ex_wd_i), .ex_wreg(ex_wreg_i),
+					 .is_in_delayslot_o(id_is_in_delayslot_i), .ex_is_in_delayslot(ex_is_in_delayslot_i), .ex_link_address(ex_link_address_i));
 	
 	EX ex0(.rst(rst), .alusel_i(ex_alusel_i), .aluop_i(ex_aluop_i),
 			 .reg1_i(ex_reg1_i), .reg2_i(ex_reg2_i),
@@ -127,6 +144,7 @@ module MipsCPU(
 			 .hi_i(ex_hi_i), .lo_i(ex_lo_i), 
 			 .mem_whilo_i(mem_whilo_o), .mem_hi_i(mem_hi_o), .mem_lo_i(mem_lo_o),
 			 .wb_whilo_i(wb_whilo_i), .wb_hi_i(wb_hi_i), .wb_lo_i(wb_lo_i),
+			 .is_in_delayslot_i(ex_is_in_delayslot_i), .link_address_i(ex_link_address_i),
 			 .wd_o(ex_wd_o), .wreg_o(ex_wreg_o), .wdata_o(ex_wdata_o),
 			 .whilo_o(ex_whilo_o), .hi_o(ex_hi_o), .lo_o(ex_lo_o));
 	

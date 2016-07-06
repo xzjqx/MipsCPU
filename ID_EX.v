@@ -30,12 +30,20 @@ module ID_EX(
 	input wire [4:0] id_wd,
 	input wire id_wreg,
 	
+	input wire id_is_in_delayslot,
+	input wire [31:0] id_link_address,
+	input wire next_inst_in_delayslot_i,
+	
 	output reg [2:0] ex_alusel,
 	output reg [7:0] ex_aluop,
 	output reg [31:0] ex_reg1,
 	output reg [31:0] ex_reg2,
 	output reg [4:0] ex_wd,
-	output reg  ex_wreg
+	output reg ex_wreg,
+	
+	output reg ex_is_in_delayslot,
+	output reg [31:0] ex_link_address,
+	output reg is_in_delayslot_o
     );
 
 	always @(posedge clk) begin
@@ -46,6 +54,9 @@ module ID_EX(
 			ex_reg2 <= 32'b0;
 			ex_wd <= 5'b0;
 			ex_wreg <= 1'b0;
+			ex_is_in_delayslot <= 1'b0;
+			ex_link_address <= 1'b0;
+			is_in_delayslot_o <= 1'b0;
 		end
 		else begin
 			ex_alusel <= id_alusel;
@@ -54,6 +65,9 @@ module ID_EX(
 			ex_reg2 <= id_reg2;
 			ex_wd <= id_wd;
 			ex_wreg <= id_wreg;
+			ex_is_in_delayslot <= id_is_in_delayslot;
+			ex_link_address <= id_link_address;
+			is_in_delayslot_o <= next_inst_in_delayslot_i;
 		end
 	end
 

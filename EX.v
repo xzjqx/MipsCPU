@@ -38,6 +38,9 @@ module EX(
 	input wire [31:0] wb_hi_i,
 	input wire [31:0] wb_lo_i,
 	
+	input wire is_in_delayslot_i,
+	input wire [31:0] link_address_i,
+	
 	output reg [4:0] wd_o,
 	output reg wreg_o,
 	output reg [31:0] wdata_o,
@@ -132,6 +135,8 @@ module EX(
 					wdata_o <= logicout;
 				`Move:
 					wdata_o <= moveout;
+				`Branch_Jump:
+					wdata_o <= link_address_i;
 				//TODO: 其他类型指令的写（目的）寄存器赋值
 				default:
 					wdata_o <= 32'b0;

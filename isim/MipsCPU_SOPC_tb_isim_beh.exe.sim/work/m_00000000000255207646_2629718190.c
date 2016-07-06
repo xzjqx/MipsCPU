@@ -25,7 +25,7 @@ static const char *ng0 = "C:/MipsCPU/MipsCPU.v";
 
 
 
-static void Cont_100_0(char *t0)
+static void Cont_112_0(char *t0)
 {
     char *t1;
     char *t2;
@@ -36,33 +36,33 @@ static void Cont_100_0(char *t0)
     char *t7;
     char *t8;
 
-LAB0:    t1 = (t0 + 5952U);
+LAB0:    t1 = (t0 + 6688U);
     t2 = *((char **)t1);
     if (t2 == 0)
         goto LAB2;
 
 LAB3:    goto *t2;
 
-LAB2:    xsi_set_current_line(100, ng0);
+LAB2:    xsi_set_current_line(112, ng0);
     t2 = (t0 + 1060U);
     t3 = *((char **)t2);
-    t2 = (t0 + 6192);
+    t2 = (t0 + 6928);
     t4 = (t2 + 32U);
     t5 = *((char **)t4);
     t6 = (t5 + 40U);
     t7 = *((char **)t6);
     memcpy(t7, t3, 8);
     xsi_driver_vfirst_trans(t2, 0, 31);
-    t8 = (t0 + 6148);
+    t8 = (t0 + 6884);
     *((int *)t8) = 1;
 
 LAB1:    return;
 }
 
 
-extern void work_m_00000000002728534242_2629718190_init()
+extern void work_m_00000000000255207646_2629718190_init()
 {
-	static char *pe[] = {(void *)Cont_100_0};
-	xsi_register_didat("work_m_00000000002728534242_2629718190", "isim/MipsCPU_SOPC_tb_isim_beh.exe.sim/work/m_00000000002728534242_2629718190.didat");
+	static char *pe[] = {(void *)Cont_112_0};
+	xsi_register_didat("work_m_00000000000255207646_2629718190", "isim/MipsCPU_SOPC_tb_isim_beh.exe.sim/work/m_00000000000255207646_2629718190.didat");
 	xsi_register_executes(pe);
 }

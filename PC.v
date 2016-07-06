@@ -23,6 +23,10 @@
 module PC(
 	input wire clk,
 	input wire rst,
+	
+	input wire branch_flag_i,
+	input wire [31:0] branch_target_address_i,
+	
 	output reg [31:0] pc,
 	output reg ce
     );
@@ -30,7 +34,9 @@ module PC(
 	always @(posedge clk) begin
 		if (ce == 1'b0)
 			pc <= 32'b0;
-		else
+		else if (branch_flag_i == 1'b1)
+			pc <= branch_target_address_i;
+		else 
 			pc <= pc + 4'h4;
 	end
 	
