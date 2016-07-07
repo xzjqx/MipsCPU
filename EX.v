@@ -52,6 +52,7 @@ module EX(
 
 	reg [31:0] logicout;
 	reg [31:0] moveout;
+	reg [31:0] shiftout;
 	reg [31:0] HI;
 	reg [31:0] LO;
 	
@@ -123,23 +124,41 @@ module EX(
 		end
 	end
 	
-	always @(*) begin			
-		wd_o <= wd_i;
-		wreg_o <= wreg_i;
+	always @(*) begin			//Shift
 		if (rst == 1'b1) begin
-			wdata_o <= 32'b0;
+			shiftout = 32'b0;
+		end
+		else begin
+			case(aluop_i)
+				`SLL: shiftout = reg2_i << reg1_i[4:0];
+				`SRL: shiftout = reg2_i >> reg1_i[4:0];
+				`SRA: shiftout = ({32{reg2_i[31]}}<<(6'd32-{1'b0,reg1_i[4:0]})) | reg2_i >> reg1_i[4:0];
+				default: begin
+					shiftout = 32'b0;
+				end
+			endcase
+		end
+	end
+	
+	always @(*) begin			
+		wd_o = wd_i;
+		wreg_o = wreg_i;
+		if (rst == 1'b1) begin
+			wdata_o = 32'b0;
 		end
 		else begin
 			case(alusel_i)
 				`Logic:
-					wdata_o <= logicout;
+					wdata_o = logicout;
 				`Move:
-					wdata_o <= moveout;
+					wdata_o = moveout;
 				`Branch_Jump:
-					wdata_o <= link_address_i;
+					wdata_o = link_address_i;
+				`Shift:
+					wdata_o = shiftout;
 				//TODO: 其他类型指令的写（目的）寄存器赋值
 				default:
-					wdata_o <= 32'b0;
+					wdata_o = 32'b0;
 			endcase
 		end
 	end

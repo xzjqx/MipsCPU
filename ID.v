@@ -191,6 +191,57 @@ module ID(
 							link_addr_o <= pc_plus_8;
 							next_inst_in_delayslot_o <= 1'b1;
 						end
+						6'b000000: begin	//SLL
+							alusel_o <= `Shift;
+							aluop_o <= `SLL;
+							wreg_o <= 1'b1;
+							wd_o <= inst_i[15:11];
+							reg1_read_o <= 1'b0;
+							reg2_read_o <= 1'b1;
+							imm[4:0] <= inst_i[10:6];
+						end
+						6'b000100: begin	//SLLV
+							alusel_o <= `Shift;
+							aluop_o <= `SLL;
+							wreg_o <= 1'b1;
+							wd_o <= inst_i[15:11];
+							reg1_read_o <= 1'b1;
+							reg2_read_o <= 1'b1;
+						end
+						6'b000011: begin	//SRA
+							alusel_o <= `Shift;
+							aluop_o <= `SRA;
+							wreg_o <= 1'b1;
+							wd_o <= inst_i[15:11];
+							reg1_read_o <= 1'b0;
+							reg2_read_o <= 1'b1;
+							imm[4:0] <= inst_i[10:6];
+						end
+						6'b000111: begin	//SRAL
+							alusel_o <= `Shift;
+							aluop_o <= `SRA;
+							wreg_o <= 1'b1;
+							wd_o <= inst_i[15:11];
+							reg1_read_o <= 1'b1;
+							reg2_read_o <= 1'b1;
+						end
+						6'b000010: begin	//SRL
+							alusel_o <= `Shift;
+							aluop_o <= `SRL;
+							wreg_o <= 1'b1;
+							wd_o <= inst_i[15:11];
+							reg1_read_o <= 1'b0;
+							reg2_read_o <= 1'b1;
+							imm[4:0] <= inst_i[10:6];
+						end
+						6'b000110: begin	//SRLV
+							alusel_o <= `Shift;
+							aluop_o <= `SRL;
+							wreg_o <= 1'b1;
+							wd_o <= inst_i[15:11];
+							reg1_read_o <= 1'b1;
+							reg2_read_o <= 1'b1;
+						end
 						default: begin
 							//TODO: ÆäËûspecial codeÖ¸Áî
 						end
