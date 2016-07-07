@@ -82,3 +82,18 @@
 `define MTC0 8'b00101101
 `define TLBWI 8'b00101110
 
+//**************31:26 OP********//
+`define SPECIAL_OP 	6'b000000 
+`define ADDIU_OP		6'b001001 
+`define SLTI_OP 		6'b001010
+`define SLTIU_OP 		6'b001011
+
+
+//************5:0 op2*********//
+`define ADDU_OP2 		6'b100001
+`define SLT_OP2		6'b101010
+`define SLTU_OP2 		6'b101011
+`define SUBU_OP2		6'b100011 
+`define MULT_OP2		6'b011000 
+
+`define AND_OP2 		6'b100100

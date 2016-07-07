@@ -79,308 +79,373 @@ module ID(
 	
 	always @(*) begin
 		if (rst == 1'b1) begin
-			alusel_o <= 3'b0;
-			aluop_o <= 8'b0;
-			reg1_addr_o <= 5'b0;
-			reg2_addr_o <= 5'b0;
-			reg1_read_o <= 1'b0;
-			reg2_read_o <= 1'b0;
-			wd_o <= 5'b0;
-			wreg_o <= 1'b0;
-			branch_target_address_o <= 32'b0;
-			branch_flag_o <= 1'b0;
-			link_addr_o <= 32'b0;
-			next_inst_in_delayslot_o <= 1'b0;
-			imm <= 32'b0;
+			alusel_o = 3'b0;
+			aluop_o = 8'b0;
+			reg1_addr_o = 5'b0;
+			reg2_addr_o = 5'b0;
+			reg1_read_o = 1'b0;
+			reg2_read_o = 1'b0;
+			wd_o = 5'b0;
+			wreg_o = 1'b0;
+			branch_target_address_o = 32'b0;
+			branch_flag_o = 1'b0;
+			link_addr_o = 32'b0;
+			next_inst_in_delayslot_o = 1'b0;
+			imm = 32'b0;
 		end
 		else begin
-			alusel_o <= 3'b0;
-			aluop_o <= 8'b0;
-			wd_o <= inst_i[15:11];
-			wreg_o <= 1'b0;
-			reg1_addr_o <= inst_i[25:21];
-			reg2_addr_o <= inst_i[20:16];
-			reg1_read_o <= 1'b0;
-			reg2_read_o <= 1'b0;
-			imm <= 32'b0;
-			branch_target_address_o <= 32'b0;
-			branch_flag_o <= 1'b0;
-			link_addr_o <= 32'b0;
-			next_inst_in_delayslot_o <= 1'b0;
+			alusel_o = 3'b0;
+			aluop_o = 8'b0;
+			wd_o = inst_i[15:11];
+			wreg_o = 1'b0;
+			reg1_addr_o = inst_i[25:21];
+			reg2_addr_o = inst_i[20:16];
+			reg1_read_o = 1'b0;
+			reg2_read_o = 1'b0;
+			imm = 32'b0;
+			branch_target_address_o = 32'b0;
+			branch_flag_o = 1'b0;
+			link_addr_o = 32'b0;
+			next_inst_in_delayslot_o = 1'b0;
 			
 			case(op)
 				//TODO: 根据操作码判断是什么指令，并完成指令的译码
 				6'b000000: begin		//special code
 					case(op2)
 						6'b100100: begin	//AND
-							alusel_o <= `Logic;
-							aluop_o <= `AND;
-							wreg_o <= 1'b1;
-							reg1_read_o <= 1'b1;
-							reg2_read_o <= 1'b1;
+							alusel_o = `Logic;
+							aluop_o = `AND;
+							wreg_o = 1'b1;
+							reg1_read_o = 1'b1;
+							reg2_read_o = 1'b1;
 						end
 						6'b100111: begin	//NOR
-							alusel_o <= `Logic;
-							aluop_o <= `NOR;
-							wreg_o <= 1'b1;
-							reg1_read_o <= 1'b1;
-							reg2_read_o <= 1'b1;
+							alusel_o = `Logic;
+							aluop_o = `NOR;
+							wreg_o = 1'b1;
+							reg1_read_o = 1'b1;
+							reg2_read_o = 1'b1;
 						end
 						6'b100101: begin	//OR
-							alusel_o <= `Logic;
-							aluop_o <= `OR;
-							wreg_o <= 1'b1;
-							reg1_read_o <= 1'b1;
-							reg2_read_o <= 1'b1;
+							alusel_o = `Logic;
+							aluop_o = `OR;
+							wreg_o = 1'b1;
+							reg1_read_o = 1'b1;
+							reg2_read_o = 1'b1;
 						end
 						6'b100110: begin	//XOR
-							alusel_o <= `Logic;
-							aluop_o <= `XOR;
-							wreg_o <= 1'b1;
-							reg1_read_o <= 1'b1;
-							reg2_read_o <= 1'b1;
+							alusel_o = `Logic;
+							aluop_o = `XOR;
+							wreg_o = 1'b1;
+							reg1_read_o = 1'b1;
+							reg2_read_o = 1'b1;
 						end
 						6'b010000: begin	//MFHI
-							alusel_o <= `Move;
-							aluop_o <= `MFHI;
-							wreg_o <= 1'b1;
-							reg1_read_o <= 1'b0;
-							reg2_read_o <= 1'b0;
+							alusel_o = `Move;
+							aluop_o = `MFHI;
+							wreg_o = 1'b1;
+							reg1_read_o = 1'b0;
+							reg2_read_o = 1'b0;
 						end
 						6'b010010: begin	//MFLO
-							alusel_o <= `Move;
-							aluop_o <= `MFLO;
-							wreg_o <= 1'b1;
-							reg1_read_o <= 1'b0;
-							reg2_read_o <= 1'b0;
+							alusel_o = `Move;
+							aluop_o = `MFLO;
+							wreg_o = 1'b1;
+							reg1_read_o = 1'b0;
+							reg2_read_o = 1'b0;
 						end
 						6'b010001: begin	//MTHI
-							alusel_o <= `Move;
-							aluop_o <= `MTHI;
-							wreg_o <= 1'b0;
-							reg1_read_o <= 1'b1;
-							reg2_read_o <= 1'b0;
+							alusel_o = `Move;
+							aluop_o = `MTHI;
+							wreg_o = 1'b0;
+							reg1_read_o = 1'b1;
+							reg2_read_o = 1'b0;
 						end
 						6'b010011: begin	//MTLO
-							alusel_o <= `Move;
-							aluop_o <= `MTLO;
-							wreg_o <= 1'b0;
-							reg1_read_o <= 1'b1;
-							reg2_read_o <= 1'b0;
+							alusel_o = `Move;
+							aluop_o = `MTLO;
+							wreg_o = 1'b0;
+							reg1_read_o = 1'b1;
+							reg2_read_o = 1'b0;
 						end
 						6'b001000: begin	//JR
-							alusel_o <= `Branch_Jump;
-							aluop_o <= `JR;
-							wreg_o <= 1'b0;
-							reg1_read_o <= 1'b1;
-							reg2_read_o <= 1'b0;
-							branch_flag_o <= 1'b1;
-							branch_target_address_o <= reg1_o;
-							link_addr_o <= 32'b0;
-							next_inst_in_delayslot_o <= 1'b1;
+							alusel_o = `Branch_Jump;
+							aluop_o = `JR;
+							wreg_o = 1'b0;
+							reg1_read_o = 1'b1;
+							reg2_read_o = 1'b0;
+							branch_flag_o = 1'b1;
+							branch_target_address_o = reg1_o;
+							link_addr_o = 32'b0;
+							next_inst_in_delayslot_o = 1'b1;
 						end
 						6'b001001: begin	//JALR
-							alusel_o <= `Branch_Jump;
-							aluop_o <= `JALR;
-							wreg_o <= 1'b1;
-							wd_o <= inst_i[15:11];
-							reg1_read_o <= 1'b1;
-							reg2_read_o <= 1'b0;
-							branch_flag_o <= 1'b1;
-							branch_target_address_o <= reg1_o;
-							link_addr_o <= pc_plus_8;
-							next_inst_in_delayslot_o <= 1'b1;
+							alusel_o = `Branch_Jump;
+							aluop_o = `JALR;
+							wreg_o = 1'b1;
+							wd_o = inst_i[15:11];
+							reg1_read_o = 1'b1;
+							reg2_read_o = 1'b0;
+							branch_flag_o = 1'b1;
+							branch_target_address_o = reg1_o;
+							link_addr_o = pc_plus_8;
+							next_inst_in_delayslot_o = 1'b1;
 						end
 						6'b000000: begin	//SLL
-							alusel_o <= `Shift;
-							aluop_o <= `SLL;
-							wreg_o <= 1'b1;
-							wd_o <= inst_i[15:11];
-							reg1_read_o <= 1'b0;
-							reg2_read_o <= 1'b1;
-							imm[4:0] <= inst_i[10:6];
+							alusel_o = `Shift;
+							aluop_o = `SLL;
+							wreg_o = 1'b1;
+							wd_o = inst_i[15:11];
+							reg1_read_o = 1'b0;
+							reg2_read_o = 1'b1;
+							imm[4:0] = inst_i[10:6];
 						end
 						6'b000100: begin	//SLLV
-							alusel_o <= `Shift;
-							aluop_o <= `SLL;
-							wreg_o <= 1'b1;
-							wd_o <= inst_i[15:11];
-							reg1_read_o <= 1'b1;
-							reg2_read_o <= 1'b1;
+							alusel_o = `Shift;
+							aluop_o = `SLL;
+							wreg_o = 1'b1;
+							wd_o = inst_i[15:11];
+							reg1_read_o = 1'b1;
+							reg2_read_o = 1'b1;
 						end
 						6'b000011: begin	//SRA
-							alusel_o <= `Shift;
-							aluop_o <= `SRA;
-							wreg_o <= 1'b1;
-							wd_o <= inst_i[15:11];
-							reg1_read_o <= 1'b0;
-							reg2_read_o <= 1'b1;
-							imm[4:0] <= inst_i[10:6];
+							alusel_o = `Shift;
+							aluop_o = `SRA;
+							wreg_o = 1'b1;
+							wd_o = inst_i[15:11];
+							reg1_read_o = 1'b0;
+							reg2_read_o = 1'b1;
+							imm[4:0] = inst_i[10:6];
 						end
 						6'b000111: begin	//SRAL
-							alusel_o <= `Shift;
-							aluop_o <= `SRA;
-							wreg_o <= 1'b1;
-							wd_o <= inst_i[15:11];
-							reg1_read_o <= 1'b1;
-							reg2_read_o <= 1'b1;
+							alusel_o = `Shift;
+							aluop_o = `SRA;
+							wreg_o = 1'b1;
+							wd_o = inst_i[15:11];
+							reg1_read_o = 1'b1;
+							reg2_read_o = 1'b1;
 						end
 						6'b000010: begin	//SRL
-							alusel_o <= `Shift;
-							aluop_o <= `SRL;
-							wreg_o <= 1'b1;
-							wd_o <= inst_i[15:11];
-							reg1_read_o <= 1'b0;
-							reg2_read_o <= 1'b1;
-							imm[4:0] <= inst_i[10:6];
+							alusel_o = `Shift;
+							aluop_o = `SRL;
+							wreg_o = 1'b1;
+							wd_o = inst_i[15:11];
+							reg1_read_o = 1'b0;
+							reg2_read_o = 1'b1;
+							imm[4:0] = inst_i[10:6];
 						end
 						6'b000110: begin	//SRLV
-							alusel_o <= `Shift;
-							aluop_o <= `SRL;
-							wreg_o <= 1'b1;
-							wd_o <= inst_i[15:11];
-							reg1_read_o <= 1'b1;
-							reg2_read_o <= 1'b1;
+							alusel_o = `Shift;
+							aluop_o = `SRL;
+							wreg_o = 1'b1;
+							wd_o = inst_i[15:11];
+							reg1_read_o = 1'b1;
+							reg2_read_o = 1'b1;
+						end
+						`ADDU_OP2: begin 	//ADDU R[d] = R[s] + R[t]
+							alusel_o = `Arithmetic;
+							aluop_o = `ADDU;
+							wreg_o = 1'b1;
+							reg1_read_o = 1'b1;
+							reg2_read_o = 1'b1;
+							wd_o = inst_i[15:11];
+						end
+						`SLT_OP2: begin 		//SLT if (R[s] <R[t]) then R[d] = 1 else R[d] = 0
+							alusel_o = `Arithmetic;
+							aluop_o = `SLT;
+							wreg_o = 1'b1;
+							reg1_read_o = 1'b1;
+							reg2_read_o = 1'b1;
+							wd_o = inst_i[15:11];
+						end
+						`SLTU_OP2: begin 		//SLTU if (R[s] <R[t]) then R[d] = 1 else R[d] = 0
+							alusel_o = `Arithmetic;
+							aluop_o = `SLTU;
+							wreg_o = 1'b1;
+							reg1_read_o = 1'b1;
+							reg2_read_o = 1'b1;
+							wd_o = inst_i[15:11];
+						end
+						`SUBU_OP2: begin 	//R[d] = R[s] - R[t]
+							alusel_o = `Arithmetic;
+							aluop_o = `SUBU;
+							wreg_o = 1'b1;
+							reg1_read_o = 1'b1;
+							reg2_read_o = 1'b1;
+							wd_o = inst_i[15:11];
+						end
+						`MULT_OP2: begin 	//HI/LO = R[s] * R[t]
+							aluop_o = `MULT;
+							wreg_o = 1'b0;
+							reg1_read_o = 1'b1;
+							reg2_read_o = 1'b1;
 						end
 						default: begin
 							//TODO: 其他special code指令
 						end
 					endcase
 				end
+				`SLTIU_OP: begin 	//SLTIU if (R[s] <Zero-extend(immediate)) then R[t] = 1 else R[t] = 0
+					alusel_o = `Arithmetic;
+					aluop_o = `SLTI;
+					wreg_o = 1'b1;
+					reg1_read_o = 1'b1;
+					reg2_read_o = 1'b0;
+					wd_o = inst_i[20:16];
+					imm = {16'b0, inst_i[15:0]};//sign-extend(imm)
+				end
+				`SLTI_OP: begin 	//SLTI if (R[s] <Sign-extend(immediate)) then R[t] = 1 else R[t] = 0
+					alusel_o = `Arithmetic;
+					aluop_o = `SLTI;
+					wreg_o = 1'b1;
+					reg1_read_o = 1'b1;
+					reg2_read_o = 1'b0;
+					wd_o = inst_i[20:16];
+					imm = {{16{inst_i[15]}}, inst_i[15:0]};//sign-extend(imm)					
+				end
+				`ADDIU_OP: begin 	//ADDIU R[t] = R[s] + Sign-extend(immediate)
+					alusel_o = `Arithmetic;
+					aluop_o	 = `ADDIU;
+					wreg_o   = 1'b1;
+					reg1_read_o = 1'b1;
+					reg2_read_o = 1'b0;
+					wd_o = inst_i[20:16];
+					imm = {{16{inst_i[15]}}, inst_i[15:0]};//sign-extend(imm)
+				end
 				6'b000001: begin	//Branch_Jupm: BGEZ, BLTZ
 					case(op3)
 						6'b00001: begin	//BGEZ
-							alusel_o <= `Branch_Jump;
-							aluop_o <= `BGEZ;
-							wreg_o <= 1'b0;
-							reg1_read_o <= 1'b1;
-							reg2_read_o <= 1'b0;
+							alusel_o = `Branch_Jump;
+							aluop_o = `BGEZ;
+							wreg_o = 1'b0;
+							reg1_read_o = 1'b1;
+							reg2_read_o = 1'b0;
 							if (reg1_o[31] == 1'b0) begin
-								branch_target_address_o <= imm_branch_addr;
-								branch_flag_o <= 1'b1;
-								next_inst_in_delayslot_o <= 1'b1;
+								branch_target_address_o = imm_branch_addr;
+								branch_flag_o = 1'b1;
+								next_inst_in_delayslot_o = 1'b1;
 							end
 						end
 						6'b00000: begin	//BLTZ
-							alusel_o <= `Branch_Jump;
-							aluop_o <= `BLTZ;
-							wreg_o <= 1'b0;
-							reg1_read_o <= 1'b1;
-							reg2_read_o <= 1'b0;
+							alusel_o = `Branch_Jump;
+							aluop_o = `BLTZ;
+							wreg_o = 1'b0;
+							reg1_read_o = 1'b1;
+							reg2_read_o = 1'b0;
 							if (reg1_o[31] == 1'b1) begin
-								branch_target_address_o <= imm_branch_addr;
-								branch_flag_o <= 1'b1;
-								next_inst_in_delayslot_o <= 1'b1;
+								branch_target_address_o = imm_branch_addr;
+								branch_flag_o = 1'b1;
+								next_inst_in_delayslot_o = 1'b1;
 							end
 						end
 					endcase
 				end
 				6'b000100: begin	//BEQ
-					alusel_o <= `Branch_Jump;
-					aluop_o <= `BEQ;
-					wreg_o <= 1'b0;
-					reg1_read_o <= 1'b1;
-					reg2_read_o <= 1'b1;
+					alusel_o = `Branch_Jump;
+					aluop_o = `BEQ;
+					wreg_o = 1'b0;
+					reg1_read_o = 1'b1;
+					reg2_read_o = 1'b1;
 					if (reg1_o == reg2_o) begin
-						branch_target_address_o <= imm_branch_addr;
-						branch_flag_o <= 1'b1;
-						next_inst_in_delayslot_o <= 1'b1;
+						branch_target_address_o = imm_branch_addr;
+						branch_flag_o = 1'b1;
+						next_inst_in_delayslot_o = 1'b1;
 					end
 				end
 				6'b000111: begin	//BGTZ
-					alusel_o <= `Branch_Jump;
-					aluop_o <= `BGTZ;
-					wreg_o <= 1'b0;
-					reg1_read_o <= 1'b1;
-					reg2_read_o <= 1'b0;
+					alusel_o = `Branch_Jump;
+					aluop_o = `BGTZ;
+					wreg_o = 1'b0;
+					reg1_read_o = 1'b1;
+					reg2_read_o = 1'b0;
 					if (reg1_o[31] == 1'b0 && reg1_o != 32'b0) begin
-						branch_target_address_o <= imm_branch_addr;
-						branch_flag_o <= 1'b1;
-						next_inst_in_delayslot_o <= 1'b1;
+						branch_target_address_o = imm_branch_addr;
+						branch_flag_o = 1'b1;
+						next_inst_in_delayslot_o = 1'b1;
 					end
 				end
 				6'b000110: begin	//BLEZ
-					alusel_o <= `Branch_Jump;
-					aluop_o <= `BLEZ;
-					wreg_o <= 1'b0;
-					reg1_read_o <= 1'b1;
-					reg2_read_o <= 1'b0;
+					alusel_o = `Branch_Jump;
+					aluop_o = `BLEZ;
+					wreg_o = 1'b0;
+					reg1_read_o = 1'b1;
+					reg2_read_o = 1'b0;
 					if (reg1_o[31] == 1'b1 || reg1_o == 32'b0) begin
-						branch_target_address_o <= imm_branch_addr;
-						branch_flag_o <= 1'b1;
-						next_inst_in_delayslot_o <= 1'b1;
+						branch_target_address_o = imm_branch_addr;
+						branch_flag_o = 1'b1;
+						next_inst_in_delayslot_o = 1'b1;
 					end
 				end
 				6'b000101: begin	//BNE
-					alusel_o <= `Branch_Jump;
-					aluop_o <= `BNE;
-					wreg_o <= 1'b0;
-					reg1_read_o <= 1'b1;
-					reg2_read_o <= 1'b1;
+					alusel_o = `Branch_Jump;
+					aluop_o = `BNE;
+					wreg_o = 1'b0;
+					reg1_read_o = 1'b1;
+					reg2_read_o = 1'b1;
 					if (reg1_o != reg2_o) begin
-						branch_target_address_o <= imm_branch_addr;
-						branch_flag_o <= 1'b1;
-						next_inst_in_delayslot_o <= 1'b1;
+						branch_target_address_o = imm_branch_addr;
+						branch_flag_o = 1'b1;
+						next_inst_in_delayslot_o = 1'b1;
 					end
 				end
 				6'b000010: begin	//J
-					alusel_o <= `Branch_Jump;
-					aluop_o <= `J;
-					wreg_o <= 1'b0;
-					reg1_read_o <= 1'b0;
-					reg2_read_o <= 1'b0;
-					branch_flag_o <= 1'b1;
-					branch_target_address_o <= target_branch_addr;
-					link_addr_o <= 32'b0;
-					next_inst_in_delayslot_o <= 1'b1;
+					alusel_o = `Branch_Jump;
+					aluop_o = `J;
+					wreg_o = 1'b0;
+					reg1_read_o = 1'b0;
+					reg2_read_o = 1'b0;
+					branch_flag_o = 1'b1;
+					branch_target_address_o = target_branch_addr;
+					link_addr_o = 32'b0;
+					next_inst_in_delayslot_o = 1'b1;
 				end
 				6'b000011: begin	//JAL
-					alusel_o <= `Branch_Jump;
-					aluop_o <= `JAL;
-					wreg_o <= 1'b1;
-					wd_o <= 5'b11111;
-					reg1_read_o <= 1'b0;
-					reg2_read_o <= 1'b0;
-					branch_flag_o <= 1'b1;
-					branch_target_address_o <= target_branch_addr;
-					link_addr_o <= pc_plus_8;
-					next_inst_in_delayslot_o <= 1'b1;
+					alusel_o = `Branch_Jump;
+					aluop_o = `JAL;
+					wreg_o = 1'b1;
+					wd_o = 5'b11111;
+					reg1_read_o = 1'b0;
+					reg2_read_o = 1'b0;
+					branch_flag_o = 1'b1;
+					branch_target_address_o = target_branch_addr;
+					link_addr_o = pc_plus_8;
+					next_inst_in_delayslot_o = 1'b1;
 				end
 				6'b001100: begin	//ANDI
-					alusel_o <= `Logic;
-					aluop_o <= `ANDI;
-					wreg_o <= 1'b1;
-					reg1_read_o <= 1'b1;
-					reg2_read_o <= 1'b0;
-					wd_o <= inst_i[20:16];
-					imm <= {16'b0, inst_i[15:0]};
+					alusel_o = `Logic;
+					aluop_o = `ANDI;
+					wreg_o = 1'b1;
+					reg1_read_o = 1'b1;
+					reg2_read_o = 1'b0;
+					wd_o = inst_i[20:16];
+					imm = {16'b0, inst_i[15:0]};
 				end
 				6'b001111: begin	//LUI
-					alusel_o <= `Logic;
-					aluop_o <= `LUI;
-					wreg_o <= 1'b1;
-					reg1_read_o <= 1'b1;
-					reg2_read_o <= 1'b0;
-					wd_o <= inst_i[20:16];
-					imm <= {inst_i[15:0], 16'b0};
+					alusel_o = `Logic;
+					aluop_o = `LUI;
+					wreg_o = 1'b1;
+					reg1_read_o = 1'b1;
+					reg2_read_o = 1'b0;
+					wd_o = inst_i[20:16];
+					imm = {inst_i[15:0], 16'b0};
 				end
 				6'b001101: begin	//ORI
-					alusel_o <= `Logic;
-					aluop_o <= `ORI;
-					wreg_o <= 1'b1;
-					reg1_read_o <= 1'b1;
-					reg2_read_o <= 1'b0;
-					wd_o <= inst_i[20:16];
-					imm <= {16'b0, inst_i[15:0]};
+					alusel_o = `Logic;
+					aluop_o = `ORI;
+					wreg_o = 1'b1;
+					reg1_read_o = 1'b1;
+					reg2_read_o = 1'b0;
+					wd_o = inst_i[20:16];
+					imm = {16'b0, inst_i[15:0]};
 				end
 				6'b001110: begin	//XORI
-					alusel_o <= `Logic;
-					aluop_o <= `XORI;
-					wreg_o <= 1'b1;
-					reg1_read_o <= 1'b1;
-					reg2_read_o <= 1'b0;
-					wd_o <= inst_i[20:16];
-					imm <= {16'b0, inst_i[15:0]};
+					alusel_o = `Logic;
+					aluop_o = `XORI;
+					wreg_o = 1'b1;
+					reg1_read_o = 1'b1;
+					reg2_read_o = 1'b0;
+					wd_o = inst_i[20:16];
+					imm = {16'b0, inst_i[15:0]};
 				end
 			endcase
 		end
@@ -388,28 +453,28 @@ module ID(
 	
 	always @(*) begin
 		if (rst == 1'b1)
-			reg1_o <= 32'b0;
+			reg1_o = 32'b0;
 		else if (reg1_read_o == 1'b1 && ex_wreg_i == 1'b1 && reg1_addr_o == ex_wd_i)
-			reg1_o <= ex_wdata_i;
+			reg1_o = ex_wdata_i;
 		else if (reg1_read_o == 1'b1 && mem_wreg_i == 1'b1 && reg1_addr_o == mem_wd_i)
-			reg1_o <= mem_wdata_i;
+			reg1_o = mem_wdata_i;
 		else if (reg1_read_o == 1'b1)
-			reg1_o <= reg1_data_i;
+			reg1_o = reg1_data_i;
 		else if (reg1_read_o == 1'b0)
-			reg1_o <= imm;
+			reg1_o = imm;
 	end
 	
 	always @(*) begin
 		if (rst == 1'b1)
-			reg2_o <= 32'b0;
+			reg2_o = 32'b0;
 		else if (reg2_read_o == 1'b1 && ex_wreg_i == 1'b1 && reg2_addr_o == ex_wd_i)
-			reg2_o <= ex_wdata_i;
+			reg2_o = ex_wdata_i;
 		else if (reg2_read_o == 1'b1 && mem_wreg_i == 1'b1 && reg2_addr_o == mem_wd_i)
-			reg2_o <= mem_wdata_i;
+			reg2_o = mem_wdata_i;
 		else if (reg2_read_o == 1'b1)
-			reg2_o <= reg2_data_i;
+			reg2_o = reg2_data_i;
 		else if (reg2_read_o == 1'b0)
-			reg2_o <= imm;
+			reg2_o = imm;
 	end
 
 endmodule

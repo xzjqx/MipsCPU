@@ -4,13 +4,13 @@ Copyright (c) 1995-2011 Xilinx, Inc.  All rights reserved.
 
 
 Total REAL time to Xst completion: 0.00 secs
-Total CPU time to Xst completion: 0.09 secs
+Total CPU time to Xst completion: 0.29 secs
  
 --> Parameter xsthdpdir set to xst
 
 
 Total REAL time to Xst completion: 0.00 secs
-Total CPU time to Xst completion: 0.09 secs
+Total CPU time to Xst completion: 0.29 secs
  
 --> Reading design: MipsCPU_SOPC.prj
 
@@ -161,6 +161,8 @@ Elaborating module <REG>.
 Elaborating module <ID_EX>.
 
 Elaborating module <EX>.
+WARNING:HDLCompiler:1127 - "C:\MipsCPU\EX.v" Line 80: Assignment to ov_sum ignored, since the identifier is never used
+WARNING:HDLCompiler:1127 - "C:\MipsCPU\EX.v" Line 88: Assignment to reg1_i_nout ignored, since the identifier is never used
 
 Elaborating module <EX_MEM>.
 
@@ -1875,13 +1877,13 @@ Cross Clock Domains Report:
 
 
 Total REAL time to Xst completion: 11.00 secs
-Total CPU time to Xst completion: 11.10 secs
+Total CPU time to Xst completion: 10.88 secs
  
 --> 
 
-Total memory usage is 247888 kilobytes
+Total memory usage is 248904 kilobytes
 
 Number of errors   :    0 (   0 filtered)
-Number of warnings :    4 (   0 filtered)
+Number of warnings :    6 (   0 filtered)
 Number of infos    :    0 (   0 filtered)
 

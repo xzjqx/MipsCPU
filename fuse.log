@@ -21,7 +21,7 @@ Analyzing Verilog file \"F:/Xilinx/13.1/ISE_DS/ISE//verilog/src/glbl.v\" into li
 Starting static elaboration
 Completed static elaboration
 Fuse Memory Usage: 153996 KB
-Fuse CPU Usage: 218 ms
+Fuse CPU Usage: 234 ms
 Compiling module PC
 Compiling module IF_ID
 Compiling module ID
@@ -42,4 +42,4 @@ Waiting for 8 sub-compilation(s) to finish...
 Compiled 15 Verilog Units
 Built simulation executable C:/MipsCPU/MipsCPU_SOPC_tb_isim_beh.exe
 Fuse Memory Usage: 162588 KB
-Fuse CPU Usage: 389 ms
+Fuse CPU Usage: 311 ms
