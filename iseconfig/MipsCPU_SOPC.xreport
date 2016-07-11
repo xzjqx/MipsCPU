@@ -1,9 +1,9 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <report-views version="2.0" >
  <header>
-  <DateModified>2016-07-07T21:48:38</DateModified>
+  <DateModified>2016-07-11T12:48:22</DateModified>
   <ModuleName>MipsCPU_SOPC</ModuleName>
-  <SummaryTimeStamp>Unknown</SummaryTimeStamp>
+  <SummaryTimeStamp>2016-07-11T12:44:04</SummaryTimeStamp>
   <SavedFilePath>C:/MipsCPU/iseconfig/MipsCPU_SOPC.xreport</SavedFilePath>
   <ImplementationReportsDirectory>C:/MipsCPU\</ImplementationReportsDirectory>
   <DateInitialized>2016-07-04T13:16:58</DateInitialized>

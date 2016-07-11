@@ -25,7 +25,7 @@
 
 
 
-extern void work_m_00000000002299688328_0720364418_init()
+extern void work_m_00000000000265787803_0720364418_init()
 {
-	xsi_register_didat("work_m_00000000002299688328_0720364418", "isim/MipsCPU_SOPC_tb_isim_beh.exe.sim/work/m_00000000002299688328_0720364418.didat");
+	xsi_register_didat("work_m_00000000000265787803_0720364418", "isim/MipsCPU_SOPC_tb_isim_beh.exe.sim/work/m_00000000000265787803_0720364418.didat");
 }

@@ -31,13 +31,21 @@ module EX_MEM(
 	input wire [31:0] ex_hi,
 	input wire [31:0] ex_lo,
 	
+	input wire [5:0] ex_aluop,
+	input wire [31:0] ex_mem_addr,
+	input wire [31:0] ex_reg2,
+	
 	output reg [4:0] mem_wd,
 	output reg mem_wreg,
 	output reg [31:0] mem_wdata,
 	
 	output reg mem_whilo,
 	output reg [31:0] mem_hi,
-	output reg [31:0] mem_lo
+	output reg [31:0] mem_lo,
+	
+	output reg [5:0] mem_aluop,
+	output reg [31:0] mem_mem_addr,
+	output reg [31:0] mem_reg2
     );
 
 	always @(posedge clk) begin
@@ -48,6 +56,9 @@ module EX_MEM(
 			mem_whilo <= 1'b0;
 			mem_hi <= 32'b0;
 			mem_lo <= 32'b0;
+			mem_aluop <= 6'b0;
+			mem_mem_addr <= 32'b0;
+			mem_reg2 <= 32'b0;
 		end
 		else begin
 			mem_wd <= ex_wd;
@@ -56,6 +67,9 @@ module EX_MEM(
 			mem_whilo <= ex_whilo;
 			mem_hi <= ex_hi;
 			mem_lo <= ex_lo;
+			mem_aluop <= ex_aluop;
+			mem_mem_addr <= ex_mem_addr;
+			mem_reg2 <= ex_reg2;
 		end
 	end
 	

@@ -2,27 +2,27 @@ Command line:
    MipsCPU_SOPC_tb_isim_beh.exe
      -simmode  gui
      -simrunnum  0
-     -socket  9548
+     -socket  3465
 
-Thu Jul 07 22:43:31 2016
+Mon Jul 11 12:57:57 2016
 
 
  Elaboration Time: 0.0625 sec
 
- Current Memory Usage: 837.304 Meg
+ Current Memory Usage: 837.251 Meg
 
- Total Signals          : 182
- Total Nets             : 1367
- Total Signal Drivers   : 81
- Total Blocks           : 15
- Total Primitive Blocks : 12
- Total Processes        : 108
- Total Traceable Variables  : 86
- Total Scalar Nets and Variables : 35736
+ Total Signals          : 222
+ Total Nets             : 1674
+ Total Signal Drivers   : 95
+ Total Blocks           : 16
+ Total Primitive Blocks : 13
+ Total Processes        : 124
+ Total Traceable Variables  : 97
+ Total Scalar Nets and Variables : 44252
 
- Total Simulation Time: 0.234375 sec
+ Total Simulation Time: 0.265625 sec
 
- Current Memory Usage: 680.804 Meg
+ Current Memory Usage: 680.751 Meg
 
-Thu Jul 07 22:44:50 2016
+Mon Jul 11 12:59:55 2016
 

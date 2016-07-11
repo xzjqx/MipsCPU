@@ -5,19 +5,37 @@
      behavior or data corruption.  It is strongly advised that
      users do not edit the contents of this file. -->
 <messages>
-<msg type="warning" file="HDLCompiler" num="1127" delta="old" >"C:\MipsCPU\EX.v" Line 80: Assignment to <arg fmt="%s" index="1">ov_sum</arg> ignored, since the identifier is never used
+<msg type="warning" file="HDLCompiler" num="1127" delta="old" >"C:\MipsCPU\EX.v" Line 90: Assignment to <arg fmt="%s" index="1">ov_sum</arg> ignored, since the identifier is never used
 </msg>
 
-<msg type="warning" file="HDLCompiler" num="1127" delta="old" >"C:\MipsCPU\EX.v" Line 88: Assignment to <arg fmt="%s" index="1">reg1_i_nout</arg> ignored, since the identifier is never used
+<msg type="warning" file="HDLCompiler" num="1127" delta="old" >"C:\MipsCPU\EX.v" Line 98: Assignment to <arg fmt="%s" index="1">reg1_i_nout</arg> ignored, since the identifier is never used
+</msg>
+
+<msg type="warning" file="HDLCompiler" num="189" delta="old" >"C:\MipsCPU\MipsCPU.v" Line 172: Size mismatch in connection of port &lt;<arg fmt="%s" index="3">aluop_o</arg>&gt;. Formal port size is <arg fmt="%d" index="2">6</arg>-bit while actual signal size is <arg fmt="%d" index="1">8</arg>-bit.
+</msg>
+
+<msg type="warning" file="HDLCompiler" num="189" delta="old" >"C:\MipsCPU\MipsCPU.v" Line 176: Size mismatch in connection of port &lt;<arg fmt="%s" index="3">ex_aluop</arg>&gt;. Formal port size is <arg fmt="%d" index="2">6</arg>-bit while actual signal size is <arg fmt="%d" index="1">8</arg>-bit.
+</msg>
+
+<msg type="warning" file="HDLCompiler" num="189" delta="old" >"C:\MipsCPU\MipsCPU.v" Line 179: Size mismatch in connection of port &lt;<arg fmt="%s" index="3">mem_aluop</arg>&gt;. Formal port size is <arg fmt="%d" index="2">6</arg>-bit while actual signal size is <arg fmt="%d" index="1">8</arg>-bit.
+</msg>
+
+<msg type="warning" file="HDLCompiler" num="189" delta="old" >"C:\MipsCPU\MipsCPU.v" Line 184: Size mismatch in connection of port &lt;<arg fmt="%s" index="3">aluop_i</arg>&gt;. Formal port size is <arg fmt="%d" index="2">6</arg>-bit while actual signal size is <arg fmt="%d" index="1">8</arg>-bit.
 </msg>
 
 <msg type="warning" file="HDLCompiler" num="1670" delta="old" >"C:\MipsCPU\Inst_ROM.v" Line 29: Signal &lt;<arg fmt="%s" index="1">inst_mem</arg>&gt; in initial block is partially initialized.
 </msg>
 
-<msg type="warning" file="Xst" num="2972" delta="old" >&quot;<arg fmt="%s" index="1">c:/mipscpu/mipscpu_sopc.v</arg>&quot; line <arg fmt="%d" index="2">30</arg>. All outputs of instance &lt;<arg fmt="%s" index="3">MipsCPU0</arg>&gt; of block &lt;<arg fmt="%s" index="4">MipsCPU</arg>&gt; are unconnected in block &lt;<arg fmt="%s" index="5">MipsCPU_SOPC</arg>&gt;. Underlying logic will be removed.
+<msg type="warning" file="Xst" num="2972" delta="old" >&quot;<arg fmt="%s" index="1">c:/mipscpu/mipscpu_sopc.v</arg>&quot; line <arg fmt="%d" index="2">37</arg>. All outputs of instance &lt;<arg fmt="%s" index="3">MipsCPU0</arg>&gt; of block &lt;<arg fmt="%s" index="4">MipsCPU</arg>&gt; are unconnected in block &lt;<arg fmt="%s" index="5">MipsCPU_SOPC</arg>&gt;. Underlying logic will be removed.
 </msg>
 
-<msg type="warning" file="Xst" num="2972" delta="old" >&quot;<arg fmt="%s" index="1">c:/mipscpu/mipscpu_sopc.v</arg>&quot; line <arg fmt="%d" index="2">38</arg>. All outputs of instance &lt;<arg fmt="%s" index="3">Inst_ROM0</arg>&gt; of block &lt;<arg fmt="%s" index="4">Inst_ROM</arg>&gt; are unconnected in block &lt;<arg fmt="%s" index="5">MipsCPU_SOPC</arg>&gt;. Underlying logic will be removed.
+<msg type="warning" file="Xst" num="2972" delta="old" >&quot;<arg fmt="%s" index="1">c:/mipscpu/mipscpu_sopc.v</arg>&quot; line <arg fmt="%d" index="2">52</arg>. All outputs of instance &lt;<arg fmt="%s" index="3">Inst_ROM0</arg>&gt; of block &lt;<arg fmt="%s" index="4">Inst_ROM</arg>&gt; are unconnected in block &lt;<arg fmt="%s" index="5">MipsCPU_SOPC</arg>&gt;. Underlying logic will be removed.
+</msg>
+
+<msg type="warning" file="Xst" num="2972" delta="old" >&quot;<arg fmt="%s" index="1">c:/mipscpu/mipscpu_sopc.v</arg>&quot; line <arg fmt="%d" index="2">58</arg>. All outputs of instance &lt;<arg fmt="%s" index="3">DATA_RAM0</arg>&gt; of block &lt;<arg fmt="%s" index="4">DATA_RAM</arg>&gt; are unconnected in block &lt;<arg fmt="%s" index="5">MipsCPU_SOPC</arg>&gt;. Underlying logic will be removed.
+</msg>
+
+<msg type="warning" file="Xst" num="647" delta="old" >Input &lt;<arg fmt="%s" index="1">inst_i&lt;25:16&gt;</arg>&gt; is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
 </msg>
 
 <msg type="warning" file="Xst" num="647" delta="old" >Input &lt;<arg fmt="%s" index="1">is_in_delayslot_i</arg>&gt; is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.

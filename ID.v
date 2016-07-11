@@ -53,8 +53,10 @@ module ID(
 	output reg branch_flag_o,		//是否转移
 	output reg [31:0] branch_target_address_o,//转移地址
 	output reg [31:0] link_addr_o,//返回地址
-	output reg next_inst_in_delayslot_o//下一条指令是否在延迟槽
-    );
+	output reg next_inst_in_delayslot_o,//下一条指令是否在延迟槽
+	
+	output wire [31:0] inst_o
+	);
 	
 	wire [5:0] op = inst_i[31:26];
 	wire [4:0] op1 = inst_i[10:6];
@@ -74,6 +76,8 @@ module ID(
 	assign target_branch_addr = {pc_plus_4[31:28], inst_i[25:0], 2'b00};
 	
 	assign is_in_delayslot_o = is_in_delayslot_i;
+	
+	assign inst_o = inst_i;
 	
 	reg [31:0] imm;
 	
@@ -446,6 +450,52 @@ module ID(
 					reg2_read_o = 1'b0;
 					wd_o = inst_i[20:16];
 					imm = {16'b0, inst_i[15:0]};
+				end
+				6'b100011: begin	//LW
+					alusel_o = `Mem;
+					aluop_o = `LW;
+					wreg_o = 1'b1;
+					reg1_read_o = 1'b1;
+					reg2_read_o = 1'b0;
+					wd_o = inst_i[20:16];
+				end
+				6'b101011: begin	//SW
+					alusel_o = `Mem;
+					aluop_o = `SW;
+					wreg_o = 1'b0;
+					reg1_read_o = 1'b1;
+					reg2_read_o = 1'b1;
+				end
+				6'b100000: begin	//LB
+					alusel_o = `Mem;
+					aluop_o = `LB;
+					wreg_o = 1'b1;
+					reg1_read_o = 1'b1;
+					reg2_read_o = 1'b0;
+					wd_o = inst_i[20:16];
+				end
+				6'b100100: begin	//LBU
+					alusel_o = `Mem;
+					aluop_o = `LBU;
+					wreg_o = 1'b1;
+					reg1_read_o = 1'b1;
+					reg2_read_o = 1'b0;
+					wd_o = inst_i[20:16];
+				end
+				6'b101000: begin	//SB
+					alusel_o = `Mem;
+					aluop_o = `SB;
+					wreg_o = 1'b0;
+					reg1_read_o = 1'b1;
+					reg2_read_o = 1'b1;
+				end
+				6'b100101: begin	//LHU
+					alusel_o = `Mem;
+					aluop_o = `LHU;
+					wreg_o = 1'b1;
+					reg1_read_o = 1'b1;
+					reg2_read_o = 1'b0;
+					wd_o = inst_i[20:16];
 				end
 			endcase
 		end

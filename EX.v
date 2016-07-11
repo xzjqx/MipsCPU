@@ -41,14 +41,24 @@ module EX(
 	input wire is_in_delayslot_i,
 	input wire [31:0] link_address_i,
 	
+	input wire [31:0] inst_i,
+	
 	output reg [4:0] wd_o,
 	output reg wreg_o,
 	output reg [31:0] wdata_o,
 	
 	output reg whilo_o,
 	output reg [31:0] hi_o,
-	output reg [31:0] lo_o
+	output reg [31:0] lo_o,
+	
+	output wire [5:0] aluop_o,
+	output wire [31:0] mem_addr_o,
+	output wire [31:0] reg2_o
     );
+	 
+	assign aluop_o = inst_i[31:26];
+	assign mem_addr_o = {{16{inst_i[15]}}, inst_i[15:0]} + reg1_i;
+	assign reg2_o = reg2_i;
 
 	reg [31:0] logicout;
 	reg [31:0] moveout;

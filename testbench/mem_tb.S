@@ -1,0 +1,39 @@
+   .org 0x0
+   .set noat
+   .set noreorder
+   .set nomacro
+   .global _start
+_start:
+   ori  $3,$0,0xeeff
+   sb   $3,0x3($0)       # [0x3] = 0xff
+   srl  $3,$3,8
+   sb   $3,0x2($0)       # [0x2] = 0xee
+   ori  $3,$0,0xccdd
+   sb   $3,0x1($0)       # [0x1] = 0xdd
+   srl  $3,$3,8
+   sb   $3,0x0($0)       # [0x0] = 0xcc
+   lb   $1,0x3($0)       # $1 = 0xffffffff
+   lbu  $1,0x2($0)       # $1 = 0x000000ee
+   nop
+
+   ori  $3,$0,0xaabb
+   sb   $3,0x4($0)       # [0x4] = 0xbb
+   srl  $3,$3,8          # $3 = 0xaa
+   sb   $3,0x5($0)       # [0x5] = 0xaa
+   lhu  $1,0x4($0)       # $1 = 0x0000bbaa
+
+   ori  $3,$0,0x8899
+   sb   $3,0x6($0)       # [0x6] = 0x99
+   lhu  $1,0x6($0)       # $1 = 0x000099xx
+
+   ori  $3,$0,0x4455     # $3 = 0x4455
+   sll  $3,$3,0x10       # $3 = 0x44550000
+   ori  $3,$3,0x6677     # $3 = 0x44556677
+   sw   $3,0x8($0)       # [0x8] = 0x44, [0x9]= 0x55, [0xa]= 0x66, [0xb] = 0x77
+   lw   $1,0x8($0)       # $1 = 0x44556677
+
+   nop
+    
+_loop:
+   j _loop
+   nop

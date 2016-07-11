@@ -4,13 +4,13 @@ Copyright (c) 1995-2011 Xilinx, Inc.  All rights reserved.
 
 
 Total REAL time to Xst completion: 0.00 secs
-Total CPU time to Xst completion: 0.29 secs
+Total CPU time to Xst completion: 0.08 secs
  
 --> Parameter xsthdpdir set to xst
 
 
 Total REAL time to Xst completion: 0.00 secs
-Total CPU time to Xst completion: 0.29 secs
+Total CPU time to Xst completion: 0.08 secs
  
 --> Reading design: MipsCPU_SOPC.prj
 
@@ -139,6 +139,8 @@ Parsing verilog file "defines.v" included at line 21.
 Parsing module <MipsCPU>.
 Analyzing Verilog file \"C:\MipsCPU\Inst_ROM.v\" into library work
 Parsing module <Inst_ROM>.
+Analyzing Verilog file \"C:\MipsCPU\DATA_RAM.v\" into library work
+Parsing module <DATA_RAM>.
 Analyzing Verilog file \"C:\MipsCPU\MipsCPU_SOPC.v\" into library work
 Parsing module <MipsCPU_SOPC>.
 
@@ -161,12 +163,16 @@ Elaborating module <REG>.
 Elaborating module <ID_EX>.
 
 Elaborating module <EX>.
-WARNING:HDLCompiler:1127 - "C:\MipsCPU\EX.v" Line 80: Assignment to ov_sum ignored, since the identifier is never used
-WARNING:HDLCompiler:1127 - "C:\MipsCPU\EX.v" Line 88: Assignment to reg1_i_nout ignored, since the identifier is never used
+WARNING:HDLCompiler:1127 - "C:\MipsCPU\EX.v" Line 90: Assignment to ov_sum ignored, since the identifier is never used
+WARNING:HDLCompiler:1127 - "C:\MipsCPU\EX.v" Line 98: Assignment to reg1_i_nout ignored, since the identifier is never used
+WARNING:HDLCompiler:189 - "C:\MipsCPU\MipsCPU.v" Line 172: Size mismatch in connection of port <aluop_o>. Formal port size is 6-bit while actual signal size is 8-bit.
 
 Elaborating module <EX_MEM>.
+WARNING:HDLCompiler:189 - "C:\MipsCPU\MipsCPU.v" Line 176: Size mismatch in connection of port <ex_aluop>. Formal port size is 6-bit while actual signal size is 8-bit.
+WARNING:HDLCompiler:189 - "C:\MipsCPU\MipsCPU.v" Line 179: Size mismatch in connection of port <mem_aluop>. Formal port size is 6-bit while actual signal size is 8-bit.
 
 Elaborating module <MEM>.
+WARNING:HDLCompiler:189 - "C:\MipsCPU\MipsCPU.v" Line 184: Size mismatch in connection of port <aluop_i>. Formal port size is 6-bit while actual signal size is 8-bit.
 
 Elaborating module <MEM_WB>.
 
@@ -175,8 +181,11 @@ Elaborating module <HILO>.
 Elaborating module <Inst_ROM>.
 Reading initialization file \"inst_rom.data\".
 WARNING:HDLCompiler:1670 - "C:\MipsCPU\Inst_ROM.v" Line 29: Signal <inst_mem> in initial block is partially initialized.
-WARNING:Xst:2972 - "c:/mipscpu/mipscpu_sopc.v" line 30. All outputs of instance <MipsCPU0> of block <MipsCPU> are unconnected in block <MipsCPU_SOPC>. Underlying logic will be removed.
-WARNING:Xst:2972 - "c:/mipscpu/mipscpu_sopc.v" line 38. All outputs of instance <Inst_ROM0> of block <Inst_ROM> are unconnected in block <MipsCPU_SOPC>. Underlying logic will be removed.
+
+Elaborating module <DATA_RAM>.
+WARNING:Xst:2972 - "c:/mipscpu/mipscpu_sopc.v" line 37. All outputs of instance <MipsCPU0> of block <MipsCPU> are unconnected in block <MipsCPU_SOPC>. Underlying logic will be removed.
+WARNING:Xst:2972 - "c:/mipscpu/mipscpu_sopc.v" line 52. All outputs of instance <Inst_ROM0> of block <Inst_ROM> are unconnected in block <MipsCPU_SOPC>. Underlying logic will be removed.
+WARNING:Xst:2972 - "c:/mipscpu/mipscpu_sopc.v" line 58. All outputs of instance <DATA_RAM0> of block <DATA_RAM> are unconnected in block <MipsCPU_SOPC>. Underlying logic will be removed.
 
 =========================================================================
 *                           HDL Synthesis                               *
@@ -1447,15 +1456,48 @@ Synthesizing Unit <ID_EX>.
     Found 1-bit register for signal <ex_link_address<1>>.
     Found 1-bit register for signal <ex_link_address<0>>.
     Found 1-bit register for signal <is_in_delayslot_o>.
+    Found 1-bit register for signal <ex_inst<31>>.
+    Found 1-bit register for signal <ex_inst<30>>.
+    Found 1-bit register for signal <ex_inst<29>>.
+    Found 1-bit register for signal <ex_inst<28>>.
+    Found 1-bit register for signal <ex_inst<27>>.
+    Found 1-bit register for signal <ex_inst<26>>.
+    Found 1-bit register for signal <ex_inst<25>>.
+    Found 1-bit register for signal <ex_inst<24>>.
+    Found 1-bit register for signal <ex_inst<23>>.
+    Found 1-bit register for signal <ex_inst<22>>.
+    Found 1-bit register for signal <ex_inst<21>>.
+    Found 1-bit register for signal <ex_inst<20>>.
+    Found 1-bit register for signal <ex_inst<19>>.
+    Found 1-bit register for signal <ex_inst<18>>.
+    Found 1-bit register for signal <ex_inst<17>>.
+    Found 1-bit register for signal <ex_inst<16>>.
+    Found 1-bit register for signal <ex_inst<15>>.
+    Found 1-bit register for signal <ex_inst<14>>.
+    Found 1-bit register for signal <ex_inst<13>>.
+    Found 1-bit register for signal <ex_inst<12>>.
+    Found 1-bit register for signal <ex_inst<11>>.
+    Found 1-bit register for signal <ex_inst<10>>.
+    Found 1-bit register for signal <ex_inst<9>>.
+    Found 1-bit register for signal <ex_inst<8>>.
+    Found 1-bit register for signal <ex_inst<7>>.
+    Found 1-bit register for signal <ex_inst<6>>.
+    Found 1-bit register for signal <ex_inst<5>>.
+    Found 1-bit register for signal <ex_inst<4>>.
+    Found 1-bit register for signal <ex_inst<3>>.
+    Found 1-bit register for signal <ex_inst<2>>.
+    Found 1-bit register for signal <ex_inst<1>>.
+    Found 1-bit register for signal <ex_inst<0>>.
     Found 1-bit register for signal <ex_alusel<2>>.
     Found 1-bit register for signal <ex_alusel<1>>.
     Found 1-bit register for signal <ex_alusel<0>>.
     Summary:
-	inferred 115 D-type flip-flop(s).
+	inferred 147 D-type flip-flop(s).
 Unit <ID_EX> synthesized.
 
 Synthesizing Unit <EX>.
     Related source file is "c:/mipscpu/ex.v".
+WARNING:Xst:647 - Input <inst_i<25:16>> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
 WARNING:Xst:647 - Input <is_in_delayslot_i> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
     Summary:
 	no macro.
@@ -1561,13 +1603,83 @@ Synthesizing Unit <EX_MEM>.
     Found 1-bit register for signal <mem_lo<2>>.
     Found 1-bit register for signal <mem_lo<1>>.
     Found 1-bit register for signal <mem_lo<0>>.
+    Found 1-bit register for signal <mem_aluop<5>>.
+    Found 1-bit register for signal <mem_aluop<4>>.
+    Found 1-bit register for signal <mem_aluop<3>>.
+    Found 1-bit register for signal <mem_aluop<2>>.
+    Found 1-bit register for signal <mem_aluop<1>>.
+    Found 1-bit register for signal <mem_aluop<0>>.
+    Found 1-bit register for signal <mem_mem_addr<31>>.
+    Found 1-bit register for signal <mem_mem_addr<30>>.
+    Found 1-bit register for signal <mem_mem_addr<29>>.
+    Found 1-bit register for signal <mem_mem_addr<28>>.
+    Found 1-bit register for signal <mem_mem_addr<27>>.
+    Found 1-bit register for signal <mem_mem_addr<26>>.
+    Found 1-bit register for signal <mem_mem_addr<25>>.
+    Found 1-bit register for signal <mem_mem_addr<24>>.
+    Found 1-bit register for signal <mem_mem_addr<23>>.
+    Found 1-bit register for signal <mem_mem_addr<22>>.
+    Found 1-bit register for signal <mem_mem_addr<21>>.
+    Found 1-bit register for signal <mem_mem_addr<20>>.
+    Found 1-bit register for signal <mem_mem_addr<19>>.
+    Found 1-bit register for signal <mem_mem_addr<18>>.
+    Found 1-bit register for signal <mem_mem_addr<17>>.
+    Found 1-bit register for signal <mem_mem_addr<16>>.
+    Found 1-bit register for signal <mem_mem_addr<15>>.
+    Found 1-bit register for signal <mem_mem_addr<14>>.
+    Found 1-bit register for signal <mem_mem_addr<13>>.
+    Found 1-bit register for signal <mem_mem_addr<12>>.
+    Found 1-bit register for signal <mem_mem_addr<11>>.
+    Found 1-bit register for signal <mem_mem_addr<10>>.
+    Found 1-bit register for signal <mem_mem_addr<9>>.
+    Found 1-bit register for signal <mem_mem_addr<8>>.
+    Found 1-bit register for signal <mem_mem_addr<7>>.
+    Found 1-bit register for signal <mem_mem_addr<6>>.
+    Found 1-bit register for signal <mem_mem_addr<5>>.
+    Found 1-bit register for signal <mem_mem_addr<4>>.
+    Found 1-bit register for signal <mem_mem_addr<3>>.
+    Found 1-bit register for signal <mem_mem_addr<2>>.
+    Found 1-bit register for signal <mem_mem_addr<1>>.
+    Found 1-bit register for signal <mem_mem_addr<0>>.
+    Found 1-bit register for signal <mem_reg2<31>>.
+    Found 1-bit register for signal <mem_reg2<30>>.
+    Found 1-bit register for signal <mem_reg2<29>>.
+    Found 1-bit register for signal <mem_reg2<28>>.
+    Found 1-bit register for signal <mem_reg2<27>>.
+    Found 1-bit register for signal <mem_reg2<26>>.
+    Found 1-bit register for signal <mem_reg2<25>>.
+    Found 1-bit register for signal <mem_reg2<24>>.
+    Found 1-bit register for signal <mem_reg2<23>>.
+    Found 1-bit register for signal <mem_reg2<22>>.
+    Found 1-bit register for signal <mem_reg2<21>>.
+    Found 1-bit register for signal <mem_reg2<20>>.
+    Found 1-bit register for signal <mem_reg2<19>>.
+    Found 1-bit register for signal <mem_reg2<18>>.
+    Found 1-bit register for signal <mem_reg2<17>>.
+    Found 1-bit register for signal <mem_reg2<16>>.
+    Found 1-bit register for signal <mem_reg2<15>>.
+    Found 1-bit register for signal <mem_reg2<14>>.
+    Found 1-bit register for signal <mem_reg2<13>>.
+    Found 1-bit register for signal <mem_reg2<12>>.
+    Found 1-bit register for signal <mem_reg2<11>>.
+    Found 1-bit register for signal <mem_reg2<10>>.
+    Found 1-bit register for signal <mem_reg2<9>>.
+    Found 1-bit register for signal <mem_reg2<8>>.
+    Found 1-bit register for signal <mem_reg2<7>>.
+    Found 1-bit register for signal <mem_reg2<6>>.
+    Found 1-bit register for signal <mem_reg2<5>>.
+    Found 1-bit register for signal <mem_reg2<4>>.
+    Found 1-bit register for signal <mem_reg2<3>>.
+    Found 1-bit register for signal <mem_reg2<2>>.
+    Found 1-bit register for signal <mem_reg2<1>>.
+    Found 1-bit register for signal <mem_reg2<0>>.
     Found 1-bit register for signal <mem_wd<4>>.
     Found 1-bit register for signal <mem_wd<3>>.
     Found 1-bit register for signal <mem_wd<2>>.
     Found 1-bit register for signal <mem_wd<1>>.
     Found 1-bit register for signal <mem_wd<0>>.
     Summary:
-	inferred 103 D-type flip-flop(s).
+	inferred 173 D-type flip-flop(s).
 Unit <EX_MEM> synthesized.
 
 Synthesizing Unit <MEM>.
@@ -1877,13 +1989,13 @@ Cross Clock Domains Report:
 
 
 Total REAL time to Xst completion: 11.00 secs
-Total CPU time to Xst completion: 10.88 secs
+Total CPU time to Xst completion: 11.26 secs
  
 --> 
 
-Total memory usage is 248904 kilobytes
+Total memory usage is 250288 kilobytes
 
 Number of errors   :    0 (   0 filtered)
-Number of warnings :    6 (   0 filtered)
+Number of warnings :   12 (   0 filtered)
 Number of infos    :    0 (   0 filtered)
 
