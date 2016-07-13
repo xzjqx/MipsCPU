@@ -10,7 +10,7 @@
 /*  \___\/\___\                                                    */
 /***********************************************************************/
 
-/* This file is designed for use with ISim build 0x79f3f3a8 */
+/* This file is designed for use with ISim build 0xc4ca3437 */
 
 #define XSI_HIDE_SYMBOL_SPEC true
 #include "xsi.h"
@@ -21,7 +21,7 @@
 #include <malloc.h>
 #define alloca _alloca
 #endif
-static const char *ng0 = "C:/MipsCPU/MipsCPU.v";
+static const char *ng0 = "D:/MipsCPU/MipsCPU.v";
 
 
 
@@ -36,7 +36,7 @@ static void Cont_130_0(char *t0)
     char *t7;
     char *t8;
 
-LAB0:    t1 = (t0 + 7976U);
+LAB0:    t1 = (t0 + 13888U);
     t2 = *((char **)t1);
     if (t2 == 0)
         goto LAB2;
@@ -44,16 +44,16 @@ LAB0:    t1 = (t0 + 7976U);
 LAB3:    goto *t2;
 
 LAB2:    xsi_set_current_line(130, ng0);
-    t2 = (t0 + 1612U);
+    t2 = (t0 + 2808U);
     t3 = *((char **)t2);
-    t2 = (t0 + 8216);
-    t4 = (t2 + 32U);
+    t2 = (t0 + 14288);
+    t4 = (t2 + 56U);
     t5 = *((char **)t4);
-    t6 = (t5 + 40U);
+    t6 = (t5 + 56U);
     t7 = *((char **)t6);
     memcpy(t7, t3, 8);
     xsi_driver_vfirst_trans(t2, 0, 31);
-    t8 = (t0 + 8172);
+    t8 = (t0 + 14208);
     *((int *)t8) = 1;
 
 LAB1:    return;

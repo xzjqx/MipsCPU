@@ -97,6 +97,17 @@ module MipsCPU(
 	wire [7:0] ex_aluop_o;
 	wire [31:0] ex_mem_addr_o;
 	wire [31:0] ex_reg2_o;
+
+	wire		  	ex_mem_cp0_reg_we;
+	wire [4:0]		ex_mem_cp0_write_addr;
+	wire [31:0]		ex_mem_cp0_data;
+  	wire			ex_wb_cp0_reg_we;
+	wire[4:0]     	ex_wb_cp0_reg_write_addr;
+	wire[31:0] 		ex_wb_cp0_reg_data;
+	wire[4:0]     	ex_cp0_reg_read_addr_o;
+	wire          	ex_cp0_reg_we_o;
+	wire[4:0]     	ex_cp0_reg_write_addr_o;
+	wire[31:0] 		ex_cp0_reg_data_o;
 	
 	//MEM模块接口
 	wire mem_wreg_i;
@@ -118,11 +129,37 @@ module MipsCPU(
 	wire [7:0] mem_aluop_i;
 	wire [31:0] mem_addr_i;
 	wire [31:0] mem_reg2_i;
+
+	wire mem_cp0_reg_we_i;
+	wire [4:0] mem_cp0_reg_write_addr_i;
+	wire [31:0] mem_cp0_reg_data_i;
+
+	wire mem_cp0_reg_we_o;
+	wire [4:0] mem_cp0_reg_write_addr_o;
+	wire [31:0] mem_cp0_reg_data_o;
+
+
+
 	
 	//HILO模块接口
 	wire wb_whilo_i;
 	wire [31:0] wb_hi_i;
 	wire [31:0] wb_lo_i;
+	
+	//CP0模块接口
+	wire [31:0]	cp0_data_o;
+	wire [31:0]	cp0_count_o;
+	wire [31:0]	cp0_compare_o;
+	wire [31:0]	cp0_status_o;
+	wire [31:0]	cp0_cause_o;
+	wire [31:0]	cp0_epc_o;
+	wire [31:0]	cp0_config_o;
+	wire [31:0]	cp0_prid_o;
+	wire 		cp0_timer_int_o;
+	wire		cp0_int_i;
+
+
+
 	
 	PC pc0(.clk(clk), .rst(rst), .pc(pc), .ce(rom_ce_o),
 			 .branch_flag_i(pc_branch_flag_i), .branch_target_address_i(pc_branch_target_address_i));
@@ -169,14 +206,30 @@ module MipsCPU(
 			 .inst_i(ex_inst_i),
 			 .wd_o(ex_wd_o), .wreg_o(ex_wreg_o), .wdata_o(ex_wdata_o),
 			 .whilo_o(ex_whilo_o), .hi_o(ex_hi_o), .lo_o(ex_lo_o),
-			 .aluop_o(ex_aluop_o), .mem_addr_o(ex_mem_addr_o), .reg2_o(ex_reg2_o));
+			 .aluop_o(ex_aluop_o), .mem_addr_o(ex_mem_addr_o), .reg2_o(ex_reg2_o),
+			 .cp0_reg_data_i(cp0_data_o),
+			 .wb_cp0_reg_data(ex_wb_cp0_reg_data),
+			 .wb_cp0_reg_write_addr(ex_wb_cp0_reg_write_addr),
+			 .wb_cp0_reg_we(ex_wb_cp0_reg_we),
+			 .mem_cp0_data(ex_mem_cp0_data),
+			 .mem_cp0_reg_we(ex_mem_cp0_reg_we),
+			 .cp0_reg_read_addr_o(ex_cp0_reg_read_addr_o),
+			 .cp0_reg_data_o(ex_cp0_reg_data_o),
+			 .cp0_reg_write_addr_o(ex_cp0_reg_write_addr_o),
+			 .cp0_reg_we_o(ex_cp0_reg_we_o));
 	
 	EX_MEM ex_mem0(.clk(clk), .rst(rst), .ex_wd(ex_wd_o), .ex_wreg(ex_wreg_o), .ex_wdata(ex_wdata_o),
 						.ex_whilo(ex_whilo_o), .ex_hi(ex_hi_o), .ex_lo(ex_lo_o),
 						.ex_aluop(ex_aluop_o), .ex_mem_addr(ex_mem_addr_o), .ex_reg2(ex_reg2_o),
 						.mem_wd(mem_wd_i), .mem_wreg(mem_wreg_i),	.mem_wdata(mem_wdata_i),
 						.mem_whilo(mem_whilo_i), .mem_hi(mem_hi_i), .mem_lo(mem_lo_i),
-						.mem_aluop(mem_aluop_i), .mem_mem_addr(mem_addr_i), .mem_reg2(mem_reg2_i));
+						.mem_aluop(mem_aluop_i), .mem_mem_addr(mem_addr_i), .mem_reg2(mem_reg2_i),
+						.ex_cp0_reg_we(ex_cp0_reg_data_o),
+						.ex_cp0_reg_write_addr(ex_cp0_reg_write_addr_o),
+						.ex_cp0_reg_data(ex_cp0_reg_we_o),
+						.mem_cp0_reg_we(mem_cp0_reg_data_i),
+						.mem_cp0_reg_write_addr(mem_cp0_reg_write_addr_i),
+						.mem_cp0_reg_data(mem_cp0_reg_data_i));
 
 	//TODO: 更新MEM模块接口 error
 	MEM mem0(.rst(rst), .wd_i(mem_wd_i), .wreg_i(mem_wreg_i), .wdata_i(mem_wdata_i), 
@@ -185,15 +238,41 @@ module MipsCPU(
 				.wd_o(mem_wd_o), .wreg_o(mem_wreg_o), .wdata_o(mem_wdata_o),
 				.whilo_o(mem_whilo_o), .hi_o(mem_hi_o), .lo_o(mem_lo_o),
 				.mem_data_o(ram_data_o), .mem_ce_o(ram_ce_o), .mem_sel_o(ram_sel_o),
-				.mem_addr_o(ram_addr_o), .mem_we_o(ram_we_o));
+				.mem_addr_o(ram_addr_o), .mem_we_o(ram_we_o),
+				.cp0_reg_we_i(mem_cp0_reg_data_i),
+				.cp0_reg_write_addr_i(mem_cp0_reg_write_addr_i),
+				.cp0_reg_data_i(mem_cp0_reg_we_i),
+				.cp0_reg_data_o(mem_cp0_reg_data_o),
+				.cp0_reg_write_addr_o(mem_cp0_reg_write_addr_o),
+				.cp0_reg_we_o(mem_cp0_reg_we_o));
 				
 	MEM_WB mem_wb0(.clk(clk), .rst(rst),
 						.mem_wd(mem_wd_o), .mem_wreg(mem_wreg_o),	.mem_wdata(mem_wdata_o),
 						.mem_whilo(mem_whilo_o), .mem_hi(mem_hi_o), .mem_lo(mem_lo_o),
 						.wb_wd(wb_wd_i), .wb_wreg(wb_wreg_i), .wb_wdata(wb_wdata_i),
-						.wb_whilo(wb_whilo_i), .wb_hi(wb_hi_i), .wb_lo(wb_lo_i));
+						.wb_whilo(wb_whilo_i), .wb_hi(wb_hi_i), .wb_lo(wb_lo_i),
+						.mem_cp0_reg_data(mem_cp0_reg_data_o),
+						.mem_cp0_reg_write_addr(mem_cp0_reg_write_addr_o),
+						.mem_cp0_reg_we(mem_cp0_reg_we_o),
+						.wb_cp0_reg_we(ex_wb_cp0_reg_data),
+						.wb_cp0_reg_write_addr(ex_wb_cp0_reg_write_addr),
+						.wb_cp0_reg_data(ex_wb_cp0_reg_we));
 						
 	HILO hilo0(.clk(clk), .rst(rst), .we(wb_whilo_i),
 				  .hi_i(wb_hi_i), .lo_i(wb_lo_i), .hi_o(ex_hi_i), .lo_o(ex_lo_i));
+	CP0 cp0(.clk(clk), .rst(rst), .we_i(ex_wb_cp0_reg_we), 
+				.waddr_i(ex_wb_cp0_reg_write_addr), 
+				.raddr_i(ex_cp0_reg_read_addr_o),
+				.wdata_i(ex_wb_cp0_reg_data),
+				.int_i(cp0_int_i),
+				.data_o(cp0_data_o),
+				.status_o(cp0_status_o),
+				.count_o(cp0_count_o),
+				.compare_o(cp0_compare_o),
+				.cause_o(cp0_cause_o),
+				.epc_o(cp0_epc_o),
+				.config_o(cp0_config_o),
+				.prid_o(cp0_prid_o),
+				.timer_int_o(cp0_timer_int_o));
 	
 endmodule

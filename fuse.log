@@ -1,32 +1,34 @@
-Running: F:\Xilinx\13.1\ISE_DS\ISE\bin\nt\unwrapped\fuse.exe -intstyle ise -incremental -lib unisims_ver -lib unimacro_ver -lib xilinxcorelib_ver -lib secureip -o C:/MipsCPU/MipsCPU_SOPC_tb_isim_beh.exe -prj C:/MipsCPU/MipsCPU_SOPC_tb_beh.prj work.MipsCPU_SOPC_tb work.glbl 
-ISim O.40d (signature 0x79f3f3a8)
+Running: C:\Xilinx\ISE_DS\ISE\bin\nt64\unwrapped\fuse.exe -intstyle ise -incremental -lib unisims_ver -lib unimacro_ver -lib xilinxcorelib_ver -lib secureip -o D:/MipsCPU/MipsCPU_SOPC_tb_isim_beh.exe -prj D:/MipsCPU/MipsCPU_SOPC_tb_beh.prj MipsCPU_SOPC_tb work.glbl 
+ISim O.40d (signature 0xc4ca3437)
 Number of CPUs detected in this system: 4
 Turning on mult-threading, number of parallel sub-compilation jobs: 8 
 Determining compilation order of HDL files
-Analyzing Verilog file \"C:/MipsCPU/REG.v\" into library work
-Analyzing Verilog file \"C:/MipsCPU/PC.v\" into library work
-Analyzing Verilog file \"C:/MipsCPU/MEM_WB.v\" into library work
-Analyzing Verilog file \"C:/MipsCPU/MEM.v\" into library work
-Analyzing Verilog file \"C:/MipsCPU/IF_ID.v\" into library work
-Analyzing Verilog file \"C:/MipsCPU/ID_EX.v\" into library work
-Analyzing Verilog file \"C:/MipsCPU/ID.v\" into library work
-Analyzing Verilog file \"C:/MipsCPU/HILO.v\" into library work
-Analyzing Verilog file \"C:/MipsCPU/EX_MEM.v\" into library work
-Analyzing Verilog file \"C:/MipsCPU/EX.v\" into library work
-Analyzing Verilog file \"C:/MipsCPU/MipsCPU.v\" into library work
-Analyzing Verilog file \"C:/MipsCPU/Inst_ROM.v\" into library work
-Analyzing Verilog file \"C:/MipsCPU/DATA_RAM.v\" into library work
-Analyzing Verilog file \"C:/MipsCPU/MipsCPU_SOPC.v\" into library work
-Analyzing Verilog file \"C:/MipsCPU/MipsCPU_SOPC_tb.v\" into library work
-Analyzing Verilog file \"F:/Xilinx/13.1/ISE_DS/ISE//verilog/src/glbl.v\" into library work
+Analyzing Verilog file \"D:/MipsCPU/REG.v\" into library work
+Analyzing Verilog file \"D:/MipsCPU/PC.v\" into library work
+Analyzing Verilog file \"D:/MipsCPU/MEM_WB.v\" into library work
+Analyzing Verilog file \"D:/MipsCPU/MEM.v\" into library work
+Analyzing Verilog file \"D:/MipsCPU/IF_ID.v\" into library work
+Analyzing Verilog file \"D:/MipsCPU/ID_EX.v\" into library work
+Analyzing Verilog file \"D:/MipsCPU/ID.v\" into library work
+Analyzing Verilog file \"D:/MipsCPU/HILO.v\" into library work
+Analyzing Verilog file \"D:/MipsCPU/EX_MEM.v\" into library work
+Analyzing Verilog file \"D:/MipsCPU/EX.v\" into library work
+Analyzing Verilog file \"D:/MipsCPU/MipsCPU.v\" into library work
+Analyzing Verilog file \"D:/MipsCPU/Inst_ROM.v\" into library work
+Analyzing Verilog file \"D:/MipsCPU/DATA_RAM.v\" into library work
+Analyzing Verilog file \"D:/MipsCPU/MipsCPU_SOPC.v\" into library work
+Analyzing Verilog file \"D:/MipsCPU/MipsCPU_SOPC_tb.v\" into library work
+Analyzing Verilog file \"C:/Xilinx/ISE_DS/ISE//verilog/src/glbl.v\" into library work
 Starting static elaboration
-WARNING:HDLCompiler:189 - "C:/MipsCPU/MipsCPU.v" Line 172: Size mismatch in connection of port <aluop_o>. Formal port size is 6-bit while actual signal size is 8-bit.
-WARNING:HDLCompiler:189 - "C:/MipsCPU/MipsCPU.v" Line 176: Size mismatch in connection of port <ex_aluop>. Formal port size is 6-bit while actual signal size is 8-bit.
-WARNING:HDLCompiler:189 - "C:/MipsCPU/MipsCPU.v" Line 179: Size mismatch in connection of port <mem_aluop>. Formal port size is 6-bit while actual signal size is 8-bit.
-WARNING:HDLCompiler:189 - "C:/MipsCPU/MipsCPU.v" Line 184: Size mismatch in connection of port <aluop_i>. Formal port size is 6-bit while actual signal size is 8-bit.
+WARNING:HDLCompiler:1016 - "D:/MipsCPU/MipsCPU.v" Line 162: Port mem_cp0_reg_we is not connected to this instance
+WARNING:HDLCompiler:1016 - "D:/MipsCPU/MipsCPU.v" Line 174: Port ex_cp0_reg_we is not connected to this instance
+WARNING:HDLCompiler:1016 - "D:/MipsCPU/MipsCPU.v" Line 182: Port cp0_reg_we_i is not connected to this instance
+WARNING:HDLCompiler:1016 - "D:/MipsCPU/MipsCPU.v" Line 190: Port mem_cp0_reg_we is not connected to this instance
+WARNING:HDLCompiler:189 - "D:/MipsCPU/MipsCPU.v" Line 172: Size mismatch in connection of port <aluop_o>. Formal port size is 6-bit while actual signal size is 8-bit.
+WARNING:HDLCompiler:189 - "D:/MipsCPU/MipsCPU.v" Line 176: Size mismatch in connection of port <ex_aluop>. Formal port size is 6-bit while actual signal size is 8-bit.
+WARNING:HDLCompiler:189 - "D:/MipsCPU/MipsCPU.v" Line 179: Size mismatch in connection of port <mem_aluop>. Formal port size is 6-bit while actual signal size is 8-bit.
+WARNING:HDLCompiler:189 - "D:/MipsCPU/MipsCPU.v" Line 184: Size mismatch in connection of port <aluop_i>. Formal port size is 6-bit while actual signal size is 8-bit.
 Completed static elaboration
-Fuse Memory Usage: 153996 KB
-Fuse CPU Usage: 140 ms
 Compiling module PC
 Compiling module IF_ID
 Compiling module ID
@@ -44,8 +46,9 @@ Compiling module MipsCPU_SOPC
 Compiling module MipsCPU_SOPC_tb
 Compiling module glbl
 Time Resolution for simulation is 1ps.
-Waiting for 7 sub-compilation(s) to finish...
+Waiting for 9 sub-compilation(s) to finish...
+WARNING:Simulator - Unable to copy libPortabilityNOSH.dll to the simulation executable directory: boost::filesystem::copy_file: 系统找不到指定的路径。, "isim\MipsCPU_SOPC_tb_isim_beh.exe.sim\libPortability.dll".
 Compiled 16 Verilog Units
-Built simulation executable C:/MipsCPU/MipsCPU_SOPC_tb_isim_beh.exe
-Fuse Memory Usage: 162588 KB
-Fuse CPU Usage: 281 ms
+Built simulation executable D:/MipsCPU/MipsCPU_SOPC_tb_isim_beh.exe
+Fuse Memory Usage: 18712 KB
+Fuse CPU Usage: 374 ms

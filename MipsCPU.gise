@@ -39,8 +39,9 @@
     <file xil_pn:branch="Implementation" xil_pn:fileType="FILE_XST_REPORT" xil_pn:name="MipsCPU_SOPC.syr"/>
     <file xil_pn:branch="Implementation" xil_pn:fileType="FILE_XST" xil_pn:name="MipsCPU_SOPC.xst"/>
     <file xil_pn:fileType="FILE_HTML" xil_pn:name="MipsCPU_SOPC_envsettings.html"/>
+    <file xil_pn:branch="Implementation" xil_pn:fileType="FILE_XST_PROJECT" xil_pn:name="MipsCPU_SOPC_stx_beh.prj"/>
     <file xil_pn:fileType="FILE_HTML" xil_pn:name="MipsCPU_SOPC_summary.html"/>
-    <file xil_pn:fileType="FILE_XST_PROJECT" xil_pn:name="MipsCPU_SOPC_tb_beh.prj"/>
+    <file xil_pn:branch="Implementation" xil_pn:fileType="FILE_XST_PROJECT" xil_pn:name="MipsCPU_SOPC_tb_beh.prj"/>
     <file xil_pn:branch="BehavioralSim" xil_pn:fileType="FILE_ISIM_EXE" xil_pn:name="MipsCPU_SOPC_tb_isim_beh.exe"/>
     <file xil_pn:fileType="FILE_ISIM_MISC" xil_pn:name="MipsCPU_SOPC_tb_isim_beh.wdb"/>
     <file xil_pn:branch="Implementation" xil_pn:fileType="FILE_XST_PROJECT" xil_pn:name="MipsCPU_SOPC_tb_stx_beh.prj"/>
@@ -63,9 +64,14 @@
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
     </transform>
-    <transform xil_pn:end_ts="1468213073" xil_pn:in_ck="-7063554766766406370" xil_pn:name="TRAN_copyAbstractToPostAbstractSimulation" xil_pn:start_ts="1468213073">
+    <transform xil_pn:end_ts="1468401640" xil_pn:in_ck="-9030256655341627675" xil_pn:name="TRAN_copyAbstractToPostAbstractSimulation" xil_pn:start_ts="1468401640">
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
+      <status xil_pn:value="OutOfDateForInputs"/>
+      <status xil_pn:value="OutOfDateForOutputs"/>
+      <status xil_pn:value="InputChanged"/>
+      <status xil_pn:value="OutputChanged"/>
+      <outfile xil_pn:name="CP0.v"/>
       <outfile xil_pn:name="DATA_RAM.v"/>
       <outfile xil_pn:name="EX.v"/>
       <outfile xil_pn:name="EX_MEM.v"/>
@@ -86,55 +92,47 @@
     <transform xil_pn:end_ts="1468213073" xil_pn:name="TRAN_xawsToSimhdl" xil_pn:prop_ck="6822392281619436481" xil_pn:start_ts="1468213073">
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
+      <status xil_pn:value="OutOfDateForProperties"/>
     </transform>
     <transform xil_pn:end_ts="1468213073" xil_pn:name="TRAN_schematicsToHdlSim" xil_pn:prop_ck="8499711684150988159" xil_pn:start_ts="1468213073">
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
+      <status xil_pn:value="OutOfDateForProperties"/>
     </transform>
     <transform xil_pn:end_ts="1468213073" xil_pn:name="TRAN_regenerateCoresSim" xil_pn:prop_ck="3349094298005987289" xil_pn:start_ts="1468213073">
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
     </transform>
-    <transform xil_pn:end_ts="1468213073" xil_pn:in_ck="-7063554766766406370" xil_pn:name="TRAN_copyPostAbstractToPreSimulation" xil_pn:start_ts="1468213073">
+    <transform xil_pn:end_ts="1468396311" xil_pn:in_ck="-6622522152981146846" xil_pn:name="TRAN_copyPostAbstractToPreSimulation" xil_pn:start_ts="1468396311">
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
-      <outfile xil_pn:name="DATA_RAM.v"/>
-      <outfile xil_pn:name="EX.v"/>
-      <outfile xil_pn:name="EX_MEM.v"/>
-      <outfile xil_pn:name="HILO.v"/>
-      <outfile xil_pn:name="ID.v"/>
-      <outfile xil_pn:name="ID_EX.v"/>
-      <outfile xil_pn:name="IF_ID.v"/>
-      <outfile xil_pn:name="Inst_ROM.v"/>
-      <outfile xil_pn:name="MEM.v"/>
-      <outfile xil_pn:name="MEM_WB.v"/>
-      <outfile xil_pn:name="MipsCPU.v"/>
-      <outfile xil_pn:name="MipsCPU_SOPC.v"/>
-      <outfile xil_pn:name="MipsCPU_SOPC_tb.v"/>
-      <outfile xil_pn:name="PC.v"/>
-      <outfile xil_pn:name="REG.v"/>
-      <outfile xil_pn:name="defines.v"/>
-    </transform>
-    <transform xil_pn:end_ts="1468213076" xil_pn:in_ck="-7063554766766406370" xil_pn:name="TRAN_ISimulateBehavioralModelRunFuse" xil_pn:prop_ck="4745626436347396865" xil_pn:start_ts="1468213073">
-      <status xil_pn:value="SuccessfullyRun"/>
-      <status xil_pn:value="ReadyToRun"/>
+      <status xil_pn:value="OutOfDateForInputs"/>
+      <status xil_pn:value="OutOfDateForPredecessor"/>
       <status xil_pn:value="OutOfDateForOutputs"/>
-      <status xil_pn:value="OutputChanged"/>
-      <outfile xil_pn:name="MipsCPU_SOPC_tb_beh.prj"/>
-      <outfile xil_pn:name="MipsCPU_SOPC_tb_isim_beh.exe"/>
-      <outfile xil_pn:name="fuse.log"/>
-      <outfile xil_pn:name="isim"/>
-      <outfile xil_pn:name="isim.log"/>
-      <outfile xil_pn:name="xilinxsim.ini"/>
+      <status xil_pn:value="InputAdded"/>
+      <status xil_pn:value="InputChanged"/>
+      <status xil_pn:value="InputRemoved"/>
+      <status xil_pn:value="OutputRemoved"/>
     </transform>
-    <transform xil_pn:end_ts="1468213076" xil_pn:in_ck="6499763462873207289" xil_pn:name="TRAN_ISimulateBehavioralModel" xil_pn:prop_ck="3350687398381704292" xil_pn:start_ts="1468213076">
+    <transform xil_pn:end_ts="1468396320" xil_pn:in_ck="-6622522152981146846" xil_pn:name="TRAN_ISimulateBehavioralModelRunFuse" xil_pn:prop_ck="4745626436347396865" xil_pn:start_ts="1468396311">
       <status xil_pn:value="SuccessfullyRun"/>
-      <status xil_pn:value="ReadyToRun"/>
+      <status xil_pn:value="NotReadyToRun"/>
+      <status xil_pn:value="OutOfDateForInputs"/>
+      <status xil_pn:value="OutOfDateForPredecessor"/>
       <status xil_pn:value="OutOfDateForOutputs"/>
+      <status xil_pn:value="InputRemoved"/>
       <status xil_pn:value="OutputChanged"/>
-      <outfile xil_pn:name="MipsCPU_SOPC_tb_isim_beh.wdb"/>
-      <outfile xil_pn:name="isim.cmd"/>
-      <outfile xil_pn:name="isim.log"/>
+      <status xil_pn:value="OutputRemoved"/>
+    </transform>
+    <transform xil_pn:end_ts="1468396320" xil_pn:in_ck="6499763462873207289" xil_pn:name="TRAN_ISimulateBehavioralModel" xil_pn:prop_ck="3350687398381704292" xil_pn:start_ts="1468396320">
+      <status xil_pn:value="SuccessfullyRun"/>
+      <status xil_pn:value="NotReadyToRun"/>
+      <status xil_pn:value="OutOfDateForInputs"/>
+      <status xil_pn:value="OutOfDateForPredecessor"/>
+      <status xil_pn:value="OutOfDateForOutputs"/>
+      <status xil_pn:value="InputRemoved"/>
+      <status xil_pn:value="OutputChanged"/>
+      <status xil_pn:value="OutputRemoved"/>
     </transform>
     <transform xil_pn:end_ts="1468213009" xil_pn:name="TRAN_copyInitialToXSTAbstractSynthesis" xil_pn:start_ts="1468213009">
       <status xil_pn:value="SuccessfullyRun"/>
@@ -164,20 +162,21 @@
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
     </transform>
-    <transform xil_pn:end_ts="1468213023" xil_pn:in_ck="8462864999389148784" xil_pn:name="TRANEXT_xstsynthesize_spartan6" xil_pn:prop_ck="214054119688805256" xil_pn:start_ts="1468213009">
-      <status xil_pn:value="SuccessfullyRun"/>
+    <transform xil_pn:end_ts="1468411908" xil_pn:in_ck="-7802168898585756329" xil_pn:name="TRANEXT_xstsynthesize_spartan6" xil_pn:prop_ck="214054119688805256" xil_pn:start_ts="1468411901">
+      <status xil_pn:value="FailedRun"/>
       <status xil_pn:value="WarningsGenerated"/>
       <status xil_pn:value="ReadyToRun"/>
-      <status xil_pn:value="OutOfDateForOutputs"/>
-      <status xil_pn:value="OutputRemoved"/>
+      <status xil_pn:value="OutOfDateForInputs"/>
+      <status xil_pn:value="InputChanged"/>
       <outfile xil_pn:name="MipsCPU.ngr"/>
       <outfile xil_pn:name="MipsCPU_SOPC.lso"/>
       <outfile xil_pn:name="MipsCPU_SOPC.ngc"/>
       <outfile xil_pn:name="MipsCPU_SOPC.ngr"/>
       <outfile xil_pn:name="MipsCPU_SOPC.prj"/>
-      <outfile xil_pn:name="MipsCPU_SOPC.stx"/>
       <outfile xil_pn:name="MipsCPU_SOPC.syr"/>
       <outfile xil_pn:name="MipsCPU_SOPC.xst"/>
+      <outfile xil_pn:name="MipsCPU_SOPC_stx_beh.prj"/>
+      <outfile xil_pn:name="MipsCPU_SOPC_tb_beh.prj"/>
       <outfile xil_pn:name="MipsCPU_SOPC_tb_stx_beh.prj"/>
       <outfile xil_pn:name="MipsCPU_SOPC_xst.xrpt"/>
       <outfile xil_pn:name="_xmsgs/xst.xmsgs"/>

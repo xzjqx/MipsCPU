@@ -62,6 +62,7 @@ module ID(
 	wire [4:0] op1 = inst_i[10:6];
 	wire [5:0] op2 = inst_i[5:0];
 	wire [4:0] op3 = inst_i[20:16];
+	wire [4:0] op4 = inst_i[25:21];
 	
 	wire [31:0] pc_plus_4;
 	assign pc_plus_4 = pc_i + 4;
@@ -286,6 +287,36 @@ module ID(
 						end
 						default: begin
 							//TODO: ∆‰À˚special code÷∏¡Ó
+						end
+					endcase
+				end
+				`COP0_OP: begin
+					case(op4)
+						`CP0_OP4:begin
+							case(op2)
+								`ERET_OP2:begin
+									
+								end
+								`TLBWI_OP2:begin
+									
+								end
+							endcase
+						end
+						`MFC0_OP4:begin
+							alusel_o = `Move;
+							aluop_o = `MFC0;
+							wd_o = inst_i[20:16];
+							wreg_o = 1'b1;
+							reg1_read_o = 1'b0;
+							reg2_read_o = 1'b0;
+						end
+						`MTC0_OP4:begin
+							alusel_o = `Privilege;
+							aluop_o = `MTC0;
+							wreg_o = 1'b0;
+							reg1_read_o = 1'b1;
+							reg1_addr_o = inst_i[20:16];
+							reg2_read_o = 1'b0;
 						end
 					endcase
 				end

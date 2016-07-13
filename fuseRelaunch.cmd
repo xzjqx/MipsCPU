@@ -1,1 +1,1 @@
--intstyle "ise" -incremental -lib "unisims_ver" -lib "unimacro_ver" -lib "xilinxcorelib_ver" -lib "secureip" -o "C:/MipsCPU/MipsCPU_SOPC_tb_isim_beh.exe" -prj "C:/MipsCPU/MipsCPU_SOPC_tb_beh.prj" "work.MipsCPU_SOPC_tb" "work.glbl" 
+-intstyle "ise" -incremental -lib "unisims_ver" -lib "unimacro_ver" -lib "xilinxcorelib_ver" -lib "secureip" -o "D:/MipsCPU/MipsCPU_SOPC_tb_isim_beh.exe" -prj "D:/MipsCPU/MipsCPU_SOPC_tb_beh.prj" "MipsCPU_SOPC_tb" "work.glbl" 

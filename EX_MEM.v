@@ -34,6 +34,15 @@ module EX_MEM(
 	input wire [5:0] ex_aluop,
 	input wire [31:0] ex_mem_addr,
 	input wire [31:0] ex_reg2,
+
+	//新增CP0相关输入输出接口
+	input wire ex_cp0_reg_we,
+	input wire [4:0] ex_cp0_reg_write_addr,
+	input wire [31:0] ex_cp0_reg_data,
+
+	output reg mem_cp0_reg_we,
+	output reg [4:0] mem_cp0_reg_write_addr,
+	output reg [31:0] mem_cp0_reg_data,
 	
 	output reg [4:0] mem_wd,
 	output reg mem_wreg,
@@ -59,6 +68,9 @@ module EX_MEM(
 			mem_aluop <= 6'b0;
 			mem_mem_addr <= 32'b0;
 			mem_reg2 <= 32'b0;
+			mem_cp0_reg_we <= 1'b0;
+			mem_cp0_reg_write_addr <= 5'b0;
+			mem_cp0_reg_data <= 32'b0;
 		end
 		else begin
 			mem_wd <= ex_wd;
@@ -70,6 +82,9 @@ module EX_MEM(
 			mem_aluop <= ex_aluop;
 			mem_mem_addr <= ex_mem_addr;
 			mem_reg2 <= ex_reg2;
+			mem_cp0_reg_we <= ex_cp0_reg_we;
+			mem_cp0_reg_write_addr <= ex_cp0_reg_write_addr;
+			mem_cp0_reg_data <= ex_cp0_reg_data;
 		end
 	end
 	

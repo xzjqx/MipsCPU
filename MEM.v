@@ -35,6 +35,14 @@ module MEM(
 	input wire [31:0] reg2_i,
 	
 	input wire [31:0] mem_data_i,
+	//CP0引入的新的接口
+	input wire cp0_reg_we_i,
+	input wire [4:0] cp0_reg_write_addr_i,
+	input wire [31:0] cp0_reg_data_i,
+
+	output reg cp0_reg_we_o,
+	output reg [4:0] cp0_reg_write_addr_o,
+	output reg [31:0] cp0_reg_data_o,
 	
 	output reg [4:0] wd_o,
 	output reg wreg_o,
@@ -56,47 +64,50 @@ module MEM(
 
 	always @(*) begin
 		if (rst == 1'b1) begin
-			wd_o <= 5'b0;
-			wreg_o <= 1'b0;
-			wdata_o <= 32'b0;
-			whilo_o <= 1'b0;
-			hi_o <= 32'b0;
-			lo_o <= 32'b0;
-			mem_data_o <= 32'b0;
-			mem_ce_o <= 1'b0;
-			mem_sel_o <= 1'b0;
-			mem_addr_o <= 32'b0;
-			mem_we <= 1'b0;
+			wd_o = 5'b0;
+			wreg_o = 1'b0;
+			wdata_o = 32'b0;
+			whilo_o = 1'b0;
+			hi_o = 32'b0;
+			lo_o = 32'b0;
+			mem_data_o = 32'b0;
+			mem_ce_o = 1'b0;
+			mem_sel_o = 1'b0;
+			mem_addr_o = 32'b0;
+			mem_we = 1'b0;
 		end
 		else begin
-			wd_o <= wd_i;
-			wreg_o <= wreg_i;
-			wdata_o <= wdata_i;
-			whilo_o <= whilo_i;
-			hi_o <= hi_i;
-			lo_o <= lo_i;
-			mem_ce_o <= 1'b0;
-			mem_sel_o <= 1'b1;
-			mem_addr_o <= 32'b0;
-			mem_we <= 1'b0;
+			wd_o = wd_i;
+			wreg_o = wreg_i;
+			wdata_o = wdata_i;
+			whilo_o = whilo_i;
+			hi_o = hi_i;
+			lo_o = lo_i;
+			mem_ce_o = 1'b0;
+			mem_sel_o = 1'b1;
+			mem_addr_o = 32'b0;
+			mem_we = 1'b0;
+			cp0_reg_we_o = cp0_reg_we_i;
+			cp0_reg_write_addr_o = cp0_reg_we_o;
+			cp0_reg_data_o = cp0_reg_data_i;
 			case(aluop_i)
 				6'b100011: begin	//LW
-					mem_addr_o <= mem_addr_i;
-					mem_we <= 1'b0;
-					wdata_o <= mem_data_i;
-					mem_ce_o <= 1'b1;
+					mem_addr_o = mem_addr_i;
+					mem_we = 1'b0;
+					wdata_o = mem_data_i;
+					mem_ce_o = 1'b1;
 				end
 				6'b101011: begin	//SW
-					mem_addr_o <= mem_addr_i;
-					mem_we <= 1'b1;
-					mem_data_o <= reg2_i;
-					mem_ce_o <= 1'b1;
+					mem_addr_o = mem_addr_i;
+					mem_we = 1'b1;
+					mem_data_o = reg2_i;
+					mem_ce_o = 1'b1;
 				end
 				6'b100000: begin	//LB
-					mem_addr_o <= mem_addr_i;
-					mem_we <= 1'b0;
-					mem_ce_o <= 1'b1;
-					wdata_o <= {{24{mem_data_i[31]}}, mem_data_i[31:24]};
+					mem_addr_o = mem_addr_i;
+					mem_we = 1'b0;
+					mem_ce_o = 1'b1;
+					wdata_o = {{24{mem_data_i[31]}}, mem_data_i[31:24]};
 					/*case(mem_addr_i[1:0])
 						2'b11: begin
 							wdata_o <= {{24{mem_data_i[31]}}, mem_data_i[31:24]};
@@ -120,10 +131,10 @@ module MEM(
 					endcase*/
 				end
 				6'b100100: begin	//LBU
-					mem_addr_o <= mem_addr_i;
-					mem_we <= 1'b0;
-					mem_ce_o <= 1'b1;
-					wdata_o <= {24'b0, mem_data_i[31:24]};
+					mem_addr_o = mem_addr_i;
+					mem_we = 1'b0;
+					mem_ce_o = 1'b1;
+					wdata_o = {24'b0, mem_data_i[31:24]};
 					/*case(mem_addr_i[1:0])
 						2'b11: begin
 							wdata_o <= {24'b0, mem_data_i[31:24]};
@@ -147,11 +158,11 @@ module MEM(
 					endcase*/
 				end
 				6'b101000: begin	//SB
-					mem_addr_o <= mem_addr_i;
-					mem_we <= 1'b1;
-					mem_data_o <= {reg2_i[7:0], reg2_i[7:0], reg2_i[7:0], reg2_i[7:0]};
-					mem_ce_o <= 1'b1;
-					mem_sel_o <= 1'b0;
+					mem_addr_o = mem_addr_i;
+					mem_we = 1'b1;
+					mem_data_o = {reg2_i[7:0], reg2_i[7:0], reg2_i[7:0], reg2_i[7:0]};
+					mem_ce_o = 1'b1;
+					mem_sel_o = 1'b0;
 					/*case(mem_addr_i[1:0])
 						2'b11: begin
 							mem_sel_o <= 4'b1000;
@@ -171,10 +182,10 @@ module MEM(
 					endcase*/
 				end
 				6'b100101: begin	//LHU
-					mem_addr_o <= mem_addr_i;
-					mem_we <= 1'b0;
-					mem_ce_o <= 1'b1;
-					wdata_o <= {16'b0, mem_data_i[31:16]};
+					mem_addr_o = mem_addr_i;
+					mem_we = 1'b0;
+					mem_ce_o = 1'b1;
+					wdata_o = {16'b0, mem_data_i[31:16]};
 					/*case(mem_addr_i[1:0])
 						2'b10: begin
 							wdata_o <= {16'b0, mem_data_i[31:16]};

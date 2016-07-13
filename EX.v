@@ -21,39 +21,57 @@
 `include "defines.v"
 
 module EX(
-	input wire rst,
-	input wire [2:0] alusel_i,
-	input wire [7:0] aluop_i,
-	input wire [31:0] reg1_i,
-	input wire [31:0] reg2_i,
-	input wire [4:0] wd_i,
-	input wire wreg_i,
+	input wire 			rst,
+	input wire [2:0] 	alusel_i,
+	input wire [7:0] 	aluop_i,
+	input wire [31:0] 	reg1_i,
+	input wire [31:0] 	reg2_i,
+	input wire [4:0] 	wd_i,
+	input wire 			wreg_i,
 	
-	input wire [31:0] hi_i,
-	inout wire [31:0] lo_i,
-	input wire mem_whilo_i,
-	input wire [31:0] mem_hi_i,
-	input wire [31:0] mem_lo_i,
-	input wire wb_whilo_i,
-	input wire [31:0] wb_hi_i,
-	input wire [31:0] wb_lo_i,
+	input wire [31:0] 	hi_i,
+	inout wire [31:0] 	lo_i,
+	input wire 			mem_whilo_i,
+	input wire [31:0] 	mem_hi_i,
+	input wire [31:0] 	mem_lo_i,
+	input wire 			wb_whilo_i,
+	input wire [31:0] 	wb_hi_i,
+	input wire [31:0] 	wb_lo_i,
 	
-	input wire is_in_delayslot_i,
-	input wire [31:0] link_address_i,
+	input wire 			is_in_delayslot_i,
+	input wire [31:0] 	link_address_i,
 	
-	input wire [31:0] inst_i,
+	input wire [31:0] 	inst_i,
+	//è®¿å­˜é˜¶æ®µæ˜¯å¦è®¿é—®CP0ï¼Œç”¨æ¥æ£€æµ‹æ•°æ®ç›¸å…³
+	input wire		  	mem_cp0_reg_we,
+	input wire [4:0]	mem_cp0_write_addr,
+	input wire [31:0]	mem_cp0_data,	
+	//å›å†™é˜¶æ®µçš„æŒ‡ä»¤æ˜¯å¦è¦å†™CP0ï¼Œç”¨æ¥æ£€æµ‹æ•°æ®ç›¸å…³
+  	input wire			wb_cp0_reg_we,
+	input wire[4:0]     wb_cp0_reg_write_addr,
+	input wire[31:0] 	wb_cp0_reg_data,
+
+	//ä¸CP0ç›¸è¿ï¼Œè¯»å–å…¶ä¸­CP0å¯„å­˜å™¨çš„å€¼
+	input wire[31:0]    cp0_reg_data_i,
+	output reg[4:0]     cp0_reg_read_addr_o,
+
+	//å‘ä¸‹ä¸€æµæ°´çº§ä¼ é€’ï¼Œç”¨äºå†™CP0ä¸­çš„å¯„å­˜å™¨
+	output reg          cp0_reg_we_o,
+	output reg[4:0]     cp0_reg_write_addr_o,
+	output reg[31:0] 	cp0_reg_data_o,
+
+	output reg [4:0] 	wd_o,
+	output reg 			wreg_o,
+	output reg [31:0] 	wdata_o,
 	
-	output reg [4:0] wd_o,
-	output reg wreg_o,
-	output reg [31:0] wdata_o,
+	output reg 			whilo_o,
+	output reg [31:0] 	hi_o,
+	output reg [31:0] 	lo_o,
 	
-	output reg whilo_o,
-	output reg [31:0] hi_o,
-	output reg [31:0] lo_o,
-	
-	output wire [5:0] aluop_o,
-	output wire [31:0] mem_addr_o,
-	output wire [31:0] reg2_o
+	output wire [5:0] 	aluop_o,
+	output wire [31:0] 	mem_addr_o,
+	output wire [31:0] 	reg2_o
+
     );
 	 
 	assign aluop_o = inst_i[31:26];
@@ -66,38 +84,38 @@ module EX(
 	reg [31:0] HI;
 	reg [31:0] LO;
 	
-	//ËãÊıÖ¸ÁîÒı½øµÄĞÂ±äÁ¿
-	wire ov_sum; 			// ±£´æÒç³öÇé¿ö
-	wire reg1_eq_reg2; 		//reg1 ÊÇ·ñµÈÓÚ reg2
-	wire reg1_lt_reg2;		//reg1 ÊÇ·ñĞ¡ÓÚ reg2
-	reg [31:0] arithmeticres;	//±£´æËãÊõÔËËãµÄ½á¹û
-	wire [31:0] reg2_i_mux;		//reg2 µÄ²¹Âë
-	wire [31:0] reg1_i_nout;		//reg1 È¡·´
-	wire [31:0] result_sum;		//±£´æ¼Ó·¨½á¹û
-	wire [31:0] opdata1_mult;	//³Ë·¨²Ù×÷ÖĞµÄ±»³ËÊı
-	wire [31:0] opdata2_mult;	//³Ë·¨²Ù×÷ÖĞµÄ³ËÊı
-	wire [63:0] hilo_temp;		//ÁÙÊ±±£´æ³Ë·¨½á¹û
-	reg [63:0] mulres;			//±£´æ³Ë·¨½á¹û
+	//Ã‹Ã£ÃŠÃ½Ã–Â¸ÃÃ®Ã’Ã½Â½Ã¸ÂµÃ„ÃÃ‚Â±Ã¤ÃÂ¿
+	wire ov_sum; 			// Â±Â£Â´Ã¦Ã’Ã§Â³Ã¶Ã‡Ã©Â¿Ã¶
+	wire reg1_eq_reg2; 		//reg1 ÃŠÃ‡Â·Ã±ÂµÃˆÃ“Ãš reg2
+	wire reg1_lt_reg2;		//reg1 ÃŠÃ‡Â·Ã±ÃÂ¡Ã“Ãš reg2
+	reg [31:0] arithmeticres;	//Â±Â£Â´Ã¦Ã‹Ã£ÃŠÃµÃ”Ã‹Ã‹Ã£ÂµÃ„Â½Ã¡Â¹Ã»
+	wire [31:0] reg2_i_mux;		//reg2 ÂµÃ„Â²Â¹Ã‚Ã«
+	wire [31:0] reg1_i_nout;		//reg1 ÃˆÂ¡Â·Â´
+	wire [31:0] result_sum;		//Â±Â£Â´Ã¦Â¼Ã“Â·Â¨Â½Ã¡Â¹Ã»
+	wire [31:0] opdata1_mult;	//Â³Ã‹Â·Â¨Â²Ã™Ã—Ã·Ã–ÃÂµÃ„Â±Â»Â³Ã‹ÃŠÃ½
+	wire [31:0] opdata2_mult;	//Â³Ã‹Â·Â¨Â²Ã™Ã—Ã·Ã–ÃÂµÃ„Â³Ã‹ÃŠÃ½
+	wire [63:0] hilo_temp;		//ÃÃ™ÃŠÂ±Â±Â£Â´Ã¦Â³Ã‹Â·Â¨Â½Ã¡Â¹Ã»
+	reg [63:0] mulres;			//Â±Â£Â´Ã¦Â³Ã‹Â·Â¨Â½Ã¡Â¹Ã»
 
-	//************************µÚÒ»¶Î£º ¼ÆËãÒÔÏÂ5¸ö±äÁ¿µÄÖµ***********//
-	//1. ¼ÆËã reg2_i µÄ²¹Âë
+	//************************ÂµÃšÃ’Â»Â¶ÃÂ£Âº Â¼Ã†Ã‹Ã£Ã’Ã”ÃÃ‚5Â¸Ã¶Â±Ã¤ÃÂ¿ÂµÃ„Ã–Âµ***********//
+	//1. Â¼Ã†Ã‹Ã£ reg2_i ÂµÃ„Â²Â¹Ã‚Ã«
 	assign reg2_i_mux = ((aluop_i== `SUBU)||
 						 (aluop_i== `SLT) ||
 						 (aluop_i == `SLTU))? (~reg2_i)+1 : reg2_i;
-	//2. Íê³ÉºÍ²¹Âë¼Ó·¨--¼Ó·¨£¬¼õ·¨£¬±È½Ï
+	//2. ÃÃªÂ³Ã‰ÂºÃÂ²Â¹Ã‚Ã«Â¼Ã“Â·Â¨--Â¼Ã“Â·Â¨Â£Â¬Â¼ÃµÂ·Â¨Â£Â¬Â±ÃˆÂ½Ã
 	assign result_sum = reg1_i + reg2_i_mux;
-	//3. ¼ÆËãÊÇ·ñÒç³ö£¬subÖ¸ÁîÖ´ĞĞÊ±ĞèÒªÅĞ¶Ï
+	//3. Â¼Ã†Ã‹Ã£ÃŠÃ‡Â·Ã±Ã’Ã§Â³Ã¶Â£Â¬subÃ–Â¸ÃÃ®Ã–Â´ÃÃÃŠÂ±ÃÃ¨Ã’ÂªÃ…ÃÂ¶Ã
 	assign ov_sum = ((!reg1_i[31] && !reg2_i_mux[31]) && result_sum[31]) || ((reg1_i[31] && reg2_i_mux[31]) && (!result_sum[31]));
-	//4. ¼ÆËãreg1ÊÇ·ñĞ¡ÓÚreg2£¬·ÖÁ½ÖÖÇé¿ö
+	//4. Â¼Ã†Ã‹Ã£reg1ÃŠÃ‡Â·Ã±ÃÂ¡Ã“Ãšreg2Â£Â¬Â·Ã–ÃÂ½Ã–Ã–Ã‡Ã©Â¿Ã¶
 	assign reg1_lt_reg2 = (aluop_i == `SLT) ? 
 						  ((reg1_i[31] && !reg2_i[31]) || 
 						  (!reg1_i[31] && !reg2_i[31] && result_sum[31]) ||
 						  ( reg1_i[31] &&  reg2_i[31] && result_sum[31])) 
 						  : (reg1_i < reg2_i);
-	//5. ¼ÆËãreg1_i_not
+	//5. Â¼Ã†Ã‹Ã£reg1_i_not
 	assign reg1_i_nout = ~reg1_i ;
 
-	//************************µÚ¶ş¶Î£º¸ù¾İ²»Í¬µÄËãÊõÔËËãÀàĞÍ£¬¸øarithmeticres±äÁ¿¸³Öµ***********//
+	//************************ÂµÃšÂ¶Ã¾Â¶ÃÂ£ÂºÂ¸Ã¹Â¾ÃÂ²Â»ÃÂ¬ÂµÃ„Ã‹Ã£ÃŠÃµÃ”Ã‹Ã‹Ã£Ã€Ã ÃÃÂ£Â¬Â¸Ã¸arithmeticresÂ±Ã¤ÃÂ¿Â¸Â³Ã–Âµ***********//
 	always @(*) begin
 		if (rst == 1'b1) begin
 			// reset
@@ -118,15 +136,15 @@ module EX(
 		end
 	end
 
-	//*********************µÚÈı¶Î£º ½øĞĞ³Ë·¨ÔËËã **********************//
-	//1. È¡µÃ³Ë·¨ÔËËã±»³ËÊı
+	//*********************ÂµÃšÃˆÃ½Â¶ÃÂ£Âº Â½Ã¸ÃÃÂ³Ã‹Â·Â¨Ã”Ã‹Ã‹Ã£ **********************//
+	//1. ÃˆÂ¡ÂµÃƒÂ³Ã‹Â·Â¨Ã”Ã‹Ã‹Ã£Â±Â»Â³Ã‹ÃŠÃ½
 	assign opdata1_mult = ((aluop_i == `MULT) && (reg1_i[31]==1'b1)) ? (~reg1_i +1) : reg1_i;
 	assign opdata2_mult = ((aluop_i == `MULT) && (reg2_i[31]==1'b1)) ? (~reg2_i +1) : reg2_i;
 
-	//2. µÃµ½ÁÙÊ±³Ë·¨½á¹û
+	//2. ÂµÃƒÂµÂ½ÃÃ™ÃŠÂ±Â³Ã‹Â·Â¨Â½Ã¡Â¹Ã»
 	assign hilo_temp = opdata1_mult * opdata2_mult;
 
-	//3. ¶Ô½á¹û½øĞĞĞŞ¶©
+	//3. Â¶Ã”Â½Ã¡Â¹Ã»Â½Ã¸ÃÃÃÃÂ¶Â©
 	always @(*) begin
 		if (rst == 1'b1 ) begin
 			// reset
@@ -181,6 +199,17 @@ module EX(
 			case(aluop_i)
 				`MFHI: moveout = HI;
 				`MFLO: moveout = LO;
+				`MFC0: begin
+					cp0_reg_read_addr_o = inst_i[15:11];
+					moveout = cp0_reg_data_i;
+					if(mem_cp0_reg_we == 1'b1 && wb_cp0_reg_write_addr == inst_i[15:11])//å­˜åœ¨æ•°æ®ç›¸å…³
+					begin
+						moveout = mem_cp0_data;
+					end else if (wb_cp0_reg_we == 1'b1 && wb_cp0_reg_write_addr == inst_i[15:11])
+					begin
+						moveout = wb_cp0_reg_data;
+					end
+				end
 				default: moveout = 32'b0;
 			endcase
 		end
@@ -229,6 +258,24 @@ module EX(
 			endcase
 		end
 	end
+
+	always @(*) begin
+		if (rst == 1'b1) begin
+			// reset
+			cp0_reg_write_addr_o = 5'b00000;
+			cp0_reg_we_o = 1'b0;
+			cp0_reg_data_o = 32'b0;
+		end
+		else if (aluop_i == `MTC0) begin
+			cp0_reg_write_addr_o = inst_i[15:11];
+			cp0_reg_we_o = 1'b1;
+			cp0_reg_data_o = reg1_i;
+		end else begin
+			cp0_reg_write_addr_o = 5'b00000;
+			cp0_reg_we_o = 1'b0;
+			cp0_reg_data_o = 32'b0;			
+		end
+	end
 	
 	always @(*) begin			
 		wd_o = wd_i;
@@ -247,8 +294,9 @@ module EX(
 				`Shift:
 					wdata_o = shiftout;
 				`Arithmetic:
-					wdata_o = arithmeticres; //³ı³Ë·¨ÒÔÍâµÄ¼òµ¥Ö¸Áî
-				//TODO: ÆäËûÀàĞÍÖ¸ÁîµÄĞ´£¨Ä¿µÄ£©¼Ä´æÆ÷¸³Öµ
+					wdata_o = arithmeticres; //Â³Ã½Â³Ã‹Â·Â¨Ã’Ã”ÃÃ¢ÂµÃ„Â¼Ã²ÂµÂ¥Ã–Â¸ÃÃ®
+				//TODO: Ã†Ã¤Ã‹Ã»Ã€Ã ÃÃÃ–Â¸ÃÃ®ÂµÃ„ÃÂ´Â£Â¨Ã„Â¿ÂµÃ„Â£Â©Â¼Ã„Â´Ã¦Ã†Ã·Â¸Â³Ã–Âµ
+
 				default:
 					wdata_o = 32'b0;
 			endcase

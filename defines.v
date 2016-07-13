@@ -25,6 +25,7 @@
 `define HalfSize 16
 `define ByteSize 8
 
+//**************alusel*******//
 `define Arithmetic 3'b000
 `define Branch_Jump 3'b001
 `define Mem 3'b010
@@ -34,6 +35,7 @@
 `define Trap 3'b110
 `define Privilege 3'b111
 
+//*************aluop*******************//
 `define ADDIU 8'b00000000
 `define ADDU 8'b00000001
 `define SLT 8'b00000010
@@ -83,17 +85,31 @@
 `define TLBWI 8'b00101110
 
 //**************31:26 OP********//
-`define SPECIAL_OP 	6'b000000 
+`define SPECIAL_OP 		6'b000000 
 `define ADDIU_OP		6'b001001 
 `define SLTI_OP 		6'b001010
 `define SLTIU_OP 		6'b001011
-
+`define COP0_OP			6'b010000 
 
 //************5:0 op2*********//
 `define ADDU_OP2 		6'b100001
-`define SLT_OP2		6'b101010
+`define SLT_OP2			6'b101010
 `define SLTU_OP2 		6'b101011
 `define SUBU_OP2		6'b100011 
 `define MULT_OP2		6'b011000 
-
 `define AND_OP2 		6'b100100
+`define ERET_OP2		6'b011000 
+`define TLBWI_OP2	 	6'b000010 
+
+//************25:21 op4************//
+`define CP0_OP4		5'b10000
+`define MFC0_OP4		5'b00000 
+`define MTC0_OP4		5'b00100 
+//************CP0内的寄存�*********//
+`define COUNT_CP0		5'b01001
+`define COMPARE_CP0		5'b01011 
+`define STATUS_CP0		5'b01100 
+`define CAUSE_CP0		5'b01101 
+`define EPC_CP0			5'b01110 
+`define PRID_CP0		5'b01111 
+`define CONFIG_CP0		5'b10000 
