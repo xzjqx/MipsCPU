@@ -1,0 +1,20 @@
+[Inputs]
+clk
+rst
+mem_wreg
+mem_whilo
+=mem_wd[4:0]=
+=mem_wdata[31:0]=
+=mem_hi[31:0]=
+=mem_lo[31:0]=
+[Outputs]
+wb_wreg
+wb_whilo
+=wb_wd[4:0]=
+=wb_wdata[31:0]=
+=wb_hi[31:0]=
+=wb_lo[31:0]=
+[BiDir]
+[ATTRIBUTES]
+VeriModel MEM_WB
+

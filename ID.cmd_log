@@ -1,0 +1,2 @@
+vhdtdtfi -lib work C:/MipsCPU/ID.v -lang verilog -prj MipsCPU -o ID.spl -module ID -template F:/Xilinx/13.1/ISE_DS/ISE//data/splveri.tft -deleteonerror 
+spl2sym -intstyle ise -family spartan6 ID.spl C:/MipsCPU/ID.sym 

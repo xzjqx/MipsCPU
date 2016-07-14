@@ -18,3 +18,15 @@ xst -intstyle ise -ifn "C:/MipsCPU/MipsCPU.xst" -ofn "C:/MipsCPU/MipsCPU.syr"
 xst -intstyle ise -ifn "C:/MipsCPU/MipsCPU.xst" -ofn "C:/MipsCPU/MipsCPU.syr" 
 xst -intstyle ise -ifn "C:/MipsCPU/MipsCPU.xst" -ofn "C:/MipsCPU/MipsCPU.syr" 
 xst -intstyle ise -ifn "C:/MipsCPU/MipsCPU.xst" -ofn "C:/MipsCPU/MipsCPU.syr" 
+xst -intstyle ise -ifn "C:/MipsCPU/MipsCPU.xst" -ofn "C:/MipsCPU/MipsCPU.syr" 
+xst -intstyle ise -ifn "C:/MipsCPU/MipsCPU.xst" -ofn "C:/MipsCPU/MipsCPU.syr" 
+xst -intstyle ise -ifn "C:/MipsCPU/MipsCPU.xst" -ofn "C:/MipsCPU/MipsCPU.syr" 
+sch2sym -intstyle ise -family spartan6 -refsym MipsCPU C:/MipsCPU/MipsCPU.sch C:/MipsCPU/MipsCPU.sym 
+xst -intstyle ise -ifn "C:/MipsCPU/MipsCPU.xst" -ofn "C:/MipsCPU/MipsCPU.syr" 
+xst -intstyle ise -ifn "C:/MipsCPU/MipsCPU.xst" -ofn "C:/MipsCPU/MipsCPU.syr" 
+xst -intstyle ise -ifn "C:/MipsCPU/MipsCPU.xst" -ofn "C:/MipsCPU/MipsCPU.syr" 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -uc MipsCPU.ucf -p xc6slx16-csg324-3 MipsCPU.ngc MipsCPU.ngd  
+map -intstyle ise -p xc6slx16-csg324-3 -w -logic_opt off -ol high -t 1 -xt 0 -register_duplication off -r 4 -global_opt off -mt off -ir off -pr off -lc off -power off -o MipsCPU_map.ncd MipsCPU.ngd MipsCPU.pcf 
+xst -intstyle ise -ifn "C:/MipsCPU/MipsCPU.xst" -ofn "C:/MipsCPU/MipsCPU.syr" 
+xst -intstyle ise -ifn "C:/MipsCPU/MipsCPU.xst" -ofn "C:/MipsCPU/MipsCPU.syr" 
+xst -intstyle ise -ifn "C:/MipsCPU/MipsCPU.xst" -ofn "C:/MipsCPU/MipsCPU.syr" 

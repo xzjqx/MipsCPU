@@ -87,7 +87,7 @@ module EX(
 	//2. 完成和补码加法--加法，减法，比较
 	assign result_sum = reg1_i + reg2_i_mux;
 	//3. 计算是否溢出，sub指令执行时需要判断
-	assign ov_sum = ((!reg1_i[31] && !reg2_i_mux[31]) && result_sum[31]) || ((reg1_i[31] && reg2_i_mux[31]) && (!result_sum[31]));
+	//assign ov_sum = ((!reg1_i[31] && !reg2_i_mux[31]) && result_sum[31]) || ((reg1_i[31] && reg2_i_mux[31]) && (!result_sum[31]));
 	//4. 计算reg1是否小于reg2，分两种情况
 	assign reg1_lt_reg2 = (aluop_i == `SLT) ? 
 						  ((reg1_i[31] && !reg2_i[31]) || 
@@ -95,7 +95,7 @@ module EX(
 						  ( reg1_i[31] &&  reg2_i[31] && result_sum[31])) 
 						  : (reg1_i < reg2_i);
 	//5. 计算reg1_i_not
-	assign reg1_i_nout = ~reg1_i ;
+	//assign reg1_i_nout = ~reg1_i ;
 
 	//************************第二段：根据不同的算术运算类型，给arithmeticres变量赋值***********//
 	always @(*) begin

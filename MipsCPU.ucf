@@ -1,0 +1,2 @@
+NET "clk_init" LOC = U26;
+NET "rst_init" LOC = T1;

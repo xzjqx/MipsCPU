@@ -1,0 +1,12 @@
+
+
+
+// Instantiate the module
+Inst_ROM instance_name (
+    .ce(ce), 
+    .addr(addr), 
+    .inst(inst), 
+    .pc_o(pc_o)
+    );
+
+

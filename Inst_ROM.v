@@ -21,7 +21,8 @@
 module Inst_ROM(
 	input wire ce,
 	input wire [31:0] addr,
-	output reg [31:0] inst
+	output reg [31:0] inst,
+	output reg [31:0] pc_o
     );
 
 	reg [31:0] inst_mem[0:1000];	//ROM大小，1000条指令
@@ -29,10 +30,11 @@ module Inst_ROM(
 	initial $readmemh ("inst_rom.data", inst_mem);
 	
 	always @(*) begin
+		pc_o = addr;
 		if (ce == 1'b0)
-			inst <= 32'b0;
+			inst = 32'b0;
 		else
-			inst <= inst_mem[addr[11:2]];
+			inst = inst_mem[addr[11:2]];
 	end
 
 endmodule

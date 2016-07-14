@@ -1,0 +1,276 @@
+////////////////////////////////////////////////////////////////////////////////
+// Copyright (c) 1995-2011 Xilinx, Inc.  All rights reserved.
+////////////////////////////////////////////////////////////////////////////////
+//   ____  ____ 
+//  /   /\/   / 
+// /___/  \  /    Vendor: Xilinx 
+// \   \   \/     Version : 13.1
+//  \   \         Application : sch2hdl
+//  /   /         Filename : MipsCPU.vf
+// /___/   /\     Timestamp : 07/13/2016 21:20:40
+// \   \  /  \ 
+//  \___\/\___\ 
+//
+//Command: sch2hdl -intstyle ise -family spartan6 -verilog C:/MipsCPU/MipsCPU.vf -w C:/MipsCPU/MipsCPU.sch
+//Design Name: MipsCPU
+//Device: spartan6
+//Purpose:
+//    This verilog netlist is translated from an ECS schematic.It can be 
+//    synthesized and simulated, but it should not be modified. 
+//
+`timescale 1ns / 1ps
+
+module MipsCPU(clk_init, 
+               rst_init);
+
+    input clk_init;
+    input rst_init;
+   
+   wire XLXN_45;
+   wire [31:0] XLXN_46;
+   wire [31:0] XLXN_49;
+   wire [31:0] XLXN_50;
+   wire XLXN_51;
+   wire XLXN_52;
+   wire XLXN_53;
+   wire XLXN_54;
+   wire XLXN_55;
+   wire XLXN_56;
+   wire [2:0] XLXN_57;
+   wire [7:0] XLXN_58;
+   wire [31:0] XLXN_61;
+   wire [31:0] XLXN_62;
+   wire [4:0] XLXN_64;
+   wire [4:0] XLXN_66;
+   wire [31:0] XLXN_68;
+   wire [31:0] XLXN_69;
+   wire [31:0] XLXN_70;
+   wire [31:0] XLXN_71;
+   wire XLXN_72;
+   wire XLXN_73;
+   wire XLXN_74;
+   wire [2:0] XLXN_75;
+   wire [7:0] XLXN_76;
+   wire [31:0] XLXN_77;
+   wire [31:0] XLXN_78;
+   wire [4:0] XLXN_79;
+   wire [31:0] XLXN_80;
+   wire [31:0] XLXN_81;
+   wire XLXN_83;
+   wire [4:0] XLXN_84;
+   wire [31:0] XLXN_85;
+   wire [31:0] XLXN_86;
+   wire [31:0] XLXN_87;
+   wire [5:0] XLXN_88;
+   wire [31:0] XLXN_89;
+   wire [31:0] XLXN_90;
+   wire XLXN_91;
+   wire XLXN_92;
+   wire [4:0] XLXN_93;
+   wire [31:0] XLXN_94;
+   wire [31:0] XLXN_95;
+   wire [31:0] XLXN_96;
+   wire [5:0] XLXN_97;
+   wire [31:0] XLXN_98;
+   wire [31:0] XLXN_99;
+   wire [31:0] XLXN_100;
+   wire XLXN_103;
+   wire XLXN_104;
+   wire XLXN_105;
+   wire [4:0] XLXN_106;
+   wire [31:0] XLXN_107;
+   wire [31:0] XLXN_108;
+   wire [31:0] XLXN_109;
+   wire [31:0] XLXN_110;
+   wire [31:0] XLXN_111;
+   wire XLXN_113;
+   wire [4:0] XLXN_115;
+   wire [31:0] XLXN_116;
+   wire [31:0] XLXN_117;
+   wire [31:0] XLXN_118;
+   wire [31:0] XLXN_119;
+   wire [31:0] XLXN_120;
+   wire XLXN_121;
+   wire XLXN_123;
+   wire XLXN_141;
+   wire XLXN_142;
+   wire [31:0] XLXN_144;
+   wire [4:0] XLXN_145;
+   wire [31:0] XLXN_150;
+   wire [31:0] XLXN_151;
+   
+   PC  XLXI_12 (.branch_flag_i(XLXN_55), 
+               .branch_target_address_i(XLXN_144[31:0]), 
+               .clk(clk_init), 
+               .rst(rst_init), 
+               .ce(XLXN_45), 
+               .pc(XLXN_46[31:0]));
+   Inst_ROM  XLXI_13 (.addr(XLXN_46[31:0]), 
+                     .ce(XLXN_45), 
+                     .inst(XLXN_150[31:0]), 
+                     .pc_o(XLXN_151[31:0]));
+   IF_ID  XLXI_14 (.clk(clk_init), 
+                  .if_inst(XLXN_150[31:0]), 
+                  .if_pc(XLXN_151[31:0]), 
+                  .rst(rst_init), 
+                  .id_inst(XLXN_50[31:0]), 
+                  .id_pc(XLXN_49[31:0]));
+   ID  XLXI_15 (.ex_wdata_i(XLXN_85[31:0]), 
+               .ex_wd_i(XLXN_84[4:0]), 
+               .ex_wreg_i(XLXN_121), 
+               .inst_i(XLXN_50[31:0]), 
+               .is_in_delayslot_i(XLXN_74), 
+               .mem_wdata_i(XLXN_107[31:0]), 
+               .mem_wd_i(XLXN_106[4:0]), 
+               .mem_wreg_i(XLXN_123), 
+               .pc_i(XLXN_49[31:0]), 
+               .reg1_data_i(XLXN_70[31:0]), 
+               .reg2_data_i(XLXN_71[31:0]), 
+               .rst(rst_init), 
+               .aluop_o(XLXN_58[7:0]), 
+               .alusel_o(XLXN_57[2:0]), 
+               .branch_flag_o(XLXN_55), 
+               .branch_target_address_o(XLXN_144[31:0]), 
+               .inst_o(XLXN_69[31:0]), 
+               .is_in_delayslot_o(XLXN_54), 
+               .link_addr_o(XLXN_68[31:0]), 
+               .next_inst_in_delayslot_o(XLXN_56), 
+               .reg1_addr_o(XLXN_64[4:0]), 
+               .reg1_o(XLXN_61[31:0]), 
+               .reg1_read_o(XLXN_51), 
+               .reg2_addr_o(XLXN_145[4:0]), 
+               .reg2_o(XLXN_62[31:0]), 
+               .reg2_read_o(XLXN_52), 
+               .wd_o(XLXN_66[4:0]), 
+               .wreg_o(XLXN_53));
+   ID_EX  XLXI_16 (.clk(clk_init), 
+                  .id_aluop(XLXN_58[7:0]), 
+                  .id_alusel(XLXN_57[2:0]), 
+                  .id_inst(XLXN_69[31:0]), 
+                  .id_is_in_delayslot(XLXN_54), 
+                  .id_link_address(XLXN_68[31:0]), 
+                  .id_reg1(XLXN_61[31:0]), 
+                  .id_reg2(XLXN_62[31:0]), 
+                  .id_wd(XLXN_66[4:0]), 
+                  .id_wreg(XLXN_53), 
+                  .next_inst_in_delayslot_i(XLXN_56), 
+                  .rst(rst_init), 
+                  .ex_aluop(XLXN_76[7:0]), 
+                  .ex_alusel(XLXN_75[2:0]), 
+                  .ex_inst(XLXN_81[31:0]), 
+                  .ex_is_in_delayslot(XLXN_73), 
+                  .ex_link_address(XLXN_80[31:0]), 
+                  .ex_reg1(XLXN_77[31:0]), 
+                  .ex_reg2(XLXN_78[31:0]), 
+                  .ex_wd(XLXN_79[4:0]), 
+                  .ex_wreg(XLXN_72), 
+                  .is_in_delayslot_o(XLXN_74));
+   EX  XLXI_17 (.aluop_i(XLXN_76[7:0]), 
+               .alusel_i(XLXN_75[2:0]), 
+               .hi_i(XLXN_120[31:0]), 
+               .inst_i(XLXN_81[31:0]), 
+               .is_in_delayslot_i(XLXN_73), 
+               .link_address_i(XLXN_80[31:0]), 
+               .mem_hi_i(XLXN_108[31:0]), 
+               .mem_lo_i(XLXN_109[31:0]), 
+               .mem_whilo_i(XLXN_141), 
+               .reg1_i(XLXN_77[31:0]), 
+               .reg2_i(XLXN_78[31:0]), 
+               .rst(rst_init), 
+               .wb_hi_i(XLXN_117[31:0]), 
+               .wb_lo_i(XLXN_118[31:0]), 
+               .wb_whilo_i(XLXN_142), 
+               .wd_i(XLXN_79[4:0]), 
+               .wreg_i(XLXN_72), 
+               .aluop_o(XLXN_88[5:0]), 
+               .hi_o(XLXN_86[31:0]), 
+               .lo_o(XLXN_87[31:0]), 
+               .mem_addr_o(XLXN_89[31:0]), 
+               .reg2_o(XLXN_90[31:0]), 
+               .wdata_o(XLXN_85[31:0]), 
+               .wd_o(XLXN_84[4:0]), 
+               .whilo_o(XLXN_83), 
+               .wreg_o(XLXN_121), 
+               .lo_i(XLXN_119[31:0]));
+   EX_MEM  XLXI_18 (.clk(clk_init), 
+                   .ex_aluop(XLXN_88[5:0]), 
+                   .ex_hi(XLXN_86[31:0]), 
+                   .ex_lo(XLXN_87[31:0]), 
+                   .ex_mem_addr(XLXN_89[31:0]), 
+                   .ex_reg2(XLXN_90[31:0]), 
+                   .ex_wd(XLXN_84[4:0]), 
+                   .ex_wdata(XLXN_85[31:0]), 
+                   .ex_whilo(XLXN_83), 
+                   .ex_wreg(XLXN_121), 
+                   .rst(rst_init), 
+                   .mem_aluop(XLXN_97[5:0]), 
+                   .mem_hi(XLXN_95[31:0]), 
+                   .mem_lo(XLXN_96[31:0]), 
+                   .mem_mem_addr(XLXN_98[31:0]), 
+                   .mem_reg2(XLXN_99[31:0]), 
+                   .mem_wd(XLXN_93[4:0]), 
+                   .mem_wdata(XLXN_94[31:0]), 
+                   .mem_whilo(XLXN_92), 
+                   .mem_wreg(XLXN_91));
+   MEM  XLXI_19 (.aluop_i(XLXN_97[5:0]), 
+                .hi_i(XLXN_95[31:0]), 
+                .lo_i(XLXN_96[31:0]), 
+                .mem_addr_i(XLXN_98[31:0]), 
+                .mem_data_i(XLXN_100[31:0]), 
+                .reg2_i(XLXN_99[31:0]), 
+                .rst(rst_init), 
+                .wdata_i(XLXN_94[31:0]), 
+                .wd_i(XLXN_93[4:0]), 
+                .whilo_i(XLXN_92), 
+                .wreg_i(XLXN_91), 
+                .hi_o(XLXN_108[31:0]), 
+                .lo_o(XLXN_109[31:0]), 
+                .mem_addr_o(XLXN_111[31:0]), 
+                .mem_ce_o(XLXN_103), 
+                .mem_data_o(XLXN_110[31:0]), 
+                .mem_sel_o(XLXN_104), 
+                .mem_we_o(XLXN_105), 
+                .wdata_o(XLXN_107[31:0]), 
+                .wd_o(XLXN_106[4:0]), 
+                .whilo_o(XLXN_141), 
+                .wreg_o(XLXN_123));
+   MEM_WB  XLXI_20 (.clk(clk_init), 
+                   .mem_hi(XLXN_108[31:0]), 
+                   .mem_lo(XLXN_109[31:0]), 
+                   .mem_wd(XLXN_106[4:0]), 
+                   .mem_wdata(XLXN_107[31:0]), 
+                   .mem_whilo(XLXN_141), 
+                   .mem_wreg(XLXN_123), 
+                   .rst(rst_init), 
+                   .wb_hi(XLXN_117[31:0]), 
+                   .wb_lo(XLXN_118[31:0]), 
+                   .wb_wd(XLXN_115[4:0]), 
+                   .wb_wdata(XLXN_116[31:0]), 
+                   .wb_whilo(XLXN_142), 
+                   .wb_wreg(XLXN_113));
+   HILO  XLXI_21 (.clk(clk_init), 
+                 .hi_i(XLXN_117[31:0]), 
+                 .lo_i(XLXN_118[31:0]), 
+                 .rst(rst_init), 
+                 .we(XLXN_142), 
+                 .hi_o(XLXN_120[31:0]), 
+                 .lo_o(XLXN_119[31:0]));
+   DATA_RAM  XLXI_22 (.addr(XLXN_111[31:0]), 
+                     .ce(XLXN_103), 
+                     .clk(clk_init), 
+                     .data_i(XLXN_110[31:0]), 
+                     .sel(XLXN_104), 
+                     .we(XLXN_105), 
+                     .data_o(XLXN_100[31:0]));
+   REG  XLXI_23 (.clk(clk_init), 
+                .raddr1(XLXN_64[4:0]), 
+                .raddr2(XLXN_145[4:0]), 
+                .re1(XLXN_51), 
+                .re2(XLXN_52), 
+                .rst(rst_init), 
+                .waddr(XLXN_115[4:0]), 
+                .wdata(XLXN_116[31:0]), 
+                .we(XLXN_113), 
+                .rdata1(XLXN_70[31:0]), 
+                .rdata2(XLXN_71[31:0]));
+endmodule

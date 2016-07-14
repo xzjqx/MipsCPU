@@ -1,0 +1,2 @@
+vhdtdtfi -lib work C:/MipsCPU/REG.v -lang verilog -prj MipsCPU -o REG.spl -module REG -template F:/Xilinx/13.1/ISE_DS/ISE//data/splveri.tft -deleteonerror 
+spl2sym -intstyle ise -family spartan6 REG.spl C:/MipsCPU/REG.sym 
