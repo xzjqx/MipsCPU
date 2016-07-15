@@ -1,0 +1,2 @@
+vhdtdtfi -lib work D:/MipsCPU/Inst_ROM.v -lang verilog -prj MipsCPU -o Inst_ROM.spl -module Inst_ROM -template C:/Xilinx/ISE_DS/ISE//data/splveri.tft -deleteonerror 
+spl2sym -intstyle ise -family spartan6 Inst_ROM.spl D:/MipsCPU/Inst_ROM.sym 

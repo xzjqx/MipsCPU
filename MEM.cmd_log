@@ -1,0 +1,2 @@
+vhdtdtfi -lib work D:/MipsCPU/MEM.v -lang verilog -prj MipsCPU -o MEM.spl -module MEM -template C:/Xilinx/ISE_DS/ISE//data/splveri.tft -deleteonerror 
+spl2sym -intstyle ise -family spartan6 MEM.spl D:/MipsCPU/MEM.sym 

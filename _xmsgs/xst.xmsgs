@@ -5,103 +5,55 @@
      behavior or data corruption.  It is strongly advised that
      users do not edit the contents of this file. -->
 <messages>
-<msg type="warning" file="HDLCompiler" num="568" delta="old" >"D:\MipsCPU\CP0.v" Line 48: Constant value is truncated to fit in &lt;<arg fmt="%d" index="1">8</arg>&gt; bits.
+<msg type="warning" file="HDLCompiler" num="1127" delta="new" >"D:\MipsCPU\EX.v" Line 108: Assignment to <arg fmt="%s" index="1">ov_sum</arg> ignored, since the identifier is never used
 </msg>
 
-<msg type="warning" file="HDLCompiler" num="1016" delta="old" >"D:\MipsCPU\MipsCPU.v" Line 199: Port <arg fmt="%s" index="1">mem_cp0_write_addr</arg> is not connected to this instance
+<msg type="warning" file="HDLCompiler" num="1127" delta="new" >"D:\MipsCPU\EX.v" Line 116: Assignment to <arg fmt="%s" index="1">reg1_i_nout</arg> ignored, since the identifier is never used
 </msg>
 
-<msg type="warning" file="HDLCompiler" num="1127" delta="old" >"D:\MipsCPU\EX.v" Line 108: Assignment to <arg fmt="%s" index="1">ov_sum</arg> ignored, since the identifier is never used
+<msg type="warning" file="HDLCompiler" num="1127" delta="new" >"D:\MipsCPU\MipsCPU.v" Line 270: Assignment to <arg fmt="%s" index="1">cp0_status_o</arg> ignored, since the identifier is never used
 </msg>
 
-<msg type="warning" file="HDLCompiler" num="1127" delta="old" >"D:\MipsCPU\EX.v" Line 116: Assignment to <arg fmt="%s" index="1">reg1_i_nout</arg> ignored, since the identifier is never used
+<msg type="warning" file="HDLCompiler" num="1127" delta="new" >"D:\MipsCPU\MipsCPU.v" Line 271: Assignment to <arg fmt="%s" index="1">cp0_count_o</arg> ignored, since the identifier is never used
 </msg>
 
-<msg type="warning" file="HDLCompiler" num="189" delta="old" >"D:\MipsCPU\MipsCPU.v" Line 209: Size mismatch in connection of port &lt;<arg fmt="%s" index="3">aluop_o</arg>&gt;. Formal port size is <arg fmt="%d" index="2">6</arg>-bit while actual signal size is <arg fmt="%d" index="1">8</arg>-bit.
+<msg type="warning" file="HDLCompiler" num="1127" delta="new" >"D:\MipsCPU\MipsCPU.v" Line 272: Assignment to <arg fmt="%s" index="1">cp0_compare_o</arg> ignored, since the identifier is never used
 </msg>
 
-<msg type="warning" file="HDLCompiler" num="189" delta="old" >"D:\MipsCPU\MipsCPU.v" Line 223: Size mismatch in connection of port &lt;<arg fmt="%s" index="3">ex_aluop</arg>&gt;. Formal port size is <arg fmt="%d" index="2">6</arg>-bit while actual signal size is <arg fmt="%d" index="1">8</arg>-bit.
+<msg type="warning" file="HDLCompiler" num="1127" delta="new" >"D:\MipsCPU\MipsCPU.v" Line 273: Assignment to <arg fmt="%s" index="1">cp0_cause_o</arg> ignored, since the identifier is never used
 </msg>
 
-<msg type="warning" file="HDLCompiler" num="189" delta="old" >"D:\MipsCPU\MipsCPU.v" Line 226: Size mismatch in connection of port &lt;<arg fmt="%s" index="3">mem_aluop</arg>&gt;. Formal port size is <arg fmt="%d" index="2">6</arg>-bit while actual signal size is <arg fmt="%d" index="1">8</arg>-bit.
+<msg type="warning" file="HDLCompiler" num="1127" delta="new" >"D:\MipsCPU\MipsCPU.v" Line 274: Assignment to <arg fmt="%s" index="1">cp0_epc_o</arg> ignored, since the identifier is never used
 </msg>
 
-<msg type="warning" file="HDLCompiler" num="189" delta="old" >"D:\MipsCPU\MipsCPU.v" Line 227: Size mismatch in connection of port &lt;<arg fmt="%s" index="3">ex_cp0_reg_we</arg>&gt;. Formal port size is <arg fmt="%d" index="2">1</arg>-bit while actual signal size is <arg fmt="%d" index="1">32</arg>-bit.
+<msg type="warning" file="HDLCompiler" num="1127" delta="new" >"D:\MipsCPU\MipsCPU.v" Line 275: Assignment to <arg fmt="%s" index="1">cp0_config_o</arg> ignored, since the identifier is never used
 </msg>
 
-<msg type="warning" file="HDLCompiler" num="189" delta="old" >"D:\MipsCPU\MipsCPU.v" Line 229: Size mismatch in connection of port &lt;<arg fmt="%s" index="3">ex_cp0_reg_data</arg>&gt;. Formal port size is <arg fmt="%d" index="2">32</arg>-bit while actual signal size is <arg fmt="%d" index="1">1</arg>-bit.
+<msg type="warning" file="HDLCompiler" num="1127" delta="new" >"D:\MipsCPU\MipsCPU.v" Line 276: Assignment to <arg fmt="%s" index="1">cp0_prid_o</arg> ignored, since the identifier is never used
 </msg>
 
-<msg type="warning" file="HDLCompiler" num="189" delta="old" >"D:\MipsCPU\MipsCPU.v" Line 230: Size mismatch in connection of port &lt;<arg fmt="%s" index="3">mem_cp0_reg_we</arg>&gt;. Formal port size is <arg fmt="%d" index="2">1</arg>-bit while actual signal size is <arg fmt="%d" index="1">32</arg>-bit.
+<msg type="warning" file="HDLCompiler" num="1127" delta="new" >"D:\MipsCPU\MipsCPU.v" Line 277: Assignment to <arg fmt="%s" index="1">cp0_timer_int_o</arg> ignored, since the identifier is never used
 </msg>
 
-<msg type="warning" file="HDLCompiler" num="189" delta="old" >"D:\MipsCPU\MipsCPU.v" Line 237: Size mismatch in connection of port &lt;<arg fmt="%s" index="3">aluop_i</arg>&gt;. Formal port size is <arg fmt="%d" index="2">6</arg>-bit while actual signal size is <arg fmt="%d" index="1">8</arg>-bit.
+<msg type="warning" file="HDLCompiler" num="634" delta="new" >"D:\MipsCPU\MipsCPU.v" Line 159: Net &lt;<arg fmt="%s" index="1">cp0_int_i[5]</arg>&gt; does not have a driver.
 </msg>
 
-<msg type="warning" file="HDLCompiler" num="189" delta="old" >"D:\MipsCPU\MipsCPU.v" Line 242: Size mismatch in connection of port &lt;<arg fmt="%s" index="3">cp0_reg_we_i</arg>&gt;. Formal port size is <arg fmt="%d" index="2">1</arg>-bit while actual signal size is <arg fmt="%d" index="1">32</arg>-bit.
+<msg type="warning" file="HDLCompiler" num="1670" delta="new" >"D:\MipsCPU\Inst_ROM.v" Line 29: Signal &lt;<arg fmt="%s" index="1">inst_mem</arg>&gt; in initial block is partially initialized.
 </msg>
 
-<msg type="warning" file="HDLCompiler" num="189" delta="old" >"D:\MipsCPU\MipsCPU.v" Line 244: Size mismatch in connection of port &lt;<arg fmt="%s" index="3">cp0_reg_data_i</arg>&gt;. Formal port size is <arg fmt="%d" index="2">32</arg>-bit while actual signal size is <arg fmt="%d" index="1">1</arg>-bit.
+<msg type="warning" file="Xst" num="2972" delta="new" >&quot;<arg fmt="%s" index="1">d:/mipscpu/mipscpu_sopc.v</arg>&quot; line <arg fmt="%d" index="2">37</arg>. All outputs of instance &lt;<arg fmt="%s" index="3">MipsCPU0</arg>&gt; of block &lt;<arg fmt="%s" index="4">MipsCPU</arg>&gt; are unconnected in block &lt;<arg fmt="%s" index="5">MipsCPU_SOPC</arg>&gt;. Underlying logic will be removed.
 </msg>
 
-<msg type="warning" file="HDLCompiler" num="189" delta="old" >"D:\MipsCPU\MipsCPU.v" Line 257: Size mismatch in connection of port &lt;<arg fmt="%s" index="3">wb_cp0_reg_we</arg>&gt;. Formal port size is <arg fmt="%d" index="2">1</arg>-bit while actual signal size is <arg fmt="%d" index="1">32</arg>-bit.
+<msg type="warning" file="Xst" num="2972" delta="new" >&quot;<arg fmt="%s" index="1">d:/mipscpu/mipscpu_sopc.v</arg>&quot; line <arg fmt="%d" index="2">52</arg>. All outputs of instance &lt;<arg fmt="%s" index="3">Inst_ROM0</arg>&gt; of block &lt;<arg fmt="%s" index="4">Inst_ROM</arg>&gt; are unconnected in block &lt;<arg fmt="%s" index="5">MipsCPU_SOPC</arg>&gt;. Underlying logic will be removed.
 </msg>
 
-<msg type="warning" file="HDLCompiler" num="189" delta="old" >"D:\MipsCPU\MipsCPU.v" Line 259: Size mismatch in connection of port &lt;<arg fmt="%s" index="3">wb_cp0_reg_data</arg>&gt;. Formal port size is <arg fmt="%d" index="2">32</arg>-bit while actual signal size is <arg fmt="%d" index="1">1</arg>-bit.
+<msg type="warning" file="Xst" num="2972" delta="new" >&quot;<arg fmt="%s" index="1">d:/mipscpu/mipscpu_sopc.v</arg>&quot; line <arg fmt="%d" index="2">58</arg>. All outputs of instance &lt;<arg fmt="%s" index="3">DATA_RAM0</arg>&gt; of block &lt;<arg fmt="%s" index="4">DATA_RAM</arg>&gt; are unconnected in block &lt;<arg fmt="%s" index="5">MipsCPU_SOPC</arg>&gt;. Underlying logic will be removed.
 </msg>
 
-<msg type="warning" file="HDLCompiler" num="189" delta="old" >"D:\MipsCPU\MipsCPU.v" Line 267: Size mismatch in connection of port &lt;<arg fmt="%s" index="3">int_i</arg>&gt;. Formal port size is <arg fmt="%d" index="2">6</arg>-bit while actual signal size is <arg fmt="%d" index="1">1</arg>-bit.
+<msg type="warning" file="Xst" num="647" delta="new" >Input &lt;<arg fmt="%s" index="1">inst_i&lt;25:16&gt;</arg>&gt; is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
 </msg>
 
-<msg type="warning" file="HDLCompiler" num="1127" delta="old" >"D:\MipsCPU\MipsCPU.v" Line 269: Assignment to <arg fmt="%s" index="1">cp0_status_o</arg> ignored, since the identifier is never used
-</msg>
-
-<msg type="warning" file="HDLCompiler" num="1127" delta="old" >"D:\MipsCPU\MipsCPU.v" Line 270: Assignment to <arg fmt="%s" index="1">cp0_count_o</arg> ignored, since the identifier is never used
-</msg>
-
-<msg type="warning" file="HDLCompiler" num="1127" delta="old" >"D:\MipsCPU\MipsCPU.v" Line 271: Assignment to <arg fmt="%s" index="1">cp0_compare_o</arg> ignored, since the identifier is never used
-</msg>
-
-<msg type="warning" file="HDLCompiler" num="1127" delta="old" >"D:\MipsCPU\MipsCPU.v" Line 272: Assignment to <arg fmt="%s" index="1">cp0_cause_o</arg> ignored, since the identifier is never used
-</msg>
-
-<msg type="warning" file="HDLCompiler" num="1127" delta="old" >"D:\MipsCPU\MipsCPU.v" Line 273: Assignment to <arg fmt="%s" index="1">cp0_epc_o</arg> ignored, since the identifier is never used
-</msg>
-
-<msg type="warning" file="HDLCompiler" num="1127" delta="old" >"D:\MipsCPU\MipsCPU.v" Line 274: Assignment to <arg fmt="%s" index="1">cp0_config_o</arg> ignored, since the identifier is never used
-</msg>
-
-<msg type="warning" file="HDLCompiler" num="1127" delta="old" >"D:\MipsCPU\MipsCPU.v" Line 275: Assignment to <arg fmt="%s" index="1">cp0_prid_o</arg> ignored, since the identifier is never used
-</msg>
-
-<msg type="warning" file="HDLCompiler" num="1127" delta="old" >"D:\MipsCPU\MipsCPU.v" Line 276: Assignment to <arg fmt="%s" index="1">cp0_timer_int_o</arg> ignored, since the identifier is never used
-</msg>
-
-<msg type="warning" file="HDLCompiler" num="634" delta="old" >"D:\MipsCPU\MipsCPU.v" Line 101: Net &lt;<arg fmt="%s" index="1">ex_mem_cp0_reg_we</arg>&gt; does not have a driver.
-</msg>
-
-<msg type="warning" file="HDLCompiler" num="634" delta="old" >"D:\MipsCPU\MipsCPU.v" Line 103: Net &lt;<arg fmt="%s" index="1">ex_mem_cp0_data[31]</arg>&gt; does not have a driver.
-</msg>
-
-<msg type="warning" file="HDLCompiler" num="634" delta="old" >"D:\MipsCPU\MipsCPU.v" Line 133: Net &lt;<arg fmt="%s" index="1">mem_cp0_reg_we_i</arg>&gt; does not have a driver.
-</msg>
-
-<msg type="error" file="HDLCompiler" num="1401" delta="old" >"D:\MipsCPU\MipsCPU.v" Line 221: Signal <arg fmt="%s" index="1">mem_cp0_reg_data_i[0]</arg> in unit <arg fmt="%s" index="2">MipsCPU</arg> is connected to following multiple drivers:
-</msg>
-
-<msg type="error" file="HDLCompiler" num="1379" delta="old" >"D:\MipsCPU\MipsCPU.v" Line 221: Driver <arg fmt="%d" index="1">0</arg>: <arg fmt="%s" index="2">ex_mem0/mem_cp0_reg_data[0] driven by output signal mem_cp0_reg_data[0] of instance Flip-flop</arg>
-</msg>
-
-<msg type="warning" file="HDLCompiler" num="634" delta="old" >"D:\MipsCPU\MipsCPU.v" Line 159: Net &lt;<arg fmt="%s" index="1">cp0_int_i</arg>&gt; does not have a driver.
-</msg>
-
-<msg type="warning" file="HDLCompiler" num="552" delta="old" >"D:\MipsCPU\MipsCPU.v" Line 199: Input port <arg fmt="%s" index="1">mem_cp0_write_addr[4]</arg> is not connected on this instance
-</msg>
-
-<msg type="warning" file="HDLCompiler" num="1499" delta="old" >"D:\MipsCPU\MipsCPU.v" Line 23: Empty module &lt;<arg fmt="%s" index="1">MipsCPU</arg>&gt; remains a black box.
-</msg>
-
-<msg type="warning" file="HDLCompiler" num="1670" delta="old" >"D:\MipsCPU\Inst_ROM.v" Line 29: Signal &lt;<arg fmt="%s" index="1">inst_mem</arg>&gt; in initial block is partially initialized.
+<msg type="warning" file="Xst" num="647" delta="new" >Input &lt;<arg fmt="%s" index="1">is_in_delayslot_i</arg>&gt; is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
 </msg>
 
 </messages>

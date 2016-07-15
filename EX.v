@@ -44,7 +44,7 @@ module EX(
 	input wire [31:0] 	inst_i,
 	//访存阶段是否访问CP0，用来检测数据相关
 	input wire		  	mem_cp0_reg_we,
-	input wire [4:0]	mem_cp0_write_addr,
+	input wire [4:0]	mem_cp0_reg_write_addr,
 	input wire [31:0]	mem_cp0_data,	
 	//回写阶段的指令是否要写CP0，用来检测数据相关
   	input wire			wb_cp0_reg_we,
@@ -202,7 +202,7 @@ module EX(
 				`MFC0: begin
 					cp0_reg_read_addr_o = inst_i[15:11];
 					moveout = cp0_reg_data_i;
-					if(mem_cp0_reg_we == 1'b1 && wb_cp0_reg_write_addr == inst_i[15:11])//存在数据相关
+					if(mem_cp0_reg_we == 1'b1 && mem_cp0_reg_write_addr == inst_i[15:11])//存在数据相关
 					begin
 						moveout = mem_cp0_data;
 					end else if (wb_cp0_reg_we == 1'b1 && wb_cp0_reg_write_addr == inst_i[15:11])

@@ -112,8 +112,8 @@ always @(*) begin
 			`PRID_CP0:begin
 				data_o <= prid_o;
 			end
-			`COUNT_CP0:begin
-				data_o <= count_o;
+			`CONFIG_CP0:begin
+				data_o <= config_o;
 			end
 		endcase
 	end//else

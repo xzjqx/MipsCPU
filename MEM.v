@@ -88,7 +88,7 @@ module MEM(
 			mem_addr_o = 32'b0;
 			mem_we = 1'b0;
 			cp0_reg_we_o = cp0_reg_we_i;
-			cp0_reg_write_addr_o = cp0_reg_we_o;
+			cp0_reg_write_addr_o = cp0_reg_write_addr_i;
 			cp0_reg_data_o = cp0_reg_data_i;
 			case(aluop_i)
 				6'b100011: begin	//LW

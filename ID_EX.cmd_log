@@ -1,0 +1,4 @@
+vhdtdtfi -lib work D:/MipsCPU/ID_EX.v -lang verilog -prj MipsCPU -o ID_EX.spl -module ID_EX -template C:/Xilinx/ISE_DS/ISE//data/splveri.tft -deleteonerror 
+spl2sym -intstyle ise -family spartan6 ID_EX.spl D:/MipsCPU/ID_EX.sym 
+vhdtdtfi -lib work D:/MipsCPU/ID_EX.v -lang verilog -prj MipsCPU -o ID_EX.spl -module ID_EX -template C:/Xilinx/ISE_DS/ISE//data/splveri.tft -deleteonerror 
+spl2sym -intstyle ise -family spartan6 ID_EX.spl D:/MipsCPU/ID_EX.sym 

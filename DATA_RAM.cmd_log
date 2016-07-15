@@ -1,0 +1,2 @@
+vhdtdtfi -lib work D:/MipsCPU/DATA_RAM.v -lang verilog -prj MipsCPU -o DATA_RAM.spl -module DATA_RAM -template C:/Xilinx/ISE_DS/ISE//data/splveri.tft -deleteonerror 
+spl2sym -intstyle ise -family spartan6 DATA_RAM.spl D:/MipsCPU/DATA_RAM.sym 

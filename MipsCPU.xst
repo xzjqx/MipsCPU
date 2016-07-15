@@ -1,10 +1,6 @@
-set -tmpdir "xst/projnav.tmp"
-set -xsthdpdir "xst"
-run
--ifn MipsCPU.prj
--ifmt mixed
--ofn MipsCPU
--ofmt NGC
+set -tmpdir "D:/MipsCPU/xst/projnav.tmp"
+set -xsthdpdir "D:/MipsCPU/xst"
+run -compileonly yes
 -p xc6slx16-3-csg324
 -top MipsCPU
 -opt_mode Speed
@@ -51,3 +47,5 @@ run
 -iob Auto
 -equivalent_register_removal YES
 -slice_utilization_ratio_maxmargin 5
+-ifn MipsCPU.prj
+-ifmt mixed

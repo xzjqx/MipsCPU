@@ -94,7 +94,7 @@ module MipsCPU(
 	wire [31:0] ex_link_address_i;
 	
 	wire [31:0] ex_inst_i;
-	wire [7:0] ex_aluop_o;
+	wire [5:0] ex_aluop_o;
 	wire [31:0] ex_mem_addr_o;
 	wire [31:0] ex_reg2_o;
 
@@ -126,7 +126,7 @@ module MipsCPU(
 	wire [31:0] mem_hi_o;
 	wire [31:0] mem_lo_o;
 	
-	wire [7:0] mem_aluop_i;
+	wire [5:0] mem_aluop_i;
 	wire [31:0] mem_addr_i;
 	wire [31:0] mem_reg2_i;
 
@@ -156,7 +156,7 @@ module MipsCPU(
 	wire [31:0]	cp0_config_o;
 	wire [31:0]	cp0_prid_o;
 	wire 		cp0_timer_int_o;
-	wire		cp0_int_i;
+	wire [5:0]	cp0_int_i;
 
 
 
@@ -213,6 +213,7 @@ module MipsCPU(
 			 .wb_cp0_reg_we(ex_wb_cp0_reg_we),
 			 .mem_cp0_data(ex_mem_cp0_data),
 			 .mem_cp0_reg_we(ex_mem_cp0_reg_we),
+			 .mem_cp0_reg_write_addr(ex_mem_cp0_write_addr),
 			 .cp0_reg_read_addr_o(ex_cp0_reg_read_addr_o),
 			 .cp0_reg_data_o(ex_cp0_reg_data_o),
 			 .cp0_reg_write_addr_o(ex_cp0_reg_write_addr_o),
@@ -224,10 +225,10 @@ module MipsCPU(
 						.mem_wd(mem_wd_i), .mem_wreg(mem_wreg_i),	.mem_wdata(mem_wdata_i),
 						.mem_whilo(mem_whilo_i), .mem_hi(mem_hi_i), .mem_lo(mem_lo_i),
 						.mem_aluop(mem_aluop_i), .mem_mem_addr(mem_addr_i), .mem_reg2(mem_reg2_i),
-						.ex_cp0_reg_we(ex_cp0_reg_data_o),
+						.ex_cp0_reg_we(ex_cp0_reg_we_o),
 						.ex_cp0_reg_write_addr(ex_cp0_reg_write_addr_o),
-						.ex_cp0_reg_data(ex_cp0_reg_we_o),
-						.mem_cp0_reg_we(mem_cp0_reg_data_i),
+						.ex_cp0_reg_data(ex_cp0_reg_data_o),
+						.mem_cp0_reg_we(mem_cp0_reg_we_i),
 						.mem_cp0_reg_write_addr(mem_cp0_reg_write_addr_i),
 						.mem_cp0_reg_data(mem_cp0_reg_data_i));
 
@@ -239,24 +240,24 @@ module MipsCPU(
 				.whilo_o(mem_whilo_o), .hi_o(mem_hi_o), .lo_o(mem_lo_o),
 				.mem_data_o(ram_data_o), .mem_ce_o(ram_ce_o), .mem_sel_o(ram_sel_o),
 				.mem_addr_o(ram_addr_o), .mem_we_o(ram_we_o),
-				.cp0_reg_we_i(mem_cp0_reg_data_i),
+				.cp0_reg_we_i(mem_cp0_reg_we_i),
 				.cp0_reg_write_addr_i(mem_cp0_reg_write_addr_i),
-				.cp0_reg_data_i(mem_cp0_reg_we_i),
-				.cp0_reg_data_o(mem_cp0_reg_data_o),
-				.cp0_reg_write_addr_o(mem_cp0_reg_write_addr_o),
-				.cp0_reg_we_o(mem_cp0_reg_we_o));
+				.cp0_reg_data_i(mem_cp0_reg_data_i),
+				.cp0_reg_data_o(ex_mem_cp0_data),
+				.cp0_reg_write_addr_o(ex_mem_cp0_write_addr),
+				.cp0_reg_we_o(ex_mem_cp0_reg_we));
 				
 	MEM_WB mem_wb0(.clk(clk), .rst(rst),
 						.mem_wd(mem_wd_o), .mem_wreg(mem_wreg_o),	.mem_wdata(mem_wdata_o),
 						.mem_whilo(mem_whilo_o), .mem_hi(mem_hi_o), .mem_lo(mem_lo_o),
 						.wb_wd(wb_wd_i), .wb_wreg(wb_wreg_i), .wb_wdata(wb_wdata_i),
 						.wb_whilo(wb_whilo_i), .wb_hi(wb_hi_i), .wb_lo(wb_lo_i),
-						.mem_cp0_reg_data(mem_cp0_reg_data_o),
-						.mem_cp0_reg_write_addr(mem_cp0_reg_write_addr_o),
-						.mem_cp0_reg_we(mem_cp0_reg_we_o),
-						.wb_cp0_reg_we(ex_wb_cp0_reg_data),
+						.mem_cp0_reg_data(ex_mem_cp0_data),
+						.mem_cp0_reg_write_addr(ex_mem_cp0_write_addr),
+						.mem_cp0_reg_we(ex_mem_cp0_reg_we),
+						.wb_cp0_reg_we(ex_wb_cp0_reg_we),
 						.wb_cp0_reg_write_addr(ex_wb_cp0_reg_write_addr),
-						.wb_cp0_reg_data(ex_wb_cp0_reg_we));
+						.wb_cp0_reg_data(ex_wb_cp0_reg_data));
 						
 	HILO hilo0(.clk(clk), .rst(rst), .we(wb_whilo_i),
 				  .hi_i(wb_hi_i), .lo_i(wb_lo_i), .hi_o(ex_hi_i), .lo_o(ex_lo_i));

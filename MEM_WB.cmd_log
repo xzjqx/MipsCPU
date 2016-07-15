@@ -1,0 +1,2 @@
+vhdtdtfi -lib work D:/MipsCPU/MEM_WB.v -lang verilog -prj MipsCPU -o MEM_WB.spl -module MEM_WB -template C:/Xilinx/ISE_DS/ISE//data/splveri.tft -deleteonerror 
+spl2sym -intstyle ise -family spartan6 MEM_WB.spl D:/MipsCPU/MEM_WB.sym 

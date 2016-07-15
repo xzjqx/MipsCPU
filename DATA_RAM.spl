@@ -1,0 +1,13 @@
+[Inputs]
+clk
+ce
+we
+sel
+=addr[31:0]=
+=data_i[31:0]=
+[Outputs]
+=data_o[31:0]=
+[BiDir]
+[ATTRIBUTES]
+VeriModel DATA_RAM
+
