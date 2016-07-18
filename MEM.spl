@@ -3,16 +3,25 @@ rst
 wreg_i
 whilo_i
 cp0_reg_we_i
+is_in_delayslot_i
+wb_cp0_reg_we
 =wd_i[4:0]=
 =wdata_i[31:0]=
 =hi_i[31:0]=
 =lo_i[31:0]=
-=aluop_i[5:0]=
+=aluop_i[7:0]=
 =mem_addr_i[31:0]=
 =reg2_i[31:0]=
 =mem_data_i[31:0]=
 =cp0_reg_write_addr_i[4:0]=
 =cp0_reg_data_i[31:0]=
+=exc_i[31:0]=
+=current_inst_address_i[31:0]=
+=cp0_status_i[31:0]=
+=cp0_cause_i[31:0]=
+=cp0_epc_i[31:0]=
+=wb_cp0_reg_write_addr[4:0]=
+=wb_cp0_reg_data[31:0]=
 [Outputs]
 cp0_reg_we_o
 wreg_o
@@ -20,6 +29,7 @@ whilo_o
 mem_ce_o
 mem_sel_o
 mem_we_o
+is_in_delayslot_o
 =cp0_reg_write_addr_o[4:0]=
 =cp0_reg_data_o[31:0]=
 =wd_o[4:0]=
@@ -28,6 +38,9 @@ mem_we_o
 =lo_o[31:0]=
 =mem_data_o[31:0]=
 =mem_addr_o[31:0]=
+=exc_o[31:0]=
+=cp0_epc_o[31:0]=
+=current_inst_address_o[31:0]=
 [BiDir]
 [ATTRIBUTES]
 VeriModel MEM

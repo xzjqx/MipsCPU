@@ -38,6 +38,8 @@ module ID(
 	
 	input wire is_in_delayslot_i,	//异常处理中会使用到
 	
+	input wire [7:0] ex_aluop,
+	
 	output reg [2:0] alusel_o,		//8 types of inst
 	output reg [7:0] aluop_o,		//47 insts
 	output reg [31:0] reg1_o,		//操作数1
@@ -55,8 +57,21 @@ module ID(
 	output reg [31:0] link_addr_o,//返回地址
 	output reg next_inst_in_delayslot_o,//下一条指令是否在延迟槽
 	
-	output wire [31:0] inst_o
+	output wire [31:0] inst_o,
+	
+	output reg stallreg,
+	
+	output wire [31:0] exc_o,
+	output wire [31:0] current_inst_address_o
 	);
+	
+	reg instvalid;
+	reg exc_is_eret;
+	reg exc_is_syscall;
+	
+	assign exc_o = {19'b0,exc_is_eret,2'b0,instvalid,exc_is_syscall,8'b0};
+	
+	assign current_inst_address_o = pc_i;
 	
 	wire [5:0] op = inst_i[31:26];
 	wire [4:0] op1 = inst_i[10:6];
@@ -83,6 +98,40 @@ module ID(
 	reg [31:0] imm;
 	
 	always @(*) begin
+		if (rst==`RstEnable) begin
+				stallreg<=1'b0;
+		end 
+		else begin
+			case (ex_aluop) 
+				`LB:begin
+					stallreg<=1'b1;
+				end
+				`LBU:begin
+					stallreg<=1'b1;
+				end
+				`LHU:begin
+					stallreg<=1'b1;
+				end
+				`LW:begin
+					stallreg<=1'b1;
+				end
+				`SB:begin
+					stallreg<=1'b1;
+				end
+				`SW:begin
+					stallreg<=1'b1;
+				end
+				`TLBWI:begin
+					stallreg<=1'b1;
+				end
+				default:begin
+					stallreg<=1'b0;
+				end
+			endcase
+		end
+	end
+	
+	always @(*) begin
 		if (rst == 1'b1) begin
 			alusel_o = 3'b0;
 			aluop_o = 8'b0;
@@ -97,6 +146,7 @@ module ID(
 			link_addr_o = 32'b0;
 			next_inst_in_delayslot_o = 1'b0;
 			imm = 32'b0;
+			instvalid = 0;
 		end
 		else begin
 			alusel_o = 3'b0;
@@ -112,6 +162,7 @@ module ID(
 			branch_flag_o = 1'b0;
 			link_addr_o = 32'b0;
 			next_inst_in_delayslot_o = 1'b0;
+			instvalid = 1;
 			
 			case(op)
 				//TODO: 根据操作码判断是什么指令，并完成指令的译码
@@ -285,8 +336,17 @@ module ID(
 							reg1_read_o = 1'b1;
 							reg2_read_o = 1'b1;
 						end
+						6'b001100: begin
+							alusel_o = `Trap;
+							aluop_o = `SYSCALL;
+							wreg_o = 1'b0;
+							reg1_read_o = 1'b0;
+							reg2_read_o = 1'b0;
+							exc_is_syscall = 1'b1;
+						end
 						default: begin
 							//TODO: 其他special code指令
+							instvalid = 0;
 						end
 					endcase
 				end
@@ -295,7 +355,12 @@ module ID(
 						`CP0_OP4:begin
 							case(op2)
 								`ERET_OP2:begin
-									
+									alusel_o = `Privilege;
+									aluop_o = `ERET;
+									wreg_o = 1'b0;
+									reg1_read_o = 1'b0;
+									reg2_read_o = 1'b0;
+									exc_is_eret = 1'b1;
 								end
 								`TLBWI_OP2:begin
 									

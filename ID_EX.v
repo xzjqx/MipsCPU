@@ -47,11 +47,21 @@ module ID_EX(
 	output reg [31:0] ex_link_address,
 	output reg is_in_delayslot_o,
 	
-	output reg [31:0] ex_inst
+	output reg [31:0] ex_inst,
+	
+	input wire [5:0] stall,
+	
+	input wire flush,
+	
+	input wire [31:0] id_exc,
+	input wire [31:0] id_current_inst_address,
+	
+	output reg [31:0] ex_exc,
+	output reg [31:0] ex_current_inst_address
     );
 
 	always @(posedge clk) begin
-		if (rst == 1'b1) begin
+		if (rst == 1'b1 || flush == 1'b1) begin
 			ex_alusel <= 3'b0;
 			ex_aluop <= 8'b0;
 			ex_reg1 <= 32'b0;
@@ -62,8 +72,24 @@ module ID_EX(
 			ex_link_address <= 1'b0;
 			is_in_delayslot_o <= 1'b0;
 			ex_inst <= 32'b0;
+			ex_exc <= 32'b0;
+			ex_current_inst_address <= 32'b0;
 		end
-		else begin
+		else if (stall[2] == `STOP && stall[3] == `NOSTOP) begin
+			ex_alusel <= 3'b0;
+			ex_aluop <= 8'b0;
+			ex_reg1 <= 32'b0;
+			ex_reg2 <= 32'b0;
+			ex_wd <= 5'b0;
+			ex_wreg <= 1'b0;
+			ex_is_in_delayslot <= 1'b0;
+			ex_link_address <= 1'b0;
+			is_in_delayslot_o <= 1'b0;
+			ex_inst <= 32'b0;
+			ex_exc <= 32'b0;
+			ex_current_inst_address <= 32'b0;
+		end
+		else if (stall[2] == `NOSTOP) begin
 			ex_alusel <= id_alusel;
 			ex_aluop <= id_aluop;
 			ex_reg1 <= id_reg1;
@@ -74,6 +100,8 @@ module ID_EX(
 			ex_link_address <= id_link_address;
 			is_in_delayslot_o <= next_inst_in_delayslot_i;
 			ex_inst <= id_inst;
+			ex_exc <= id_exc;
+			ex_current_inst_address <= id_current_inst_address;
 		end
 	end
 

@@ -2,7 +2,10 @@
 clk
 rst
 branch_flag_i
+flush
 =branch_target_address_i[31:0]=
+=stall[5:0]=
+=new_pc[31:0]=
 [Outputs]
 ce
 =pc[31:0]=

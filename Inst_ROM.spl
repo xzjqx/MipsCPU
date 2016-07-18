@@ -3,7 +3,6 @@ ce
 =addr[31:0]=
 [Outputs]
 =inst[31:0]=
-=pc_o[31:0]=
 [BiDir]
 [ATTRIBUTES]
 VeriModel Inst_ROM

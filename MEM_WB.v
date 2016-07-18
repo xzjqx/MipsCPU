@@ -45,11 +45,15 @@ module MEM_WB(
 	
 	output reg wb_whilo,
 	output reg [31:0] wb_hi,
-	output reg [31:0] wb_lo
+	output reg [31:0] wb_lo,
+	
+	input wire [5:0] stall,
+	
+	input wire flush
     );
 
 	always @(posedge clk) begin
-		if (rst == 1'b1) begin
+		if (rst == 1'b1 || flush == 1'b1) begin
 			wb_wd <= 5'b0;
 			wb_wreg <= 1'b0;
 			wb_wdata <= 32'b0;
@@ -60,7 +64,18 @@ module MEM_WB(
 			wb_cp0_reg_write_addr <= 5'b0;
 			wb_cp0_reg_data <= 32'b0;
 		end
-		else begin
+		else if (stall[4] == `STOP && stall[5] == `NOSTOP) begin
+			wb_wd <= 5'b0;
+			wb_wreg <= 1'b0;
+			wb_wdata <= 32'b0;
+			wb_whilo <= 1'b0;
+			wb_hi <= 32'b0;
+			wb_lo <= 32'b0;
+			wb_cp0_reg_we <= 1'b0;
+			wb_cp0_reg_write_addr <= 5'b0;
+			wb_cp0_reg_data <= 32'b0;
+		end
+		else if (stall[4] == `NOSTOP) begin
 			wb_wd <= mem_wd;
 			wb_wreg <= mem_wreg;
 			wb_wdata <= mem_wdata;

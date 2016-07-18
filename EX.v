@@ -42,20 +42,20 @@ module EX(
 	input wire [31:0] 	link_address_i,
 	
 	input wire [31:0] 	inst_i,
-	//访存阶段是否访问CP0，用来检测数据相关
+	//访存阶段是否访问CP0，用来检测数据相�
 	input wire		  	mem_cp0_reg_we,
 	input wire [4:0]	mem_cp0_reg_write_addr,
 	input wire [31:0]	mem_cp0_data,	
-	//回写阶段的指令是否要写CP0，用来检测数据相关
+	//回写阶段的指令是否要写CP0，用来检测数据相�
   	input wire			wb_cp0_reg_we,
 	input wire[4:0]     wb_cp0_reg_write_addr,
 	input wire[31:0] 	wb_cp0_reg_data,
 
-	//与CP0相连，读取其中CP0寄存器的值
+	//与CP0相连，读取其中CP0寄存器的�
 	input wire[31:0]    cp0_reg_data_i,
 	output reg[4:0]     cp0_reg_read_addr_o,
 
-	//向下一流水级传递，用于写CP0中的寄存器
+	//向下一流水级传递，用于写CP0中的寄存�
 	output reg          cp0_reg_we_o,
 	output reg[4:0]     cp0_reg_write_addr_o,
 	output reg[31:0] 	cp0_reg_data_o,
@@ -68,13 +68,25 @@ module EX(
 	output reg [31:0] 	hi_o,
 	output reg [31:0] 	lo_o,
 	
-	output wire [5:0] 	aluop_o,
+	output wire [7:0] 	aluop_o,
 	output wire [31:0] 	mem_addr_o,
-	output wire [31:0] 	reg2_o
+	output wire [31:0] 	reg2_o,
 
+	output reg stallreg,		//EXģ�鴫������ͣ�ź�
+	
+	input wire [31:0] exc_i,
+	input wire [31:0] current_inst_address_i,
+	
+	output wire [31:0] exc_o,
+	output wire is_in_delayslot_o,
+	output wire [31:0] current_inst_address_o
     );
 	 
-	assign aluop_o = inst_i[31:26];
+	assign exc_o = exc_i;
+	assign is_in_delayslot_o = is_in_delayslot_i;
+	assign current_inst_address_o = current_inst_address_i;
+	
+	assign aluop_o = aluop_i;
 	assign mem_addr_o = {{16{inst_i[15]}}, inst_i[15:0]} + reg1_i;
 	assign reg2_o = reg2_i;
 

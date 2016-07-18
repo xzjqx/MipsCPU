@@ -19,27 +19,31 @@
 //
 //////////////////////////////////////////////////////////////////////////////////
 `include "defines.v"
+
 module CP0(
 	input wire			clk,
 	input wire			rst,
-	input wire			we_i,//是否要写cp0中的寄存�
-	input wire[4:0]		waddr_i,//要写的cp0中的寄存器的地址
-	input wire[4:0]		raddr_i,//要读的cp0中的寄存器的地址
-	input wire[31:0]	wdata_i,//要写入cp0寄存器中的数�
-	input wire[5:0]		int_i,//6个外部硬件中断输�
+	input wire			we_i,
+	input wire[4:0]		waddr_i,
+	input wire[4:0]		raddr_i,
+	input wire[31:0]	wdata_i,
+	input wire[5:0]		int_i,
 
-	output reg[31:0]	data_o,//从cp0寄存器中读出的数�
-	output reg[31:0]	count_o,//count寄存器的�
-	output reg[31:0]	compare_o,//compare寄存器的�
-	output reg[31:0]	status_o,//status寄存器的�
-	output reg[31:0]	cause_o,//cause寄存器的�
-	output reg[31:0]	epc_o,//ecp寄存器的�
-	output reg[31:0]	config_o,//config寄存器的�
-	output reg[31:0]	prid_o,//PRID寄存器的�
-	output reg 			timer_int_o//是否有定时中断发�
+	output reg[31:0]	data_o,
+	output reg[31:0]	count_o,
+	output reg[31:0]	compare_o,
+	output reg[31:0]	status_o,
+	output reg[31:0]	cause_o,
+	output reg[31:0]	epc_o,
+	output reg[31:0]	config_o,
+	output reg[31:0]	prid_o,
+	output reg 			timer_int_o,
+	
+	input wire [31:0] exc_i,
+	input wire [31:0] current_inst_addr_i,
+	input wire is_in_delayslot_i
     );
 
-//******************************第一段，对CP0寄存器的写操�******************************//
 always @(posedge clk) begin
 	if (rst == 1'b1) begin
 		// reset
@@ -48,8 +52,8 @@ always @(posedge clk) begin
 		status_o <= 32'b00010000000000000000000000000000;
 		cause_o <= 32'b0;
 		epc_o <= 32'b0;
-		config_o <= 32'b00000000000000001000000000000000;// �be字段�，表示工作在大端模式
-		prid_o <= 	32'b00000000010011000000000100000010;//
+		config_o <= 32'b00000000000000001000000000000000;
+		prid_o <= 	32'b00000000010011000000000100000010;
 		timer_int_o <= 1'b0;
 	end 
 	else begin
@@ -58,34 +62,76 @@ always @(posedge clk) begin
 		if(compare_o != 32'b0 && count_o == compare_o) begin
 			timer_int_o <= 1'b1;
 		end
-		if(we_i == 1'b1)
-		begin
+		if(we_i == 1'b1) begin
 			case(waddr_i)
-			`COUNT_CP0:begin
-				count_o <= wdata_i;
-			end
-			`COMPARE_CP0:begin
-				compare_o <= wdata_i;
-				timer_int_o <= 1'b0;
-			end
-			`STATUS_CP0:begin
-				status_o <= wdata_i;
-			end
-			`EPC_CP0:begin
-				epc_o <= wdata_i;
-			end
-			`CAUSE_CP0:begin
-				//cause寄存器只有IP,IV,WP字段可写
-				cause_o [9:8] <= wdata_i[9:8];
-				cause_o [23]  <= wdata_i[23];
-				cause_o [22]  <= wdata_i[22];
-			end
+				`COUNT_CP0:begin
+					count_o <= wdata_i;
+				end
+				`COMPARE_CP0:begin
+					compare_o <= wdata_i;
+					timer_int_o <= 1'b0;
+				end
+				`STATUS_CP0:begin
+					status_o <= wdata_i;
+				end
+				`EPC_CP0:begin
+					epc_o <= wdata_i;
+				end
+				`CAUSE_CP0:begin
+					cause_o [9:8] <= wdata_i[9:8];
+					cause_o [23]  <= wdata_i[23];
+					cause_o [22]  <= wdata_i[22];
+				end
 			endcase
 		end	//if	
+		case (exc_i)
+			32'h00000001: begin
+				if(is_in_delayslot_i == 1'b1 ) begin
+					epc_o <= current_inst_addr_i - 4 ;
+					cause_o[31] <= 1'b1;
+				end else begin
+				  epc_o <= current_inst_addr_i;
+				  cause_o[31] <= 1'b0;
+				end
+				status_o[1] <= 1'b1;
+				cause_o[6:2] <= 5'b00000;
+				
+			end
+			32'h00000008: begin
+				if(status_o[1] == 1'b0) begin
+					if(is_in_delayslot_i == 1'b1 ) begin
+						epc_o <= current_inst_addr_i - 4 ;
+						cause_o[31] <= 1'b1;
+					end else begin
+						epc_o <= current_inst_addr_i;
+					  	cause_o[31] <= 1'b0;
+					end
+				end
+				status_o[1] <= 1'b1;
+				cause_o[6:2] <= 5'b01000;			
+			end
+			32'h0000000a: begin
+				if(status_o[1] == 1'b0) begin
+					if(is_in_delayslot_i == 1'b1 ) begin
+						epc_o <= current_inst_addr_i - 4 ;
+						cause_o[31] <= 1'b1;
+					end else begin
+				  	epc_o <= current_inst_addr_i;
+				  	cause_o[31] <= 1'b0;
+					end
+				end
+				status_o[1] <= 1'b1;
+				cause_o[6:2] <= 5'b01010;					
+			end	
+			32'h0000000e: begin
+				status_o[1] <= 1'b0;
+			end
+			default: begin
+			end
+		endcase
 	end//else
 end//always
 
-//*******************************第二段，对CP0的读操作**********************//
 
 always @(*) begin
 	if (rst == 1'b1) begin

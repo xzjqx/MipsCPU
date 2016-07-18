@@ -1,90 +1,113 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <symbol version="7" name="ID_EX">
     <symboltype>BLOCK</symboltype>
-    <timestamp>2016-7-14T3:39:26</timestamp>
+    <timestamp>2016-7-18T1:39:12</timestamp>
     <attr value="ID_EX" name="VeriModel" />
-    <pin polarity="Input" x="0" y="-736" name="clk" />
-    <pin polarity="Input" x="0" y="-672" name="rst" />
-    <pin polarity="Input" x="0" y="-608" name="id_wreg" />
-    <pin polarity="Input" x="0" y="-544" name="id_is_in_delayslot" />
-    <pin polarity="Input" x="0" y="-480" name="next_inst_in_delayslot_i" />
-    <pin polarity="Input" x="0" y="-416" name="id_alusel(2:0)" />
-    <pin polarity="Input" x="0" y="-352" name="id_aluop(7:0)" />
-    <pin polarity="Input" x="0" y="-288" name="id_reg1(31:0)" />
-    <pin polarity="Input" x="0" y="-224" name="id_reg2(31:0)" />
-    <pin polarity="Input" x="0" y="-160" name="id_wd(4:0)" />
-    <pin polarity="Input" x="0" y="-96" name="id_link_address(31:0)" />
-    <pin polarity="Input" x="0" y="-32" name="id_inst(31:0)" />
-    <pin polarity="Output" x="608" y="-736" name="ex_wreg" />
-    <pin polarity="Output" x="608" y="-672" name="ex_is_in_delayslot" />
-    <pin polarity="Output" x="608" y="-608" name="is_in_delayslot_o" />
-    <pin polarity="Output" x="608" y="-544" name="ex_alusel(2:0)" />
-    <pin polarity="Output" x="608" y="-480" name="ex_aluop(7:0)" />
-    <pin polarity="Output" x="608" y="-416" name="ex_reg1(31:0)" />
-    <pin polarity="Output" x="608" y="-352" name="ex_reg2(31:0)" />
-    <pin polarity="Output" x="608" y="-288" name="ex_wd(4:0)" />
-    <pin polarity="Output" x="608" y="-224" name="ex_link_address(31:0)" />
-    <pin polarity="Output" x="608" y="-160" name="ex_inst(31:0)" />
+    <pin polarity="Input" x="0" y="-992" name="clk" />
+    <pin polarity="Input" x="0" y="-928" name="rst" />
+    <pin polarity="Input" x="0" y="-864" name="id_wreg" />
+    <pin polarity="Input" x="0" y="-800" name="id_is_in_delayslot" />
+    <pin polarity="Input" x="0" y="-736" name="next_inst_in_delayslot_i" />
+    <pin polarity="Input" x="0" y="-672" name="flush" />
+    <pin polarity="Input" x="0" y="-608" name="id_alusel(2:0)" />
+    <pin polarity="Input" x="0" y="-544" name="id_aluop(7:0)" />
+    <pin polarity="Input" x="0" y="-480" name="id_reg1(31:0)" />
+    <pin polarity="Input" x="0" y="-416" name="id_reg2(31:0)" />
+    <pin polarity="Input" x="0" y="-352" name="id_wd(4:0)" />
+    <pin polarity="Input" x="0" y="-288" name="id_link_address(31:0)" />
+    <pin polarity="Input" x="0" y="-224" name="id_inst(31:0)" />
+    <pin polarity="Input" x="0" y="-160" name="stall(5:0)" />
+    <pin polarity="Input" x="0" y="-96" name="id_exc(31:0)" />
+    <pin polarity="Input" x="0" y="-32" name="id_current_inst_address(31:0)" />
+    <pin polarity="Output" x="736" y="-992" name="ex_wreg" />
+    <pin polarity="Output" x="736" y="-912" name="ex_is_in_delayslot" />
+    <pin polarity="Output" x="736" y="-832" name="is_in_delayslot_o" />
+    <pin polarity="Output" x="736" y="-752" name="ex_alusel(2:0)" />
+    <pin polarity="Output" x="736" y="-672" name="ex_aluop(7:0)" />
+    <pin polarity="Output" x="736" y="-592" name="ex_reg1(31:0)" />
+    <pin polarity="Output" x="736" y="-512" name="ex_reg2(31:0)" />
+    <pin polarity="Output" x="736" y="-432" name="ex_wd(4:0)" />
+    <pin polarity="Output" x="736" y="-352" name="ex_link_address(31:0)" />
+    <pin polarity="Output" x="736" y="-272" name="ex_inst(31:0)" />
+    <pin polarity="Output" x="736" y="-192" name="ex_exc(31:0)" />
+    <pin polarity="Output" x="736" y="-112" name="ex_current_inst_address(31:0)" />
     <graph>
-        <attrtext style="alignment:BCENTER;fontsize:56;fontname:Arial" attrname="SymbolName" x="304" y="-776" type="symbol" />
-        <attrtext style="fontsize:24;fontname:Arial" attrname="PinName" x="72" y="-736" type="pin clk" />
-        <attrtext style="fontsize:24;fontname:Arial" attrname="PinName" x="72" y="-672" type="pin rst" />
-        <attrtext style="fontsize:24;fontname:Arial" attrname="PinName" x="72" y="-608" type="pin id_wreg" />
-        <attrtext style="fontsize:24;fontname:Arial" attrname="PinName" x="72" y="-544" type="pin id_is_in_delayslot" />
-        <attrtext style="fontsize:24;fontname:Arial" attrname="PinName" x="72" y="-480" type="pin next_inst_in_delayslot_i" />
-        <attrtext style="fontsize:24;fontname:Arial" attrname="PinName" x="72" y="-416" type="pin id_alusel(2:0)" />
-        <attrtext style="fontsize:24;fontname:Arial" attrname="PinName" x="72" y="-352" type="pin id_aluop(7:0)" />
-        <attrtext style="fontsize:24;fontname:Arial" attrname="PinName" x="72" y="-288" type="pin id_reg1(31:0)" />
-        <attrtext style="fontsize:24;fontname:Arial" attrname="PinName" x="72" y="-224" type="pin id_reg2(31:0)" />
-        <attrtext style="fontsize:24;fontname:Arial" attrname="PinName" x="72" y="-160" type="pin id_wd(4:0)" />
-        <attrtext style="fontsize:24;fontname:Arial" attrname="PinName" x="72" y="-96" type="pin id_link_address(31:0)" />
-        <attrtext style="fontsize:24;fontname:Arial" attrname="PinName" x="72" y="-32" type="pin id_inst(31:0)" />
-        <attrtext style="alignment:RIGHT;fontsize:24;fontname:Arial" attrname="PinName" x="536" y="-736" type="pin ex_wreg" />
-        <attrtext style="alignment:RIGHT;fontsize:24;fontname:Arial" attrname="PinName" x="536" y="-672" type="pin ex_is_in_delayslot" />
-        <attrtext style="alignment:RIGHT;fontsize:24;fontname:Arial" attrname="PinName" x="536" y="-608" type="pin is_in_delayslot_o" />
-        <attrtext style="alignment:RIGHT;fontsize:24;fontname:Arial" attrname="PinName" x="536" y="-544" type="pin ex_alusel(2:0)" />
-        <attrtext style="alignment:RIGHT;fontsize:24;fontname:Arial" attrname="PinName" x="536" y="-480" type="pin ex_aluop(7:0)" />
-        <attrtext style="alignment:RIGHT;fontsize:24;fontname:Arial" attrname="PinName" x="536" y="-416" type="pin ex_reg1(31:0)" />
-        <attrtext style="alignment:RIGHT;fontsize:24;fontname:Arial" attrname="PinName" x="536" y="-352" type="pin ex_reg2(31:0)" />
-        <attrtext style="alignment:RIGHT;fontsize:24;fontname:Arial" attrname="PinName" x="536" y="-288" type="pin ex_wd(4:0)" />
-        <attrtext style="alignment:RIGHT;fontsize:24;fontname:Arial" attrname="PinName" x="536" y="-224" type="pin ex_link_address(31:0)" />
-        <attrtext style="alignment:RIGHT;fontsize:24;fontname:Arial" attrname="PinName" x="536" y="-160" type="pin ex_inst(31:0)" />
-        <rect width="480" x="64" y="-768" height="768" />
+        <rect width="608" x="64" y="-1024" height="1024" />
+        <attrtext style="alignment:BCENTER;fontsize:56;fontname:Arial" attrname="SymbolName" x="368" y="-1032" type="symbol" />
+        <attrtext style="fontsize:24;fontname:Arial" attrname="PinName" x="72" y="-992" type="pin clk" />
+        <line x2="0" y1="-992" y2="-992" x1="64" />
+        <attrtext style="fontsize:24;fontname:Arial" attrname="PinName" x="72" y="-928" type="pin rst" />
+        <line x2="0" y1="-928" y2="-928" x1="64" />
+        <attrtext style="fontsize:24;fontname:Arial" attrname="PinName" x="72" y="-864" type="pin id_wreg" />
+        <line x2="0" y1="-864" y2="-864" x1="64" />
+        <attrtext style="fontsize:24;fontname:Arial" attrname="PinName" x="72" y="-800" type="pin id_is_in_delayslot" />
+        <line x2="0" y1="-800" y2="-800" x1="64" />
+        <attrtext style="fontsize:24;fontname:Arial" attrname="PinName" x="72" y="-736" type="pin next_inst_in_delayslot_i" />
         <line x2="0" y1="-736" y2="-736" x1="64" />
+        <attrtext style="fontsize:24;fontname:Arial" attrname="PinName" x="72" y="-672" type="pin flush" />
         <line x2="0" y1="-672" y2="-672" x1="64" />
+        <attrtext style="fontsize:24;fontname:Arial" attrname="PinName" x="72" y="-608" type="pin id_alusel(2:0)" />
+        <rect width="64" x="0" y="-620" height="24" />
         <line x2="0" y1="-608" y2="-608" x1="64" />
+        <attrtext style="fontsize:24;fontname:Arial" attrname="PinName" x="72" y="-544" type="pin id_aluop(7:0)" />
+        <rect width="64" x="0" y="-556" height="24" />
         <line x2="0" y1="-544" y2="-544" x1="64" />
+        <attrtext style="fontsize:24;fontname:Arial" attrname="PinName" x="72" y="-480" type="pin id_reg1(31:0)" />
+        <rect width="64" x="0" y="-492" height="24" />
         <line x2="0" y1="-480" y2="-480" x1="64" />
+        <attrtext style="fontsize:24;fontname:Arial" attrname="PinName" x="72" y="-416" type="pin id_reg2(31:0)" />
         <rect width="64" x="0" y="-428" height="24" />
         <line x2="0" y1="-416" y2="-416" x1="64" />
+        <attrtext style="fontsize:24;fontname:Arial" attrname="PinName" x="72" y="-352" type="pin id_wd(4:0)" />
         <rect width="64" x="0" y="-364" height="24" />
         <line x2="0" y1="-352" y2="-352" x1="64" />
+        <attrtext style="fontsize:24;fontname:Arial" attrname="PinName" x="72" y="-288" type="pin id_link_address(31:0)" />
         <rect width="64" x="0" y="-300" height="24" />
         <line x2="0" y1="-288" y2="-288" x1="64" />
+        <attrtext style="fontsize:24;fontname:Arial" attrname="PinName" x="72" y="-224" type="pin id_inst(31:0)" />
         <rect width="64" x="0" y="-236" height="24" />
         <line x2="0" y1="-224" y2="-224" x1="64" />
+        <attrtext style="fontsize:24;fontname:Arial" attrname="PinName" x="72" y="-160" type="pin stall(5:0)" />
         <rect width="64" x="0" y="-172" height="24" />
         <line x2="0" y1="-160" y2="-160" x1="64" />
+        <attrtext style="fontsize:24;fontname:Arial" attrname="PinName" x="72" y="-96" type="pin id_exc(31:0)" />
         <rect width="64" x="0" y="-108" height="24" />
         <line x2="0" y1="-96" y2="-96" x1="64" />
+        <attrtext style="fontsize:24;fontname:Arial" attrname="PinName" x="72" y="-32" type="pin id_current_inst_address(31:0)" />
         <rect width="64" x="0" y="-44" height="24" />
         <line x2="0" y1="-32" y2="-32" x1="64" />
-        <line x2="608" y1="-736" y2="-736" x1="544" />
-        <line x2="608" y1="-672" y2="-672" x1="544" />
-        <line x2="608" y1="-608" y2="-608" x1="544" />
-        <rect width="64" x="544" y="-556" height="24" />
-        <line x2="608" y1="-544" y2="-544" x1="544" />
-        <rect width="64" x="544" y="-492" height="24" />
-        <line x2="608" y1="-480" y2="-480" x1="544" />
-        <rect width="64" x="544" y="-428" height="24" />
-        <line x2="608" y1="-416" y2="-416" x1="544" />
-        <rect width="64" x="544" y="-364" height="24" />
-        <line x2="608" y1="-352" y2="-352" x1="544" />
-        <rect width="64" x="544" y="-300" height="24" />
-        <line x2="608" y1="-288" y2="-288" x1="544" />
-        <rect width="64" x="544" y="-236" height="24" />
-        <line x2="608" y1="-224" y2="-224" x1="544" />
-        <rect width="64" x="544" y="-172" height="24" />
-        <line x2="608" y1="-160" y2="-160" x1="544" />
+        <attrtext style="alignment:RIGHT;fontsize:24;fontname:Arial" attrname="PinName" x="664" y="-992" type="pin ex_wreg" />
+        <line x2="736" y1="-992" y2="-992" x1="672" />
+        <attrtext style="alignment:RIGHT;fontsize:24;fontname:Arial" attrname="PinName" x="664" y="-912" type="pin ex_is_in_delayslot" />
+        <line x2="736" y1="-912" y2="-912" x1="672" />
+        <attrtext style="alignment:RIGHT;fontsize:24;fontname:Arial" attrname="PinName" x="664" y="-832" type="pin is_in_delayslot_o" />
+        <line x2="736" y1="-832" y2="-832" x1="672" />
+        <attrtext style="alignment:RIGHT;fontsize:24;fontname:Arial" attrname="PinName" x="664" y="-752" type="pin ex_alusel(2:0)" />
+        <rect width="64" x="672" y="-764" height="24" />
+        <line x2="736" y1="-752" y2="-752" x1="672" />
+        <attrtext style="alignment:RIGHT;fontsize:24;fontname:Arial" attrname="PinName" x="664" y="-672" type="pin ex_aluop(7:0)" />
+        <rect width="64" x="672" y="-684" height="24" />
+        <line x2="736" y1="-672" y2="-672" x1="672" />
+        <attrtext style="alignment:RIGHT;fontsize:24;fontname:Arial" attrname="PinName" x="664" y="-592" type="pin ex_reg1(31:0)" />
+        <rect width="64" x="672" y="-604" height="24" />
+        <line x2="736" y1="-592" y2="-592" x1="672" />
+        <attrtext style="alignment:RIGHT;fontsize:24;fontname:Arial" attrname="PinName" x="664" y="-512" type="pin ex_reg2(31:0)" />
+        <rect width="64" x="672" y="-524" height="24" />
+        <line x2="736" y1="-512" y2="-512" x1="672" />
+        <attrtext style="alignment:RIGHT;fontsize:24;fontname:Arial" attrname="PinName" x="664" y="-432" type="pin ex_wd(4:0)" />
+        <rect width="64" x="672" y="-444" height="24" />
+        <line x2="736" y1="-432" y2="-432" x1="672" />
+        <attrtext style="alignment:RIGHT;fontsize:24;fontname:Arial" attrname="PinName" x="664" y="-352" type="pin ex_link_address(31:0)" />
+        <rect width="64" x="672" y="-364" height="24" />
+        <line x2="736" y1="-352" y2="-352" x1="672" />
+        <attrtext style="alignment:RIGHT;fontsize:24;fontname:Arial" attrname="PinName" x="664" y="-272" type="pin ex_inst(31:0)" />
+        <rect width="64" x="672" y="-284" height="24" />
+        <line x2="736" y1="-272" y2="-272" x1="672" />
+        <attrtext style="alignment:RIGHT;fontsize:24;fontname:Arial" attrname="PinName" x="664" y="-192" type="pin ex_exc(31:0)" />
+        <rect width="64" x="672" y="-204" height="24" />
+        <line x2="736" y1="-192" y2="-192" x1="672" />
+        <attrtext style="alignment:RIGHT;fontsize:24;fontname:Arial" attrname="PinName" x="664" y="-112" type="pin ex_current_inst_address(31:0)" />
+        <rect width="64" x="672" y="-124" height="24" />
+        <line x2="736" y1="-112" y2="-112" x1="672" />
     </graph>
 </symbol>

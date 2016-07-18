@@ -19,8 +19,10 @@
 //
 //////////////////////////////////////////////////////////////////////////////////
 module MipsCPU_SOPC(
-	input wire clk,
-	input wire rst
+	input wire clk_init,
+	input wire rst_init,
+	
+	output wire [15:0] led_pc
     );
 
 	wire [31:0] rom_data_i;
@@ -35,8 +37,8 @@ module MipsCPU_SOPC(
 	wire ram_sel_i;
 
 	MipsCPU MipsCPU0 (
-		.clk(clk), 
-		.rst(rst), 
+		.clk(clk_init), 
+		.rst(rst_init), 
 		.rom_data_i(rom_data_i),  
 		.rom_addr_o(rom_addr_o), 
 		.rom_ce_o(rom_ce_o),
@@ -46,7 +48,9 @@ module MipsCPU_SOPC(
 		.ram_data_o(ram_data_i),
 		.ram_we_o(ram_we_i),
 		.ram_ce_o(ram_ce_i),
-		.ram_sel_o(ram_sel_i)
+		.ram_sel_o(ram_sel_i),
+		
+		.led_pc(led_pc)
 	);
 	
 	Inst_ROM Inst_ROM0 (
@@ -56,7 +60,7 @@ module MipsCPU_SOPC(
 	);
 	
 	DATA_RAM DATA_RAM0 (
-		.clk(clk),
+		.clk(clk_init),
 		.data_i(ram_data_i), 
 		.addr(ram_addr_i),
 		.data_o(ram_data_o),

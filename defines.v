@@ -24,6 +24,9 @@
 `define WordSize 32
 `define HalfSize 16
 `define ByteSize 8
+`define RstEnable 1'b1
+`define RstDisable 1'b0
+`define ZeroWord 32'h00000000
 
 //**************alusel*******//
 `define Arithmetic 3'b000
@@ -113,3 +116,15 @@
 `define EPC_CP0			5'b01110 
 `define PRID_CP0		5'b01111 
 `define CONFIG_CP0		5'b10000 
+
+`define STOP 1'b1
+`define NOSTOP 1'b0
+
+//CP0¼Ä´æÆ÷µØÖ·
+`define CP0_REG_COUNT    5'b01001        //¿É¶ÁÐ´
+`define CP0_REG_COMPARE    5'b01011      //¿É¶ÁÐ´
+`define CP0_REG_STATUS    5'b01100       //¿É¶ÁÐ´
+`define CP0_REG_CAUSE    5'b01101        //Ö»¶Á
+`define CP0_REG_EPC    5'b01110          //¿É¶ÁÐ´
+`define CP0_REG_PrId    5'b01111         //Ö»¶Á
+`define CP0_REG_CONFIG    5'b10000       //Ö»¶Á

@@ -5,7 +5,7 @@ run
 -ifmt mixed
 -ofn MipsCPU_SOPC
 -ofmt NGC
--p xc6slx16-3-csg324
+-p xc6slx100-3-fgg676
 -top MipsCPU_SOPC
 -opt_mode Speed
 -opt_level 1

@@ -1,0 +1,2 @@
+vhdtdtfi -lib work C:/MipsCPU/CP0.v -lang verilog -prj MipsCPU -o CP0.spl -module CP0 -template F:/Xilinx/13.1/ISE_DS/ISE//data/splveri.tft -deleteonerror 
+spl2sym -intstyle ise -family spartan6 CP0.spl C:/MipsCPU/CP0.sym 

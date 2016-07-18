@@ -34,7 +34,9 @@ module MipsCPU(
 	output wire [31:0] ram_data_o,
 	output wire ram_we_o,
 	output wire ram_ce_o,
-	output wire ram_sel_o
+	output wire ram_sel_o,
+	
+	output wire [15:0] led_pc
     );
 
 	//PC模块接口
@@ -44,6 +46,11 @@ module MipsCPU(
 	
 	wire pc_branch_flag_i;
 	wire [31:0] pc_branch_target_address_i;
+	
+	wire flush;
+	wire [31:0] new_pc;
+	
+	assign led_pc = pc[15:0];
 	
 	//REG模块接口
 	wire reg1_read;
@@ -71,6 +78,10 @@ module MipsCPU(
 	wire id_next_inst_in_delayslot_o;
 	wire [31:0] id_inst_o;
 	
+	wire id_stallreg;
+	wire [31:0] id_exc_o;
+	wire [31:0] id_current_inst_address_o;
+	
 	//EX模块接口
 	wire [7:0] ex_aluop_i;
 	wire [2:0] ex_alusel_i;
@@ -94,7 +105,7 @@ module MipsCPU(
 	wire [31:0] ex_link_address_i;
 	
 	wire [31:0] ex_inst_i;
-	wire [5:0] ex_aluop_o;
+	wire [7:0] ex_aluop_o;
 	wire [31:0] ex_mem_addr_o;
 	wire [31:0] ex_reg2_o;
 
@@ -108,6 +119,14 @@ module MipsCPU(
 	wire          	ex_cp0_reg_we_o;
 	wire[4:0]     	ex_cp0_reg_write_addr_o;
 	wire[31:0] 		ex_cp0_reg_data_o;
+	
+	wire ex_stallreg;
+	wire[31:0] ex_exc_i;	
+	wire[31:0] ex_current_inst_address_i;
+	
+	wire [31:0] ex_exc_o;
+	wire ex_is_in_delayslot_o;
+	wire [31:0] ex_current_inst_address_o;
 	
 	//MEM模块接口
 	wire mem_wreg_i;
@@ -126,7 +145,7 @@ module MipsCPU(
 	wire [31:0] mem_hi_o;
 	wire [31:0] mem_lo_o;
 	
-	wire [5:0] mem_aluop_i;
+	wire [7:0] mem_aluop_i;
 	wire [31:0] mem_addr_i;
 	wire [31:0] mem_reg2_i;
 
@@ -138,7 +157,30 @@ module MipsCPU(
 	wire [4:0] mem_cp0_reg_write_addr_o;
 	wire [31:0] mem_cp0_reg_data_o;
 
-
+	wire [31:0] mem_exc_i;
+	wire mem_is_in_delayslot_i;
+	wire [31:0] mem_current_inst_address_i;	
+	
+	wire[31:0] mem_exc_o;
+	wire mem_is_in_delayslot_o;
+	wire[31:0] mem_current_inst_address_o;	
+	
+	wire[31:0] cp0_count;
+	wire[31:0]	cp0_compare;
+	wire[31:0]	cp0_status;
+	wire[31:0]	cp0_cause;
+	wire[31:0]	cp0_epc;
+	wire[31:0]	cp0_config;
+	wire[31:0]	cp0_prid;
+	
+	wire[31:0] latest_epc;
+	
+	wire wb_cp0_reg_we_i;
+	wire[4:0] wb_cp0_reg_write_addr_i;
+	wire[31:0] wb_cp0_reg_data_i;		
+	wire[31:0] wb_exc_i;
+	wire wb_is_in_delayslot_i;
+	wire[31:0] wb_current_inst_address_i;
 
 	
 	//HILO模块接口
@@ -158,16 +200,22 @@ module MipsCPU(
 	wire 		cp0_timer_int_o;
 	wire [5:0]	cp0_int_i;
 
-
+	//CTRL模块接口
+	wire [5:0] ctrl_stop;
 
 	
 	PC pc0(.clk(clk), .rst(rst), .pc(pc), .ce(rom_ce_o),
-			 .branch_flag_i(pc_branch_flag_i), .branch_target_address_i(pc_branch_target_address_i));
+			 .branch_flag_i(pc_branch_flag_i), .branch_target_address_i(pc_branch_target_address_i),
+			 .stall(ctrl_stop),
+			 .flush(flush),
+			 .new_pc(new_pc));
 	
 	assign rom_addr_o = pc;
 	
 	IF_ID if_id0(.clk(clk), .rst(rst), .if_pc(pc), .if_inst(rom_data_i),
-					 .id_pc(id_pc_i), .id_inst(id_inst_i));
+					 .id_pc(id_pc_i), .id_inst(id_inst_i),
+					 .stall(ctrl_stop),
+					 .flush(flush));
 					 
 	ID id0(.rst(rst), .pc_i(id_pc_i), .inst_i(id_inst_i),
 			 .reg1_data_i(reg1_data), .reg2_data_i(reg2_data),
@@ -181,7 +229,11 @@ module MipsCPU(
 			 .wd_o(id_wd_o), .wreg_o(id_wreg_o),
 			 .is_in_delayslot_o(id_is_in_delayslot_o), .link_addr_o(id_link_addr_o), .next_inst_in_delayslot_o(id_next_inst_in_delayslot_o),
 			 .branch_target_address_o(pc_branch_target_address_i), .branch_flag_o(pc_branch_flag_i),
-			 .inst_o(id_inst_o));
+			 .inst_o(id_inst_o),
+			 .ex_aluop(ex_aluop_o),
+			 .stallreg(id_stallreg),
+			 .exc_o(id_exc_o),
+			 .current_inst_address_o(id_current_inst_address_o));
 	
 	REG reg0(.clk(clk), .rst(rst), .we(wb_wreg_i), .waddr(wb_wd_i), .wdata(wb_wdata_i),
 				.re1(reg1_read), .raddr1(reg1_addr), .rdata1(reg1_data),
@@ -194,7 +246,12 @@ module MipsCPU(
 					 .ex_alusel(ex_alusel_i), .ex_aluop(ex_aluop_i),
 					 .ex_reg1(ex_reg1_i), .ex_reg2(ex_reg2_i), .ex_wd(ex_wd_i), .ex_wreg(ex_wreg_i),
 					 .is_in_delayslot_o(id_is_in_delayslot_i), .ex_is_in_delayslot(ex_is_in_delayslot_i), .ex_link_address(ex_link_address_i),
-					 .ex_inst(ex_inst_i));
+					 .ex_inst(ex_inst_i),
+					 .stall(ctrl_stop),
+					 .id_exc(id_exc_o),
+					 .id_current_inst_address(id_current_inst_address_o),
+					 .ex_exc(ex_exc_i),
+					 .ex_current_inst_address(ex_current_inst_address_i));
 	
 	EX ex0(.rst(rst), .alusel_i(ex_alusel_i), .aluop_i(ex_aluop_i),
 			 .reg1_i(ex_reg1_i), .reg2_i(ex_reg2_i),
@@ -217,7 +274,13 @@ module MipsCPU(
 			 .cp0_reg_read_addr_o(ex_cp0_reg_read_addr_o),
 			 .cp0_reg_data_o(ex_cp0_reg_data_o),
 			 .cp0_reg_write_addr_o(ex_cp0_reg_write_addr_o),
-			 .cp0_reg_we_o(ex_cp0_reg_we_o));
+			 .cp0_reg_we_o(ex_cp0_reg_we_o),
+			 .stallreg(ex_stallreg),
+			 .exc_i(ex_exc_i),
+			 .current_inst_address_i(ex_current_inst_address_i),
+			 .exc_o(ex_exc_o),
+			 .is_in_delayslot_o(ex_is_in_delayslot_o),
+			 .current_inst_address_o(ex_current_inst_address_o));
 	
 	EX_MEM ex_mem0(.clk(clk), .rst(rst), .ex_wd(ex_wd_o), .ex_wreg(ex_wreg_o), .ex_wdata(ex_wdata_o),
 						.ex_whilo(ex_whilo_o), .ex_hi(ex_hi_o), .ex_lo(ex_lo_o),
@@ -230,9 +293,15 @@ module MipsCPU(
 						.ex_cp0_reg_data(ex_cp0_reg_data_o),
 						.mem_cp0_reg_we(mem_cp0_reg_we_i),
 						.mem_cp0_reg_write_addr(mem_cp0_reg_write_addr_i),
-						.mem_cp0_reg_data(mem_cp0_reg_data_i));
-
-	//TODO: 更新MEM模块接口 error
+						.mem_cp0_reg_data(mem_cp0_reg_data_i),
+						.stall(ctrl_stop),
+						.ex_exc(ex_exc_o),
+						.ex_is_in_delayslot(ex_is_in_delayslot_o),
+						.ex_current_inst_address(ex_current_inst_address_o),
+						.mem_exc(mem_exc_i),
+						.mem_is_in_delayslot(mem_is_in_delayslot_i),
+						.mem_current_inst_address(mem_current_inst_address_i));
+	
 	MEM mem0(.rst(rst), .wd_i(mem_wd_i), .wreg_i(mem_wreg_i), .wdata_i(mem_wdata_i), 
 				.whilo_i(mem_whilo_i), .hi_i(mem_hi_i), .lo_i(mem_lo_i),
 				.aluop_i(mem_aluop_i), .mem_addr_i(mem_addr_i), .reg2_i(mem_reg2_i), .mem_data_i(ram_data_i),
@@ -245,7 +314,20 @@ module MipsCPU(
 				.cp0_reg_data_i(mem_cp0_reg_data_i),
 				.cp0_reg_data_o(ex_mem_cp0_data),
 				.cp0_reg_write_addr_o(ex_mem_cp0_write_addr),
-				.cp0_reg_we_o(ex_mem_cp0_reg_we));
+				.cp0_reg_we_o(ex_mem_cp0_reg_we),
+				.exc_i(mem_exc_i),
+				.is_in_delayslot_i(mem_is_in_delayslot_i),
+				.current_inst_address_i(mem_current_inst_address_i),	
+				.cp0_status_i(cp0_status),
+				.cp0_cause_i(cp0_cause),
+				.cp0_epc_i(cp0_epc),
+				.wb_cp0_reg_we(wb_cp0_reg_we_i),
+				.wb_cp0_reg_write_addr(wb_cp0_reg_write_addr_i),
+				.wb_cp0_reg_data(wb_cp0_reg_data_i),
+				.exc_o(mem_exc_o),
+				.cp0_epc_o(latest_epc),
+				.is_in_delayslot_o(mem_is_in_delayslot_o),
+				.current_inst_address_o(mem_current_inst_address_o));
 				
 	MEM_WB mem_wb0(.clk(clk), .rst(rst),
 						.mem_wd(mem_wd_o), .mem_wreg(mem_wreg_o),	.mem_wdata(mem_wdata_o),
@@ -257,10 +339,13 @@ module MipsCPU(
 						.mem_cp0_reg_we(ex_mem_cp0_reg_we),
 						.wb_cp0_reg_we(ex_wb_cp0_reg_we),
 						.wb_cp0_reg_write_addr(ex_wb_cp0_reg_write_addr),
-						.wb_cp0_reg_data(ex_wb_cp0_reg_data));
+						.wb_cp0_reg_data(ex_wb_cp0_reg_data),
+						.stall(ctrl_stop),
+						.flush(flush));
 						
 	HILO hilo0(.clk(clk), .rst(rst), .we(wb_whilo_i),
 				  .hi_i(wb_hi_i), .lo_i(wb_lo_i), .hi_o(ex_hi_i), .lo_o(ex_lo_i));
+				  
 	CP0 cp0(.clk(clk), .rst(rst), .we_i(ex_wb_cp0_reg_we), 
 				.waddr_i(ex_wb_cp0_reg_write_addr), 
 				.raddr_i(ex_cp0_reg_read_addr_o),
@@ -274,6 +359,19 @@ module MipsCPU(
 				.epc_o(cp0_epc_o),
 				.config_o(cp0_config_o),
 				.prid_o(cp0_prid_o),
-				.timer_int_o(cp0_timer_int_o));
+				.timer_int_o(cp0_timer_int_o),
+				.exc_i(mem_exc_o),
+				.current_inst_addr_i(mem_current_inst_address_o),
+				.is_in_delayslot_i(mem_is_in_delayslot_o));
+				
+	CTRL ctrl0(.clk(clk), .rst(rst),
+				  .stop_from_id(id_stallreg),
+				  .stop_from_ex(ex_stallreg),
+				  .stop_from_mem(),
+				  .exc_i(mem_exc_o),
+				  .cp0_epc_i(latest_epc),
+				  .new_pc(new_pc),
+				  .flush(flush),
+				  .stop(ctrl_stop));
 	
 endmodule

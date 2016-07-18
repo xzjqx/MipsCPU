@@ -1,0 +1,16 @@
+[Inputs]
+clk
+rst
+stop_from_id
+stop_from_ex
+stop_from_mem
+=exc_i[31:0]=
+=cp0_epc_i[31:0]=
+[Outputs]
+flush
+=stop[5:0]=
+=new_pc[31:0]=
+[BiDir]
+[ATTRIBUTES]
+VeriModel CTRL
+

@@ -1,0 +1,20 @@
+
+NET "clk_init" LOC = U26;
+NET "rst_init" LOC = T1;
+
+NET "led_pc[0]" LOC = F26;
+NET "led_pc[1]" LOC = G26;
+NET "led_pc[2]" LOC = G25;
+NET "led_pc[3]" LOC = H26;
+NET "led_pc[4]" LOC = J26;
+NET "led_pc[5]" LOC = J25;
+NET "led_pc[6]" LOC = G24;
+NET "led_pc[7]" LOC = J24;
+NET "led_pc[8]" LOC = L24;
+NET "led_pc[9]" LOC = K24;
+NET "led_pc[10]" LOC = M23;
+NET "led_pc[11]" LOC = K26;
+NET "led_pc[12]" LOC = L26;
+NET "led_pc[13]" LOC = L25;
+NET "led_pc[14]" LOC = M26;
+NET "led_pc[15]" LOC = N26;

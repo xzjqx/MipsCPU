@@ -4,6 +4,7 @@ rst
 id_wreg
 id_is_in_delayslot
 next_inst_in_delayslot_i
+flush
 =id_alusel[2:0]=
 =id_aluop[7:0]=
 =id_reg1[31:0]=
@@ -11,6 +12,9 @@ next_inst_in_delayslot_i
 =id_wd[4:0]=
 =id_link_address[31:0]=
 =id_inst[31:0]=
+=stall[5:0]=
+=id_exc[31:0]=
+=id_current_inst_address[31:0]=
 [Outputs]
 ex_wreg
 ex_is_in_delayslot
@@ -22,6 +26,8 @@ is_in_delayslot_o
 =ex_wd[4:0]=
 =ex_link_address[31:0]=
 =ex_inst[31:0]=
+=ex_exc[31:0]=
+=ex_current_inst_address[31:0]=
 [BiDir]
 [ATTRIBUTES]
 VeriModel ID_EX

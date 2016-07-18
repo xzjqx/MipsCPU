@@ -31,7 +31,7 @@ module EX_MEM(
 	input wire [31:0] ex_hi,
 	input wire [31:0] ex_lo,
 	
-	input wire [5:0] ex_aluop,
+	input wire [7:0] ex_aluop,
 	input wire [31:0] ex_mem_addr,
 	input wire [31:0] ex_reg2,
 
@@ -52,9 +52,19 @@ module EX_MEM(
 	output reg [31:0] mem_hi,
 	output reg [31:0] mem_lo,
 	
-	output reg [5:0] mem_aluop,
+	output reg [7:0] mem_aluop,
 	output reg [31:0] mem_mem_addr,
-	output reg [31:0] mem_reg2
+	output reg [31:0] mem_reg2,
+	
+	input wire [5:0] stall,
+	
+	input wire [31:0] ex_exc,
+	input wire [31:0] ex_current_inst_address,
+	input wire ex_is_in_delayslot,
+	
+	output reg [31:0] mem_exc,
+	output reg [31:0] mem_current_inst_address,
+	output reg mem_is_in_delayslot
     );
 
 	always @(posedge clk) begin
@@ -65,14 +75,36 @@ module EX_MEM(
 			mem_whilo <= 1'b0;
 			mem_hi <= 32'b0;
 			mem_lo <= 32'b0;
-			mem_aluop <= 6'b0;
+			mem_aluop <= 8'b0;
 			mem_mem_addr <= 32'b0;
 			mem_reg2 <= 32'b0;
 			mem_cp0_reg_we <= 1'b0;
 			mem_cp0_reg_write_addr <= 5'b0;
 			mem_cp0_reg_data <= 32'b0;
+			
+			mem_exc <= 32'b0;
+			mem_current_inst_address <= 32'b0;
+			mem_is_in_delayslot <= 1'b0;
 		end
-		else begin
+		else if (stall[3] == `STOP && stall[4] == `NOSTOP) begin
+			mem_wd <= 5'b0;
+			mem_wreg <= 1'b0;
+			mem_wdata <= 32'b0;
+			mem_whilo <= 1'b0;
+			mem_hi <= 32'b0;
+			mem_lo <= 32'b0;
+			mem_aluop <= 8'b0;
+			mem_mem_addr <= 32'b0;
+			mem_reg2 <= 32'b0;
+			mem_cp0_reg_we <= 1'b0;
+			mem_cp0_reg_write_addr <= 5'b0;
+			mem_cp0_reg_data <= 32'b0;
+			
+			mem_exc <= 32'b0;
+			mem_current_inst_address <= 32'b0;
+			mem_is_in_delayslot <= 1'b0;
+		end
+		else if (stall[3] == `NOSTOP) begin
 			mem_wd <= ex_wd;
 			mem_wreg <= ex_wreg;
 			mem_wdata <= ex_wdata;
@@ -85,6 +117,10 @@ module EX_MEM(
 			mem_cp0_reg_we <= ex_cp0_reg_we;
 			mem_cp0_reg_write_addr <= ex_cp0_reg_write_addr;
 			mem_cp0_reg_data <= ex_cp0_reg_data;
+			
+			mem_exc <= ex_exc;
+			mem_current_inst_address <= ex_current_inst_address;
+			mem_is_in_delayslot <= ex_is_in_delayslot;
 		end
 	end
 	
