@@ -1,0 +1,17 @@
+
+
+
+// Instantiate the module
+CTRL instance_name (
+    .clk(clk), 
+    .rst(rst), 
+    .stop_from_id(stop_from_id), 
+    .stop_from_ex(stop_from_ex), 
+    .stop_from_mem(stop_from_mem), 
+    .stop_from_pc(stop_from_pc), 
+    .flush_i(flush_i), 
+    .stop(stop), 
+    .flush_o(flush_o)
+    );
+
+

@@ -31,21 +31,27 @@ module IF_ID(
 	output reg [31:0] id_pc,
 	output reg [31:0] id_inst,
 	
-	input wire flush
+	input wire flush,
+	
+	input wire [`EXC_CODE_WIDTH-1:0] exc_code_i,
+	output reg [`EXC_CODE_WIDTH-1:0] exc_code_o
     );
 
 	always @(posedge clk) begin
 		if (rst == 1'b1 || flush == 1'b1) begin
 			id_pc <= 32'b0;
 			id_inst <= 32'b0;
+			exc_code_o <= `EC_NONE;
 		end
 		else if (stall[1] == `STOP && stall[0] == `NOSTOP) begin
 			id_pc <= 32'b0;
 			id_inst <= 32'b0;
+			exc_code_o <= `EC_NONE;
 		end
 		else if (stall[1] == `NOSTOP) begin
 			id_pc <= if_pc;
 			id_inst <= if_inst;
+			exc_code_o <= exc_code_i;
 		end
 	end
 	

@@ -1,0 +1,28 @@
+
+
+
+// Instantiate the module
+MMU instance_name (
+    .clk(clk), 
+    .rst(rst), 
+    .ce(ce), 
+    .we_i(we_i), 
+    .sel(sel), 
+    .data_i(data_i), 
+    .addr(addr), 
+    .data_o(data_o), 
+    .addr_pc(addr_pc), 
+    .data_inst(data_inst), 
+    .busy(busy), 
+    .exc_code(exc_code), 
+    .exc_code_pc(exc_code_pc), 
+    .tlb_write_struct(tlb_write_struct), 
+    .dev_mem_addr(dev_mem_addr), 
+    .dev_mem_data_in(dev_mem_data_in), 
+    .dev_mem_data_out(dev_mem_data_out), 
+    .dev_mem_is_write(dev_mem_is_write), 
+    .dev_mem_busy(dev_mem_busy), 
+    .busy_1(busy_1)
+    );
+
+

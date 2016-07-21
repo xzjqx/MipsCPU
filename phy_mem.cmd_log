@@ -1,0 +1,1 @@
+vhdtdtfi -lang verilog -prj MipsCPU -o C:/MipsCPU/phy_mem.tfi -lib work C:/MipsCPU//phy_mem.v -module phy_mem -template F:/Xilinx/13.1/ISE_DS/ISE//data/tfi.tft -deleteonerror 

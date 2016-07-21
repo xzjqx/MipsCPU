@@ -30,18 +30,17 @@ module PC(
 	input wire [5:0] stall,
 	
 	output reg [31:0] pc,
-	output reg ce,
 	
-	input wire flush,
-	input wire [31:0] new_pc
+	input wire cp0_branch_flag,
+	input wire[31:0] cp0_branch_addr
     );
 
 	always @(posedge clk) begin
-		if (ce == 1'b0)
-			pc <= 32'b0;			//PC的初始值不是全零
+		if (rst == 1'b1)
+			pc <= 32'hbfc00000;			//PC的初始值,bootload起始地址
 		else begin
-			if (flush == 1'b1)
-				pc <= new_pc;
+			if (cp0_branch_flag == 1'b1)
+				pc <= cp0_branch_addr;
 			else if (stall[0] == `NOSTOP) begin
 				if (branch_flag_i == 1'b1)
 					pc <= branch_target_address_i;
@@ -51,12 +50,12 @@ module PC(
 		end
 	end
 	
-	always @(posedge clk) begin
+	/*always @(posedge clk) begin
 		if (rst == 1'b1)
 			ce <= 1'b0;
 		else
 			ce <= 1'b1;
-	end
+	end*/
 
 
 endmodule

@@ -58,17 +58,19 @@ module EX_MEM(
 	
 	input wire [5:0] stall,
 	
-	input wire [31:0] ex_exc,
-	input wire [31:0] ex_current_inst_address,
-	input wire ex_is_in_delayslot,
+	input wire flush,
 	
-	output reg [31:0] mem_exc,
-	output reg [31:0] mem_current_inst_address,
-	output reg mem_is_in_delayslot
+	input wire [`EXC_CODE_WIDTH-1:0]exc_code_i,
+	input wire [31:0] exc_epc_i,
+	input wire [31:0] exc_badvaddr_i,
+	
+	output reg [`EXC_CODE_WIDTH-1:0] exc_code_o,
+	output reg [31:0] exc_epc_o,
+	output reg [31:0] exc_badvaddr_o
     );
 
 	always @(posedge clk) begin
-		if (rst == 1'b1) begin
+		if (rst == 1'b1 || flush) begin
 			mem_wd <= 5'b0;
 			mem_wreg <= 1'b0;
 			mem_wdata <= 32'b0;
@@ -82,9 +84,9 @@ module EX_MEM(
 			mem_cp0_reg_write_addr <= 5'b0;
 			mem_cp0_reg_data <= 32'b0;
 			
-			mem_exc <= 32'b0;
-			mem_current_inst_address <= 32'b0;
-			mem_is_in_delayslot <= 1'b0;
+			exc_code_o <= `EC_NONE;
+			exc_epc_o <= `ZeroWord;
+			exc_badvaddr_o <= `ZeroWord;
 		end
 		else if (stall[3] == `STOP && stall[4] == `NOSTOP) begin
 			mem_wd <= 5'b0;
@@ -100,9 +102,9 @@ module EX_MEM(
 			mem_cp0_reg_write_addr <= 5'b0;
 			mem_cp0_reg_data <= 32'b0;
 			
-			mem_exc <= 32'b0;
-			mem_current_inst_address <= 32'b0;
-			mem_is_in_delayslot <= 1'b0;
+			exc_code_o <= `EC_NONE;
+			exc_epc_o <= `ZeroWord;
+			exc_badvaddr_o <= `ZeroWord;
 		end
 		else if (stall[3] == `NOSTOP) begin
 			mem_wd <= ex_wd;
@@ -118,9 +120,9 @@ module EX_MEM(
 			mem_cp0_reg_write_addr <= ex_cp0_reg_write_addr;
 			mem_cp0_reg_data <= ex_cp0_reg_data;
 			
-			mem_exc <= ex_exc;
-			mem_current_inst_address <= ex_current_inst_address;
-			mem_is_in_delayslot <= ex_is_in_delayslot;
+			exc_code_o <= exc_code_i;
+			exc_epc_o <= exc_epc_i;
+			exc_badvaddr_o <= exc_badvaddr_i;
 		end
 	end
 	

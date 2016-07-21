@@ -1,0 +1,16 @@
+
+
+
+// Instantiate the module
+IF instance_name (
+    .addr_i(addr_i), 
+    .inst_i(inst_i), 
+    .mmu_exc_code(mmu_exc_code), 
+    .has_int_from_cp0(has_int_from_cp0), 
+    .mem_addr_o(mem_addr_o), 
+    .addr_o(addr_o), 
+    .inst_o(inst_o), 
+    .exc_code_o(exc_code_o)
+    );
+
+

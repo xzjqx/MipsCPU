@@ -61,17 +61,19 @@ module ID(
 	
 	output reg stallreg,
 	
-	output wire [31:0] exc_o,
-	output wire [31:0] current_inst_address_o
+	input wire [`EXC_CODE_WIDTH-1:0] exc_code_i,
+	output reg [`EXC_CODE_WIDTH-1:0] exc_code_o,
+	output reg [31:0] exc_epc_o,
+	output reg [31:0] exc_badvaddr_o
 	);
 	
-	reg instvalid;
+	/*reg instvalid;
 	reg exc_is_eret;
 	reg exc_is_syscall;
 	
 	assign exc_o = {19'b0,exc_is_eret,2'b0,instvalid,exc_is_syscall,8'b0};
 	
-	assign current_inst_address_o = pc_i;
+	assign current_inst_address_o = pc_i;*/
 	
 	wire [5:0] op = inst_i[31:26];
 	wire [4:0] op1 = inst_i[10:6];
@@ -131,6 +133,24 @@ module ID(
 		end
 	end
 	
+	task InvalidInstruction; begin
+		alusel_o <= `Shift;
+		aluop_o <= `SLL; 
+		wreg_o <= 1'b0;
+		reg1_read_o <= 1'b0;
+		reg2_read_o <= 1'b0;
+		next_inst_in_delayslot_o <= 1'b0;
+		branch_flag_o <= 1'b0;
+			
+		exc_code_o <= `EC_RI;
+		if (is_in_delayslot_i)
+			exc_epc_o <= pc_i - 4;
+		else
+			exc_epc_o <= pc_i;
+		exc_badvaddr_o <= inst_i;
+	end 
+	endtask
+	
 	always @(*) begin
 		if (rst == 1'b1) begin
 			alusel_o = 3'b0;
@@ -146,7 +166,30 @@ module ID(
 			link_addr_o = 32'b0;
 			next_inst_in_delayslot_o = 1'b0;
 			imm = 32'b0;
-			instvalid = 0;
+			exc_code_o = `EC_NONE;
+			exc_epc_o = `ZeroWord;
+			exc_badvaddr_o = `ZeroWord;
+		end
+		else if (exc_code_i != `EC_NONE) begin
+			alusel_o = 3'b0;
+			aluop_o = 8'b0;
+			reg1_addr_o = 5'b0;
+			reg2_addr_o = 5'b0;
+			reg1_read_o = 1'b0;
+			reg2_read_o = 1'b0;
+			wd_o = 5'b0;
+			wreg_o = 1'b0;
+			branch_target_address_o = 32'b0;
+			branch_flag_o = 1'b0;
+			link_addr_o = 32'b0;
+			next_inst_in_delayslot_o = 1'b0;
+			imm = 32'b0;
+			if (is_in_delayslot_i)
+				exc_epc_o = pc_i - 4;
+			else
+				exc_epc_o = pc_i;		
+			exc_code_o = exc_code_i;
+			exc_badvaddr_o = pc_i;
 		end
 		else begin
 			alusel_o = 3'b0;
@@ -162,7 +205,12 @@ module ID(
 			branch_flag_o = 1'b0;
 			link_addr_o = 32'b0;
 			next_inst_in_delayslot_o = 1'b0;
-			instvalid = 1;
+			if (is_in_delayslot_i)
+				exc_epc_o = pc_i - 4;
+			else
+				exc_epc_o = pc_i;		
+			exc_code_o = exc_code_i;
+			exc_badvaddr_o = pc_i;
 			
 			case(op)
 				//TODO: 根据操作码判断是什么指令，并完成指令的译码
@@ -336,17 +384,28 @@ module ID(
 							reg1_read_o = 1'b1;
 							reg2_read_o = 1'b1;
 						end
-						6'b001100: begin
+						6'b001100: begin	//SYSCALL
 							alusel_o = `Trap;
 							aluop_o = `SYSCALL;
 							wreg_o = 1'b0;
 							reg1_read_o = 1'b0;
 							reg2_read_o = 1'b0;
-							exc_is_syscall = 1'b1;
+							exc_code_o = `EC_SYS;
+							if (is_in_delayslot_i)
+								exc_epc_o = pc_i - 4;
+							else
+								exc_epc_o = pc_i;
+							exc_badvaddr_o = `ZeroWord;
+						end
+						6'b001111: begin	//SYNC
+							alusel_o = `Shift;
+							aluop_o = `SLL;
+							wreg_o = 1'b0;
+							reg1_read_o = 1'b0;
+							reg2_read_o = 1'b0;
 						end
 						default: begin
-							//TODO: 其他special code指令
-							instvalid = 0;
+							InvalidInstruction();
 						end
 					endcase
 				end
@@ -360,10 +419,28 @@ module ID(
 									wreg_o = 1'b0;
 									reg1_read_o = 1'b0;
 									reg2_read_o = 1'b0;
-									exc_is_eret = 1'b1;
+									branch_flag_o = 1'b0;
+									next_inst_in_delayslot_o = 1'b0;
+									
+									exc_code_o = `EC_ERET;
+									exc_epc_o = pc_i;
+									exc_badvaddr_o = `ZeroWord;
 								end
 								`TLBWI_OP2:begin
+									alusel_o = `Privilege;
+									aluop_o = `TLBWI;
+									wreg_o = 1'b0;
+									reg1_read_o = 1'b0;
+									reg2_read_o = 1'b0;
+									branch_flag_o = 1'b0;
+									next_inst_in_delayslot_o = 1'b0;
 									
+									exc_code_o = `EC_NONE;
+									exc_epc_o = `ZeroWord;
+									exc_badvaddr_o = `ZeroWord;
+								end
+								default: begin
+									InvalidInstruction();
 								end
 							endcase
 						end
@@ -382,6 +459,9 @@ module ID(
 							reg1_read_o = 1'b1;
 							reg1_addr_o = inst_i[20:16];
 							reg2_read_o = 1'b0;
+						end
+						default: begin
+							InvalidInstruction();
 						end
 					endcase
 				end
@@ -437,6 +517,9 @@ module ID(
 								branch_flag_o = 1'b1;
 								next_inst_in_delayslot_o = 1'b1;
 							end
+						end
+						default: begin
+							InvalidInstruction();
 						end
 					endcase
 				end
@@ -592,6 +675,9 @@ module ID(
 					reg1_read_o = 1'b1;
 					reg2_read_o = 1'b0;
 					wd_o = inst_i[20:16];
+				end
+				default: begin
+					InvalidInstruction();
 				end
 			endcase
 		end

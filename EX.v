@@ -42,20 +42,14 @@ module EX(
 	input wire [31:0] 	link_address_i,
 	
 	input wire [31:0] 	inst_i,
-	//访存阶段是否访问CP0，用来检测数据相�
+	
 	input wire		  	mem_cp0_reg_we,
 	input wire [4:0]	mem_cp0_reg_write_addr,
 	input wire [31:0]	mem_cp0_data,	
-	//回写阶段的指令是否要写CP0，用来检测数据相�
-  	input wire			wb_cp0_reg_we,
-	input wire[4:0]     wb_cp0_reg_write_addr,
-	input wire[31:0] 	wb_cp0_reg_data,
 
-	//与CP0相连，读取其中CP0寄存器的�
 	input wire[31:0]    cp0_reg_data_i,
 	output reg[4:0]     cp0_reg_read_addr_o,
 
-	//向下一流水级传递，用于写CP0中的寄存�
 	output reg          cp0_reg_we_o,
 	output reg[4:0]     cp0_reg_write_addr_o,
 	output reg[31:0] 	cp0_reg_data_o,
@@ -69,26 +63,47 @@ module EX(
 	output reg [31:0] 	lo_o,
 	
 	output wire [7:0] 	aluop_o,
-	output wire [31:0] 	mem_addr_o,
+	output reg [31:0] 	mem_addr_o,
 	output wire [31:0] 	reg2_o,
-
-	output reg stallreg,		//EXģ�鴫������ͣ�ź�
 	
-	input wire [31:0] exc_i,
-	input wire [31:0] current_inst_address_i,
+	input wire [`EXC_CODE_WIDTH-1:0]exc_code_i,
+	input wire [31:0] exc_epc_i,
+	input wire [31:0] exc_badvaddr_i,
 	
-	output wire [31:0] exc_o,
-	output wire is_in_delayslot_o,
-	output wire [31:0] current_inst_address_o
+	output reg [`EXC_CODE_WIDTH-1:0]exc_code_o,
+	output reg [31:0] exc_epc_o,
+	output reg [31:0] exc_badvaddr_o
     );
-	 
-	assign exc_o = exc_i;
-	assign is_in_delayslot_o = is_in_delayslot_i;
-	assign current_inst_address_o = current_inst_address_i;
+	
+	always @(*)begin
+		if (rst==`RstEnable) begin
+			exc_code_o<=`EC_NONE;
+			exc_epc_o <= 0;
+			exc_badvaddr_o <= 0;
+		end else begin
+			exc_code_o <= exc_code_i;
+			exc_epc_o <= exc_epc_i;
+			exc_badvaddr_o <= exc_badvaddr_i;
+		end
+	end
 	
 	assign aluop_o = aluop_i;
-	assign mem_addr_o = {{16{inst_i[15]}}, inst_i[15:0]} + reg1_i;
 	assign reg2_o = reg2_i;
+
+	always @ (*) begin
+		if (rst == `RstEnable) begin
+			mem_addr_o <= `ZeroWord;
+		end else begin
+			case (alusel_i)
+				`Mem: begin                      // get offset directly from inst_i
+					mem_addr_o <= {{16{inst_i[15]}}, inst_i[15:0]} + reg1_i;
+				end
+				default: begin
+					mem_addr_o <= `ZeroWord;
+				end
+			endcase
+		end
+	end
 
 	reg [31:0] logicout;
 	reg [31:0] moveout;
@@ -217,9 +232,6 @@ module EX(
 					if(mem_cp0_reg_we == 1'b1 && mem_cp0_reg_write_addr == inst_i[15:11])//存在数据相关
 					begin
 						moveout = mem_cp0_data;
-					end else if (wb_cp0_reg_we == 1'b1 && wb_cp0_reg_write_addr == inst_i[15:11])
-					begin
-						moveout = wb_cp0_reg_data;
 					end
 				end
 				default: moveout = 32'b0;

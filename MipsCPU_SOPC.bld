@@ -2,16 +2,1453 @@ Release 13.1 ngdbuild O.40d (nt64)
 Copyright (c) 1995-2011 Xilinx, Inc.  All rights reserved.
 
 Command Line: F:\Xilinx\13.1\ISE_DS\ISE\bin\nt64\unwrapped\ngdbuild.exe
--intstyle ise -dd _ngo -nt timestamp -uc MipsCPU.ucf -p xc6slx100-fgg676-3
-MipsCPU_SOPC.ngc MipsCPU_SOPC.ngd
+-intstyle ise -dd _ngo -sd ipcore_dir -nt timestamp -uc MipsCPU.ucf -p
+xc6slx100-fgg676-3 MipsCPU_SOPC.ngc MipsCPU_SOPC.ngd
 
 Reading NGO file "C:/MipsCPU/MipsCPU_SOPC.ngc" ...
 Gathering constraint information from source properties...
 Done.
 
 Annotating constraints to design from ucf file "MipsCPU.ucf" ...
+WARNING:NgdBuild:931 - The value of SIM_DEVICE on instance
+   'cpu0/instance_name/pll_base_inst/PLL_ADV' of type PLL_ADV has been changed
+   from 'VIRTEX5' to 'SPARTAN6' to correct post-ngdbuild and timing simulation
+   for this primitive.  In order for functional simulation to be correct, the
+   value of SIM_DEVICE should be changed in this same manner in the source
+   netlist or constraint file.
 Resolving constraint associations...
 Checking Constraint Associations...
+ERROR:ConstraintSystem:59 - Constraint <NET "RxD" LOC = N23;> [MipsCPU.ucf(23)]:
+   NET "RxD" not found.  Please verify that:
+   1. The specified design element actually exists in the original design.
+   2. The specified object is spelled correctly in the constraint source file.
+
+WARNING:ConstraintSystem - A target design object for the Locate constraint
+   '<NET "RxD" LOC = N23;> [MipsCPU.ucf(23)]' could not be found and so the
+   Locate constraint will be removed.
+
+ERROR:ConstraintSystem:59 - Constraint <NET "TxD" LOC = P26;> [MipsCPU.ucf(24)]:
+   NET "TxD" not found.  Please verify that:
+   1. The specified design element actually exists in the original design.
+   2. The specified object is spelled correctly in the constraint source file.
+
+WARNING:ConstraintSystem - A target design object for the Locate constraint
+   '<NET "TxD" LOC = P26;> [MipsCPU.ucf(24)]' could not be found and so the
+   Locate constraint will be removed.
+
+ERROR:ConstraintSystem:59 - Constraint <NET "baseram_addr[0]" LOC = Y26;>
+   [MipsCPU.ucf(27)]: NET "baseram_addr[0]" not found.  Please verify that:
+   1. The specified design element actually exists in the original design.
+   2. The specified object is spelled correctly in the constraint source file.
+
+WARNING:ConstraintSystem - A target design object for the Locate constraint
+   '<NET "baseram_addr[0]" LOC = Y26;> [MipsCPU.ucf(27)]' could not be found and
+   so the Locate constraint will be removed.
+
+ERROR:ConstraintSystem:59 - Constraint <NET "baseram_addr[1]" LOC = W25;>
+   [MipsCPU.ucf(28)]: NET "baseram_addr[1]" not found.  Please verify that:
+   1. The specified design element actually exists in the original design.
+   2. The specified object is spelled correctly in the constraint source file.
+
+WARNING:ConstraintSystem - A target design object for the Locate constraint
+   '<NET "baseram_addr[1]" LOC = W25;> [MipsCPU.ucf(28)]' could not be found and
+   so the Locate constraint will be removed.
+
+ERROR:ConstraintSystem:59 - Constraint <NET "baseram_addr[2]" LOC = W26;>
+   [MipsCPU.ucf(29)]: NET "baseram_addr[2]" not found.  Please verify that:
+   1. The specified design element actually exists in the original design.
+   2. The specified object is spelled correctly in the constraint source file.
+
+WARNING:ConstraintSystem - A target design object for the Locate constraint
+   '<NET "baseram_addr[2]" LOC = W26;> [MipsCPU.ucf(29)]' could not be found and
+   so the Locate constraint will be removed.
+
+ERROR:ConstraintSystem:59 - Constraint <NET "baseram_addr[3]" LOC = V24;>
+   [MipsCPU.ucf(30)]: NET "baseram_addr[3]" not found.  Please verify that:
+   1. The specified design element actually exists in the original design.
+   2. The specified object is spelled correctly in the constraint source file.
+
+WARNING:ConstraintSystem - A target design object for the Locate constraint
+   '<NET "baseram_addr[3]" LOC = V24;> [MipsCPU.ucf(30)]' could not be found and
+   so the Locate constraint will be removed.
+
+ERROR:ConstraintSystem:59 - Constraint <NET "baseram_addr[4]" LOC = V26;>
+   [MipsCPU.ucf(31)]: NET "baseram_addr[4]" not found.  Please verify that:
+   1. The specified design element actually exists in the original design.
+   2. The specified object is spelled correctly in the constraint source file.
+
+WARNING:ConstraintSystem - A target design object for the Locate constraint
+   '<NET "baseram_addr[4]" LOC = V26;> [MipsCPU.ucf(31)]' could not be found and
+   so the Locate constraint will be removed.
+
+ERROR:ConstraintSystem:59 - Constraint <NET "baseram_addr[5]" LOC = AC14;>
+   [MipsCPU.ucf(32)]: NET "baseram_addr[5]" not found.  Please verify that:
+   1. The specified design element actually exists in the original design.
+   2. The specified object is spelled correctly in the constraint source file.
+
+WARNING:ConstraintSystem - A target design object for the Locate constraint
+   '<NET "baseram_addr[5]" LOC = AC14;> [MipsCPU.ucf(32)]' could not be found
+   and so the Locate constraint will be removed.
+
+ERROR:ConstraintSystem:59 - Constraint <NET "baseram_addr[6]" LOC = AD15;>
+   [MipsCPU.ucf(33)]: NET "baseram_addr[6]" not found.  Please verify that:
+   1. The specified design element actually exists in the original design.
+   2. The specified object is spelled correctly in the constraint source file.
+
+WARNING:ConstraintSystem - A target design object for the Locate constraint
+   '<NET "baseram_addr[6]" LOC = AD15;> [MipsCPU.ucf(33)]' could not be found
+   and so the Locate constraint will be removed.
+
+ERROR:ConstraintSystem:59 - Constraint <NET "baseram_addr[7]" LOC = AC15;>
+   [MipsCPU.ucf(34)]: NET "baseram_addr[7]" not found.  Please verify that:
+   1. The specified design element actually exists in the original design.
+   2. The specified object is spelled correctly in the constraint source file.
+
+WARNING:ConstraintSystem - A target design object for the Locate constraint
+   '<NET "baseram_addr[7]" LOC = AC15;> [MipsCPU.ucf(34)]' could not be found
+   and so the Locate constraint will be removed.
+
+ERROR:ConstraintSystem:59 - Constraint <NET "baseram_addr[8]" LOC = AC16;>
+   [MipsCPU.ucf(35)]: NET "baseram_addr[8]" not found.  Please verify that:
+   1. The specified design element actually exists in the original design.
+   2. The specified object is spelled correctly in the constraint source file.
+
+WARNING:ConstraintSystem - A target design object for the Locate constraint
+   '<NET "baseram_addr[8]" LOC = AC16;> [MipsCPU.ucf(35)]' could not be found
+   and so the Locate constraint will be removed.
+
+ERROR:ConstraintSystem:59 - Constraint <NET "baseram_addr[9]" LOC = AC19;>
+   [MipsCPU.ucf(36)]: NET "baseram_addr[9]" not found.  Please verify that:
+   1. The specified design element actually exists in the original design.
+   2. The specified object is spelled correctly in the constraint source file.
+
+WARNING:ConstraintSystem - A target design object for the Locate constraint
+   '<NET "baseram_addr[9]" LOC = AC19;> [MipsCPU.ucf(36)]' could not be found
+   and so the Locate constraint will be removed.
+
+ERROR:ConstraintSystem:59 - Constraint <NET "baseram_addr[10]" LOC = AD20;>
+   [MipsCPU.ucf(37)]: NET "baseram_addr[10]" not found.  Please verify that:
+   1. The specified design element actually exists in the original design.
+   2. The specified object is spelled correctly in the constraint source file.
+
+WARNING:ConstraintSystem - A target design object for the Locate constraint
+   '<NET "baseram_addr[10]" LOC = AD20;> [MipsCPU.ucf(37)]' could not be found
+   and so the Locate constraint will be removed.
+
+ERROR:ConstraintSystem:59 - Constraint <NET "baseram_addr[11]" LOC = AC20;>
+   [MipsCPU.ucf(38)]: NET "baseram_addr[11]" not found.  Please verify that:
+   1. The specified design element actually exists in the original design.
+   2. The specified object is spelled correctly in the constraint source file.
+
+WARNING:ConstraintSystem - A target design object for the Locate constraint
+   '<NET "baseram_addr[11]" LOC = AC20;> [MipsCPU.ucf(38)]' could not be found
+   and so the Locate constraint will be removed.
+
+ERROR:ConstraintSystem:59 - Constraint <NET "baseram_addr[12]" LOC = AD21;>
+   [MipsCPU.ucf(39)]: NET "baseram_addr[12]" not found.  Please verify that:
+   1. The specified design element actually exists in the original design.
+   2. The specified object is spelled correctly in the constraint source file.
+
+WARNING:ConstraintSystem - A target design object for the Locate constraint
+   '<NET "baseram_addr[12]" LOC = AD21;> [MipsCPU.ucf(39)]' could not be found
+   and so the Locate constraint will be removed.
+
+ERROR:ConstraintSystem:59 - Constraint <NET "baseram_addr[13]" LOC = AB22;>
+   [MipsCPU.ucf(40)]: NET "baseram_addr[13]" not found.  Please verify that:
+   1. The specified design element actually exists in the original design.
+   2. The specified object is spelled correctly in the constraint source file.
+
+WARNING:ConstraintSystem - A target design object for the Locate constraint
+   '<NET "baseram_addr[13]" LOC = AB22;> [MipsCPU.ucf(40)]' could not be found
+   and so the Locate constraint will be removed.
+
+ERROR:ConstraintSystem:59 - Constraint <NET "baseram_addr[14]" LOC = AD22;>
+   [MipsCPU.ucf(41)]: NET "baseram_addr[14]" not found.  Please verify that:
+   1. The specified design element actually exists in the original design.
+   2. The specified object is spelled correctly in the constraint source file.
+
+WARNING:ConstraintSystem - A target design object for the Locate constraint
+   '<NET "baseram_addr[14]" LOC = AD22;> [MipsCPU.ucf(41)]' could not be found
+   and so the Locate constraint will be removed.
+
+ERROR:ConstraintSystem:59 - Constraint <NET "baseram_addr[15]" LOC = AA23;>
+   [MipsCPU.ucf(42)]: NET "baseram_addr[15]" not found.  Please verify that:
+   1. The specified design element actually exists in the original design.
+   2. The specified object is spelled correctly in the constraint source file.
+
+WARNING:ConstraintSystem - A target design object for the Locate constraint
+   '<NET "baseram_addr[15]" LOC = AA23;> [MipsCPU.ucf(42)]' could not be found
+   and so the Locate constraint will be removed.
+
+ERROR:ConstraintSystem:59 - Constraint <NET "baseram_addr[16]" LOC = AC23;>
+   [MipsCPU.ucf(43)]: NET "baseram_addr[16]" not found.  Please verify that:
+   1. The specified design element actually exists in the original design.
+   2. The specified object is spelled correctly in the constraint source file.
+
+WARNING:ConstraintSystem - A target design object for the Locate constraint
+   '<NET "baseram_addr[16]" LOC = AC23;> [MipsCPU.ucf(43)]' could not be found
+   and so the Locate constraint will be removed.
+
+ERROR:ConstraintSystem:59 - Constraint <NET "baseram_addr[17]" LOC = V23;>
+   [MipsCPU.ucf(44)]: NET "baseram_addr[17]" not found.  Please verify that:
+   1. The specified design element actually exists in the original design.
+   2. The specified object is spelled correctly in the constraint source file.
+
+WARNING:ConstraintSystem - A target design object for the Locate constraint
+   '<NET "baseram_addr[17]" LOC = V23;> [MipsCPU.ucf(44)]' could not be found
+   and so the Locate constraint will be removed.
+
+ERROR:ConstraintSystem:59 - Constraint <NET "baseram_addr[18]" LOC = W22;>
+   [MipsCPU.ucf(45)]: NET "baseram_addr[18]" not found.  Please verify that:
+   1. The specified design element actually exists in the original design.
+   2. The specified object is spelled correctly in the constraint source file.
+
+WARNING:ConstraintSystem - A target design object for the Locate constraint
+   '<NET "baseram_addr[18]" LOC = W22;> [MipsCPU.ucf(45)]' could not be found
+   and so the Locate constraint will be removed.
+
+ERROR:ConstraintSystem:59 - Constraint <NET "baseram_addr[19]" LOC = W24;>
+   [MipsCPU.ucf(46)]: NET "baseram_addr[19]" not found.  Please verify that:
+   1. The specified design element actually exists in the original design.
+   2. The specified object is spelled correctly in the constraint source file.
+
+WARNING:ConstraintSystem - A target design object for the Locate constraint
+   '<NET "baseram_addr[19]" LOC = W24;> [MipsCPU.ucf(46)]' could not be found
+   and so the Locate constraint will be removed.
+
+ERROR:ConstraintSystem:59 - Constraint <NET "baseram_data[0]" LOC = AC24;>
+   [MipsCPU.ucf(47)]: NET "baseram_data[0]" not found.  Please verify that:
+   1. The specified design element actually exists in the original design.
+   2. The specified object is spelled correctly in the constraint source file.
+
+WARNING:ConstraintSystem - A target design object for the Locate constraint
+   '<NET "baseram_data[0]" LOC = AC24;> [MipsCPU.ucf(47)]' could not be found
+   and so the Locate constraint will be removed.
+
+ERROR:ConstraintSystem:59 - Constraint <NET "baseram_data[1]" LOC = AD24;>
+   [MipsCPU.ucf(48)]: NET "baseram_data[1]" not found.  Please verify that:
+   1. The specified design element actually exists in the original design.
+   2. The specified object is spelled correctly in the constraint source file.
+
+WARNING:ConstraintSystem - A target design object for the Locate constraint
+   '<NET "baseram_data[1]" LOC = AD24;> [MipsCPU.ucf(48)]' could not be found
+   and so the Locate constraint will be removed.
+
+ERROR:ConstraintSystem:59 - Constraint <NET "baseram_data[2]" LOC = AC26;>
+   [MipsCPU.ucf(49)]: NET "baseram_data[2]" not found.  Please verify that:
+   1. The specified design element actually exists in the original design.
+   2. The specified object is spelled correctly in the constraint source file.
+
+WARNING:ConstraintSystem - A target design object for the Locate constraint
+   '<NET "baseram_data[2]" LOC = AC26;> [MipsCPU.ucf(49)]' could not be found
+   and so the Locate constraint will be removed.
+
+ERROR:ConstraintSystem:59 - Constraint <NET "baseram_data[3]" LOC = AB26;>
+   [MipsCPU.ucf(50)]: NET "baseram_data[3]" not found.  Please verify that:
+   1. The specified design element actually exists in the original design.
+   2. The specified object is spelled correctly in the constraint source file.
+
+WARNING:ConstraintSystem - A target design object for the Locate constraint
+   '<NET "baseram_data[3]" LOC = AB26;> [MipsCPU.ucf(50)]' could not be found
+   and so the Locate constraint will be removed.
+
+ERROR:ConstraintSystem:59 - Constraint <NET "baseram_data[4]" LOC = Y24;>
+   [MipsCPU.ucf(51)]: NET "baseram_data[4]" not found.  Please verify that:
+   1. The specified design element actually exists in the original design.
+   2. The specified object is spelled correctly in the constraint source file.
+
+WARNING:ConstraintSystem - A target design object for the Locate constraint
+   '<NET "baseram_data[4]" LOC = Y24;> [MipsCPU.ucf(51)]' could not be found and
+   so the Locate constraint will be removed.
+
+ERROR:ConstraintSystem:59 - Constraint <NET "baseram_data[5]" LOC = AA24;>
+   [MipsCPU.ucf(52)]: NET "baseram_data[5]" not found.  Please verify that:
+   1. The specified design element actually exists in the original design.
+   2. The specified object is spelled correctly in the constraint source file.
+
+WARNING:ConstraintSystem - A target design object for the Locate constraint
+   '<NET "baseram_data[5]" LOC = AA24;> [MipsCPU.ucf(52)]' could not be found
+   and so the Locate constraint will be removed.
+
+ERROR:ConstraintSystem:59 - Constraint <NET "baseram_data[6]" LOC = Y22;>
+   [MipsCPU.ucf(53)]: NET "baseram_data[6]" not found.  Please verify that:
+   1. The specified design element actually exists in the original design.
+   2. The specified object is spelled correctly in the constraint source file.
+
+WARNING:ConstraintSystem - A target design object for the Locate constraint
+   '<NET "baseram_data[6]" LOC = Y22;> [MipsCPU.ucf(53)]' could not be found and
+   so the Locate constraint will be removed.
+
+ERROR:ConstraintSystem:59 - Constraint <NET "baseram_data[7]" LOC = AB24;>
+   [MipsCPU.ucf(54)]: NET "baseram_data[7]" not found.  Please verify that:
+   1. The specified design element actually exists in the original design.
+   2. The specified object is spelled correctly in the constraint source file.
+
+WARNING:ConstraintSystem - A target design object for the Locate constraint
+   '<NET "baseram_data[7]" LOC = AB24;> [MipsCPU.ucf(54)]' could not be found
+   and so the Locate constraint will be removed.
+
+ERROR:ConstraintSystem:59 - Constraint <NET "baseram_data[8]" LOC = AD19;>
+   [MipsCPU.ucf(55)]: NET "baseram_data[8]" not found.  Please verify that:
+   1. The specified design element actually exists in the original design.
+   2. The specified object is spelled correctly in the constraint source file.
+
+WARNING:ConstraintSystem - A target design object for the Locate constraint
+   '<NET "baseram_data[8]" LOC = AD19;> [MipsCPU.ucf(55)]' could not be found
+   and so the Locate constraint will be removed.
+
+ERROR:ConstraintSystem:59 - Constraint <NET "baseram_data[9]" LOC = AB18;>
+   [MipsCPU.ucf(56)]: NET "baseram_data[9]" not found.  Please verify that:
+   1. The specified design element actually exists in the original design.
+   2. The specified object is spelled correctly in the constraint source file.
+
+WARNING:ConstraintSystem - A target design object for the Locate constraint
+   '<NET "baseram_data[9]" LOC = AB18;> [MipsCPU.ucf(56)]' could not be found
+   and so the Locate constraint will be removed.
+
+ERROR:ConstraintSystem:59 - Constraint <NET "baseram_data[10]" LOC = AD18;>
+   [MipsCPU.ucf(57)]: NET "baseram_data[10]" not found.  Please verify that:
+   1. The specified design element actually exists in the original design.
+   2. The specified object is spelled correctly in the constraint source file.
+
+WARNING:ConstraintSystem - A target design object for the Locate constraint
+   '<NET "baseram_data[10]" LOC = AD18;> [MipsCPU.ucf(57)]' could not be found
+   and so the Locate constraint will be removed.
+
+ERROR:ConstraintSystem:59 - Constraint <NET "baseram_data[11]" LOC = AC17;>
+   [MipsCPU.ucf(58)]: NET "baseram_data[11]" not found.  Please verify that:
+   1. The specified design element actually exists in the original design.
+   2. The specified object is spelled correctly in the constraint source file.
+
+WARNING:ConstraintSystem - A target design object for the Locate constraint
+   '<NET "baseram_data[11]" LOC = AC17;> [MipsCPU.ucf(58)]' could not be found
+   and so the Locate constraint will be removed.
+
+ERROR:ConstraintSystem:59 - Constraint <NET "baseram_data[12]" LOC = AB17;>
+   [MipsCPU.ucf(59)]: NET "baseram_data[12]" not found.  Please verify that:
+   1. The specified design element actually exists in the original design.
+   2. The specified object is spelled correctly in the constraint source file.
+
+WARNING:ConstraintSystem - A target design object for the Locate constraint
+   '<NET "baseram_data[12]" LOC = AB17;> [MipsCPU.ucf(59)]' could not be found
+   and so the Locate constraint will be removed.
+
+ERROR:ConstraintSystem:59 - Constraint <NET "baseram_data[13]" LOC = AF21;>
+   [MipsCPU.ucf(60)]: NET "baseram_data[13]" not found.  Please verify that:
+   1. The specified design element actually exists in the original design.
+   2. The specified object is spelled correctly in the constraint source file.
+
+WARNING:ConstraintSystem - A target design object for the Locate constraint
+   '<NET "baseram_data[13]" LOC = AF21;> [MipsCPU.ucf(60)]' could not be found
+   and so the Locate constraint will be removed.
+
+ERROR:ConstraintSystem:59 - Constraint <NET "baseram_data[14]" LOC = AE21;>
+   [MipsCPU.ucf(61)]: NET "baseram_data[14]" not found.  Please verify that:
+   1. The specified design element actually exists in the original design.
+   2. The specified object is spelled correctly in the constraint source file.
+
+WARNING:ConstraintSystem - A target design object for the Locate constraint
+   '<NET "baseram_data[14]" LOC = AE21;> [MipsCPU.ucf(61)]' could not be found
+   and so the Locate constraint will be removed.
+
+ERROR:ConstraintSystem:59 - Constraint <NET "baseram_data[15]" LOC = AF20;>
+   [MipsCPU.ucf(62)]: NET "baseram_data[15]" not found.  Please verify that:
+   1. The specified design element actually exists in the original design.
+   2. The specified object is spelled correctly in the constraint source file.
+
+WARNING:ConstraintSystem - A target design object for the Locate constraint
+   '<NET "baseram_data[15]" LOC = AF20;> [MipsCPU.ucf(62)]' could not be found
+   and so the Locate constraint will be removed.
+
+ERROR:ConstraintSystem:59 - Constraint <NET "baseram_data[16]" LOC = AE23;>
+   [MipsCPU.ucf(63)]: NET "baseram_data[16]" not found.  Please verify that:
+   1. The specified design element actually exists in the original design.
+   2. The specified object is spelled correctly in the constraint source file.
+
+WARNING:ConstraintSystem - A target design object for the Locate constraint
+   '<NET "baseram_data[16]" LOC = AE23;> [MipsCPU.ucf(63)]' could not be found
+   and so the Locate constraint will be removed.
+
+ERROR:ConstraintSystem:59 - Constraint <NET "baseram_data[17]" LOC = AF24;>
+   [MipsCPU.ucf(64)]: NET "baseram_data[17]" not found.  Please verify that:
+   1. The specified design element actually exists in the original design.
+   2. The specified object is spelled correctly in the constraint source file.
+
+WARNING:ConstraintSystem - A target design object for the Locate constraint
+   '<NET "baseram_data[17]" LOC = AF24;> [MipsCPU.ucf(64)]' could not be found
+   and so the Locate constraint will be removed.
+
+ERROR:ConstraintSystem:59 - Constraint <NET "baseram_data[18]" LOC = AE24;>
+   [MipsCPU.ucf(65)]: NET "baseram_data[18]" not found.  Please verify that:
+   1. The specified design element actually exists in the original design.
+   2. The specified object is spelled correctly in the constraint source file.
+
+WARNING:ConstraintSystem - A target design object for the Locate constraint
+   '<NET "baseram_data[18]" LOC = AE24;> [MipsCPU.ucf(65)]' could not be found
+   and so the Locate constraint will be removed.
+
+ERROR:ConstraintSystem:59 - Constraint <NET "baseram_data[19]" LOC = AF25;>
+   [MipsCPU.ucf(66)]: NET "baseram_data[19]" not found.  Please verify that:
+   1. The specified design element actually exists in the original design.
+   2. The specified object is spelled correctly in the constraint source file.
+
+WARNING:ConstraintSystem - A target design object for the Locate constraint
+   '<NET "baseram_data[19]" LOC = AF25;> [MipsCPU.ucf(66)]' could not be found
+   and so the Locate constraint will be removed.
+
+ERROR:ConstraintSystem:59 - Constraint <NET "baseram_data[20]" LOC = AE25;>
+   [MipsCPU.ucf(67)]: NET "baseram_data[20]" not found.  Please verify that:
+   1. The specified design element actually exists in the original design.
+   2. The specified object is spelled correctly in the constraint source file.
+
+WARNING:ConstraintSystem - A target design object for the Locate constraint
+   '<NET "baseram_data[20]" LOC = AE25;> [MipsCPU.ucf(67)]' could not be found
+   and so the Locate constraint will be removed.
+
+ERROR:ConstraintSystem:59 - Constraint <NET "baseram_data[21]" LOC = AE26;>
+   [MipsCPU.ucf(68)]: NET "baseram_data[21]" not found.  Please verify that:
+   1. The specified design element actually exists in the original design.
+   2. The specified object is spelled correctly in the constraint source file.
+
+WARNING:ConstraintSystem - A target design object for the Locate constraint
+   '<NET "baseram_data[21]" LOC = AE26;> [MipsCPU.ucf(68)]' could not be found
+   and so the Locate constraint will be removed.
+
+ERROR:ConstraintSystem:59 - Constraint <NET "baseram_data[22]" LOC = AD26;>
+   [MipsCPU.ucf(69)]: NET "baseram_data[22]" not found.  Please verify that:
+   1. The specified design element actually exists in the original design.
+   2. The specified object is spelled correctly in the constraint source file.
+
+WARNING:ConstraintSystem - A target design object for the Locate constraint
+   '<NET "baseram_data[22]" LOC = AD26;> [MipsCPU.ucf(69)]' could not be found
+   and so the Locate constraint will be removed.
+
+ERROR:ConstraintSystem:59 - Constraint <NET "baseram_data[23]" LOC = AC25;>
+   [MipsCPU.ucf(70)]: NET "baseram_data[23]" not found.  Please verify that:
+   1. The specified design element actually exists in the original design.
+   2. The specified object is spelled correctly in the constraint source file.
+
+WARNING:ConstraintSystem - A target design object for the Locate constraint
+   '<NET "baseram_data[23]" LOC = AC25;> [MipsCPU.ucf(70)]' could not be found
+   and so the Locate constraint will be removed.
+
+ERROR:ConstraintSystem:59 - Constraint <NET "baseram_data[24]" LOC = AF19;>
+   [MipsCPU.ucf(71)]: NET "baseram_data[24]" not found.  Please verify that:
+   1. The specified design element actually exists in the original design.
+   2. The specified object is spelled correctly in the constraint source file.
+
+WARNING:ConstraintSystem - A target design object for the Locate constraint
+   '<NET "baseram_data[24]" LOC = AF19;> [MipsCPU.ucf(71)]' could not be found
+   and so the Locate constraint will be removed.
+
+ERROR:ConstraintSystem:59 - Constraint <NET "baseram_data[25]" LOC = AE19;>
+   [MipsCPU.ucf(72)]: NET "baseram_data[25]" not found.  Please verify that:
+   1. The specified design element actually exists in the original design.
+   2. The specified object is spelled correctly in the constraint source file.
+
+WARNING:ConstraintSystem - A target design object for the Locate constraint
+   '<NET "baseram_data[25]" LOC = AE19;> [MipsCPU.ucf(72)]' could not be found
+   and so the Locate constraint will be removed.
+
+ERROR:ConstraintSystem:59 - Constraint <NET "baseram_data[26]" LOC = AF18;>
+   [MipsCPU.ucf(73)]: NET "baseram_data[26]" not found.  Please verify that:
+   1. The specified design element actually exists in the original design.
+   2. The specified object is spelled correctly in the constraint source file.
+
+WARNING:ConstraintSystem - A target design object for the Locate constraint
+   '<NET "baseram_data[26]" LOC = AF18;> [MipsCPU.ucf(73)]' could not be found
+   and so the Locate constraint will be removed.
+
+ERROR:ConstraintSystem:59 - Constraint <NET "baseram_data[27]" LOC = AF17;>
+   [MipsCPU.ucf(74)]: NET "baseram_data[27]" not found.  Please verify that:
+   1. The specified design element actually exists in the original design.
+   2. The specified object is spelled correctly in the constraint source file.
+
+WARNING:ConstraintSystem - A target design object for the Locate constraint
+   '<NET "baseram_data[27]" LOC = AF17;> [MipsCPU.ucf(74)]' could not be found
+   and so the Locate constraint will be removed.
+
+ERROR:ConstraintSystem:59 - Constraint <NET "baseram_data[28]" LOC = AE17;>
+   [MipsCPU.ucf(75)]: NET "baseram_data[28]" not found.  Please verify that:
+   1. The specified design element actually exists in the original design.
+   2. The specified object is spelled correctly in the constraint source file.
+
+WARNING:ConstraintSystem - A target design object for the Locate constraint
+   '<NET "baseram_data[28]" LOC = AE17;> [MipsCPU.ucf(75)]' could not be found
+   and so the Locate constraint will be removed.
+
+ERROR:ConstraintSystem:59 - Constraint <NET "baseram_data[29]" LOC = AF16;>
+   [MipsCPU.ucf(76)]: NET "baseram_data[29]" not found.  Please verify that:
+   1. The specified design element actually exists in the original design.
+   2. The specified object is spelled correctly in the constraint source file.
+
+WARNING:ConstraintSystem - A target design object for the Locate constraint
+   '<NET "baseram_data[29]" LOC = AF16;> [MipsCPU.ucf(76)]' could not be found
+   and so the Locate constraint will be removed.
+
+ERROR:ConstraintSystem:59 - Constraint <NET "baseram_data[30]" LOC = AF15;>
+   [MipsCPU.ucf(77)]: NET "baseram_data[30]" not found.  Please verify that:
+   1. The specified design element actually exists in the original design.
+   2. The specified object is spelled correctly in the constraint source file.
+
+WARNING:ConstraintSystem - A target design object for the Locate constraint
+   '<NET "baseram_data[30]" LOC = AF15;> [MipsCPU.ucf(77)]' could not be found
+   and so the Locate constraint will be removed.
+
+ERROR:ConstraintSystem:59 - Constraint <NET "baseram_data[31]" LOC = AE15;>
+   [MipsCPU.ucf(78)]: NET "baseram_data[31]" not found.  Please verify that:
+   1. The specified design element actually exists in the original design.
+   2. The specified object is spelled correctly in the constraint source file.
+
+WARNING:ConstraintSystem - A target design object for the Locate constraint
+   '<NET "baseram_data[31]" LOC = AE15;> [MipsCPU.ucf(78)]' could not be found
+   and so the Locate constraint will be removed.
+
+ERROR:ConstraintSystem:59 - Constraint <NET "baseram_ce" LOC = AA26;>
+   [MipsCPU.ucf(79)]: NET "baseram_ce" not found.  Please verify that:
+   1. The specified design element actually exists in the original design.
+   2. The specified object is spelled correctly in the constraint source file.
+
+WARNING:ConstraintSystem - A target design object for the Locate constraint
+   '<NET "baseram_ce" LOC = AA26;> [MipsCPU.ucf(79)]' could not be found and so
+   the Locate constraint will be removed.
+
+ERROR:ConstraintSystem:59 - Constraint <NET "baseram_oe" LOC = AD17;>
+   [MipsCPU.ucf(80)]: NET "baseram_oe" not found.  Please verify that:
+   1. The specified design element actually exists in the original design.
+   2. The specified object is spelled correctly in the constraint source file.
+
+WARNING:ConstraintSystem - A target design object for the Locate constraint
+   '<NET "baseram_oe" LOC = AD17;> [MipsCPU.ucf(80)]' could not be found and so
+   the Locate constraint will be removed.
+
+ERROR:ConstraintSystem:59 - Constraint <NET "baseram_we" LOC = AA25;>
+   [MipsCPU.ucf(81)]: NET "baseram_we" not found.  Please verify that:
+   1. The specified design element actually exists in the original design.
+   2. The specified object is spelled correctly in the constraint source file.
+
+WARNING:ConstraintSystem - A target design object for the Locate constraint
+   '<NET "baseram_we" LOC = AA25;> [MipsCPU.ucf(81)]' could not be found and so
+   the Locate constraint will be removed.
+
+ERROR:ConstraintSystem:59 - Constraint <NET "extram_addr[0]" LOC = AD4;>
+   [MipsCPU.ucf(84)]: NET "extram_addr[0]" not found.  Please verify that:
+   1. The specified design element actually exists in the original design.
+   2. The specified object is spelled correctly in the constraint source file.
+
+WARNING:ConstraintSystem - A target design object for the Locate constraint
+   '<NET "extram_addr[0]" LOC = AD4;> [MipsCPU.ucf(84)]' could not be found and
+   so the Locate constraint will be removed.
+
+ERROR:ConstraintSystem:59 - Constraint <NET "extram_addr[1]" LOC = AD3;>
+   [MipsCPU.ucf(85)]: NET "extram_addr[1]" not found.  Please verify that:
+   1. The specified design element actually exists in the original design.
+   2. The specified object is spelled correctly in the constraint source file.
+
+WARNING:ConstraintSystem - A target design object for the Locate constraint
+   '<NET "extram_addr[1]" LOC = AD3;> [MipsCPU.ucf(85)]' could not be found and
+   so the Locate constraint will be removed.
+
+ERROR:ConstraintSystem:59 - Constraint <NET "extram_addr[2]" LOC = AD6;>
+   [MipsCPU.ucf(86)]: NET "extram_addr[2]" not found.  Please verify that:
+   1. The specified design element actually exists in the original design.
+   2. The specified object is spelled correctly in the constraint source file.
+
+WARNING:ConstraintSystem - A target design object for the Locate constraint
+   '<NET "extram_addr[2]" LOC = AD6;> [MipsCPU.ucf(86)]' could not be found and
+   so the Locate constraint will be removed.
+
+ERROR:ConstraintSystem:59 - Constraint <NET "extram_addr[3]" LOC = AC5;>
+   [MipsCPU.ucf(87)]: NET "extram_addr[3]" not found.  Please verify that:
+   1. The specified design element actually exists in the original design.
+   2. The specified object is spelled correctly in the constraint source file.
+
+WARNING:ConstraintSystem - A target design object for the Locate constraint
+   '<NET "extram_addr[3]" LOC = AC5;> [MipsCPU.ucf(87)]' could not be found and
+   so the Locate constraint will be removed.
+
+ERROR:ConstraintSystem:59 - Constraint <NET "extram_addr[4]" LOC = AD5;>
+   [MipsCPU.ucf(88)]: NET "extram_addr[4]" not found.  Please verify that:
+   1. The specified design element actually exists in the original design.
+   2. The specified object is spelled correctly in the constraint source file.
+
+WARNING:ConstraintSystem - A target design object for the Locate constraint
+   '<NET "extram_addr[4]" LOC = AD5;> [MipsCPU.ucf(88)]' could not be found and
+   so the Locate constraint will be removed.
+
+ERROR:ConstraintSystem:59 - Constraint <NET "extram_addr[5]" LOC = AD14;>
+   [MipsCPU.ucf(89)]: NET "extram_addr[5]" not found.  Please verify that:
+   1. The specified design element actually exists in the original design.
+   2. The specified object is spelled correctly in the constraint source file.
+
+WARNING:ConstraintSystem - A target design object for the Locate constraint
+   '<NET "extram_addr[5]" LOC = AD14;> [MipsCPU.ucf(89)]' could not be found and
+   so the Locate constraint will be removed.
+
+ERROR:ConstraintSystem:59 - Constraint <NET "extram_addr[6]" LOC = AC13;>
+   [MipsCPU.ucf(90)]: NET "extram_addr[6]" not found.  Please verify that:
+   1. The specified design element actually exists in the original design.
+   2. The specified object is spelled correctly in the constraint source file.
+
+WARNING:ConstraintSystem - A target design object for the Locate constraint
+   '<NET "extram_addr[6]" LOC = AC13;> [MipsCPU.ucf(90)]' could not be found and
+   so the Locate constraint will be removed.
+
+ERROR:ConstraintSystem:59 - Constraint <NET "extram_addr[7]" LOC = AB10;>
+   [MipsCPU.ucf(91)]: NET "extram_addr[7]" not found.  Please verify that:
+   1. The specified design element actually exists in the original design.
+   2. The specified object is spelled correctly in the constraint source file.
+
+WARNING:ConstraintSystem - A target design object for the Locate constraint
+   '<NET "extram_addr[7]" LOC = AB10;> [MipsCPU.ucf(91)]' could not be found and
+   so the Locate constraint will be removed.
+
+ERROR:ConstraintSystem:59 - Constraint <NET "extram_addr[8]" LOC = AD10;>
+   [MipsCPU.ucf(92)]: NET "extram_addr[8]" not found.  Please verify that:
+   1. The specified design element actually exists in the original design.
+   2. The specified object is spelled correctly in the constraint source file.
+
+WARNING:ConstraintSystem - A target design object for the Locate constraint
+   '<NET "extram_addr[8]" LOC = AD10;> [MipsCPU.ucf(92)]' could not be found and
+   so the Locate constraint will be removed.
+
+ERROR:ConstraintSystem:59 - Constraint <NET "extram_addr[9]" LOC = AD9;>
+   [MipsCPU.ucf(93)]: NET "extram_addr[9]" not found.  Please verify that:
+   1. The specified design element actually exists in the original design.
+   2. The specified object is spelled correctly in the constraint source file.
+
+WARNING:ConstraintSystem - A target design object for the Locate constraint
+   '<NET "extram_addr[9]" LOC = AD9;> [MipsCPU.ucf(93)]' could not be found and
+   so the Locate constraint will be removed.
+
+ERROR:ConstraintSystem:59 - Constraint <NET "extram_addr[10]" LOC = AC9;>
+   [MipsCPU.ucf(94)]: NET "extram_addr[10]" not found.  Please verify that:
+   1. The specified design element actually exists in the original design.
+   2. The specified object is spelled correctly in the constraint source file.
+
+WARNING:ConstraintSystem - A target design object for the Locate constraint
+   '<NET "extram_addr[10]" LOC = AC9;> [MipsCPU.ucf(94)]' could not be found and
+   so the Locate constraint will be removed.
+
+ERROR:ConstraintSystem:59 - Constraint <NET "extram_addr[11]" LOC = AD8;>
+   [MipsCPU.ucf(95)]: NET "extram_addr[11]" not found.  Please verify that:
+   1. The specified design element actually exists in the original design.
+   2. The specified object is spelled correctly in the constraint source file.
+
+WARNING:ConstraintSystem - A target design object for the Locate constraint
+   '<NET "extram_addr[11]" LOC = AD8;> [MipsCPU.ucf(95)]' could not be found and
+   so the Locate constraint will be removed.
+
+ERROR:ConstraintSystem:59 - Constraint <NET "extram_addr[12]" LOC = AB8;>
+   [MipsCPU.ucf(96)]: NET "extram_addr[12]" not found.  Please verify that:
+   1. The specified design element actually exists in the original design.
+   2. The specified object is spelled correctly in the constraint source file.
+
+WARNING:ConstraintSystem - A target design object for the Locate constraint
+   '<NET "extram_addr[12]" LOC = AB8;> [MipsCPU.ucf(96)]' could not be found and
+   so the Locate constraint will be removed.
+
+ERROR:ConstraintSystem:59 - Constraint <NET "extram_addr[13]" LOC = AD7;>
+   [MipsCPU.ucf(97)]: NET "extram_addr[13]" not found.  Please verify that:
+   1. The specified design element actually exists in the original design.
+   2. The specified object is spelled correctly in the constraint source file.
+
+WARNING:ConstraintSystem - A target design object for the Locate constraint
+   '<NET "extram_addr[13]" LOC = AD7;> [MipsCPU.ucf(97)]' could not be found and
+   so the Locate constraint will be removed.
+
+ERROR:ConstraintSystem:59 - Constraint <NET "extram_addr[14]" LOC = AC7;>
+   [MipsCPU.ucf(98)]: NET "extram_addr[14]" not found.  Please verify that:
+   1. The specified design element actually exists in the original design.
+   2. The specified object is spelled correctly in the constraint source file.
+
+WARNING:ConstraintSystem - A target design object for the Locate constraint
+   '<NET "extram_addr[14]" LOC = AC7;> [MipsCPU.ucf(98)]' could not be found and
+   so the Locate constraint will be removed.
+
+ERROR:ConstraintSystem:59 - Constraint <NET "extram_addr[15]" LOC = AA4;>
+   [MipsCPU.ucf(99)]: NET "extram_addr[15]" not found.  Please verify that:
+   1. The specified design element actually exists in the original design.
+   2. The specified object is spelled correctly in the constraint source file.
+
+WARNING:ConstraintSystem - A target design object for the Locate constraint
+   '<NET "extram_addr[15]" LOC = AA4;> [MipsCPU.ucf(99)]' could not be found and
+   so the Locate constraint will be removed.
+
+ERROR:ConstraintSystem:59 - Constraint <NET "extram_addr[16]" LOC = AB3;>
+   [MipsCPU.ucf(100)]: NET "extram_addr[16]" not found.  Please verify that:
+   1. The specified design element actually exists in the original design.
+   2. The specified object is spelled correctly in the constraint source file.
+
+WARNING:ConstraintSystem - A target design object for the Locate constraint
+   '<NET "extram_addr[16]" LOC = AB3;> [MipsCPU.ucf(100)]' could not be found
+   and so the Locate constraint will be removed.
+
+ERROR:ConstraintSystem:59 - Constraint <NET "extram_addr[17]" LOC = AB4;>
+   [MipsCPU.ucf(101)]: NET "extram_addr[17]" not found.  Please verify that:
+   1. The specified design element actually exists in the original design.
+   2. The specified object is spelled correctly in the constraint source file.
+
+WARNING:ConstraintSystem - A target design object for the Locate constraint
+   '<NET "extram_addr[17]" LOC = AB4;> [MipsCPU.ucf(101)]' could not be found
+   and so the Locate constraint will be removed.
+
+ERROR:ConstraintSystem:59 - Constraint <NET "extram_addr[18]" LOC = AB5;>
+   [MipsCPU.ucf(102)]: NET "extram_addr[18]" not found.  Please verify that:
+   1. The specified design element actually exists in the original design.
+   2. The specified object is spelled correctly in the constraint source file.
+
+WARNING:ConstraintSystem - A target design object for the Locate constraint
+   '<NET "extram_addr[18]" LOC = AB5;> [MipsCPU.ucf(102)]' could not be found
+   and so the Locate constraint will be removed.
+
+ERROR:ConstraintSystem:59 - Constraint <NET "extram_addr[19]" LOC = AB6;>
+   [MipsCPU.ucf(103)]: NET "extram_addr[19]" not found.  Please verify that:
+   1. The specified design element actually exists in the original design.
+   2. The specified object is spelled correctly in the constraint source file.
+
+WARNING:ConstraintSystem - A target design object for the Locate constraint
+   '<NET "extram_addr[19]" LOC = AB6;> [MipsCPU.ucf(103)]' could not be found
+   and so the Locate constraint will be removed.
+
+ERROR:ConstraintSystem:59 - Constraint <NET "extram_data[0]" LOC = AF2;>
+   [MipsCPU.ucf(104)]: NET "extram_data[0]" not found.  Please verify that:
+   1. The specified design element actually exists in the original design.
+   2. The specified object is spelled correctly in the constraint source file.
+
+WARNING:ConstraintSystem - A target design object for the Locate constraint
+   '<NET "extram_data[0]" LOC = AF2;> [MipsCPU.ucf(104)]' could not be found and
+   so the Locate constraint will be removed.
+
+ERROR:ConstraintSystem:59 - Constraint <NET "extram_data[1]" LOC = AE3;>
+   [MipsCPU.ucf(105)]: NET "extram_data[1]" not found.  Please verify that:
+   1. The specified design element actually exists in the original design.
+   2. The specified object is spelled correctly in the constraint source file.
+
+WARNING:ConstraintSystem - A target design object for the Locate constraint
+   '<NET "extram_data[1]" LOC = AE3;> [MipsCPU.ucf(105)]' could not be found and
+   so the Locate constraint will be removed.
+
+ERROR:ConstraintSystem:59 - Constraint <NET "extram_data[2]" LOC = AE4;>
+   [MipsCPU.ucf(106)]: NET "extram_data[2]" not found.  Please verify that:
+   1. The specified design element actually exists in the original design.
+   2. The specified object is spelled correctly in the constraint source file.
+
+WARNING:ConstraintSystem - A target design object for the Locate constraint
+   '<NET "extram_data[2]" LOC = AE4;> [MipsCPU.ucf(106)]' could not be found and
+   so the Locate constraint will be removed.
+
+ERROR:ConstraintSystem:59 - Constraint <NET "extram_data[3]" LOC = AF4;>
+   [MipsCPU.ucf(107)]: NET "extram_data[3]" not found.  Please verify that:
+   1. The specified design element actually exists in the original design.
+   2. The specified object is spelled correctly in the constraint source file.
+
+WARNING:ConstraintSystem - A target design object for the Locate constraint
+   '<NET "extram_data[3]" LOC = AF4;> [MipsCPU.ucf(107)]' could not be found and
+   so the Locate constraint will be removed.
+
+ERROR:ConstraintSystem:59 - Constraint <NET "extram_data[4]" LOC = AE5;>
+   [MipsCPU.ucf(108)]: NET "extram_data[4]" not found.  Please verify that:
+   1. The specified design element actually exists in the original design.
+   2. The specified object is spelled correctly in the constraint source file.
+
+WARNING:ConstraintSystem - A target design object for the Locate constraint
+   '<NET "extram_data[4]" LOC = AE5;> [MipsCPU.ucf(108)]' could not be found and
+   so the Locate constraint will be removed.
+
+ERROR:ConstraintSystem:59 - Constraint <NET "extram_data[5]" LOC = AF5;>
+   [MipsCPU.ucf(109)]: NET "extram_data[5]" not found.  Please verify that:
+   1. The specified design element actually exists in the original design.
+   2. The specified object is spelled correctly in the constraint source file.
+
+WARNING:ConstraintSystem - A target design object for the Locate constraint
+   '<NET "extram_data[5]" LOC = AF5;> [MipsCPU.ucf(109)]' could not be found and
+   so the Locate constraint will be removed.
+
+ERROR:ConstraintSystem:59 - Constraint <NET "extram_data[6]" LOC = AF6;>
+   [MipsCPU.ucf(110)]: NET "extram_data[6]" not found.  Please verify that:
+   1. The specified design element actually exists in the original design.
+   2. The specified object is spelled correctly in the constraint source file.
+
+WARNING:ConstraintSystem - A target design object for the Locate constraint
+   '<NET "extram_data[6]" LOC = AF6;> [MipsCPU.ucf(110)]' could not be found and
+   so the Locate constraint will be removed.
+
+ERROR:ConstraintSystem:59 - Constraint <NET "extram_data[7]" LOC = AE7;>
+   [MipsCPU.ucf(111)]: NET "extram_data[7]" not found.  Please verify that:
+   1. The specified design element actually exists in the original design.
+   2. The specified object is spelled correctly in the constraint source file.
+
+WARNING:ConstraintSystem - A target design object for the Locate constraint
+   '<NET "extram_data[7]" LOC = AE7;> [MipsCPU.ucf(111)]' could not be found and
+   so the Locate constraint will be removed.
+
+ERROR:ConstraintSystem:59 - Constraint <NET "extram_data[8]" LOC = AE13;>
+   [MipsCPU.ucf(112)]: NET "extram_data[8]" not found.  Please verify that:
+   1. The specified design element actually exists in the original design.
+   2. The specified object is spelled correctly in the constraint source file.
+
+WARNING:ConstraintSystem - A target design object for the Locate constraint
+   '<NET "extram_data[8]" LOC = AE13;> [MipsCPU.ucf(112)]' could not be found
+   and so the Locate constraint will be removed.
+
+ERROR:ConstraintSystem:59 - Constraint <NET "extram_data[9]" LOC = AF13;>
+   [MipsCPU.ucf(113)]: NET "extram_data[9]" not found.  Please verify that:
+   1. The specified design element actually exists in the original design.
+   2. The specified object is spelled correctly in the constraint source file.
+
+WARNING:ConstraintSystem - A target design object for the Locate constraint
+   '<NET "extram_data[9]" LOC = AF13;> [MipsCPU.ucf(113)]' could not be found
+   and so the Locate constraint will be removed.
+
+ERROR:ConstraintSystem:59 - Constraint <NET "extram_data[10]" LOC = AD11;>
+   [MipsCPU.ucf(114)]: NET "extram_data[10]" not found.  Please verify that:
+   1. The specified design element actually exists in the original design.
+   2. The specified object is spelled correctly in the constraint source file.
+
+WARNING:ConstraintSystem - A target design object for the Locate constraint
+   '<NET "extram_data[10]" LOC = AD11;> [MipsCPU.ucf(114)]' could not be found
+   and so the Locate constraint will be removed.
+
+ERROR:ConstraintSystem:59 - Constraint <NET "extram_data[11]" LOC = AC11;>
+   [MipsCPU.ucf(115)]: NET "extram_data[11]" not found.  Please verify that:
+   1. The specified design element actually exists in the original design.
+   2. The specified object is spelled correctly in the constraint source file.
+
+WARNING:ConstraintSystem - A target design object for the Locate constraint
+   '<NET "extram_data[11]" LOC = AC11;> [MipsCPU.ucf(115)]' could not be found
+   and so the Locate constraint will be removed.
+
+ERROR:ConstraintSystem:59 - Constraint <NET "extram_data[12]" LOC = AD12;>
+   [MipsCPU.ucf(116)]: NET "extram_data[12]" not found.  Please verify that:
+   1. The specified design element actually exists in the original design.
+   2. The specified object is spelled correctly in the constraint source file.
+
+WARNING:ConstraintSystem - A target design object for the Locate constraint
+   '<NET "extram_data[12]" LOC = AD12;> [MipsCPU.ucf(116)]' could not be found
+   and so the Locate constraint will be removed.
+
+ERROR:ConstraintSystem:59 - Constraint <NET "extram_data[13]" LOC = AC12;>
+   [MipsCPU.ucf(117)]: NET "extram_data[13]" not found.  Please verify that:
+   1. The specified design element actually exists in the original design.
+   2. The specified object is spelled correctly in the constraint source file.
+
+WARNING:ConstraintSystem - A target design object for the Locate constraint
+   '<NET "extram_data[13]" LOC = AC12;> [MipsCPU.ucf(117)]' could not be found
+   and so the Locate constraint will be removed.
+
+ERROR:ConstraintSystem:59 - Constraint <NET "extram_data[14]" LOC = AD13;>
+   [MipsCPU.ucf(118)]: NET "extram_data[14]" not found.  Please verify that:
+   1. The specified design element actually exists in the original design.
+   2. The specified object is spelled correctly in the constraint source file.
+
+WARNING:ConstraintSystem - A target design object for the Locate constraint
+   '<NET "extram_data[14]" LOC = AD13;> [MipsCPU.ucf(118)]' could not be found
+   and so the Locate constraint will be removed.
+
+ERROR:ConstraintSystem:59 - Constraint <NET "extram_data[15]" LOC = AF14;>
+   [MipsCPU.ucf(119)]: NET "extram_data[15]" not found.  Please verify that:
+   1. The specified design element actually exists in the original design.
+   2. The specified object is spelled correctly in the constraint source file.
+
+WARNING:ConstraintSystem - A target design object for the Locate constraint
+   '<NET "extram_data[15]" LOC = AF14;> [MipsCPU.ucf(119)]' could not be found
+   and so the Locate constraint will be removed.
+
+ERROR:ConstraintSystem:59 - Constraint <NET "extram_data[16]" LOC = AE2;>
+   [MipsCPU.ucf(120)]: NET "extram_data[16]" not found.  Please verify that:
+   1. The specified design element actually exists in the original design.
+   2. The specified object is spelled correctly in the constraint source file.
+
+WARNING:ConstraintSystem - A target design object for the Locate constraint
+   '<NET "extram_data[16]" LOC = AE2;> [MipsCPU.ucf(120)]' could not be found
+   and so the Locate constraint will be removed.
+
+ERROR:ConstraintSystem:59 - Constraint <NET "extram_data[17]" LOC = AE1;>
+   [MipsCPU.ucf(121)]: NET "extram_data[17]" not found.  Please verify that:
+   1. The specified design element actually exists in the original design.
+   2. The specified object is spelled correctly in the constraint source file.
+
+WARNING:ConstraintSystem - A target design object for the Locate constraint
+   '<NET "extram_data[17]" LOC = AE1;> [MipsCPU.ucf(121)]' could not be found
+   and so the Locate constraint will be removed.
+
+ERROR:ConstraintSystem:59 - Constraint <NET "extram_data[18]" LOC = AD1;>
+   [MipsCPU.ucf(122)]: NET "extram_data[18]" not found.  Please verify that:
+   1. The specified design element actually exists in the original design.
+   2. The specified object is spelled correctly in the constraint source file.
+
+WARNING:ConstraintSystem - A target design object for the Locate constraint
+   '<NET "extram_data[18]" LOC = AD1;> [MipsCPU.ucf(122)]' could not be found
+   and so the Locate constraint will be removed.
+
+ERROR:ConstraintSystem:59 - Constraint <NET "extram_data[19]" LOC = AC1;>
+   [MipsCPU.ucf(123)]: NET "extram_data[19]" not found.  Please verify that:
+   1. The specified design element actually exists in the original design.
+   2. The specified object is spelled correctly in the constraint source file.
+
+WARNING:ConstraintSystem - A target design object for the Locate constraint
+   '<NET "extram_data[19]" LOC = AC1;> [MipsCPU.ucf(123)]' could not be found
+   and so the Locate constraint will be removed.
+
+ERROR:ConstraintSystem:59 - Constraint <NET "extram_data[20]" LOC = AC2;>
+   [MipsCPU.ucf(124)]: NET "extram_data[20]" not found.  Please verify that:
+   1. The specified design element actually exists in the original design.
+   2. The specified object is spelled correctly in the constraint source file.
+
+WARNING:ConstraintSystem - A target design object for the Locate constraint
+   '<NET "extram_data[20]" LOC = AC2;> [MipsCPU.ucf(124)]' could not be found
+   and so the Locate constraint will be removed.
+
+ERROR:ConstraintSystem:59 - Constraint <NET "extram_data[21]" LOC = AB1;>
+   [MipsCPU.ucf(125)]: NET "extram_data[21]" not found.  Please verify that:
+   1. The specified design element actually exists in the original design.
+   2. The specified object is spelled correctly in the constraint source file.
+
+WARNING:ConstraintSystem - A target design object for the Locate constraint
+   '<NET "extram_data[21]" LOC = AB1;> [MipsCPU.ucf(125)]' could not be found
+   and so the Locate constraint will be removed.
+
+ERROR:ConstraintSystem:59 - Constraint <NET "extram_data[22]" LOC = AA2;>
+   [MipsCPU.ucf(126)]: NET "extram_data[22]" not found.  Please verify that:
+   1. The specified design element actually exists in the original design.
+   2. The specified object is spelled correctly in the constraint source file.
+
+WARNING:ConstraintSystem - A target design object for the Locate constraint
+   '<NET "extram_data[22]" LOC = AA2;> [MipsCPU.ucf(126)]' could not be found
+   and so the Locate constraint will be removed.
+
+ERROR:ConstraintSystem:59 - Constraint <NET "extram_data[23]" LOC = AA1;>
+   [MipsCPU.ucf(127)]: NET "extram_data[23]" not found.  Please verify that:
+   1. The specified design element actually exists in the original design.
+   2. The specified object is spelled correctly in the constraint source file.
+
+WARNING:ConstraintSystem - A target design object for the Locate constraint
+   '<NET "extram_data[23]" LOC = AA1;> [MipsCPU.ucf(127)]' could not be found
+   and so the Locate constraint will be removed.
+
+ERROR:ConstraintSystem:59 - Constraint <NET "extram_data[24]" LOC = AF7;>
+   [MipsCPU.ucf(128)]: NET "extram_data[24]" not found.  Please verify that:
+   1. The specified design element actually exists in the original design.
+   2. The specified object is spelled correctly in the constraint source file.
+
+WARNING:ConstraintSystem - A target design object for the Locate constraint
+   '<NET "extram_data[24]" LOC = AF7;> [MipsCPU.ucf(128)]' could not be found
+   and so the Locate constraint will be removed.
+
+ERROR:ConstraintSystem:59 - Constraint <NET "extram_data[25]" LOC = AF8;>
+   [MipsCPU.ucf(129)]: NET "extram_data[25]" not found.  Please verify that:
+   1. The specified design element actually exists in the original design.
+   2. The specified object is spelled correctly in the constraint source file.
+
+WARNING:ConstraintSystem - A target design object for the Locate constraint
+   '<NET "extram_data[25]" LOC = AF8;> [MipsCPU.ucf(129)]' could not be found
+   and so the Locate constraint will be removed.
+
+ERROR:ConstraintSystem:59 - Constraint <NET "extram_data[26]" LOC = AE9;>
+   [MipsCPU.ucf(130)]: NET "extram_data[26]" not found.  Please verify that:
+   1. The specified design element actually exists in the original design.
+   2. The specified object is spelled correctly in the constraint source file.
+
+WARNING:ConstraintSystem - A target design object for the Locate constraint
+   '<NET "extram_data[26]" LOC = AE9;> [MipsCPU.ucf(130)]' could not be found
+   and so the Locate constraint will be removed.
+
+ERROR:ConstraintSystem:59 - Constraint <NET "extram_data[27]" LOC = AF9;>
+   [MipsCPU.ucf(131)]: NET "extram_data[27]" not found.  Please verify that:
+   1. The specified design element actually exists in the original design.
+   2. The specified object is spelled correctly in the constraint source file.
+
+WARNING:ConstraintSystem - A target design object for the Locate constraint
+   '<NET "extram_data[27]" LOC = AF9;> [MipsCPU.ucf(131)]' could not be found
+   and so the Locate constraint will be removed.
+
+ERROR:ConstraintSystem:59 - Constraint <NET "extram_data[28]" LOC = AF10;>
+   [MipsCPU.ucf(132)]: NET "extram_data[28]" not found.  Please verify that:
+   1. The specified design element actually exists in the original design.
+   2. The specified object is spelled correctly in the constraint source file.
+
+WARNING:ConstraintSystem - A target design object for the Locate constraint
+   '<NET "extram_data[28]" LOC = AF10;> [MipsCPU.ucf(132)]' could not be found
+   and so the Locate constraint will be removed.
+
+ERROR:ConstraintSystem:59 - Constraint <NET "extram_data[29]" LOC = AE11;>
+   [MipsCPU.ucf(133)]: NET "extram_data[29]" not found.  Please verify that:
+   1. The specified design element actually exists in the original design.
+   2. The specified object is spelled correctly in the constraint source file.
+
+WARNING:ConstraintSystem - A target design object for the Locate constraint
+   '<NET "extram_data[29]" LOC = AE11;> [MipsCPU.ucf(133)]' could not be found
+   and so the Locate constraint will be removed.
+
+ERROR:ConstraintSystem:59 - Constraint <NET "extram_data[30]" LOC = AF11;>
+   [MipsCPU.ucf(134)]: NET "extram_data[30]" not found.  Please verify that:
+   1. The specified design element actually exists in the original design.
+   2. The specified object is spelled correctly in the constraint source file.
+
+WARNING:ConstraintSystem - A target design object for the Locate constraint
+   '<NET "extram_data[30]" LOC = AF11;> [MipsCPU.ucf(134)]' could not be found
+   and so the Locate constraint will be removed.
+
+ERROR:ConstraintSystem:59 - Constraint <NET "extram_data[31]" LOC = AF12;>
+   [MipsCPU.ucf(135)]: NET "extram_data[31]" not found.  Please verify that:
+   1. The specified design element actually exists in the original design.
+   2. The specified object is spelled correctly in the constraint source file.
+
+WARNING:ConstraintSystem - A target design object for the Locate constraint
+   '<NET "extram_data[31]" LOC = AF12;> [MipsCPU.ucf(135)]' could not be found
+   and so the Locate constraint will be removed.
+
+ERROR:ConstraintSystem:59 - Constraint <NET "exteram_ce" LOC = AC3;>
+   [MipsCPU.ucf(136)]: NET "exteram_ce" not found.  Please verify that:
+   1. The specified design element actually exists in the original design.
+   2. The specified object is spelled correctly in the constraint source file.
+
+WARNING:ConstraintSystem - A target design object for the Locate constraint
+   '<NET "exteram_ce" LOC = AC3;> [MipsCPU.ucf(136)]' could not be found and so
+   the Locate constraint will be removed.
+
+ERROR:ConstraintSystem:59 - Constraint <NET "exteram_oe" LOC = AB9;>
+   [MipsCPU.ucf(137)]: NET "exteram_oe" not found.  Please verify that:
+   1. The specified design element actually exists in the original design.
+   2. The specified object is spelled correctly in the constraint source file.
+
+WARNING:ConstraintSystem - A target design object for the Locate constraint
+   '<NET "exteram_oe" LOC = AB9;> [MipsCPU.ucf(137)]' could not be found and so
+   the Locate constraint will be removed.
+
+ERROR:ConstraintSystem:59 - Constraint <NET "exteram_we" LOC = AC4;>
+   [MipsCPU.ucf(138)]: NET "exteram_we" not found.  Please verify that:
+   1. The specified design element actually exists in the original design.
+   2. The specified object is spelled correctly in the constraint source file.
+
+WARNING:ConstraintSystem - A target design object for the Locate constraint
+   '<NET "exteram_we" LOC = AC4;> [MipsCPU.ucf(138)]' could not be found and so
+   the Locate constraint will be removed.
+
+ERROR:ConstraintSystem:59 - Constraint <NET "flash_addr[0]" LOC = G3;>
+   [MipsCPU.ucf(141)]: NET "flash_addr[0]" not found.  Please verify that:
+   1. The specified design element actually exists in the original design.
+   2. The specified object is spelled correctly in the constraint source file.
+
+WARNING:ConstraintSystem - A target design object for the Locate constraint
+   '<NET "flash_addr[0]" LOC = G3;> [MipsCPU.ucf(141)]' could not be found and
+   so the Locate constraint will be removed.
+
+ERROR:ConstraintSystem:59 - Constraint <NET "flash_addr[1]" LOC = C8;>
+   [MipsCPU.ucf(142)]: NET "flash_addr[1]" not found.  Please verify that:
+   1. The specified design element actually exists in the original design.
+   2. The specified object is spelled correctly in the constraint source file.
+
+WARNING:ConstraintSystem - A target design object for the Locate constraint
+   '<NET "flash_addr[1]" LOC = C8;> [MipsCPU.ucf(142)]' could not be found and
+   so the Locate constraint will be removed.
+
+ERROR:ConstraintSystem:59 - Constraint <NET "flash_addr[2]" LOC = D8;>
+   [MipsCPU.ucf(143)]: NET "flash_addr[2]" not found.  Please verify that:
+   1. The specified design element actually exists in the original design.
+   2. The specified object is spelled correctly in the constraint source file.
+
+WARNING:ConstraintSystem - A target design object for the Locate constraint
+   '<NET "flash_addr[2]" LOC = D8;> [MipsCPU.ucf(143)]' could not be found and
+   so the Locate constraint will be removed.
+
+ERROR:ConstraintSystem:59 - Constraint <NET "flash_addr[3]" LOC = D7;>
+   [MipsCPU.ucf(144)]: NET "flash_addr[3]" not found.  Please verify that:
+   1. The specified design element actually exists in the original design.
+   2. The specified object is spelled correctly in the constraint source file.
+
+WARNING:ConstraintSystem - A target design object for the Locate constraint
+   '<NET "flash_addr[3]" LOC = D7;> [MipsCPU.ucf(144)]' could not be found and
+   so the Locate constraint will be removed.
+
+ERROR:ConstraintSystem:59 - Constraint <NET "flash_addr[4]" LOC = E8;>
+   [MipsCPU.ucf(145)]: NET "flash_addr[4]" not found.  Please verify that:
+   1. The specified design element actually exists in the original design.
+   2. The specified object is spelled correctly in the constraint source file.
+
+WARNING:ConstraintSystem - A target design object for the Locate constraint
+   '<NET "flash_addr[4]" LOC = E8;> [MipsCPU.ucf(145)]' could not be found and
+   so the Locate constraint will be removed.
+
+ERROR:ConstraintSystem:59 - Constraint <NET "flash_addr[5]" LOC = A7;>
+   [MipsCPU.ucf(146)]: NET "flash_addr[5]" not found.  Please verify that:
+   1. The specified design element actually exists in the original design.
+   2. The specified object is spelled correctly in the constraint source file.
+
+WARNING:ConstraintSystem - A target design object for the Locate constraint
+   '<NET "flash_addr[5]" LOC = A7;> [MipsCPU.ucf(146)]' could not be found and
+   so the Locate constraint will be removed.
+
+ERROR:ConstraintSystem:59 - Constraint <NET "flash_addr[6]" LOC = C7;>
+   [MipsCPU.ucf(147)]: NET "flash_addr[6]" not found.  Please verify that:
+   1. The specified design element actually exists in the original design.
+   2. The specified object is spelled correctly in the constraint source file.
+
+WARNING:ConstraintSystem - A target design object for the Locate constraint
+   '<NET "flash_addr[6]" LOC = C7;> [MipsCPU.ucf(147)]' could not be found and
+   so the Locate constraint will be removed.
+
+ERROR:ConstraintSystem:59 - Constraint <NET "flash_addr[7]" LOC = C6;>
+   [MipsCPU.ucf(148)]: NET "flash_addr[7]" not found.  Please verify that:
+   1. The specified design element actually exists in the original design.
+   2. The specified object is spelled correctly in the constraint source file.
+
+WARNING:ConstraintSystem - A target design object for the Locate constraint
+   '<NET "flash_addr[7]" LOC = C6;> [MipsCPU.ucf(148)]' could not be found and
+   so the Locate constraint will be removed.
+
+ERROR:ConstraintSystem:59 - Constraint <NET "flash_addr[8]" LOC = D6;>
+   [MipsCPU.ucf(149)]: NET "flash_addr[8]" not found.  Please verify that:
+   1. The specified design element actually exists in the original design.
+   2. The specified object is spelled correctly in the constraint source file.
+
+WARNING:ConstraintSystem - A target design object for the Locate constraint
+   '<NET "flash_addr[8]" LOC = D6;> [MipsCPU.ucf(149)]' could not be found and
+   so the Locate constraint will be removed.
+
+ERROR:ConstraintSystem:59 - Constraint <NET "flash_addr[9]" LOC = A6;>
+   [MipsCPU.ucf(150)]: NET "flash_addr[9]" not found.  Please verify that:
+   1. The specified design element actually exists in the original design.
+   2. The specified object is spelled correctly in the constraint source file.
+
+WARNING:ConstraintSystem - A target design object for the Locate constraint
+   '<NET "flash_addr[9]" LOC = A6;> [MipsCPU.ucf(150)]' could not be found and
+   so the Locate constraint will be removed.
+
+ERROR:ConstraintSystem:59 - Constraint <NET "flash_addr[10]" LOC = B6;>
+   [MipsCPU.ucf(151)]: NET "flash_addr[10]" not found.  Please verify that:
+   1. The specified design element actually exists in the original design.
+   2. The specified object is spelled correctly in the constraint source file.
+
+WARNING:ConstraintSystem - A target design object for the Locate constraint
+   '<NET "flash_addr[10]" LOC = B6;> [MipsCPU.ucf(151)]' could not be found and
+   so the Locate constraint will be removed.
+
+ERROR:ConstraintSystem:59 - Constraint <NET "flash_addr[11]" LOC = C5;>
+   [MipsCPU.ucf(152)]: NET "flash_addr[11]" not found.  Please verify that:
+   1. The specified design element actually exists in the original design.
+   2. The specified object is spelled correctly in the constraint source file.
+
+WARNING:ConstraintSystem - A target design object for the Locate constraint
+   '<NET "flash_addr[11]" LOC = C5;> [MipsCPU.ucf(152)]' could not be found and
+   so the Locate constraint will be removed.
+
+ERROR:ConstraintSystem:59 - Constraint <NET "flash_addr[12]" LOC = E5;>
+   [MipsCPU.ucf(153)]: NET "flash_addr[12]" not found.  Please verify that:
+   1. The specified design element actually exists in the original design.
+   2. The specified object is spelled correctly in the constraint source file.
+
+WARNING:ConstraintSystem - A target design object for the Locate constraint
+   '<NET "flash_addr[12]" LOC = E5;> [MipsCPU.ucf(153)]' could not be found and
+   so the Locate constraint will be removed.
+
+ERROR:ConstraintSystem:59 - Constraint <NET "flash_addr[13]" LOC = B4;>
+   [MipsCPU.ucf(154)]: NET "flash_addr[13]" not found.  Please verify that:
+   1. The specified design element actually exists in the original design.
+   2. The specified object is spelled correctly in the constraint source file.
+
+WARNING:ConstraintSystem - A target design object for the Locate constraint
+   '<NET "flash_addr[13]" LOC = B4;> [MipsCPU.ucf(154)]' could not be found and
+   so the Locate constraint will be removed.
+
+ERROR:ConstraintSystem:59 - Constraint <NET "flash_addr[14]" LOC = A4;>
+   [MipsCPU.ucf(155)]: NET "flash_addr[14]" not found.  Please verify that:
+   1. The specified design element actually exists in the original design.
+   2. The specified object is spelled correctly in the constraint source file.
+
+WARNING:ConstraintSystem - A target design object for the Locate constraint
+   '<NET "flash_addr[14]" LOC = A4;> [MipsCPU.ucf(155)]' could not be found and
+   so the Locate constraint will be removed.
+
+ERROR:ConstraintSystem:59 - Constraint <NET "flash_addr[15]" LOC = C4;>
+   [MipsCPU.ucf(156)]: NET "flash_addr[15]" not found.  Please verify that:
+   1. The specified design element actually exists in the original design.
+   2. The specified object is spelled correctly in the constraint source file.
+
+WARNING:ConstraintSystem - A target design object for the Locate constraint
+   '<NET "flash_addr[15]" LOC = C4;> [MipsCPU.ucf(156)]' could not be found and
+   so the Locate constraint will be removed.
+
+ERROR:ConstraintSystem:59 - Constraint <NET "flash_addr[16]" LOC = C3;>
+   [MipsCPU.ucf(157)]: NET "flash_addr[16]" not found.  Please verify that:
+   1. The specified design element actually exists in the original design.
+   2. The specified object is spelled correctly in the constraint source file.
+
+WARNING:ConstraintSystem - A target design object for the Locate constraint
+   '<NET "flash_addr[16]" LOC = C3;> [MipsCPU.ucf(157)]' could not be found and
+   so the Locate constraint will be removed.
+
+ERROR:ConstraintSystem:59 - Constraint <NET "flash_addr[17]" LOC = B2;>
+   [MipsCPU.ucf(158)]: NET "flash_addr[17]" not found.  Please verify that:
+   1. The specified design element actually exists in the original design.
+   2. The specified object is spelled correctly in the constraint source file.
+
+WARNING:ConstraintSystem - A target design object for the Locate constraint
+   '<NET "flash_addr[17]" LOC = B2;> [MipsCPU.ucf(158)]' could not be found and
+   so the Locate constraint will be removed.
+
+ERROR:ConstraintSystem:59 - Constraint <NET "flash_addr[18]" LOC = A2;>
+   [MipsCPU.ucf(159)]: NET "flash_addr[18]" not found.  Please verify that:
+   1. The specified design element actually exists in the original design.
+   2. The specified object is spelled correctly in the constraint source file.
+
+WARNING:ConstraintSystem - A target design object for the Locate constraint
+   '<NET "flash_addr[18]" LOC = A2;> [MipsCPU.ucf(159)]' could not be found and
+   so the Locate constraint will be removed.
+
+ERROR:ConstraintSystem:59 - Constraint <NET "flash_addr[19]" LOC = C2;>
+   [MipsCPU.ucf(160)]: NET "flash_addr[19]" not found.  Please verify that:
+   1. The specified design element actually exists in the original design.
+   2. The specified object is spelled correctly in the constraint source file.
+
+WARNING:ConstraintSystem - A target design object for the Locate constraint
+   '<NET "flash_addr[19]" LOC = C2;> [MipsCPU.ucf(160)]' could not be found and
+   so the Locate constraint will be removed.
+
+ERROR:ConstraintSystem:59 - Constraint <NET "flash_addr[20]" LOC = F5;>
+   [MipsCPU.ucf(161)]: NET "flash_addr[20]" not found.  Please verify that:
+   1. The specified design element actually exists in the original design.
+   2. The specified object is spelled correctly in the constraint source file.
+
+WARNING:ConstraintSystem - A target design object for the Locate constraint
+   '<NET "flash_addr[20]" LOC = F5;> [MipsCPU.ucf(161)]' could not be found and
+   so the Locate constraint will be removed.
+
+ERROR:ConstraintSystem:59 - Constraint <NET "flash_addr[21]" LOC = D3;>
+   [MipsCPU.ucf(162)]: NET "flash_addr[21]" not found.  Please verify that:
+   1. The specified design element actually exists in the original design.
+   2. The specified object is spelled correctly in the constraint source file.
+
+WARNING:ConstraintSystem - A target design object for the Locate constraint
+   '<NET "flash_addr[21]" LOC = D3;> [MipsCPU.ucf(162)]' could not be found and
+   so the Locate constraint will be removed.
+
+ERROR:ConstraintSystem:59 - Constraint <NET "flash_addr[22]" LOC = G5;>
+   [MipsCPU.ucf(163)]: NET "flash_addr[22]" not found.  Please verify that:
+   1. The specified design element actually exists in the original design.
+   2. The specified object is spelled correctly in the constraint source file.
+
+WARNING:ConstraintSystem - A target design object for the Locate constraint
+   '<NET "flash_addr[22]" LOC = G5;> [MipsCPU.ucf(163)]' could not be found and
+   so the Locate constraint will be removed.
+
+ERROR:ConstraintSystem:59 - Constraint <NET "flash_data[0]" LOC = G4;>
+   [MipsCPU.ucf(164)]: NET "flash_data[0]" not found.  Please verify that:
+   1. The specified design element actually exists in the original design.
+   2. The specified object is spelled correctly in the constraint source file.
+
+WARNING:ConstraintSystem - A target design object for the Locate constraint
+   '<NET "flash_data[0]" LOC = G4;> [MipsCPU.ucf(164)]' could not be found and
+   so the Locate constraint will be removed.
+
+ERROR:ConstraintSystem:59 - Constraint <NET "flash_data[1]" LOC = J3;>
+   [MipsCPU.ucf(165)]: NET "flash_data[1]" not found.  Please verify that:
+   1. The specified design element actually exists in the original design.
+   2. The specified object is spelled correctly in the constraint source file.
+
+WARNING:ConstraintSystem - A target design object for the Locate constraint
+   '<NET "flash_data[1]" LOC = J3;> [MipsCPU.ucf(165)]' could not be found and
+   so the Locate constraint will be removed.
+
+ERROR:ConstraintSystem:59 - Constraint <NET "flash_data[2]" LOC = K3;>
+   [MipsCPU.ucf(166)]: NET "flash_data[2]" not found.  Please verify that:
+   1. The specified design element actually exists in the original design.
+   2. The specified object is spelled correctly in the constraint source file.
+
+WARNING:ConstraintSystem - A target design object for the Locate constraint
+   '<NET "flash_data[2]" LOC = K3;> [MipsCPU.ucf(166)]' could not be found and
+   so the Locate constraint will be removed.
+
+ERROR:ConstraintSystem:59 - Constraint <NET "flash_data[3]" LOC = K5;>
+   [MipsCPU.ucf(167)]: NET "flash_data[3]" not found.  Please verify that:
+   1. The specified design element actually exists in the original design.
+   2. The specified object is spelled correctly in the constraint source file.
+
+WARNING:ConstraintSystem - A target design object for the Locate constraint
+   '<NET "flash_data[3]" LOC = K5;> [MipsCPU.ucf(167)]' could not be found and
+   so the Locate constraint will be removed.
+
+ERROR:ConstraintSystem:59 - Constraint <NET "flash_data[4]" LOC = C1;>
+   [MipsCPU.ucf(168)]: NET "flash_data[4]" not found.  Please verify that:
+   1. The specified design element actually exists in the original design.
+   2. The specified object is spelled correctly in the constraint source file.
+
+WARNING:ConstraintSystem - A target design object for the Locate constraint
+   '<NET "flash_data[4]" LOC = C1;> [MipsCPU.ucf(168)]' could not be found and
+   so the Locate constraint will be removed.
+
+ERROR:ConstraintSystem:59 - Constraint <NET "flash_data[5]" LOC = E2;>
+   [MipsCPU.ucf(169)]: NET "flash_data[5]" not found.  Please verify that:
+   1. The specified design element actually exists in the original design.
+   2. The specified object is spelled correctly in the constraint source file.
+
+WARNING:ConstraintSystem - A target design object for the Locate constraint
+   '<NET "flash_data[5]" LOC = E2;> [MipsCPU.ucf(169)]' could not be found and
+   so the Locate constraint will be removed.
+
+ERROR:ConstraintSystem:59 - Constraint <NET "flash_data[6]" LOC = F1;>
+   [MipsCPU.ucf(170)]: NET "flash_data[6]" not found.  Please verify that:
+   1. The specified design element actually exists in the original design.
+   2. The specified object is spelled correctly in the constraint source file.
+
+WARNING:ConstraintSystem - A target design object for the Locate constraint
+   '<NET "flash_data[6]" LOC = F1;> [MipsCPU.ucf(170)]' could not be found and
+   so the Locate constraint will be removed.
+
+ERROR:ConstraintSystem:59 - Constraint <NET "flash_data[7]" LOC = G1;>
+   [MipsCPU.ucf(171)]: NET "flash_data[7]" not found.  Please verify that:
+   1. The specified design element actually exists in the original design.
+   2. The specified object is spelled correctly in the constraint source file.
+
+WARNING:ConstraintSystem - A target design object for the Locate constraint
+   '<NET "flash_data[7]" LOC = G1;> [MipsCPU.ucf(171)]' could not be found and
+   so the Locate constraint will be removed.
+
+ERROR:ConstraintSystem:59 - Constraint <NET "flash_data[8]" LOC = H3;>
+   [MipsCPU.ucf(172)]: NET "flash_data[8]" not found.  Please verify that:
+   1. The specified design element actually exists in the original design.
+   2. The specified object is spelled correctly in the constraint source file.
+
+WARNING:ConstraintSystem - A target design object for the Locate constraint
+   '<NET "flash_data[8]" LOC = H3;> [MipsCPU.ucf(172)]' could not be found and
+   so the Locate constraint will be removed.
+
+ERROR:ConstraintSystem:59 - Constraint <NET "flash_data[9]" LOC = J4;>
+   [MipsCPU.ucf(173)]: NET "flash_data[9]" not found.  Please verify that:
+   1. The specified design element actually exists in the original design.
+   2. The specified object is spelled correctly in the constraint source file.
+
+WARNING:ConstraintSystem - A target design object for the Locate constraint
+   '<NET "flash_data[9]" LOC = J4;> [MipsCPU.ucf(173)]' could not be found and
+   so the Locate constraint will be removed.
+
+ERROR:ConstraintSystem:59 - Constraint <NET "flash_data[10]" LOC = H5;>
+   [MipsCPU.ucf(174)]: NET "flash_data[10]" not found.  Please verify that:
+   1. The specified design element actually exists in the original design.
+   2. The specified object is spelled correctly in the constraint source file.
+
+WARNING:ConstraintSystem - A target design object for the Locate constraint
+   '<NET "flash_data[10]" LOC = H5;> [MipsCPU.ucf(174)]' could not be found and
+   so the Locate constraint will be removed.
+
+ERROR:ConstraintSystem:59 - Constraint <NET "flash_data[11]" LOC = B1;>
+   [MipsCPU.ucf(175)]: NET "flash_data[11]" not found.  Please verify that:
+   1. The specified design element actually exists in the original design.
+   2. The specified object is spelled correctly in the constraint source file.
+
+WARNING:ConstraintSystem - A target design object for the Locate constraint
+   '<NET "flash_data[11]" LOC = B1;> [MipsCPU.ucf(175)]' could not be found and
+   so the Locate constraint will be removed.
+
+ERROR:ConstraintSystem:59 - Constraint <NET "flash_data[12]" LOC = D1;>
+   [MipsCPU.ucf(176)]: NET "flash_data[12]" not found.  Please verify that:
+   1. The specified design element actually exists in the original design.
+   2. The specified object is spelled correctly in the constraint source file.
+
+WARNING:ConstraintSystem - A target design object for the Locate constraint
+   '<NET "flash_data[12]" LOC = D1;> [MipsCPU.ucf(176)]' could not be found and
+   so the Locate constraint will be removed.
+
+ERROR:ConstraintSystem:59 - Constraint <NET "flash_data[13]" LOC = E1;>
+   [MipsCPU.ucf(177)]: NET "flash_data[13]" not found.  Please verify that:
+   1. The specified design element actually exists in the original design.
+   2. The specified object is spelled correctly in the constraint source file.
+
+WARNING:ConstraintSystem - A target design object for the Locate constraint
+   '<NET "flash_data[13]" LOC = E1;> [MipsCPU.ucf(177)]' could not be found and
+   so the Locate constraint will be removed.
+
+ERROR:ConstraintSystem:59 - Constraint <NET "flash_data[14]" LOC = G2;>
+   [MipsCPU.ucf(178)]: NET "flash_data[14]" not found.  Please verify that:
+   1. The specified design element actually exists in the original design.
+   2. The specified object is spelled correctly in the constraint source file.
+
+WARNING:ConstraintSystem - A target design object for the Locate constraint
+   '<NET "flash_data[14]" LOC = G2;> [MipsCPU.ucf(178)]' could not be found and
+   so the Locate constraint will be removed.
+
+ERROR:ConstraintSystem:59 - Constraint <NET "flash_data[15]" LOC = H1;>
+   [MipsCPU.ucf(179)]: NET "flash_data[15]" not found.  Please verify that:
+   1. The specified design element actually exists in the original design.
+   2. The specified object is spelled correctly in the constraint source file.
+
+WARNING:ConstraintSystem - A target design object for the Locate constraint
+   '<NET "flash_data[15]" LOC = H1;> [MipsCPU.ucf(179)]' could not be found and
+   so the Locate constraint will be removed.
+
+ERROR:ConstraintSystem:59 - Constraint <NET "flash_ctl[7]" LOC = F3;>
+   [MipsCPU.ucf(180)]: NET "flash_ctl[7]" not found.  Please verify that:
+   1. The specified design element actually exists in the original design.
+   2. The specified object is spelled correctly in the constraint source file.
+
+WARNING:ConstraintSystem - A target design object for the Locate constraint
+   '<NET "flash_ctl[7]" LOC = F3;> [MipsCPU.ucf(180)]' could not be found and so
+   the Locate constraint will be removed.
+
+ERROR:ConstraintSystem:59 - Constraint <NET "flash_ctl[6]" LOC = E6;>
+   [MipsCPU.ucf(181)]: NET "flash_ctl[6]" not found.  Please verify that:
+   1. The specified design element actually exists in the original design.
+   2. The specified object is spelled correctly in the constraint source file.
+
+WARNING:ConstraintSystem - A target design object for the Locate constraint
+   '<NET "flash_ctl[6]" LOC = E6;> [MipsCPU.ucf(181)]' could not be found and so
+   the Locate constraint will be removed.
+
+ERROR:ConstraintSystem:59 - Constraint <NET "flash_ctl[5]" LOC = E4;>
+   [MipsCPU.ucf(182)]: NET "flash_ctl[5]" not found.  Please verify that:
+   1. The specified design element actually exists in the original design.
+   2. The specified object is spelled correctly in the constraint source file.
+
+WARNING:ConstraintSystem - A target design object for the Locate constraint
+   '<NET "flash_ctl[5]" LOC = E4;> [MipsCPU.ucf(182)]' could not be found and so
+   the Locate constraint will be removed.
+
+ERROR:ConstraintSystem:59 - Constraint <NET "flash_ctl[4]" LOC = E3;>
+   [MipsCPU.ucf(183)]: NET "flash_ctl[4]" not found.  Please verify that:
+   1. The specified design element actually exists in the original design.
+   2. The specified object is spelled correctly in the constraint source file.
+
+WARNING:ConstraintSystem - A target design object for the Locate constraint
+   '<NET "flash_ctl[4]" LOC = E3;> [MipsCPU.ucf(183)]' could not be found and so
+   the Locate constraint will be removed.
+
+ERROR:ConstraintSystem:59 - Constraint <NET "flash_ctl[3]" LOC = J1;>
+   [MipsCPU.ucf(184)]: NET "flash_ctl[3]" not found.  Please verify that:
+   1. The specified design element actually exists in the original design.
+   2. The specified object is spelled correctly in the constraint source file.
+
+WARNING:ConstraintSystem - A target design object for the Locate constraint
+   '<NET "flash_ctl[3]" LOC = J1;> [MipsCPU.ucf(184)]' could not be found and so
+   the Locate constraint will be removed.
+
+ERROR:ConstraintSystem:59 - Constraint <NET "flash_ctl[2]" LOC = A5;>
+   [MipsCPU.ucf(185)]: NET "flash_ctl[2]" not found.  Please verify that:
+   1. The specified design element actually exists in the original design.
+   2. The specified object is spelled correctly in the constraint source file.
+
+WARNING:ConstraintSystem - A target design object for the Locate constraint
+   '<NET "flash_ctl[2]" LOC = A5;> [MipsCPU.ucf(185)]' could not be found and so
+   the Locate constraint will be removed.
+
+ERROR:ConstraintSystem:59 - Constraint <NET "flash_ctl[1]" LOC = D5;>
+   [MipsCPU.ucf(186)]: NET "flash_ctl[1]" not found.  Please verify that:
+   1. The specified design element actually exists in the original design.
+   2. The specified object is spelled correctly in the constraint source file.
+
+WARNING:ConstraintSystem - A target design object for the Locate constraint
+   '<NET "flash_ctl[1]" LOC = D5;> [MipsCPU.ucf(186)]' could not be found and so
+   the Locate constraint will be removed.
+
+ERROR:ConstraintSystem:59 - Constraint <NET "flash_ctl[0]" LOC = K1;>
+   [MipsCPU.ucf(187)]: NET "flash_ctl[0]" not found.  Please verify that:
+   1. The specified design element actually exists in the original design.
+   2. The specified object is spelled correctly in the constraint source file.
+
+WARNING:ConstraintSystem - A target design object for the Locate constraint
+   '<NET "flash_ctl[0]" LOC = K1;> [MipsCPU.ucf(187)]' could not be found and so
+   the Locate constraint will be removed.
+
 Done...
 
 Checking expanded design ...
@@ -24,13 +1461,14 @@ Partition Implementation Status
 -------------------------------
 
 NGDBUILD Design Results Summary:
-  Number of errors:     0
-  Number of warnings:   0
+  Number of errors:   159
+  Number of warnings: 160
 
-Total memory usage is 305084 kilobytes
+Total memory usage is 187556 kilobytes
 
-Writing NGD file "MipsCPU_SOPC.ngd" ...
-Total REAL time to NGDBUILD completion:  11 sec
-Total CPU time to NGDBUILD completion:   11 sec
+Total REAL time to NGDBUILD completion:  9 sec
+Total CPU time to NGDBUILD completion:   3 sec
+
+One or more errors were found during NGDBUILD.  No NGD file will be written.
 
 Writing NGDBUILD log file "MipsCPU_SOPC.bld"...

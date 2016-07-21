@@ -24,7 +24,7 @@ module DATA_RAM(
 	input wire we,
 	input wire [31:0] addr,
 	input wire [31:0] data_i,
-	input wire sel,
+	input wire [3:0] sel,
 	output reg [31:0] data_o
     );
 

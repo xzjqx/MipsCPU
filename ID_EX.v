@@ -53,11 +53,13 @@ module ID_EX(
 	
 	input wire flush,
 	
-	input wire [31:0] id_exc,
-	input wire [31:0] id_current_inst_address,
+	input wire [`EXC_CODE_WIDTH-1:0] exc_code_i,
+	input wire [31:0] exc_epc_i,
+	input wire [31:0] exc_badvaddr_i,
 	
-	output reg [31:0] ex_exc,
-	output reg [31:0] ex_current_inst_address
+	output reg [`EXC_CODE_WIDTH-1:0] exc_code_o,
+	output reg [31:0] exc_epc_o,
+	output reg [31:0] exc_badvaddr_o
     );
 
 	always @(posedge clk) begin
@@ -72,8 +74,9 @@ module ID_EX(
 			ex_link_address <= 1'b0;
 			is_in_delayslot_o <= 1'b0;
 			ex_inst <= 32'b0;
-			ex_exc <= 32'b0;
-			ex_current_inst_address <= 32'b0;
+			exc_code_o <= `EC_NONE;
+			exc_epc_o <= `ZeroWord;
+			exc_badvaddr_o <= `ZeroWord;
 		end
 		else if (stall[2] == `STOP && stall[3] == `NOSTOP) begin
 			ex_alusel <= 3'b0;
@@ -86,8 +89,9 @@ module ID_EX(
 			ex_link_address <= 1'b0;
 			is_in_delayslot_o <= 1'b0;
 			ex_inst <= 32'b0;
-			ex_exc <= 32'b0;
-			ex_current_inst_address <= 32'b0;
+			exc_code_o <= `EC_NONE;
+			exc_epc_o <= `ZeroWord;
+			exc_badvaddr_o <= `ZeroWord;
 		end
 		else if (stall[2] == `NOSTOP) begin
 			ex_alusel <= id_alusel;
@@ -100,8 +104,9 @@ module ID_EX(
 			ex_link_address <= id_link_address;
 			is_in_delayslot_o <= next_inst_in_delayslot_i;
 			ex_inst <= id_inst;
-			ex_exc <= id_exc;
-			ex_current_inst_address <= id_current_inst_address;
+			exc_code_o <= exc_code_i;
+			exc_epc_o <= exc_epc_i;
+			exc_badvaddr_o <= exc_badvaddr_i;
 		end
 	end
 

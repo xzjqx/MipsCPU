@@ -1,0 +1,1 @@
+vhdtdtfi -lang verilog -prj MipsCPU -o C:/MipsCPU/MMU.tfi -lib work C:/MipsCPU//MMU.v -module MMU -template F:/Xilinx/13.1/ISE_DS/ISE//data/tfi.tft -deleteonerror 

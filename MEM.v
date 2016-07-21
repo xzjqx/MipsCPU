@@ -54,11 +54,20 @@ module MEM(
 	
 	output reg [31:0] mem_data_o,
 	output reg mem_ce_o,
-	output reg mem_sel_o,
+	output reg [3:0] mem_sel_o,
 	output reg [31:0] mem_addr_o,
-	output wire mem_we_o,
+	output reg mem_we_o,
 	
-	input wire [31:0] exc_i,
+	input wire [`EXC_CODE_WIDTH-1:0] exc_code_from_mmu,
+	input wire [`EXC_CODE_WIDTH-1:0] exc_code_i,
+	input wire [31:0] exc_epc_i,
+	input wire [31:0] exc_badvaddr_i,
+	
+	output reg [`EXC_CODE_WIDTH-1:0] exc_code_o,
+	output reg [31:0] exc_epc_o,
+	output reg [31:0] exc_badvaddr_o,
+	
+	/*input wire [31:0] exc_i,
 	input wire is_in_delayslot_i,
 	input wire [31:0] current_inst_address_i,	
 	
@@ -73,9 +82,41 @@ module MEM(
 	output reg [31:0] exc_o,
 	output wire [31:0] cp0_epc_o,
 	output wire is_in_delayslot_o,
-	output wire [31:0] current_inst_address_o	
+	output wire [31:0] current_inst_address_o	*/
+	
+	input wire stop_i,
+	input wire [31:0] CP0_INDEX_i,
+	input wire [31:0] CP0_ENTRY_HI_i,
+	input wire [31:0] CP0_ENTRY_LO1_i,
+	input wire [31:0] CP0_ENTRY_LO0_i,
+	output wire [`TLB_WRITE_STRUCT_WIDTH-1:0] mmu_tlb_write_struct,
+	output reg stop_o
     );
 
+	reg tlb_write_enable;
+	reg [`TLB_INDEX_WIDTH-1:0] tlb_index;
+	reg [`TLB_ENTRY_WIDTH-1:0] tlb_entry;
+	assign mmu_tlb_write_struct = {tlb_write_enable, tlb_index, tlb_entry};
+	
+	always @ (*) begin
+		if (rst == `RstEnable) begin
+			exc_code_o <= `EC_NONE;
+			exc_epc_o <= `ZeroWord;
+			exc_badvaddr_o <= `ZeroWord;
+		end else begin
+			if (exc_code_from_mmu != `EC_NONE) begin
+				exc_code_o <= exc_code_from_mmu;
+				exc_epc_o <= exc_epc_i;
+				exc_badvaddr_o <= mem_addr_o;
+			end else begin
+				exc_code_o <= exc_code_i;
+				exc_epc_o <= exc_epc_i;
+				exc_badvaddr_o <= exc_badvaddr_i;
+			end
+		end
+	end
+
+/*
 	reg[31:0] cp0_status;
 	reg[31:0] cp0_cause;
 	reg[31:0] cp0_epc;
@@ -133,8 +174,8 @@ module MEM(
 							(cp0_status[0] == 1'b1)) begin
 					exc_o <= 32'h00000001;        //interrupt
 				end else if(exc_i[8] == 1'b1) begin
-			  	exc_o <= 32'h00000008;        //syscall
-				end else if(exc_i[9] == 1'b1) begin
+					exc_o <= 32'h00000008;        //syscall
+				end else if(exc_i[9] == 1'b0) begin
 					exc_o <= 32'h0000000a;        //inst_invalid
 				end else if(exc_i[12] == 1'b1) begin  //·µ»ØÖ¸Áî
 					exc_o <= 32'h0000000e;
@@ -143,7 +184,7 @@ module MEM(
 				
 		end
 	end
-
+*/
 	always @(*) begin
 		if (rst == 1'b1) begin
 			wd_o = 5'b0;
@@ -154,12 +195,16 @@ module MEM(
 			lo_o = 32'b0;
 			mem_data_o = 32'b0;
 			mem_ce_o = 1'b0;
-			mem_sel_o = 1'b0;
+			mem_sel_o = 4'b0;
 			mem_addr_o = 32'b0;
-			mem_we = 1'b0;
+			mem_we_o = 1'b0;
 			cp0_reg_we_o <= 1'b0;
 			cp0_reg_write_addr_o <= 5'b00000;
 			cp0_reg_data_o <= 32'b0;
+			stop_o <= 0;
+			tlb_write_enable <= 0;
+			tlb_index <= 0;
+			tlb_entry <= 0;
 		end
 		else begin
 			wd_o = wd_i;
@@ -169,30 +214,74 @@ module MEM(
 			hi_o = hi_i;
 			lo_o = lo_i;
 			mem_ce_o = 1'b0;
-			mem_sel_o = 1'b1;
+			mem_sel_o = 4'b1;
 			mem_addr_o = 32'b0;
-			mem_we = 1'b0;
+			mem_we_o = 1'b0;
 			cp0_reg_we_o = cp0_reg_we_i;
 			cp0_reg_write_addr_o = cp0_reg_write_addr_i;
 			cp0_reg_data_o = cp0_reg_data_i;
+			stop_o <= stop_i;
+			tlb_write_enable <= 0;
+			tlb_index <= 0;
+			tlb_entry <= 0;
 			case(aluop_i)
 				`LW: begin	//LW
 					mem_addr_o = mem_addr_i;
-					mem_we = 1'b0;
-					wdata_o = mem_data_i;
+					mem_we_o = 1'b0;
+					//wdata_o = mem_data_i;
 					mem_ce_o = 1'b1;
+					case (mem_addr_i[1:0])
+                  2'b00: begin
+							wdata_o <= mem_data_i;
+                     mem_sel_o <= 4'b1111;
+                  end
+                  default: begin
+                     wdata_o <= `ZeroWord;
+                     mem_sel_o <= 4'b0000;
+                  end
+               endcase
 				end
 				`SW: begin	//SW
 					mem_addr_o = mem_addr_i;
-					mem_we = 1'b1;
+					mem_we_o = 1'b1;
 					mem_data_o = reg2_i;
 					mem_ce_o = 1'b1;
+					case (mem_addr_i[1:0])
+						2'b00: begin
+							mem_sel_o <= 4'b1111;
+                  end
+                  default: begin
+                     mem_sel_o <= 4'b0000;
+                  end
+               endcase
 				end
 				`LB: begin	//LB
 					mem_addr_o = mem_addr_i;
-					mem_we = 1'b0;
+					mem_we_o = 1'b0;
 					mem_ce_o = 1'b1;
-					wdata_o = {{24{mem_data_i[31]}}, mem_data_i[31:24]};
+					//wdata_o = {{24{mem_data_i[31]}}, mem_data_i[31:24]};
+					case (mem_addr_i[1:0])
+						2'b00: begin
+							wdata_o <= {{24{mem_data_i[7]}}, mem_data_i[7:0]};
+							mem_sel_o <= 4'b0001;
+						end
+                  2'b01: begin
+                     wdata_o <= {{24{mem_data_i[15]}}, mem_data_i[15:8]};
+                     mem_sel_o <= 4'b0010;
+                  end
+                  2'b10: begin
+                     wdata_o <= {{24{mem_data_i[23]}}, mem_data_i[23:16]};
+                     mem_sel_o <= 4'b0100;
+                  end
+                  2'b11: begin
+                     wdata_o <= {{24{mem_data_i[31]}}, mem_data_i[31:24]};
+                     mem_sel_o <= 4'b1000;
+                  end
+                  default: begin
+                     wdata_o <= `ZeroWord;
+                     mem_sel_o <= 4'b0000;
+                  end
+               endcase
 					/*case(mem_addr_i[1:0])
 						2'b11: begin
 							wdata_o <= {{24{mem_data_i[31]}}, mem_data_i[31:24]};
@@ -217,9 +306,31 @@ module MEM(
 				end
 				`LBU: begin	//LBU
 					mem_addr_o = mem_addr_i;
-					mem_we = 1'b0;
+					mem_we_o = 1'b0;
 					mem_ce_o = 1'b1;
-					wdata_o = {24'b0, mem_data_i[31:24]};
+					//wdata_o = {24'b0, mem_data_i[31:24]};
+					case (mem_addr_i[1:0])
+						2'b00: begin
+							wdata_o <= {{24{1'b0}}, mem_data_i[7:0]};
+							mem_sel_o <= 4'b0001;
+						end
+                  2'b01: begin
+                     wdata_o <= {{24{1'b0}}, mem_data_i[15:8]};
+                     mem_sel_o <= 4'b0010;
+                  end
+                  2'b10: begin
+                     wdata_o <= {{24{1'b0}}, mem_data_i[23:16]};
+                     mem_sel_o <= 4'b0100;
+                  end
+                  2'b11: begin
+                     wdata_o <= {{24{1'b0}}, mem_data_i[31:24]};
+                     mem_sel_o <= 4'b1000;
+                  end
+                  default: begin
+                     wdata_o <= `ZeroWord;
+                     mem_sel_o <= 4'b0000;
+                  end
+               endcase
 					/*case(mem_addr_i[1:0])
 						2'b11: begin
 							wdata_o <= {24'b0, mem_data_i[31:24]};
@@ -244,10 +355,26 @@ module MEM(
 				end
 				`SB: begin	//SB
 					mem_addr_o = mem_addr_i;
-					mem_we = 1'b1;
+					mem_we_o = 1'b1;
 					mem_data_o = {reg2_i[7:0], reg2_i[7:0], reg2_i[7:0], reg2_i[7:0]};
 					mem_ce_o = 1'b1;
-					mem_sel_o = 1'b0;
+					case (mem_addr_i[1:0])
+                  2'b00: begin
+                     mem_sel_o <= 4'b0001;
+                  end
+                  2'b01: begin
+                     mem_sel_o <= 4'b0010;
+                  end
+                  2'b10: begin
+                     mem_sel_o <= 4'b0100;
+                  end
+                  2'b11: begin
+                     mem_sel_o <= 4'b1000;
+                  end
+                  default: begin
+                     mem_sel_o <= 4'b0000;
+                  end
+               endcase
 					/*case(mem_addr_i[1:0])
 						2'b11: begin
 							mem_sel_o <= 4'b1000;
@@ -268,9 +395,23 @@ module MEM(
 				end
 				`LHU: begin	//LHU
 					mem_addr_o = mem_addr_i;
-					mem_we = 1'b0;
+					mem_we_o = 1'b0;
 					mem_ce_o = 1'b1;
-					wdata_o = {16'b0, mem_data_i[31:16]};
+					//wdata_o = {16'b0, mem_data_i[31:16]};
+					case (mem_addr_i[1:0])
+						2'b00: begin
+							wdata_o <= {{16{1'b0}}, mem_data_i[15:0]};
+                     mem_sel_o <= 4'b0011;
+                  end
+                  2'b10: begin
+                     wdata_o <= {{16{1'b0}}, mem_data_i[31:16]};
+                     mem_sel_o <= 4'b1100;
+                  end
+                  default: begin
+                     wdata_o <= `ZeroWord;
+                     mem_sel_o <= 4'b0000;
+                  end
+               endcase
 					/*case(mem_addr_i[1:0])
 						2'b10: begin
 							wdata_o <= {16'b0, mem_data_i[31:16]};
@@ -283,6 +424,15 @@ module MEM(
 						default:
 							mem_sel_o <= 4'b0;
 					endcase*/
+				end
+				`TLBWI: begin
+					tlb_write_enable <= 1;
+					tlb_index <= CP0_INDEX_i[`TLB_INDEX_WIDTH-1:0];
+					tlb_entry <= {CP0_ENTRY_HI_i[31:13],
+									  CP0_ENTRY_LO1_i[25:6],
+									  CP0_ENTRY_LO1_i[2:1],
+									  CP0_ENTRY_LO0_i[25:6],
+									  CP0_ENTRY_LO0_i[2:1]};
 				end
 			endcase
 		end

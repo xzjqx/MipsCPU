@@ -1,0 +1,19 @@
+CoreGen has not been configured with any user repositories.
+CoreGen has been configured with the following Xilinx repositories:
+ - 'F:\Xilinx\13.1\ISE_DS\ISE\coregen\' []
+INFO:sim:927 - Generating component instance 'clockpll' of
+   'xilinx.com:ip:clk_wiz:3.1' from
+   'F:\Xilinx\13.1\ISE_DS\ISE\coregen\ip\xilinx\primary\com\xilinx\ip\clk_wiz_v3
+   _1\clk_wiz_v3_1.xcd'.
+Applying current project options...
+Finished applying current project options.
+Customizing IP...
+Qt: Untested Windows version 6.2 detected!
+Release 13.1 - Xilinx CORE Generator IP GUI Launcher O.40d (nt64)
+Copyright (c) 1995-2011 Xilinx, Inc.  All rights reserved.
+Initializing IP model...
+Loading device for application Rf_Device from file '6slx100.nph' in environment
+F:\Xilinx\13.1\ISE_DS\ISE\.
+Finished initializing IP model.
+Cancelled Customization.
+Wrote file for project 'C:\MipsCPU\ipcore_dir\clockpll.cgp'.

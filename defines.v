@@ -27,6 +27,10 @@
 `define RstEnable 1'b1
 `define RstDisable 1'b0
 `define ZeroWord 32'h00000000
+`define ChipEnable 1'b1
+`define ChipDisable 1'b0
+`define WriteEnable 1'b1
+`define WriteDisable 1'b0
 
 //**************alusel*******//
 `define Arithmetic 3'b000
@@ -109,12 +113,17 @@
 `define MFC0_OP4		5'b00000 
 `define MTC0_OP4		5'b00100 
 //************CP0å†…çš„å¯„å­˜å™*********//
+`define INDEX_CP0		5'b00000
+`define ENTRYLO0_CP0	5'b00010
+`define ENTRYLO1_CP0	5'b00011
+`define BADVADDR_CP0 5'b01000
 `define COUNT_CP0		5'b01001
-`define COMPARE_CP0		5'b01011 
-`define STATUS_CP0		5'b01100 
+`define ENTRYHI_CP0 	5'b01010
+`define COMPARE_CP0	5'b01011 
+`define STATUS_CP0	5'b01100 
 `define CAUSE_CP0		5'b01101 
-`define EPC_CP0			5'b01110 
-`define PRID_CP0		5'b01111 
+`define EPC_CP0		5'b01110 
+`define EBASE_CP0		5'b01111 
 `define CONFIG_CP0		5'b10000 
 
 `define STOP 1'b1
@@ -128,3 +137,25 @@
 `define CP0_REG_EPC    5'b01110          //¿É¶ÁÐ´
 `define CP0_REG_PrId    5'b01111         //Ö»¶Á
 `define CP0_REG_CONFIG    5'b10000       //Ö»¶Á
+
+`define TLB_ENTRY_WIDTH	63
+`define TLB_INDEX_WIDTH	4	// total 16 entries
+`define TLB_NR_ENTRY	(1 << `TLB_INDEX_WIDTH)
+`define TLB_WRITE_STRUCT_WIDTH	(`TLB_ENTRY_WIDTH + `TLB_INDEX_WIDTH + 1)
+// enable, index, entry
+
+// exc code definitions
+`define EXC_CODE_WIDTH	5
+
+`define EC_INT		5'h00	// interrupt
+`define EC_TLB_MOD	5'h01	// modification exception
+`define EC_TLBL		5'h02	// TLBL TLB invalid exception (load or instruction fetch)
+`define EC_TLBS		5'h03	// TLBS TLB invalid exception (store)
+`define EC_ADEL		5'h04	// AdEL Address error exception (load or instruction fetch)
+`define EC_ADES		5'h05	// AdES Address error exception (store)
+`define EC_SYS		5'h08	// Syscall exception
+`define EC_RI		5'h0a	// reserved instruction
+`define EC_CP_U		5'h0b	// Coprocessor Unusable exception
+
+`define EC_NONE		5'h10	// dummy value for no exception
+`define EC_ERET		5'h11	// dummy value to implement ERET

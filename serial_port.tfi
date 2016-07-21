@@ -1,0 +1,20 @@
+
+
+
+// Instantiate the module
+serial_port instance_name (
+    .clk(clk), 
+    .rst(rst), 
+    .int_req(int_req), 
+    .int_ack(int_ack), 
+    .data_out(data_out), 
+    .data_in(data_in), 
+    .write_enable(write_enable), 
+    .fuck1(fuck1), 
+    .fuck2(fuck2), 
+    .write_not_busy(write_not_busy), 
+    .TxD(TxD), 
+    .RxD(RxD)
+    );
+
+

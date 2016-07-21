@@ -40,14 +40,14 @@ module MipsCPU_SOPC_tb;
 
 	initial begin
 		// Initialize Inputs
-		rst_init = 1'b1;
+		rst_init = 1'b0;
 
 		// Wait 100 ns for global reset to finish
-		#95;
-		rst_init = 1'b0;
+		#1050;
+		rst_init = 1'b1;
         
 		// Add stimulus here
-		#1000 $stop;
+		#100000 $stop;
 	end
 	
 	initial begin

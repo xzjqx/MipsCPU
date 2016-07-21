@@ -34,21 +34,29 @@ module MipsCPU_SOPC(
 	wire [31:0] ram_data_i;
 	wire ram_we_i;
 	wire ram_ce_i;
-	wire ram_sel_i;
+	wire [3:0] ram_sel_i;
+	
+	wire clk;
+	wire rst;
+	wire clk_serial;
+	wire clk_mem;
+	wire rst_o;
+	
+	CPU  cpu0 (.clk_init(clk_init), 
+              .rst_init(rst_o), 
+              .clk(clk), 
+              .clk_init_o(clk_serial), 
+              .clk_25M(clk_mem), 
+              .rst(rst));
+	RST_SYNC  rst_sync0 (.clk_sys(clk), 
+								.rst_in(rst_init), 
+								.rst(rst_o));
 
 	MipsCPU MipsCPU0 (
-		.clk(clk_init), 
-		.rst(rst_init), 
-		.rom_data_i(rom_data_i),  
-		.rom_addr_o(rom_addr_o), 
-		.rom_ce_o(rom_ce_o),
-		
-		.ram_data_i(ram_data_o), 
-		.ram_addr_o(ram_addr_i),
-		.ram_data_o(ram_data_i),
-		.ram_we_o(ram_we_i),
-		.ram_ce_o(ram_ce_i),
-		.ram_sel_o(ram_sel_i),
+		.clk(clk), 
+		.rst(rst),
+		.clk_mem(clk_mem),
+		.clk_serial(clk_serial),
 		
 		.led_pc(led_pc)
 	);
@@ -60,7 +68,7 @@ module MipsCPU_SOPC(
 	);
 	
 	DATA_RAM DATA_RAM0 (
-		.clk(clk_init),
+		.clk(clk),
 		.data_i(ram_data_i), 
 		.addr(ram_addr_i),
 		.data_o(ram_data_o),

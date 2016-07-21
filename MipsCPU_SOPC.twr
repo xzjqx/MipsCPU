@@ -29,18 +29,58 @@ INFO:Timing:3339 - The clock-to-out numbers in this timing report are based on
 
 Data Sheet report:
 -----------------
-No constraints were found to generate data for the Data Sheet Report section.
-Use the Advanced Analysis (-a) option or generate global constraints for each
-clock, its pad to setup and clock to pad paths, and a pad to pad constraint.
+All values displayed in nanoseconds (ns)
 
-Analysis completed Mon Jul 18 09:06:27 2016 
+Clock clk_init to Pad
+------------+-----------------+------------+-----------------+------------+------------------+--------+
+            |Max (slowest) clk|  Process   |Min (fastest) clk|  Process   |                  | Clock  |
+Destination |  (edge) to PAD  |   Corner   |  (edge) to PAD  |   Corner   |Internal Clock(s) | Phase  |
+------------+-----------------+------------+-----------------+------------+------------------+--------+
+led_pc<0>   |        10.571(R)|      SLOW  |         5.802(R)|      FAST  |clk_init_BUFGP    |   0.000|
+led_pc<1>   |        10.444(R)|      SLOW  |         5.713(R)|      FAST  |clk_init_BUFGP    |   0.000|
+led_pc<2>   |        10.974(R)|      SLOW  |         6.039(R)|      FAST  |clk_init_BUFGP    |   0.000|
+led_pc<3>   |        10.755(R)|      SLOW  |         5.894(R)|      FAST  |clk_init_BUFGP    |   0.000|
+led_pc<4>   |        10.159(R)|      SLOW  |         5.551(R)|      FAST  |clk_init_BUFGP    |   0.000|
+led_pc<5>   |        10.234(R)|      SLOW  |         5.580(R)|      FAST  |clk_init_BUFGP    |   0.000|
+led_pc<6>   |        12.069(R)|      SLOW  |         6.675(R)|      FAST  |clk_init_BUFGP    |   0.000|
+led_pc<7>   |        11.333(R)|      SLOW  |         6.266(R)|      FAST  |clk_init_BUFGP    |   0.000|
+led_pc<8>   |         8.783(R)|      SLOW  |         4.728(R)|      FAST  |clk_init_BUFGP    |   0.000|
+led_pc<9>   |        10.048(R)|      SLOW  |         5.492(R)|      FAST  |clk_init_BUFGP    |   0.000|
+led_pc<10>  |         8.718(R)|      SLOW  |         4.672(R)|      FAST  |clk_init_BUFGP    |   0.000|
+led_pc<11>  |         9.878(R)|      SLOW  |         5.356(R)|      FAST  |clk_init_BUFGP    |   0.000|
+led_pc<12>  |         9.272(R)|      SLOW  |         4.968(R)|      FAST  |clk_init_BUFGP    |   0.000|
+led_pc<13>  |         9.671(R)|      SLOW  |         5.348(R)|      FAST  |clk_init_BUFGP    |   0.000|
+led_pc<14>  |        10.012(R)|      SLOW  |         5.487(R)|      FAST  |clk_init_BUFGP    |   0.000|
+led_pc<15>  |         9.858(R)|      SLOW  |         5.376(R)|      FAST  |clk_init_BUFGP    |   0.000|
+------------+-----------------+------------+-----------------+------------+------------------+--------+
+
+Clock to Setup on destination clock clk_init
+---------------+---------+---------+---------+---------+
+               | Src:Rise| Src:Fall| Src:Rise| Src:Fall|
+Source Clock   |Dest:Rise|Dest:Rise|Dest:Fall|Dest:Fall|
+---------------+---------+---------+---------+---------+
+clk_init       |   23.070|         |         |         |
+rst_init       |   23.541|   23.541|         |         |
+---------------+---------+---------+---------+---------+
+
+Clock to Setup on destination clock rst_init
+---------------+---------+---------+---------+---------+
+               | Src:Rise| Src:Fall| Src:Rise| Src:Fall|
+Source Clock   |Dest:Rise|Dest:Rise|Dest:Fall|Dest:Fall|
+---------------+---------+---------+---------+---------+
+clk_init       |    6.944|         |         |         |
+rst_init       |    1.094|    1.094|         |         |
+---------------+---------+---------+---------+---------+
+
+
+Analysis completed Mon Jul 18 19:51:56 2016 
 --------------------------------------------------------------------------------
 
 Trace Settings:
 -------------------------
 Trace Settings 
 
-Peak Memory Usage: 351 MB
+Peak Memory Usage: 983 MB
 
 
 

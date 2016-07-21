@@ -1,0 +1,1 @@
+vhdtdtfi -lang verilog -prj MipsCPU -o C:/MipsCPU/IF.tfi -lib work C:/MipsCPU//IF.v -module IF -template F:/Xilinx/13.1/ISE_DS/ISE//data/tfi.tft -deleteonerror 

@@ -1,25 +1,25 @@
 //! **************************************************************************
-// Written by: Map O.40d on Mon Jul 18 09:05:57 2016
+// Written by: Map O.40d on Mon Jul 18 19:28:54 2016
 //! **************************************************************************
 
 SCHEMATIC START;
-COMP "rst_init" LOCATE = SITE "T1" LEVEL 1;
 COMP "led_pc<0>" LOCATE = SITE "F26" LEVEL 1;
-COMP "clk_init" LOCATE = SITE "U26" LEVEL 1;
 COMP "led_pc<1>" LOCATE = SITE "G26" LEVEL 1;
 COMP "led_pc<2>" LOCATE = SITE "G25" LEVEL 1;
 COMP "led_pc<3>" LOCATE = SITE "H26" LEVEL 1;
 COMP "led_pc<4>" LOCATE = SITE "J26" LEVEL 1;
 COMP "led_pc<5>" LOCATE = SITE "J25" LEVEL 1;
-COMP "led_pc<10>" LOCATE = SITE "M23" LEVEL 1;
 COMP "led_pc<6>" LOCATE = SITE "G24" LEVEL 1;
-COMP "led_pc<11>" LOCATE = SITE "K26" LEVEL 1;
 COMP "led_pc<7>" LOCATE = SITE "J24" LEVEL 1;
-COMP "led_pc<12>" LOCATE = SITE "L26" LEVEL 1;
 COMP "led_pc<8>" LOCATE = SITE "L24" LEVEL 1;
-COMP "led_pc<13>" LOCATE = SITE "L25" LEVEL 1;
 COMP "led_pc<9>" LOCATE = SITE "K24" LEVEL 1;
+COMP "led_pc<10>" LOCATE = SITE "M23" LEVEL 1;
+COMP "led_pc<11>" LOCATE = SITE "K26" LEVEL 1;
+COMP "led_pc<12>" LOCATE = SITE "L26" LEVEL 1;
+COMP "led_pc<13>" LOCATE = SITE "L25" LEVEL 1;
 COMP "led_pc<14>" LOCATE = SITE "M26" LEVEL 1;
 COMP "led_pc<15>" LOCATE = SITE "N26" LEVEL 1;
+COMP "clk_init" LOCATE = SITE "U26" LEVEL 1;
+COMP "rst_init" LOCATE = SITE "T1" LEVEL 1;
 SCHEMATIC END;
 
