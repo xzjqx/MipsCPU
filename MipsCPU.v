@@ -23,21 +23,12 @@
 module MipsCPU(
 	input wire clk_init,
 	input wire rst_init,
-	/*input wire [31:0] rom_data_i,
-	
-	input wire [31:0] ram_data_i, 
-	
-	output wire [31:0] rom_addr_o,
-	output wire rom_ce_o,
-	
-	output wire [31:0] ram_addr_o,
-	output wire [31:0] ram_data_o,
-	output wire ram_we_o,
-	output wire ram_ce_o,
-	output wire [3:0] ram_sel_o,*/
 	
 	input wire RxD,
 	output wire TxD,
+	
+	input wire usb_rxd,
+	output wire usb_txd,
 	
 	output wire [19:0] baseram_addr,
 	output wire [31:0] baseram_data,
@@ -265,12 +256,30 @@ module MipsCPU(
 	wire ser_write_enable;
 	wire ser_write_not_busy;
 	
+	wire read_ready;
+	wire write_ready;
+	wire has_break;
+	wire [7:0] com_data_out1;
+	wire [7:0] com_data_in1;
+	wire com_write_enable1;
+	wire com_int_ack1;
+	wire [4:0] debug_addr;
+	wire [31:0] debug_data;
+	wire break_flag;
+	wire stop_flag;
+	wire [31:0] break_addr;
+
 	
 	PC pc0(.clk(clk), .rst(rst), .pc(pc),
 			 .branch_flag_i(pc_branch_flag_i), .branch_target_address_i(pc_branch_target_address_i),
 			 .stall(stop),
 			 .cp0_branch_flag(cp0_exc_jump_flag),
-			 .cp0_branch_addr(cp0_exc_jump_addr));
+			 .cp0_branch_addr(cp0_exc_jump_addr),
+			 .break_flag(break_flag),
+			 .break_addr(break_addr),
+			 .stop_flag(stop_flag),
+			 .has_break(has_break),
+			 .stop_o(stop_from_pc));
 	
 	IF if0 (
     .addr_i(pc), 
@@ -312,7 +321,8 @@ module MipsCPU(
 	
 	REG reg0(.clk(clk), .rst(rst), .we(wb_wreg_i), .waddr(wb_wd_i), .wdata(wb_wdata_i),
 				.re1(reg1_read), .raddr1(reg1_addr), .rdata1(reg1_data),
-				.re2(reg2_read), .raddr2(reg2_addr), .rdata2(reg2_data));
+				.re2(reg2_read), .raddr2(reg2_addr), .rdata2(reg2_data),
+				.debug_addr(debug_addr), .debug_data(debug_data));
 	
 	ID_EX id_ex0(.clk(clk), .rst(rst), .id_alusel(id_alusel_o), .id_aluop(id_aluop_o),
 					 .id_reg1(id_reg1_o), .id_reg2(id_reg2_o), .id_wd(id_wd_o), .id_wreg(id_wreg_o),
@@ -503,7 +513,7 @@ module MipsCPU(
     .extram_oe(extram_oe), 
     .extram_we(extram_we), 
     .com_data_in(ser_data_out), 
-    .com_data_out(ser_data_in), 
+    .com_data_out(ser_data_in),
     .enable_com_write(ser_write_enable), 
     .com_read_ready(cp0_int_com), 
     .com_write_ready(ser_write_not_busy), 
@@ -525,6 +535,38 @@ module MipsCPU(
     .write_not_busy(ser_write_not_busy), 
     .TxD(TxD), 
     .RxD(RxD)
+    );
+	 
+	 DebugControl debugcontrol (
+    .clk(clk_serial), 
+    .rst(rst), 
+    .read_ready(read_ready), 
+    .write_ready(write_ready), 
+    .com_data_in(com_data_in1), 
+    .com_data_out(com_data_out1), 
+    .com_write_enable(com_write_enable1), 
+    .com_int_ack(com_int_ack1), 
+    .has_break(has_break), 
+    .reg_data_in(debug_data), 
+    .reg_addr_out(debug_addr), 
+    .break_flag(break_flag), 
+    .stop_flag(stop_flag), 
+    .break_addr(break_addr)
+    );
+	 
+	serial_port serial_port1 (
+    .clk(clk_serial), 
+    .rst(rst), 
+    .int_req(read_ready), 
+    .int_ack(com_int_ack1), 
+    .data_out(com_data_in1), 
+    .data_in(com_data_out1), 
+    .write_enable(com_write_enable1), 
+    .fuck1(), 
+    .fuck2(), 
+    .write_not_busy(write_ready), 
+    .TxD(usb_txd), 
+    .RxD(usb_rxd)
     );
 	
 endmodule

@@ -44,7 +44,7 @@ module CTRL(
 	end
 
 	always @ (*) begin
-		if (rst == 1'b0) begin
+		if (rst == 1'b1) begin
 			stop <= 6'b000000;
 			flush_o<=0;
 		end else if (flush_i || flush_delay) begin

@@ -32,7 +32,14 @@ module PC(
 	output reg [31:0] pc,
 	
 	input wire cp0_branch_flag,
-	input wire[31:0] cp0_branch_addr
+	input wire[31:0] cp0_branch_addr,
+	
+	input wire break_flag,
+	input wire [31:0] break_addr,
+	input wire stop_flag,
+	
+	output reg has_break,
+	output reg stop_o
     );
 
 	always @(posedge clk) begin
@@ -50,12 +57,17 @@ module PC(
 		end
 	end
 	
-	/*always @(posedge clk) begin
-		if (rst == 1'b1)
-			ce <= 1'b0;
-		else
-			ce <= 1'b1;
-	end*/
-
+	always @ (*) begin
+		has_break <= 0;
+		stop_o <= 0;
+		if (break_flag && pc == break_addr) begin
+			has_break <= 1;
+			stop_o <= 1;
+		end
+		else if (stop_flag) begin
+			has_break <= 1;
+			stop_o <= 1;
+		end
+	end
 
 endmodule

@@ -18,22 +18,114 @@
 // Additional Comments: 
 //
 //////////////////////////////////////////////////////////////////////////////////
-/*case (rom_addr)
-0: rom_data = 32'h3c10be00;
-4: rom_data = 32'h3c04bfd0;
-8: rom_data = 32'h34840400;
-12: rom_data = 32'h240200ff;
-20: rom_data = 32'h240f0000;
-24: rom_data = 32'h020f7821;
-28: rom_data = 32'h8de90000;
-32: rom_data = 32'h8def0004;
-36: rom_data = 32'h000f7c00;
+/*
+case (rom_addr)
+0: rom_data = 32'h00000000;
+4: rom_data = 32'h01000010;
+8: rom_data = 32'h00000000;
+12: rom_data = 32'hffbe083c;
+16: rom_data = 32'hf8ff0835;
+20: rom_data = 32'hff000924;
+24: rom_data = 32'h000009ad;
+28: rom_data = 32'h00be103c;
+32: rom_data = 32'h00000f24;
+36: rom_data = 32'h21780f02;
+40: rom_data = 32'h0000e98d;
+44: rom_data = 32'h0400ef8d;
+48: rom_data = 32'h007c0f00;
+52: rom_data = 32'h25482f01;
+56: rom_data = 32'h4c46083c;
+60: rom_data = 32'h7f450835;
+64: rom_data = 32'h03000911;
+68: rom_data = 32'h00000000;
+72: rom_data = 32'h42000010;
+76: rom_data = 32'h00000000;
+80: rom_data = 32'h38000f24;
+84: rom_data = 32'h21780f02;
+88: rom_data = 32'h0000f18d;
+92: rom_data = 32'h0400ef8d;
+96: rom_data = 32'h007c0f00;
+100: rom_data = 32'h25882f02;
+104: rom_data = 32'h58000f24;
+108: rom_data = 32'h21780f02;
+112: rom_data = 32'h0000f28d;
+116: rom_data = 32'h0400ef8d;
+120: rom_data = 32'h007c0f00;
+124: rom_data = 32'h25904f02;
+128: rom_data = 32'hffff5232;
+132: rom_data = 32'h30000f24;
+136: rom_data = 32'h21780f02;
+140: rom_data = 32'h0000f38d;
+144: rom_data = 32'h0400ef8d;
+148: rom_data = 32'h007c0f00;
+152: rom_data = 32'h25986f02;
+156: rom_data = 32'h08002f26;
+160: rom_data = 32'h40780f00;
+164: rom_data = 32'h21780f02;
+168: rom_data = 32'h0000f48d;
+172: rom_data = 32'h0400ef8d;
+176: rom_data = 32'h007c0f00;
+180: rom_data = 32'h25a08f02;
+184: rom_data = 32'h10002f26;
+188: rom_data = 32'h40780f00;
+192: rom_data = 32'h21780f02;
+196: rom_data = 32'h0000f58d;
+200: rom_data = 32'h0400ef8d;
+204: rom_data = 32'h007c0f00;
+208: rom_data = 32'h25a8af02;
+212: rom_data = 32'h04002f26;
+216: rom_data = 32'h40780f00;
+220: rom_data = 32'h21780f02;
+224: rom_data = 32'h0000f68d;
+228: rom_data = 32'h0400ef8d;
+232: rom_data = 32'h007c0f00;
+236: rom_data = 32'h25b0cf02;
+240: rom_data = 32'h10008012;
+244: rom_data = 32'h00000000;
+248: rom_data = 32'h0e00a012;
+252: rom_data = 32'h00000000;
+256: rom_data = 32'h0000cf26;
+260: rom_data = 32'h40780f00;
+264: rom_data = 32'h21780f02;
+268: rom_data = 32'h0000e88d;
+272: rom_data = 32'h0400ef8d;
+276: rom_data = 32'h007c0f00;
+280: rom_data = 32'h25400f01;
+284: rom_data = 32'h000088ae;
+288: rom_data = 32'h0400d626;
+292: rom_data = 32'h04009426;
+296: rom_data = 32'hfcffb526;
+300: rom_data = 32'hf4ffa01e;
+304: rom_data = 32'h00000000;
+308: rom_data = 32'h20003126;
+312: rom_data = 32'hffff5226;
+316: rom_data = 32'hd7ff401e;
+320: rom_data = 32'h00000000;
+324: rom_data = 32'h08006002;
+328: rom_data = 32'h00000000;
+332: rom_data = 32'hffff0010;
+336: rom_data = 32'h00000000;
+340: rom_data = 32'hffff0010;
+344: rom_data = 32'h00000000;
+default: rom_data = 0;
+endcase
+/*
+case (rom_addr)
+0: rom_data = 32'h3c10be00;	//001111 00000 10000 0xbe00 		lui $16, 0xbe00			$16 = 0xbe000000
+4: rom_data = 32'h3c04bfd0;	//001111 00000 00100 0xbfd0 		lui $4, 0xbfd0 			$4 = 0xbfd00000
+8: rom_data = 32'h34840400;	//001101 00100 00100 0x0400 		ori $4, $4, 0x0400		$4 = 0xbfd00400
+12: rom_data = 32'h240200ff;	//001001 00000 00010 0x00ff 		addiu $2, $0, 0x00ff		$2 = 0x000000ff
+20: rom_data = 32'h240f0000;	//001001 00000 01111 0x0000 		addiu $15, $0, 0			$15 = 0
+24: rom_data = 32'h020f7821;	//000000 10000 01111 01111 00000 100001 						$15 = 0xbe000000
+28: rom_data = 32'h8de90000;	//100011 01111 01001 0x0000		lw $9, 0x0(&15)			$9 = 0x0000zzzz
+32: rom_data = 32'h8def0004;	//100011 01111 01111 0x0004		lw $15, 0x0($15)			$15 = 0x0000zzzz
+36: rom_data = 32'h000f7c00;	//000000 00000 01111 01111 10000 000000	sll $15, $15, 16	$15 = 0xzzzz0000
 40: rom_data = 32'h012f4825;
 44: rom_data = 32'h3c08464c;
 48: rom_data = 32'h3508457f;
-52: rom_data = 32'h11090003;
+52: rom_data = 32'h11090003;	//000100 01000 01001 0x0003
 56: rom_data = 32'h00000000;
-60: rom_data = 32'h10000046;
+60: rom_data = 32'h10000046;	//000100 00000 00000 0x0046
 64: rom_data = 32'h00000000;
 68: rom_data = 32'h240f0038;
 72: rom_data = 32'h020f7821;
@@ -110,7 +202,7 @@
 356: rom_data = 32'h1000fffc;
 360: rom_data = 32'hac820000;
 default: rom_data = 0;
-endcase*/
+endcase
 /*
 //arithmetic_tb
 case (rom_addr)
@@ -288,7 +380,7 @@ case (rom_addr)
 364: rom_data = 32'h00000000;
 default: rom_data = 0;
 endcase*/
-
+/*
 //jump_tb
 case (rom_addr)
 0: rom_data = 32'h34010001;
@@ -327,3 +419,53 @@ case (rom_addr)
 132: rom_data = 32'h34010006;
 default: rom_data = 0;
 endcase
+*/
+
+//serial_port_tb
+case (rom_addr)
+0: rom_data = 32'h34030000;
+4: rom_data = 32'h34040010;
+8: rom_data = 32'h24630001;
+12: rom_data = 32'h3c01bfd0;
+16: rom_data = 32'h342103f8;
+20: rom_data = 32'ha0230000;
+24: rom_data = 32'h1464fffb;
+28: rom_data = 32'h00000000;
+32: rom_data = 32'h08000008;
+36: rom_data = 32'h00000000;
+default: rom_data = 0;
+endcase
+
+/*
+//mem_tb
+case (rom_addr)
+0: rom_data = 32'h3403eeff;
+4: rom_data = 32'ha0030003;
+8: rom_data = 32'h00031a02;
+12: rom_data = 32'ha0030002;
+16: rom_data = 32'h3403ccdd;
+20: rom_data = 32'ha0030001;
+24: rom_data = 32'h00031a02;
+28: rom_data = 32'ha0030000;
+32: rom_data = 32'h80010003;
+36: rom_data = 32'h90010002;
+40: rom_data = 32'h00000000;
+44: rom_data = 32'h3403aabb;
+48: rom_data = 32'ha0030004;
+52: rom_data = 32'h00031a02;
+56: rom_data = 32'ha0030005;
+60: rom_data = 32'h94010004;
+64: rom_data = 32'h34038899;
+68: rom_data = 32'ha0030006;
+72: rom_data = 32'h94010006;
+76: rom_data = 32'h34034455;
+80: rom_data = 32'h00031c00;
+84: rom_data = 32'h34636677;
+88: rom_data = 32'hac030008;
+92: rom_data = 32'h8c010008;
+96: rom_data = 32'h00000000;
+100: rom_data = 32'h08000019;
+104: rom_data = 32'h00000000;
+default: rom_data = 0;
+endcase
+*/

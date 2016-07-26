@@ -32,10 +32,34 @@ module REG(
 	
 	input wire [4:0] raddr2,
 	output reg [31:0] rdata2,
-	input wire re2
+	input wire re2,
+	
+	input wire [4:0] debug_addr,
+	output reg [31:0] debug_data,
+	
+	input wire [4:0] ex_wd,
+	input wire [31:0] ex_wdata,
+	input wire ex_wreg,
+	
+	input wire [4:0] mem_wd,
+	input wire [31:0] mem_wdata,
+	input wire mem_wreg
     );
 	
 	reg [31:0] regs[0:31];
+	
+	always @(*) begin
+		if (ex_wreg && ex_wd == debug_addr)
+			debug_data <= ex_wdata;
+		else if (mem_wreg && mem_wd == debug_addr)
+			debug_data <= mem_wdata;
+		if (we && waddr ==  debug_addr) begin
+			debug_data <= wdata;
+		end 
+		else begin
+			debug_data <=  regs[debug_addr];
+		end	 
+	end
 	
 	always @(posedge clk) begin
 		regs[0] <= 32'b0;
@@ -46,7 +70,7 @@ module REG(
 	end
 	
 	always @(*) begin
-		if (rst == 1'b1 || raddr1 == 1'b0)
+		if (rst == 1'b1 || raddr1 == 5'b0)
 			rdata1 <= 32'b0;
 		else if (re1 == 1'b1 && we == 1'b1 && waddr == raddr1)
 			rdata1 <= wdata;
@@ -57,7 +81,7 @@ module REG(
 	end
 	
 	always @(*) begin
-		if (rst == 1'b1 || raddr2 == 1'b0)
+		if (rst == 1'b1 || raddr2 == 5'b0)
 			rdata2 <= 32'b0;
 		else if (re2 == 1'b1 && we == 1'b1 && waddr == raddr2)
 			rdata2 <= wdata;

@@ -1,19 +1,15 @@
 ISim log file
 Running: C:\MipsCPU\MipsCPU_tb_isim_beh.exe -intstyle ise -gui -tclbatch isim.cmd -wdb C:/MipsCPU/MipsCPU_tb_isim_beh.wdb 
-ISim O.40d (signature 0xc4ca3437)
+ISim O.40d (signature 0x79f3f3a8)
 This is a Full version of ISim.
-WARNING: File "C:/MipsCPU/MipsCPU.v" Line 438.  For instance uut/cp0/, width 32 of formal port badvaddr_o is not equal to width 1 of actual signal badvaddr_o.
+WARNING: File "C:/MipsCPU/MipsCPU.v" Line 450.  For instance uut/cp0/, width 32 of formal port badvaddr_o is not equal to width 1 of actual signal badvaddr_o.
+WARNING: File "C:/MipsCPU/MipsCPU.v" Line 273.  For instance uut/phy_mem0/, width 8 of formal port com_data_out_debug is not equal to width 1 of actual signal com_data_out_debug_0.
 Time resolution is 1 ps
 # onerror resume
 # wave add /
 # run 1000 ns
 Simulator is doing circuit initialization process.
 Finished circuit initialization process.
-# restart
-# run all
-Simulator is doing circuit initialization process.
-Finished circuit initialization process.
-Stopped at time : 101050 ns :  in File "C:/MipsCPU/MipsCPU_tb.v" Line 81 
 # restart
 # run all
 Simulator is doing circuit initialization process.

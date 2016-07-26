@@ -1,0 +1,22 @@
+
+
+
+// Instantiate the module
+DebugControl instance_name (
+    .clk(clk), 
+    .rst(rst), 
+    .read_ready(read_ready), 
+    .write_ready(write_ready), 
+    .com_data_in(com_data_in), 
+    .com_data_out(com_data_out), 
+    .com_write_enable(com_write_enable), 
+    .com_int_ack(com_int_ack), 
+    .has_break(has_break), 
+    .reg_data_in(reg_data_in), 
+    .reg_addr_out(reg_addr_out), 
+    .break_flag(break_flag), 
+    .stop_flag(stop_flag), 
+    .break_addr(break_addr)
+    );
+
+

@@ -8,6 +8,112 @@
 <!-- Copyright (c) 1995-2011 Xilinx, Inc.  All rights reserved.    -->
 
 <messages>
+<msg type="info" file="ProjectMgmt" num="1693" ><arg fmt="%s" index="1">Analyzing Verilog file \&quot;C:/MipsCPU/CP0.v\&quot; into library work</arg>
+</msg>
+
+<msg type="info" file="ProjectMgmt" num="1065" >&quot;<arg fmt="%s" index="1">C:/MipsCPU/CP0.v</arg>&quot; Line <arg fmt="%d" index="2">21</arg>. <arg fmt="%s" index="3">Include file found: &apos;C:/MipsCPU/defines.v&apos; in file &quot;C:/MipsCPU/CP0.v&quot; line 21
+</arg>
+</msg>
+
+<msg type="info" file="ProjectMgmt" num="1693" ><arg fmt="%s" index="1">Analyzing Verilog file \&quot;C:/MipsCPU/CPU.v\&quot; into library work</arg>
+</msg>
+
+<msg type="info" file="ProjectMgmt" num="1693" ><arg fmt="%s" index="1">Analyzing Verilog file \&quot;C:/MipsCPU/CTRL.v\&quot; into library work</arg>
+</msg>
+
+<msg type="info" file="ProjectMgmt" num="1065" >&quot;<arg fmt="%s" index="1">C:/MipsCPU/CTRL.v</arg>&quot; Line <arg fmt="%d" index="2">21</arg>. <arg fmt="%s" index="3">Include file found: &apos;C:/MipsCPU/defines.v&apos; in file &quot;C:/MipsCPU/CTRL.v&quot; line 21
+</arg>
+</msg>
+
+<msg type="info" file="ProjectMgmt" num="1693" ><arg fmt="%s" index="1">Analyzing Verilog file \&quot;C:/MipsCPU/DebugControl.v\&quot; into library work</arg>
+</msg>
+
+<msg type="info" file="ProjectMgmt" num="1693" ><arg fmt="%s" index="1">Analyzing Verilog file \&quot;C:/MipsCPU/EX.v\&quot; into library work</arg>
+</msg>
+
+<msg type="info" file="ProjectMgmt" num="1065" >&quot;<arg fmt="%s" index="1">C:/MipsCPU/EX.v</arg>&quot; Line <arg fmt="%d" index="2">21</arg>. <arg fmt="%s" index="3">Include file found: &apos;C:/MipsCPU/defines.v&apos; in file &quot;C:/MipsCPU/EX.v&quot; line 21
+</arg>
+</msg>
+
+<msg type="info" file="ProjectMgmt" num="1693" ><arg fmt="%s" index="1">Analyzing Verilog file \&quot;C:/MipsCPU/EX_MEM.v\&quot; into library work</arg>
+</msg>
+
+<msg type="info" file="ProjectMgmt" num="1065" >&quot;<arg fmt="%s" index="1">C:/MipsCPU/EX_MEM.v</arg>&quot; Line <arg fmt="%d" index="2">21</arg>. <arg fmt="%s" index="3">Include file found: &apos;C:/MipsCPU/defines.v&apos; in file &quot;C:/MipsCPU/EX_MEM.v&quot; line 21
+</arg>
+</msg>
+
+<msg type="info" file="ProjectMgmt" num="1693" ><arg fmt="%s" index="1">Analyzing Verilog file \&quot;C:/MipsCPU/HILO.v\&quot; into library work</arg>
+</msg>
+
+<msg type="info" file="ProjectMgmt" num="1693" ><arg fmt="%s" index="1">Analyzing Verilog file \&quot;C:/MipsCPU/ID.v\&quot; into library work</arg>
+</msg>
+
+<msg type="info" file="ProjectMgmt" num="1065" >&quot;<arg fmt="%s" index="1">C:/MipsCPU/ID.v</arg>&quot; Line <arg fmt="%d" index="2">21</arg>. <arg fmt="%s" index="3">Include file found: &apos;C:/MipsCPU/defines.v&apos; in file &quot;C:/MipsCPU/ID.v&quot; line 21
+</arg>
+</msg>
+
+<msg type="info" file="ProjectMgmt" num="1693" ><arg fmt="%s" index="1">Analyzing Verilog file \&quot;C:/MipsCPU/ID_EX.v\&quot; into library work</arg>
+</msg>
+
+<msg type="info" file="ProjectMgmt" num="1065" >&quot;<arg fmt="%s" index="1">C:/MipsCPU/ID_EX.v</arg>&quot; Line <arg fmt="%d" index="2">21</arg>. <arg fmt="%s" index="3">Include file found: &apos;C:/MipsCPU/defines.v&apos; in file &quot;C:/MipsCPU/ID_EX.v&quot; line 21
+</arg>
+</msg>
+
+<msg type="info" file="ProjectMgmt" num="1693" ><arg fmt="%s" index="1">Analyzing Verilog file \&quot;C:/MipsCPU/IF.v\&quot; into library work</arg>
+</msg>
+
+<msg type="info" file="ProjectMgmt" num="1065" >&quot;<arg fmt="%s" index="1">C:/MipsCPU/IF.v</arg>&quot; Line <arg fmt="%d" index="2">21</arg>. <arg fmt="%s" index="3">Include file found: &apos;C:/MipsCPU/defines.v&apos; in file &quot;C:/MipsCPU/IF.v&quot; line 21
+</arg>
+</msg>
+
+<msg type="info" file="ProjectMgmt" num="1693" ><arg fmt="%s" index="1">Analyzing Verilog file \&quot;C:/MipsCPU/IF_ID.v\&quot; into library work</arg>
+</msg>
+
+<msg type="info" file="ProjectMgmt" num="1065" >&quot;<arg fmt="%s" index="1">C:/MipsCPU/IF_ID.v</arg>&quot; Line <arg fmt="%d" index="2">21</arg>. <arg fmt="%s" index="3">Include file found: &apos;C:/MipsCPU/defines.v&apos; in file &quot;C:/MipsCPU/IF_ID.v&quot; line 21
+</arg>
+</msg>
+
+<msg type="info" file="ProjectMgmt" num="1693" ><arg fmt="%s" index="1">Analyzing Verilog file \&quot;C:/MipsCPU/MEM.v\&quot; into library work</arg>
+</msg>
+
+<msg type="info" file="ProjectMgmt" num="1065" >&quot;<arg fmt="%s" index="1">C:/MipsCPU/MEM.v</arg>&quot; Line <arg fmt="%d" index="2">21</arg>. <arg fmt="%s" index="3">Include file found: &apos;C:/MipsCPU/defines.v&apos; in file &quot;C:/MipsCPU/MEM.v&quot; line 21
+</arg>
+</msg>
+
+<msg type="info" file="ProjectMgmt" num="1693" ><arg fmt="%s" index="1">Analyzing Verilog file \&quot;C:/MipsCPU/MEM_WB.v\&quot; into library work</arg>
+</msg>
+
+<msg type="info" file="ProjectMgmt" num="1065" >&quot;<arg fmt="%s" index="1">C:/MipsCPU/MEM_WB.v</arg>&quot; Line <arg fmt="%d" index="2">21</arg>. <arg fmt="%s" index="3">Include file found: &apos;C:/MipsCPU/defines.v&apos; in file &quot;C:/MipsCPU/MEM_WB.v&quot; line 21
+</arg>
+</msg>
+
+<msg type="info" file="ProjectMgmt" num="1693" ><arg fmt="%s" index="1">Analyzing Verilog file \&quot;C:/MipsCPU/MMU.v\&quot; into library work</arg>
+</msg>
+
+<msg type="info" file="ProjectMgmt" num="1065" >&quot;<arg fmt="%s" index="1">C:/MipsCPU/MMU.v</arg>&quot; Line <arg fmt="%d" index="2">21</arg>. <arg fmt="%s" index="3">Include file found: &apos;C:/MipsCPU/defines.v&apos; in file &quot;C:/MipsCPU/MMU.v&quot; line 21
+</arg>
+</msg>
+
+<msg type="info" file="ProjectMgmt" num="1693" ><arg fmt="%s" index="1">Analyzing Verilog file \&quot;C:/MipsCPU/MipsCPU.v\&quot; into library work</arg>
+</msg>
+
+<msg type="info" file="ProjectMgmt" num="1065" >&quot;<arg fmt="%s" index="1">C:/MipsCPU/MipsCPU.v</arg>&quot; Line <arg fmt="%d" index="2">21</arg>. <arg fmt="%s" index="3">Include file found: &apos;C:/MipsCPU/defines.v&apos; in file &quot;C:/MipsCPU/MipsCPU.v&quot; line 21
+</arg>
+</msg>
+
+<msg type="info" file="ProjectMgmt" num="1693" ><arg fmt="%s" index="1">Analyzing Verilog file \&quot;C:/MipsCPU/PC.v\&quot; into library work</arg>
+</msg>
+
+<msg type="info" file="ProjectMgmt" num="1065" >&quot;<arg fmt="%s" index="1">C:/MipsCPU/PC.v</arg>&quot; Line <arg fmt="%d" index="2">21</arg>. <arg fmt="%s" index="3">Include file found: &apos;C:/MipsCPU/defines.v&apos; in file &quot;C:/MipsCPU/PC.v&quot; line 21
+</arg>
+</msg>
+
+<msg type="info" file="ProjectMgmt" num="1693" ><arg fmt="%s" index="1">Analyzing Verilog file \&quot;C:/MipsCPU/REG.v\&quot; into library work</arg>
+</msg>
+
+<msg type="info" file="ProjectMgmt" num="1693" ><arg fmt="%s" index="1">Analyzing Verilog file \&quot;C:/MipsCPU/RST_SYNC.v\&quot; into library work</arg>
+</msg>
+
 <msg type="info" file="ProjectMgmt" num="1693" ><arg fmt="%s" index="1">Analyzing Verilog file \&quot;C:/MipsCPU/phy_mem.v\&quot; into library work</arg>
 </msg>
 
@@ -16,6 +122,20 @@
 </msg>
 
 <msg type="info" file="ProjectMgmt" num="1065" >&quot;<arg fmt="%s" index="1">C:/MipsCPU/phy_mem.v</arg>&quot; Line <arg fmt="%d" index="2">133</arg>. <arg fmt="%s" index="3">Include file found: &apos;C:/MipsCPU/bootloader.v&apos; in file &quot;C:/MipsCPU/phy_mem.v&quot; line 133
+</arg>
+</msg>
+
+<msg type="info" file="ProjectMgmt" num="1693" ><arg fmt="%s" index="1">Analyzing Verilog file \&quot;C:/MipsCPU/serial_port.v\&quot; into library work</arg>
+</msg>
+
+<msg type="info" file="ProjectMgmt" num="1065" >&quot;<arg fmt="%s" index="1">C:/MipsCPU/serial_port.v</arg>&quot; Line <arg fmt="%d" index="2">9</arg>. <arg fmt="%s" index="3">Include file found: &apos;C:/MipsCPU/defines.v&apos; in file &quot;C:/MipsCPU/serial_port.v&quot; line 9
+</arg>
+</msg>
+
+<msg type="info" file="ProjectMgmt" num="1693" ><arg fmt="%s" index="1">Analyzing Verilog file \&quot;C:/MipsCPU/uart_async.v\&quot; into library work</arg>
+</msg>
+
+<msg type="info" file="ProjectMgmt" num="1065" >&quot;<arg fmt="%s" index="1">C:/MipsCPU/uart_async.v</arg>&quot; Line <arg fmt="%d" index="2">14</arg>. <arg fmt="%s" index="3">Include file found: &apos;C:/MipsCPU/defines.v&apos; in file &quot;C:/MipsCPU/uart_async.v&quot; line 14
 </arg>
 </msg>
 

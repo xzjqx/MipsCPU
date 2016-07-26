@@ -20,8 +20,12 @@ NET "led_pc[14]" LOC = M26;
 NET "led_pc[15]" LOC = N26;
 
 # serial_port
-NET "RxD" LOC = N23;
-NET "TxD" LOC = P26;
+NET "RxD" LOC = R26;
+NET "TxD" LOC = P24;
+
+# debug_serial_port
+NET "usb_rxd" LOC = P26;
+NET "usb_txd" LOC = N23;
 
 # baseram
 NET "baseram_addr[0]" LOC = Y26;

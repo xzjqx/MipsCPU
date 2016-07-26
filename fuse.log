@@ -1,5 +1,5 @@
-Running: F:\Xilinx\13.1\ISE_DS\ISE\bin\nt64\unwrapped\fuse.exe -intstyle ise -incremental -lib unisims_ver -lib unimacro_ver -lib xilinxcorelib_ver -lib secureip -o C:/MipsCPU/MipsCPU_tb_isim_beh.exe -prj C:/MipsCPU/MipsCPU_tb_beh.prj work.MipsCPU_tb work.glbl 
-ISim O.40d (signature 0xc4ca3437)
+Running: F:\Xilinx\13.1\ISE_DS\ISE\bin\nt\unwrapped\fuse.exe -intstyle ise -incremental -lib unisims_ver -lib unimacro_ver -lib xilinxcorelib_ver -lib secureip -o C:/MipsCPU/MipsCPU_tb_isim_beh.exe -prj C:/MipsCPU/MipsCPU_tb_beh.prj work.MipsCPU_tb work.glbl 
+ISim O.40d (signature 0x79f3f3a8)
 Number of CPUs detected in this system: 4
 Turning on mult-threading, number of parallel sub-compilation jobs: 8 
 Determining compilation order of HDL files
@@ -10,11 +10,13 @@ Analyzing Verilog file \"C:/MipsCPU/RST_SYNC.v\" into library work
 Analyzing Verilog file \"C:/MipsCPU/REG.v\" into library work
 Analyzing Verilog file \"C:/MipsCPU/phy_mem.v\" into library work
 WARNING:HDLCompiler:1142 - "C:/MipsCPU/phy_mem.v" Line 1: Compiler directive `timescale is not allowed here
+WARNING:HDLCompiler:114 - "bootloader.v" Line 112: /* in comment
+WARNING:HDLCompiler:114 - "bootloader.v" Line 206: /* in comment
 Analyzing Verilog file \"C:/MipsCPU/PC.v\" into library work
 Analyzing Verilog file \"C:/MipsCPU/MMU.v\" into library work
-WARNING:HDLCompiler:248 - "C:/MipsCPU/MMU.v" Line 149: Block identifier is required on this block
-WARNING:HDLCompiler:248 - "C:/MipsCPU/MMU.v" Line 138: Block identifier is required on this block
-WARNING:HDLCompiler:248 - "C:/MipsCPU/MMU.v" Line 159: Block identifier is required on this block
+WARNING:HDLCompiler:248 - "C:/MipsCPU/MMU.v" Line 127: Block identifier is required on this block
+WARNING:HDLCompiler:248 - "C:/MipsCPU/MMU.v" Line 118: Block identifier is required on this block
+WARNING:HDLCompiler:248 - "C:/MipsCPU/MMU.v" Line 136: Block identifier is required on this block
 Analyzing Verilog file \"C:/MipsCPU/MEM_WB.v\" into library work
 Analyzing Verilog file \"C:/MipsCPU/MEM.v\" into library work
 Analyzing Verilog file \"C:/MipsCPU/IF_ID.v\" into library work
@@ -24,6 +26,7 @@ Analyzing Verilog file \"C:/MipsCPU/ID.v\" into library work
 Analyzing Verilog file \"C:/MipsCPU/HILO.v\" into library work
 Analyzing Verilog file \"C:/MipsCPU/EX_MEM.v\" into library work
 Analyzing Verilog file \"C:/MipsCPU/EX.v\" into library work
+Analyzing Verilog file \"C:/MipsCPU/DebugControl.v\" into library work
 Analyzing Verilog file \"C:/MipsCPU/CTRL.v\" into library work
 Analyzing Verilog file \"C:/MipsCPU/CPU.v\" into library work
 Analyzing Verilog file \"C:/MipsCPU/CP0.v\" into library work
@@ -32,9 +35,15 @@ Analyzing Verilog file \"C:/MipsCPU/MipsCPU_tb.v\" into library work
 Analyzing Verilog file \"F:/Xilinx/13.1/ISE_DS/ISE//verilog/src/glbl.v\" into library work
 Parsing VHDL file "C:/MipsCPU/ipcore_dir/clockpll/example_design/clockpll_exdes.vhd" into library work
 Starting static elaboration
-WARNING:HDLCompiler:1016 - "C:/MipsCPU/MipsCPU.v" Line 65: Port rst_1 is not connected to this instance
-WARNING:HDLCompiler:189 - "C:/MipsCPU/MipsCPU.v" Line 438: Size mismatch in connection of port <badvaddr_o>. Formal port size is 32-bit while actual signal size is 1-bit.
+WARNING:HDLCompiler:1330 - "C:/MipsCPU/uart_async.v" Line 225: Function log2 has no return value assignment
+WARNING:HDLCompiler:1016 - "C:/MipsCPU/MipsCPU_tb.v" Line 50: Port usb_rxd is not connected to this instance
+WARNING:HDLCompiler:1016 - "C:/MipsCPU/MipsCPU.v" Line 56: Port rst_1 is not connected to this instance
+WARNING:HDLCompiler:1016 - "C:/MipsCPU/MipsCPU.v" Line 324: Port ex_wd is not connected to this instance
+WARNING:HDLCompiler:189 - "C:/MipsCPU/MipsCPU.v" Line 450: Size mismatch in connection of port <badvaddr_o>. Formal port size is 32-bit while actual signal size is 1-bit.
+WARNING:HDLCompiler:189 - "C:/MipsCPU/MipsCPU.v" Line 519: Size mismatch in connection of port <com_data_out_debug>. Formal port size is 8-bit while actual signal size is 1-bit.
 Completed static elaboration
+Fuse Memory Usage: 163456 KB
+Fuse CPU Usage: 405 ms
 Compiling module IBUFG
 Compiling module PLL_ADV(BANDWIDTH="OPTIMIZED",CL...
 Compiling module PLL_BASE(CLKFBOUT_MULT=8,CLKIN_P...
@@ -62,13 +71,13 @@ Compiling module uart_async_transmitter(ClkFreque...
 Compiling module BaudTickGen(ClkFrequency=2000000...
 Compiling module uart_async_receiver(ClkFrequency...
 Compiling module serial_port
+Compiling module DebugControl
 Compiling module MipsCPU
 Compiling module MipsCPU_tb
 Compiling module glbl
 Time Resolution for simulation is 1ps.
 Waiting for 11 sub-compilation(s) to finish...
-WARNING:Simulator - Unable to copy libPortabilityNOSH.dll to the simulation executable directory: boost::filesystem::copy_file: The system cannot find the path specified, "isim\MipsCPU_tb_isim_beh.exe.sim\libPortability.dll".
-Compiled 30 Verilog Units
+Compiled 31 Verilog Units
 Built simulation executable C:/MipsCPU/MipsCPU_tb_isim_beh.exe
-Fuse Memory Usage: 61060 KB
-Fuse CPU Usage: 1359 ms
+Fuse Memory Usage: 200272 KB
+Fuse CPU Usage: 1530 ms

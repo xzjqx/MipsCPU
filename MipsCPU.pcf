@@ -1,10 +1,10 @@
 //! **************************************************************************
-// Written by: Map O.40d on Thu Jul 21 11:57:02 2016
+// Written by: Map O.40d on Mon Jul 25 20:19:06 2016
 //! **************************************************************************
 
 SCHEMATIC START;
-COMP "RxD" LOCATE = SITE "N23" LEVEL 1;
-COMP "TxD" LOCATE = SITE "P26" LEVEL 1;
+COMP "RxD" LOCATE = SITE "R26" LEVEL 1;
+COMP "TxD" LOCATE = SITE "P24" LEVEL 1;
 COMP "baseram_ce" LOCATE = SITE "AA26" LEVEL 1;
 COMP "baseram_oe" LOCATE = SITE "AD17" LEVEL 1;
 COMP "baseram_we" LOCATE = SITE "AA25" LEVEL 1;
@@ -46,6 +46,8 @@ COMP "extram_data<6>" LOCATE = SITE "AF6" LEVEL 1;
 COMP "extram_data<7>" LOCATE = SITE "AE7" LEVEL 1;
 COMP "extram_data<8>" LOCATE = SITE "AE13" LEVEL 1;
 COMP "extram_data<9>" LOCATE = SITE "AF13" LEVEL 1;
+COMP "usb_rxd" LOCATE = SITE "P26" LEVEL 1;
+COMP "usb_txd" LOCATE = SITE "N23" LEVEL 1;
 COMP "baseram_addr<0>" LOCATE = SITE "Y26" LEVEL 1;
 COMP "baseram_addr<1>" LOCATE = SITE "W25" LEVEL 1;
 COMP "baseram_addr<2>" LOCATE = SITE "W26" LEVEL 1;

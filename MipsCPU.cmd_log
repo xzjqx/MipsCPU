@@ -12,3 +12,62 @@ map -intstyle ise -p xc6slx100-fgg676-3 -w -logic_opt off -ol high -t 1 -xt 0 -r
 par -w -intstyle ise -ol high -mt off MipsCPU_map.ncd MipsCPU.ncd MipsCPU.pcf 
 trce -intstyle ise -v 3 -s 3 -n 3 -fastpaths -xml MipsCPU.twx MipsCPU.ncd -o MipsCPU.twr MipsCPU.pcf -ucf MipsCPU.ucf 
 bitgen -intstyle ise -f MipsCPU.ut MipsCPU.ncd 
+xst -intstyle ise -ifn "C:/MipsCPU/MipsCPU.xst" -ofn "C:/MipsCPU/MipsCPU.syr" 
+ngdbuild -intstyle ise -dd _ngo -sd ipcore_dir -nt timestamp -uc MipsCPU.ucf -p xc6slx100-fgg676-3 MipsCPU.ngc MipsCPU.ngd  
+map -intstyle ise -p xc6slx100-fgg676-3 -w -logic_opt off -ol high -t 1 -xt 0 -register_duplication off -r 4 -global_opt off -mt off -ir off -pr off -lc off -power off -o MipsCPU_map.ncd MipsCPU.ngd MipsCPU.pcf 
+par -w -intstyle ise -ol high -mt off MipsCPU_map.ncd MipsCPU.ncd MipsCPU.pcf 
+trce -intstyle ise -v 3 -s 3 -n 3 -fastpaths -xml MipsCPU.twx MipsCPU.ncd -o MipsCPU.twr MipsCPU.pcf -ucf MipsCPU.ucf 
+bitgen -intstyle ise -f MipsCPU.ut MipsCPU.ncd 
+xst -intstyle ise -ifn "C:/MipsCPU/MipsCPU.xst" -ofn "C:/MipsCPU/MipsCPU.syr" 
+xst -intstyle ise -ifn "C:/MipsCPU/MipsCPU.xst" -ofn "C:/MipsCPU/MipsCPU.syr" 
+ngdbuild -intstyle ise -dd _ngo -sd ipcore_dir -nt timestamp -uc MipsCPU.ucf -p xc6slx100-fgg676-3 MipsCPU.ngc MipsCPU.ngd  
+xst -intstyle ise -ifn "C:/MipsCPU/MipsCPU.xst" -ofn "C:/MipsCPU/MipsCPU.syr" 
+ngdbuild -intstyle ise -dd _ngo -sd ipcore_dir -nt timestamp -uc MipsCPU.ucf -p xc6slx100-fgg676-3 MipsCPU.ngc MipsCPU.ngd  
+map -intstyle ise -p xc6slx100-fgg676-3 -w -logic_opt off -ol high -t 1 -xt 0 -register_duplication off -r 4 -global_opt off -mt off -ir off -pr off -lc off -power off -o MipsCPU_map.ncd MipsCPU.ngd MipsCPU.pcf 
+par -w -intstyle ise -ol high -mt off MipsCPU_map.ncd MipsCPU.ncd MipsCPU.pcf 
+trce -intstyle ise -v 3 -s 3 -n 3 -fastpaths -xml MipsCPU.twx MipsCPU.ncd -o MipsCPU.twr MipsCPU.pcf -ucf MipsCPU.ucf 
+bitgen -intstyle ise -f MipsCPU.ut MipsCPU.ncd 
+xst -intstyle ise -ifn "C:/MipsCPU/MipsCPU.xst" -ofn "C:/MipsCPU/MipsCPU.syr" 
+ngdbuild -intstyle ise -dd _ngo -sd ipcore_dir -nt timestamp -uc MipsCPU.ucf -p xc6slx100-fgg676-3 MipsCPU.ngc MipsCPU.ngd  
+map -intstyle ise -p xc6slx100-fgg676-3 -w -logic_opt off -ol high -t 1 -xt 0 -register_duplication off -r 4 -global_opt off -mt off -ir off -pr off -lc off -power off -o MipsCPU_map.ncd MipsCPU.ngd MipsCPU.pcf 
+par -w -intstyle ise -ol high -mt off MipsCPU_map.ncd MipsCPU.ncd MipsCPU.pcf 
+trce -intstyle ise -v 3 -s 3 -n 3 -fastpaths -xml MipsCPU.twx MipsCPU.ncd -o MipsCPU.twr MipsCPU.pcf -ucf MipsCPU.ucf 
+bitgen -intstyle ise -f MipsCPU.ut MipsCPU.ncd 
+xst -intstyle ise -ifn "C:/MipsCPU/MipsCPU.xst" -ofn "C:/MipsCPU/MipsCPU.syr" 
+ngdbuild -intstyle ise -dd _ngo -sd ipcore_dir -nt timestamp -uc MipsCPU.ucf -p xc6slx100-fgg676-3 MipsCPU.ngc MipsCPU.ngd  
+map -intstyle ise -p xc6slx100-fgg676-3 -w -logic_opt off -ol high -t 1 -xt 0 -register_duplication off -r 4 -global_opt off -mt off -ir off -pr off -lc off -power off -o MipsCPU_map.ncd MipsCPU.ngd MipsCPU.pcf 
+par -w -intstyle ise -ol high -mt off MipsCPU_map.ncd MipsCPU.ncd MipsCPU.pcf 
+trce -intstyle ise -v 3 -s 3 -n 3 -fastpaths -xml MipsCPU.twx MipsCPU.ncd -o MipsCPU.twr MipsCPU.pcf -ucf MipsCPU.ucf 
+bitgen -intstyle ise -f MipsCPU.ut MipsCPU.ncd 
+xst -intstyle ise -ifn "C:/MipsCPU/MipsCPU.xst" -ofn "C:/MipsCPU/MipsCPU.syr" 
+ngdbuild -intstyle ise -dd _ngo -sd ipcore_dir -nt timestamp -uc MipsCPU.ucf -p xc6slx100-fgg676-3 MipsCPU.ngc MipsCPU.ngd  
+map -intstyle ise -p xc6slx100-fgg676-3 -w -logic_opt off -ol high -t 1 -xt 0 -register_duplication off -r 4 -global_opt off -mt off -ir off -pr off -lc off -power off -o MipsCPU_map.ncd MipsCPU.ngd MipsCPU.pcf 
+par -w -intstyle ise -ol high -mt off MipsCPU_map.ncd MipsCPU.ncd MipsCPU.pcf 
+xst -intstyle ise -ifn "C:/MipsCPU/MipsCPU.xst" -ofn "C:/MipsCPU/MipsCPU.syr" 
+ngdbuild -intstyle ise -dd _ngo -sd ipcore_dir -nt timestamp -uc MipsCPU.ucf -p xc6slx100-fgg676-3 MipsCPU.ngc MipsCPU.ngd  
+map -intstyle ise -p xc6slx100-fgg676-3 -w -logic_opt off -ol high -t 1 -xt 0 -register_duplication off -r 4 -global_opt off -mt off -ir off -pr off -lc off -power off -o MipsCPU_map.ncd MipsCPU.ngd MipsCPU.pcf 
+par -w -intstyle ise -ol high -mt off MipsCPU_map.ncd MipsCPU.ncd MipsCPU.pcf 
+trce -intstyle ise -v 3 -s 3 -n 3 -fastpaths -xml MipsCPU.twx MipsCPU.ncd -o MipsCPU.twr MipsCPU.pcf -ucf MipsCPU.ucf 
+bitgen -intstyle ise -f MipsCPU.ut MipsCPU.ncd 
+xst -intstyle ise -ifn "C:/MipsCPU/MipsCPU.xst" -ofn "C:/MipsCPU/MipsCPU.syr" 
+ngdbuild -intstyle ise -dd _ngo -sd ipcore_dir -nt timestamp -uc MipsCPU.ucf -p xc6slx100-fgg676-3 MipsCPU.ngc MipsCPU.ngd  
+map -intstyle ise -p xc6slx100-fgg676-3 -w -logic_opt off -ol high -t 1 -xt 0 -register_duplication off -r 4 -global_opt off -mt off -ir off -pr off -lc off -power off -o MipsCPU_map.ncd MipsCPU.ngd MipsCPU.pcf 
+par -w -intstyle ise -ol high -mt off MipsCPU_map.ncd MipsCPU.ncd MipsCPU.pcf 
+trce -intstyle ise -v 3 -s 3 -n 3 -fastpaths -xml MipsCPU.twx MipsCPU.ncd -o MipsCPU.twr MipsCPU.pcf -ucf MipsCPU.ucf 
+bitgen -intstyle ise -f MipsCPU.ut MipsCPU.ncd 
+xst -intstyle ise -ifn "C:/MipsCPU/MipsCPU.xst" -ofn "C:/MipsCPU/MipsCPU.syr" 
+ngdbuild -intstyle ise -dd _ngo -sd ipcore_dir -nt timestamp -uc MipsCPU.ucf -p xc6slx100-fgg676-3 MipsCPU.ngc MipsCPU.ngd  
+map -intstyle ise -p xc6slx100-fgg676-3 -w -logic_opt off -ol high -t 1 -xt 0 -register_duplication off -r 4 -global_opt off -mt off -ir off -pr off -lc off -power off -o MipsCPU_map.ncd MipsCPU.ngd MipsCPU.pcf 
+par -w -intstyle ise -ol high -mt off MipsCPU_map.ncd MipsCPU.ncd MipsCPU.pcf 
+trce -intstyle ise -v 3 -s 3 -n 3 -fastpaths -xml MipsCPU.twx MipsCPU.ncd -o MipsCPU.twr MipsCPU.pcf -ucf MipsCPU.ucf 
+bitgen -intstyle ise -f MipsCPU.ut MipsCPU.ncd 
+xst -intstyle ise -ifn "C:/MipsCPU/MipsCPU.xst" -ofn "C:/MipsCPU/MipsCPU.syr" 
+ngdbuild -intstyle ise -dd _ngo -sd ipcore_dir -nt timestamp -uc MipsCPU.ucf -p xc6slx100-fgg676-3 MipsCPU.ngc MipsCPU.ngd  
+map -intstyle ise -p xc6slx100-fgg676-3 -w -logic_opt off -ol high -t 1 -xt 0 -register_duplication off -r 4 -global_opt off -mt off -ir off -pr off -lc off -power off -o MipsCPU_map.ncd MipsCPU.ngd MipsCPU.pcf 
+par -w -intstyle ise -ol high -mt off MipsCPU_map.ncd MipsCPU.ncd MipsCPU.pcf 
+trce -intstyle ise -v 3 -s 3 -n 3 -fastpaths -xml MipsCPU.twx MipsCPU.ncd -o MipsCPU.twr MipsCPU.pcf -ucf MipsCPU.ucf 
+bitgen -intstyle ise -f MipsCPU.ut MipsCPU.ncd 
+xst -intstyle ise -ifn "C:/MipsCPU/MipsCPU.xst" -ofn "C:/MipsCPU/MipsCPU.syr" 
+xst -intstyle ise -ifn "C:/MipsCPU/MipsCPU.xst" -ofn "C:/MipsCPU/MipsCPU.syr" 
+xst -intstyle ise -ifn "C:/MipsCPU/MipsCPU.xst" -ofn "C:/MipsCPU/MipsCPU.syr" 
+xst -intstyle ise -ifn "C:/MipsCPU/MipsCPU.xst" -ofn "C:/MipsCPU/MipsCPU.syr" 

@@ -1,0 +1,1 @@
+vhdtdtfi -lang verilog -prj MipsCPU -o C:/MipsCPU/DebugControl.tfi -lib work C:/MipsCPU//DebugControl.v -module DebugControl -template F:/Xilinx/13.1/ISE_DS/ISE//data/tfi.tft -deleteonerror 

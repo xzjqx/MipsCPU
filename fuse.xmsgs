@@ -8,22 +8,37 @@
 <msg type="warning" file="HDLCompiler" num="1142" delta="unknown" >"C:/MipsCPU/phy_mem.v" Line 1: Compiler directive <arg fmt="%s" index="1">`timescale</arg> is not allowed here
 </msg>
 
-<msg type="warning" file="HDLCompiler" num="248" delta="unknown" >"C:/MipsCPU/MMU.v" Line 149: Block identifier is required on this block
+<msg type="warning" file="HDLCompiler" num="114" delta="unknown" >"bootloader.v" Line 112: /* in comment
 </msg>
 
-<msg type="warning" file="HDLCompiler" num="248" delta="unknown" >"C:/MipsCPU/MMU.v" Line 138: Block identifier is required on this block
+<msg type="warning" file="HDLCompiler" num="114" delta="unknown" >"bootloader.v" Line 206: /* in comment
 </msg>
 
-<msg type="warning" file="HDLCompiler" num="248" delta="unknown" >"C:/MipsCPU/MMU.v" Line 159: Block identifier is required on this block
+<msg type="warning" file="HDLCompiler" num="248" delta="unknown" >"C:/MipsCPU/MMU.v" Line 127: Block identifier is required on this block
 </msg>
 
-<msg type="warning" file="HDLCompiler" num="1016" delta="unknown" >"C:/MipsCPU/MipsCPU.v" Line 65: Port <arg fmt="%s" index="1">rst_1</arg> is not connected to this instance
+<msg type="warning" file="HDLCompiler" num="248" delta="unknown" >"C:/MipsCPU/MMU.v" Line 118: Block identifier is required on this block
 </msg>
 
-<msg type="warning" file="HDLCompiler" num="189" delta="unknown" >"C:/MipsCPU/MipsCPU.v" Line 438: Size mismatch in connection of port &lt;<arg fmt="%s" index="3">badvaddr_o</arg>&gt;. Formal port size is <arg fmt="%d" index="2">32</arg>-bit while actual signal size is <arg fmt="%d" index="1">1</arg>-bit.
+<msg type="warning" file="HDLCompiler" num="248" delta="unknown" >"C:/MipsCPU/MMU.v" Line 136: Block identifier is required on this block
 </msg>
 
-<msg type="warning" file="Simulator" num="0" delta="unknown" >Unable to copy libPortabilityNOSH.dll to the simulation executable directory: <arg fmt="%s" index="1">boost::filesystem::copy_file: The system cannot find the path specified, &quot;isim\MipsCPU_tb_isim_beh.exe.sim\libPortability.dll&quot;</arg>.
+<msg type="warning" file="HDLCompiler" num="1330" delta="unknown" >"C:/MipsCPU/uart_async.v" Line 225: Function <arg fmt="%s" index="1">log2</arg> has no return value assignment
+</msg>
+
+<msg type="warning" file="HDLCompiler" num="1016" delta="unknown" >"C:/MipsCPU/MipsCPU_tb.v" Line 50: Port <arg fmt="%s" index="1">usb_rxd</arg> is not connected to this instance
+</msg>
+
+<msg type="warning" file="HDLCompiler" num="1016" delta="unknown" >"C:/MipsCPU/MipsCPU.v" Line 56: Port <arg fmt="%s" index="1">rst_1</arg> is not connected to this instance
+</msg>
+
+<msg type="warning" file="HDLCompiler" num="1016" delta="unknown" >"C:/MipsCPU/MipsCPU.v" Line 324: Port <arg fmt="%s" index="1">ex_wd</arg> is not connected to this instance
+</msg>
+
+<msg type="warning" file="HDLCompiler" num="189" delta="unknown" >"C:/MipsCPU/MipsCPU.v" Line 450: Size mismatch in connection of port &lt;<arg fmt="%s" index="3">badvaddr_o</arg>&gt;. Formal port size is <arg fmt="%d" index="2">32</arg>-bit while actual signal size is <arg fmt="%d" index="1">1</arg>-bit.
+</msg>
+
+<msg type="warning" file="HDLCompiler" num="189" delta="unknown" >"C:/MipsCPU/MipsCPU.v" Line 519: Size mismatch in connection of port &lt;<arg fmt="%s" index="3">com_data_out_debug</arg>&gt;. Formal port size is <arg fmt="%d" index="2">8</arg>-bit while actual signal size is <arg fmt="%d" index="1">1</arg>-bit.
 </msg>
 
 </messages>
